@@ -536,10 +536,25 @@
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">3. SOC-to-ISCO Mapping Loss</h3>
                 <p>The SOC (US) to ISCO-08 (international) crosswalk is many-to-many. When multiple SOC codes map to one ISCO code, we average their scores. When one SOC maps to multiple ISCO codes, all receive the same score. This averaging smooths out meaningful within-group variation.</p>
 
-                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. Pay Data Gaps</h3>
-                <p>ILOSTAT earnings data is available for 9 of 12 countries. Canada, Australia, and Japan lack ILOSTAT earnings coverage. For countries with earnings data, the ILOSTAT unit scale varies (Korea reports in thousands of KRW, India needs a ×100 multiplier) — we apply per-country unit corrections but some inaccuracies may remain.</p>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. Employment &amp; Pay Data: US vs Non-US</h3>
+                <p>The employment data quality differs drastically between the US and all other countries:</p>
+                <ul>
+                    <li><strong>US:</strong> Employment counts come from BLS Occupational Employment and Wage Statistics (OEWS), with individual counts for each of 290 SOC occupations. This is census-grade data — each tile in the treemap reflects the actual number of workers in that specific job.</li>
+                    <li><strong>Non-US:</strong> We use ILOSTAT data, which only reports employment at the ISCO <em>major group</em> level (10 categories: Managers, Professionals, Technicians, etc.). Within each major group, employment is divided equally among all 4-digit ISCO occupations in that group. This means a "Software Developer" and a "Mathematician" both get the same employment count if they're in the same major group — a significant distortion.</li>
+                </ul>
+                <p>Concretely: If ILOSTAT says the UK has 5.4 million "Professionals" and there are 90 ISCO codes in that group, each occupation gets 60,000 workers. This is mathematically necessary but misleading — there are far more teachers than astronomers.</p>
 
-                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. Temporal Snapshot</h3>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. Pay Data Gaps &amp; Currency Issues</h3>
+                <p>ILOSTAT earnings data is available for 9 of 12 countries. Canada, Australia, and Japan lack ILOSTAT earnings coverage entirely. For countries with earnings data, the ILOSTAT unit scale varies — Korea reports in thousands of KRW, India needs a ×100 multiplier, Mexico needs ×10, Philippines needs ×100. We apply per-country unit corrections but some inaccuracies may remain. Like employment, pay data is only available at the ISCO major group level, so all occupations within the same group show identical salary.</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">6. India &amp; Philippines: Informal Economy Blind Spots</h3>
+                <p>India and the Philippines present unique data quality challenges that go beyond sparse coverage:</p>
+                <ul>
+                    <li><strong>India:</strong> ILO estimates 89% of India's workforce is in informal employment — street vendors, agricultural day laborers, domestic workers, construction workers. ILOSTAT employment statistics primarily capture the formal sector. India's 482 million "jobs" in our dataset are a mix of formal counts and modeled estimates. The 5.6 million in "Professionals" largely reflects IT and engineering — not because India lacks other professionals, but because those are the occupations ILOSTAT can count. Meanwhile, Claude usage data (58,098 conversations) comes almost entirely from the IT sector in Bangalore, Hyderabad, and Pune. The result: India's data tells a coherent story about its tech sector, but is essentially silent on 90% of its economy.</li>
+                    <li><strong>Philippines:</strong> Similar issues at smaller scale. 55 ISCO codes with non-zero observed exposure (vs 144 for the UK). The BPO (Business Process Outsourcing) sector — call centers, data entry — dominates Claude usage, creating a lopsided view. The Philippines' 46.9 million jobs include large agricultural and informal service sectors invisible to both ILOSTAT granular data and Claude usage patterns.</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">7. Temporal Snapshot</h3>
                 <p>V4 data covers a single week (Nov 13–20, 2025). AI adoption patterns evolve rapidly. A company rolling out Claude enterprise during the sampling week could significantly skew a small country's data. The theoretical exposure (Anthropic task analysis) is also a point-in-time snapshot of Claude's capabilities as of early 2026.</p>
             </div>
 
@@ -564,10 +579,25 @@
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">3. SOC到ISCO映射损失</h3>
                 <p>SOC（美国）到ISCO-08（国际）的交叉映射是多对多关系。当多个SOC代码映射到一个ISCO代码时，我们取平均值。当一个SOC映射到多个ISCO代码时，所有代码获得相同分数。这种平均化消除了组内的有意义差异。</p>
 
-                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. 薪资数据缺口</h3>
-                <p>ILOSTAT收入数据覆盖12个国家中的9个。加拿大、澳大利亚和日本缺乏ILOSTAT收入数据。对于有收入数据的国家，ILOSTAT的单位标度各不相同（韩国以千韩元为单位，印度需要×100倍数）——我们逐国应用了单位校正，但仍可能存在不准确之处。</p>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. 就业数据：美国 vs 非美国</h3>
+                <p>美国与其他国家的就业数据质量存在巨大差异：</p>
+                <ul>
+                    <li><strong>美国：</strong>就业人数来自BLS职业就业与工资统计（OEWS），为290个SOC职业各自提供独立计数。这是普查级数据——树状图中每个色块反映的是该具体职业的实际工人数量。</li>
+                    <li><strong>非美国：</strong>我们使用ILOSTAT数据，仅报告ISCO<em>大类</em>级别的就业（10个类别：管理人员、专业人员、技术人员等）。在每个大类内部，就业人数在该组所有4位ISCO职业之间均等分配。这意味着"软件开发人员"和"数学家"如果在同一大类，获得的就业人数完全相同——这是显著的失真。</li>
+                </ul>
+                <p>具体来说：如果ILOSTAT显示英国有540万"专业人员"，该组有90个ISCO代码，则每个职业分配到6万人。这在数学上是必要的，但会产生误导——教师的数量远多于天文学家。</p>
 
-                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. 时间快照</h3>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. 薪资数据缺口与货币问题</h3>
+                <p>ILOSTAT收入数据覆盖12个国家中的9个。加拿大、澳大利亚和日本完全缺乏ILOSTAT收入数据。对于有收入数据的国家，ILOSTAT的单位标度各不相同——韩国以千韩元为单位，印度需要×100倍数，墨西哥需要×10，菲律宾需要×100。我们逐国应用了单位校正，但仍可能存在不准确之处。与就业数据一样，薪资数据也仅在ISCO大类级别可用，因此同一组内所有职业显示相同的薪资水平。</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">6. 印度与菲律宾：非正规经济盲区</h3>
+                <p>印度和菲律宾面临超越数据稀疏性的独特数据质量挑战：</p>
+                <ul>
+                    <li><strong>印度：</strong>ILO估计印度89%的劳动力从事非正规就业——街头摊贩、农业日工、家政工人、建筑工人。ILOSTAT就业统计主要捕获正规部门。我们数据集中印度的4.82亿"岗位"是正规统计和模型估算的混合体。"专业人员"类别中的560万人主要反映IT和工程领域——不是因为印度缺少其他专业人员，而是因为那些是ILOSTAT能统计到的职业。与此同时，Claude使用数据（58,098次对话）几乎全部来自班加罗尔、海得拉巴和浦那的IT行业。结果是：印度的数据讲述了一个关于其科技行业的连贯故事，但对其90%的经济体本质上是沉默的。</li>
+                    <li><strong>菲律宾：</strong>类似问题但规模较小。55个ISCO代码有非零实测暴露度（英国为144个）。BPO（业务流程外包）行业——呼叫中心、数据录入——主导了Claude使用，造成了偏颇的视角。菲律宾的4690万个岗位包括大量农业和非正规服务业部门，这些部门对ILOSTAT的细粒度数据和Claude使用模式都是不可见的。</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">7. 时间快照</h3>
                 <p>V4数据覆盖单一周（2025年11月13-20日）。AI采用模式在快速演变。一家公司在采样周内部署Claude企业版可能显著扭曲小国的数据。理论暴露度（Anthropic任务分析）也是2026年初Claude能力的时间点快照。</p>
             </div>
         </div>
