@@ -390,6 +390,41 @@
                 <div class="note">
                     <strong>Why include both?</strong> The Anthropic method is empirically grounded but limited to what Claude can currently do. The Karpathy method captures broader intuitions about AI's potential impact. Comparing the two reveals where current AI usage lags behind perceived potential — a gap that may close as AI capabilities expand.
                 </div>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Why the Score Gap Is So Large</h3>
+                <p>Across 290 occupations with both scores, the Anthropic mean is 2.1/10 while Karpathy's is 5.4/10. The Pearson correlation is only 0.508. This is not a calibration error — the two methods measure fundamentally different things.</p>
+
+                <p><strong>Anthropic's distribution is extremely right-skewed.</strong> Of 756 SOC occupations in <code>job_exposure.csv</code>, 411 (54%) score exactly zero, and 72% score below 1.0/10 after normalization. Only 5% exceed 5.0/10. This reflects the narrow range of tasks Claude is currently used for — dominated by software development, data analysis, content writing, and customer service.</p>
+
+                <p><strong>Karpathy's distribution is approximately normal.</strong> Scores are evenly spread from 1–10, with a mean of 5.4 and median of 6. When an LLM is asked "how much can AI impact this occupation?", it considers theoretical potential, future capabilities, and general knowledge — resulting in moderate-to-high scores for nearly all knowledge work.</p>
+
+                <p><strong>Case study: Insurance Underwriters.</strong> Karpathy gives 9/10 — AI can clearly analyze risk profiles, process applications, and assess claims. Anthropic gives 0.8/10 — almost nobody is currently using Claude for insurance underwriting. The 8.2-point gap is not wrong; it reveals a massive <em>adoption gap</em>. The AI capability exists but hasn't been deployed at scale in this field.</p>
+
+                <p>The largest gaps (Karpathy ≫ Anthropic) cluster in finance, HR, and specialized analysis roles — occupations where AI could help but hasn't penetrated yet. The smallest gaps appear in software development and customer service, where Claude adoption is already high.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Occupation</th>
+                            <th>Karpathy</th>
+                            <th>Anthropic</th>
+                            <th>Gap</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Insurance Underwriters</td><td>9.0</td><td>0.8</td><td>+8.2</td><td>Huge untapped potential</td></tr>
+                        <tr><td>Cost Estimators</td><td>8.0</td><td>0.0</td><td>+8.0</td><td>Zero current adoption</td></tr>
+                        <tr><td>Actuaries</td><td>8.0</td><td>0.7</td><td>+7.3</td><td>Math-heavy but not using AI</td></tr>
+                        <tr><td>Budget Analysts</td><td>8.0</td><td>0.9</td><td>+7.1</td><td>Finance adoption lag</td></tr>
+                        <tr><td>Computer Programmers</td><td>9.0</td><td>10.0</td><td>−1.0</td><td>Fully adopted</td></tr>
+                        <tr><td>Customer Service Reps</td><td>9.0</td><td>9.4</td><td>−0.4</td><td>Fully adopted</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="note">
+                    <strong>Reading the gap:</strong> A large positive gap (Karpathy ≫ Anthropic) indicates an <em>adoption gap</em> — the AI capability exists but isn't being used. A near-zero or negative gap indicates the occupation has already adopted AI tools at or near the level of their theoretical potential. The gap itself is arguably the most actionable metric in this dataset: it tells you where AI deployment is likely to expand next.
+                </div>
             </div>
 
             <div class="cn">
@@ -434,6 +469,41 @@
 
                 <div class="note">
                     <strong>为什么同时展示两种方法？</strong>Anthropic方法以实证为基础，但局限于Claude当前能力。Karpathy方法捕捉了对AI潜在影响的更广泛直觉。对比两者可以揭示当前AI使用落后于感知潜力的差距——这个差距可能随着AI能力扩展而缩小。
+                </div>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">为什么两种分数差距这么大</h3>
+                <p>在290个同时具有两种分数的职业中，Anthropic均值为2.1/10，Karpathy均值为5.4/10。皮尔逊相关系数仅为0.508。这不是校准错误——两种方法在衡量根本不同的东西。</p>
+
+                <p><strong>Anthropic的分布极度右偏。</strong><code>job_exposure.csv</code>中756个SOC职业里，411个（54%）得分为零，归一化后72%低于1.0/10。仅5%超过5.0/10。这反映了Claude当前被使用的任务范围非常狭窄——以软件开发、数据分析、内容写作和客户服务为主。</p>
+
+                <p><strong>Karpathy的分布近似正态。</strong>分数均匀分布在1–10之间，均值5.4，中位数6。当LLM被问到"AI对这个职业的影响有多大"时，它会考虑理论潜力、未来能力和通用知识——导致几乎所有知识工作都获得中高分。</p>
+
+                <p><strong>案例分析：保险承保员（Insurance Underwriters）。</strong>Karpathy给出9/10——AI显然可以分析风险档案、处理申请、评估理赔。Anthropic给出0.8/10——目前几乎没有人在使用Claude做保险承保。8.2分的差距并非错误；它揭示了巨大的<em>采用缺口（adoption gap）</em>。AI能力已经存在，但尚未在该领域大规模部署。</p>
+
+                <p>最大差距（Karpathy远高于Anthropic）集中在金融、人力资源和专业分析岗位——这些职业中AI可以提供帮助但尚未渗透。最小差距出现在软件开发和客户服务领域，这些领域Claude的采用率已经很高。</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>职业</th>
+                            <th>Karpathy</th>
+                            <th>Anthropic</th>
+                            <th>差距</th>
+                            <th>解读</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>保险承保员</td><td>9.0</td><td>0.8</td><td>+8.2</td><td>巨大未开发潜力</td></tr>
+                        <tr><td>成本估算师</td><td>8.0</td><td>0.0</td><td>+8.0</td><td>当前零采用</td></tr>
+                        <tr><td>精算师</td><td>8.0</td><td>0.7</td><td>+7.3</td><td>数学密集但未使用AI</td></tr>
+                        <tr><td>预算分析师</td><td>8.0</td><td>0.9</td><td>+7.1</td><td>金融行业采用滞后</td></tr>
+                        <tr><td>计算机程序员</td><td>9.0</td><td>10.0</td><td>−1.0</td><td>已充分采用</td></tr>
+                        <tr><td>客户服务代表</td><td>9.0</td><td>9.4</td><td>−0.4</td><td>已充分采用</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="note">
+                    <strong>如何解读差距：</strong>较大的正差距（Karpathy远高于Anthropic）意味着<em>采用缺口</em>——AI能力已存在但未被使用。接近零或负差距表明该职业已经按接近理论潜力的水平采用了AI工具。差距本身可以说是这个数据集中最具可操作性的指标：它告诉你AI部署下一步最可能扩展到哪里。
                 </div>
             </div>
         </div>
