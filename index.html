@@ -675,7 +675,7 @@ function tileColorCSS(d, alpha) {
   if (colorMode === "karpathy") {
     const v = d.karpathy_exposure;
     if (v == null) return `rgba(30,30,40,${alpha})`;
-    return exposureColor(v / 10, alpha);
+    return exposureColor(v, alpha);
   }
 
   if (colorMode === "outlook") return outlookColor(d.outlook, alpha);
@@ -913,7 +913,7 @@ function tooltipHighlight(d) {
   } else if (colorMode === "karpathy") {
     const v = d.karpathy_exposure;
     if (v == null) return `<span style="color:rgba(128,128,128,1);font-weight:600;">Karpathy LLM Score: ${T.na}</span>`;
-    const color = exposureColor(v / 10, 1);
+    const color = exposureColor(v, 1);
     const theo = d.theoretical_exposure;
     let compareText = "";
     if (theo != null) {
