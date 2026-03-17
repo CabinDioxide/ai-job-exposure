@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Global AI Occupational Exposure Monitor</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --fg: #e0e0e8;
+            --fg2: #888894;
+            --accent: #6366f1;
+            --accent-light: rgba(99, 102, 241, 0.1);
+            --border: rgba(224, 224, 232, 0.1);
+            --code-bg: #15151f;
+            --zebra: rgba(224, 224, 232, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            letter-spacing: 0.3px;
+        }
+
+        /* Subtle noise texture background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.02) 2px,
+                    rgba(255, 255, 255, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header with back link and language toggle */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--fg);
+        }
+
+        /* Language toggle */
+        .language-toggle {
+            display: flex;
+            gap: 8px;
+            background: var(--code-bg);
+            padding: 4px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--fg2);
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .lang-btn:hover {
+            color: var(--fg);
+        }
+
+        /* Main title */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--fg2);
+            margin-bottom: 50px;
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            width: 60px;
+            background: var(--accent);
+        }
+
+        /* Subsection for bilingual content */
+        .section-content {
+            margin-bottom: 40px;
+        }
+
+        .en, .cn {
+            margin-bottom: 25px;
+        }
+
+        /* Typography */
+        p {
+            margin-bottom: 15px;
+            color: var(--fg);
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--fg);
+        }
+
+        li strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Code blocks */
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 13px;
+            color: var(--fg);
+        }
+
+        pre code {
+            background: none;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--accent-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: var(--fg);
+            border-right: 1px solid var(--border);
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            padding: 12px;
+            border-right: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--zebra);
+        }
+
+        tbody tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        /* Emphasis boxes */
+        .note {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 100px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+            color: var(--fg2);
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .language-toggle {
+                align-self: flex-end;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .back-link {
+                font-size: 13px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+        }
+
+        /* Hide/show by language */
+        .lang-inactive {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="index_global.html" class="back-link">← Back to visualization</a>
+            <div class="language-toggle">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="cn">中文</button>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="en lang-inactive">Methodology</h1>
+        <h1 class="cn">方法论</h1>
+
+        <p class="subtitle en lang-inactive">Global AI Occupational Exposure Monitor</p>
+        <p class="subtitle cn">AI影响就业全球监督</p>
+
+        <!-- Section 1: Overview -->
+        <h2>
+            <span class="en lang-inactive">Overview</span>
+            <span class="cn">概述</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <p>This document describes the methodology, data sources, and known limitations of the Global AI Occupational Exposure Monitor. We measure how AI affects jobs across 12 countries using observed Claude usage data from Anthropic's Economic Index.</p>
+            </div>
+            <div class="cn">
+                <p>本文档描述"AI影响就业全球监督"项目的方法论、数据来源及已知局限性。我们使用Anthropic经济指数中的Claude实际使用数据，测量AI对12个国家就业的影响。</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Data Sources -->
+        <h2>
+            <span class="en lang-inactive">Data Sources</span>
+            <span class="cn">数据来源</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <p>Three exposure dimensions:</p>
+                <ul>
+                    <li><strong>Theoretical AI Exposure</strong> (0-10): LLM capability assessment from Karpathy's analysis — "Can AI technically do this job?" Shared across all countries.</li>
+                    <li><strong>Observed AI Exposure</strong> (0-10): Computed from real Claude usage data. For the US, from Anthropic's <code>job_exposure.csv</code> (756 SOC occupations, released 2026-03-05). For non-US countries, from V4 country-level <code>onet_task_pct</code> distributions (released 2026-01-15, data from 2025-11-13 to 2025-11-20).</li>
+                    <li><strong>Automation vs Augmentation ratio</strong>: From V3 release (2025-08-04 to 2025-08-11), per-country ratio of directive/automated vs collaborative/augmentative AI usage.</li>
+                </ul>
+                <p>Employment data: ILOSTAT where available; otherwise estimated ISCO major group distributions based on ILO World Employment and Social Outlook and country income level.</p>
+            </div>
+
+            <div class="cn">
+                <p>三个暴露维度：</p>
+                <ul>
+                    <li><strong>理论AI暴露度</strong> (0-10)：基于Karpathy的LLM能力评估——"AI技术上能不能影响这个职业？"所有国家共用同一套分数。</li>
+                    <li><strong>实测AI暴露度</strong> (0-10)：基于Claude的真实使用数据。美国数据来自Anthropic的<code>job_exposure.csv</code>（756个SOC职业，2026年3月5日发布）。非美国国家数据来自V4国别<code>onet_task_pct</code>分布（2026年1月15日发布，数据采集期2025年11月13-20日）。</li>
+                    <li><strong>自动化 vs 增强比率</strong>：来自V3版本（2025年8月4-11日），各国AI使用中指令式/自动化与协作式/增强式的比率。</li>
+                </ul>
+                <p>就业数据：优先使用ILOSTAT；不可用时按ILO《世界就业和社会展望》及国家收入水平估算ISCO大类分布。</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Computation Pipeline -->
+        <h2>
+            <span class="en lang-inactive">Computation Pipeline</span>
+            <span class="cn">计算管道</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <pre><code>Step 1: Extract each country's onet_task_pct distribution from V4
+Step 2: Map task text → SOC codes via onet_task_statements.csv (18,428 tasks)
+Step 3: For each SOC: raw_score = Σ(task_pct × task_penetration)
+Step 4: Normalize: country_exposure[soc] = (country_raw / us_raw) × us_official_exposure
+Step 5: SOC → ISCO-08 crosswalk (839 SOC → 436 ISCO)
+Step 6: SOCs with no country data → exposure = 0</code></pre>
+            </div>
+
+            <div class="cn">
+                <pre><code>步骤1：从V4数据中提取每个国家的onet_task_pct分布
+步骤2：通过onet_task_statements.csv将任务文本映射到SOC职业代码（18,428个任务）
+步骤3：对每个SOC计算：raw_score = Σ(task_pct × task_penetration)
+步骤4：归一化：country_exposure[soc] = (country_raw / us_raw) × us_official_exposure
+步骤5：SOC → ISCO-08交叉映射（839个SOC → 436个ISCO）
+步骤6：无数据的SOC → 暴露度 = 0</code></pre>
+            </div>
+        </div>
+
+        <!-- Section 4: Data Quality by Country -->
+        <h2>
+            <span class="en lang-inactive">Data Quality by Country</span>
+            <span class="cn">各国数据质量</span>
+        </h2>
+
+        <div class="section-content">
+            <table>
+                <thead>
+                    <tr class="en lang-inactive">
+                        <th>Country</th>
+                        <th>Claude Usage</th>
+                        <th>Tasks</th>
+                        <th>US% Coverage</th>
+                        <th>Non-zero SOCs</th>
+                        <th>Gini</th>
+                        <th>Avg Obs (weighted)</th>
+                        <th>Auto%</th>
+                        <th>Quality Rating</th>
+                    </tr>
+                    <tr class="cn">
+                        <th>国家</th>
+                        <th>Claude用量</th>
+                        <th>任务数</th>
+                        <th>覆盖率(US%)</th>
+                        <th>非零SOC数</th>
+                        <th>基尼系数</th>
+                        <th>加权暴露度</th>
+                        <th>自动化%</th>
+                        <th>质量评级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🇺🇸 US</td>
+                        <td>219,666</td>
+                        <td>1,450</td>
+                        <td>100.0%</td>
+                        <td>296</td>
+                        <td>0.727</td>
+                        <td>2.1/10</td>
+                        <td>49%</td>
+                        <td>A+ (baseline)</td>
+                    </tr>
+                    <tr>
+                        <td>🇬🇧 UK</td>
+                        <td>30,707</td>
+                        <td>325</td>
+                        <td>22.4%</td>
+                        <td>151</td>
+                        <td>0.850</td>
+                        <td>0.9/10</td>
+                        <td>46%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇯🇵 JP</td>
+                        <td>31,235</td>
+                        <td>294</td>
+                        <td>20.3%</td>
+                        <td>142</td>
+                        <td>0.880</td>
+                        <td>0.9/10</td>
+                        <td>43%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇰🇷 KR</td>
+                        <td>30,618</td>
+                        <td>284</td>
+                        <td>19.6%</td>
+                        <td>134</td>
+                        <td>0.889</td>
+                        <td>0.8/10</td>
+                        <td>45%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇫🇷 FR</td>
+                        <td>30,208</td>
+                        <td>270</td>
+                        <td>18.6%</td>
+                        <td>137</td>
+                        <td>0.893</td>
+                        <td>0.8/10</td>
+                        <td>49%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇩🇪 DE</td>
+                        <td>25,382</td>
+                        <td>241</td>
+                        <td>16.6%</td>
+                        <td>125</td>
+                        <td>0.907</td>
+                        <td>0.7/10</td>
+                        <td>46%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇮🇳 IN</td>
+                        <td>58,098</td>
+                        <td>407</td>
+                        <td>28.1%</td>
+                        <td>157</td>
+                        <td>0.908</td>
+                        <td>0.3/10</td>
+                        <td>58%</td>
+                        <td>A (biased)</td>
+                    </tr>
+                    <tr>
+                        <td>🇨🇦 CA</td>
+                        <td>22,854</td>
+                        <td>232</td>
+                        <td>16.0%</td>
+                        <td>121</td>
+                        <td>0.892</td>
+                        <td>0.6/10</td>
+                        <td>47%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇦🇺 AU</td>
+                        <td>15,488</td>
+                        <td>169</td>
+                        <td>11.7%</td>
+                        <td>100</td>
+                        <td>0.909</td>
+                        <td>0.7/10</td>
+                        <td>46%</td>
+                        <td>B+</td>
+                    </tr>
+                    <tr>
+                        <td>🇧🇷 BR</td>
+                        <td>27,602</td>
+                        <td>250</td>
+                        <td>17.2%</td>
+                        <td>121</td>
+                        <td>0.939</td>
+                        <td>0.5/10</td>
+                        <td>64%</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>🇲🇽 MX</td>
+                        <td>10,345</td>
+                        <td>94</td>
+                        <td>6.5%</td>
+                        <td>65</td>
+                        <td>0.954</td>
+                        <td>0.3/10</td>
+                        <td>53%</td>
+                        <td>B (sparse)</td>
+                    </tr>
+                    <tr>
+                        <td>🇵🇭 PH</td>
+                        <td>9,935</td>
+                        <td>89</td>
+                        <td>6.1%</td>
+                        <td>64</td>
+                        <td>0.959</td>
+                        <td>0.2/10</td>
+                        <td>52%</td>
+                        <td>B (sparse)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="en lang-inactive">
+                <h3 style="font-size: 16px; font-weight: 600; margin: 30px 0 20px 0;">Reading the table:</h3>
+                <ul>
+                    <li><strong>Claude Usage:</strong> Total Claude conversations from that country during the V4 sampling week.</li>
+                    <li><strong>Tasks:</strong> Number of distinct O*NET task statements matched. US has 1,450; this is the denominator for coverage.</li>
+                    <li><strong>Gini coefficient:</strong> Measures concentration of exposure across SOCs. Higher = more concentrated in fewer occupations. US (0.727) is the most evenly distributed; Philippines (0.959) is the most concentrated.</li>
+                    <li><strong>Quality Rating:</strong> A+ = baseline (US only). A = sufficient sample, broad coverage. A (biased) = large sample but concentrated in specific sectors. B+ = adequate but limited coverage. B (sparse) = minimal data, use with caution.</li>
+                </ul>
+            </div>
+
+            <div class="cn">
+                <h3 style="font-size: 16px; font-weight: 600; margin: 30px 0 20px 0;">表格说明：</h3>
+                <ul>
+                    <li><strong>Claude用量：</strong>V4采样周内该国的Claude对话总数。</li>
+                    <li><strong>任务数：</strong>匹配到的O*NET任务描述数量。美国有1,450个，是覆盖率的分母。</li>
+                    <li><strong>基尼系数：</strong>衡量暴露度在各SOC之间的集中程度。越高越集中在少数职业。美国（0.727）分布最均匀；菲律宾（0.959）最集中。</li>
+                    <li><strong>质量评级：</strong>A+ = 基准（仅美国）。A = 样本充足、覆盖面广。A (biased) = 样本大但集中在特定行业。B+ = 足够但覆盖有限。B (sparse) = 数据稀疏，需谨慎使用。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 5: Known Limitations -->
+        <h2>
+            <span class="en lang-inactive">Known Limitations</span>
+            <span class="cn">已知局限性</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <ol style="margin-left: 30px;">
+                    <li style="margin-bottom: 20px;">
+                        <strong>Claude ≠ All AI.</strong> V4 data captures only Claude usage. GitHub Copilot, ChatGPT, Midjourney, and domain-specific AI tools are invisible. Countries where Claude has low market share will appear underexposed.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Claude users ≠ the labor force.</strong> Claude users skew toward knowledge workers, English speakers, and technology-adjacent roles. India's 58,098 conversations are overwhelmingly from IT professionals. India's 560 million workers in agriculture, construction, and informal services are invisible in this data. The data tells us about the IT sector's AI exposure, not India's.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Sparse coverage in small markets.</strong> Philippines has 89 tasks (6% of US). This means 352 of 436 ISCO occupations receive zero exposure — not because AI doesn't affect them, but because we have no data. Mexico (94 tasks, 6.5%) has the same problem.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Single-platform, single-week snapshot.</strong> V4 covers one week (Nov 13-20, 2025) of one platform. Usage patterns may vary by season, product releases, or market events.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>SOC taxonomy mismatch.</strong> O*NET task statements use SOC 2010; job_exposure.csv uses SOC 2018. Some major 2018 occupations (e.g., 15-1252 Software Developers) have no task mapping. Mitigated at ISCO level but causes SOC-level gaps.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>No within-country sector decomposition.</strong> A software developer at TCS Bangalore and at a village startup get the same exposure score. Sector-level data exists in V3/V4 but is not yet integrated.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Employment data is estimated.</strong> Non-US employment distributions are ISCO major group estimates, not granular occupation-level census data. This affects weighted averages.
+                    </li>
+                </ol>
+            </div>
+
+            <div class="cn">
+                <ol style="margin-left: 30px;">
+                    <li style="margin-bottom: 20px;">
+                        <strong>Claude ≠ 所有AI。</strong>V4数据只捕获Claude的使用。GitHub Copilot、ChatGPT、Midjourney及领域专用AI工具均不可见。Claude市场份额低的国家会显得暴露不足。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Claude用户 ≠ 劳动力。</strong>Claude用户偏向知识工作者、英语使用者和技术相关岗位。印度的58,098次对话绝大多数来自IT从业者。印度5.6亿农业、建筑和非正规服务业工人在这份数据中是不可见的。数据告诉我们的是IT行业的AI暴露，而非印度整体的。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>小市场覆盖稀疏。</strong>菲律宾只有89个任务（美国的6%）。这意味着436个ISCO职业中有352个暴露度为零——不是因为AI不影响它们，而是因为我们没有数据。墨西哥（94个任务，6.5%）也有同样的问题。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>单平台、单周快照。</strong>V4覆盖一个平台（Claude）的一周数据（2025年11月13-20日）。使用模式可能因季节、产品发布或市场事件而变化。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>SOC分类体系错位。</strong>O*NET任务描述使用SOC 2010；job_exposure.csv使用SOC 2018。一些主要的2018年职业代码（如15-1252软件开发人员）没有任务映射。在ISCO层面有所缓解，但在SOC层面存在缺口。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>无国内行业分解。</strong>在班加罗尔TCS工作的软件开发人员和在村镇创业公司的开发人员获得相同的暴露分数。V3/V4中存在行业级数据但尚未整合。
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>就业数据为估算值。</strong>非美国国家的就业分布基于ISCO大类估算，而非细粒度的职业级人口普查数据。这影响加权平均值。
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Section 6: Why We Stopped Using Adjustment Factors -->
+        <h2>
+            <span class="en lang-inactive">Why We Stopped Using Adjustment Factors</span>
+            <span class="cn">为什么不再使用调整因子</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <p>The earlier version (V1) adjusted US exposure scores using three factors: digital infrastructure (ITU IDI), informality rate (ILO), and AI adoption (IMF + Tortoise). We abandoned this approach because:</p>
+                <ol style="margin-left: 30px;">
+                    <li style="margin-bottom: 15px;">The factors were national averages applied uniformly to all occupations. India's 89% informality was applied equally to software engineers and street vendors.</li>
+                    <li style="margin-bottom: 15px;">The informality discount values (how much informality reduces exposure per occupation category) were expert judgment, not empirically derived.</li>
+                    <li style="margin-bottom: 15px;">With V4 country-level Claude usage data available, adjustment factors became redundant. The V4 data already implicitly captures infrastructure (poor infrastructure → fewer Claude users), informality (informal workers don't use Claude), and AI adoption (low adoption → fewer conversations). Multiplying by external indices on top of this would be double-counting.</li>
+                </ol>
+            </div>
+
+            <div class="cn">
+                <p>早期版本（V1）使用三个因子调整美国暴露分数：数字基础设施（ITU IDI）、非正规就业率（ILO）和AI采用率（IMF + Tortoise）。我们放弃了这种方法，原因如下：</p>
+                <ol style="margin-left: 30px;">
+                    <li style="margin-bottom: 15px;">这些因子是全国平均值，被统一应用到所有职业上。印度89%的非正规就业率被同等地施加到软件工程师和街头小贩身上。</li>
+                    <li style="margin-bottom: 15px;">非正规就业折扣值（非正规就业在多大程度上降低每类职业的暴露度）是专家判断，而非实证推导。</li>
+                    <li style="margin-bottom: 15px;">有了V4国别级Claude使用数据后，调整因子变得多余。V4数据已经隐含了基础设施（基础设施差→Claude用户少）、非正规性（非正规工人不用Claude）和AI采用率（采用率低→对话量少）。在此基础上再乘外部指数属于重复计算。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Section 7: Reproducibility -->
+        <h2>
+            <span class="en lang-inactive">Reproducibility</span>
+            <span class="cn">可复现性</span>
+        </h2>
+
+        <div class="section-content">
+            <div class="en lang-inactive">
+                <p>All source data is included in the repository:</p>
+                <ul>
+                    <li>V4: <code>EconomicIndex/release_2026_01_15/data/intermediate/aei_raw_claude_ai_2025-11-13_to_2025-11-20.csv</code></li>
+                    <li>V3: <code>EconomicIndex/release_2025_09_15/data/output/aei_enriched_claude_ai_2025-08-04_to_2025-08-11.csv</code></li>
+                    <li>Task mapping: <code>EconomicIndex/release_2025_03_27/onet_task_statements.csv</code></li>
+                    <li>Job exposure: <code>EconomicIndex/labor_market_impacts/job_exposure.csv</code></li>
+                    <li>Task penetration: <code>EconomicIndex/labor_market_impacts/task_penetration.csv</code></li>
+                </ul>
+                <p style="margin-top: 20px;">Pipeline scripts:</p>
+                <ul>
+                    <li><code>build_country_exposure.py</code> — V4 data → per-country per-SOC/ISCO exposure</li>
+                    <li><code>build_global_data.py</code> — assembles 12-country dataset with employment weights</li>
+                </ul>
+            </div>
+
+            <div class="cn">
+                <p>所有源数据均包含在仓库中：</p>
+                <ul>
+                    <li>V4: <code>EconomicIndex/release_2026_01_15/data/intermediate/aei_raw_claude_ai_2025-11-13_to_2025-11-20.csv</code></li>
+                    <li>V3: <code>EconomicIndex/release_2025_09_15/data/output/aei_enriched_claude_ai_2025-08-04_to_2025-08-11.csv</code></li>
+                    <li>任务映射: <code>EconomicIndex/release_2025_03_27/onet_task_statements.csv</code></li>
+                    <li>职业暴露度: <code>EconomicIndex/labor_market_impacts/job_exposure.csv</code></li>
+                    <li>任务渗透率: <code>EconomicIndex/labor_market_impacts/task_penetration.csv</code></li>
+                </ul>
+                <p style="margin-top: 20px;">管道脚本：</p>
+                <ul>
+                    <li><code>build_country_exposure.py</code> — V4数据 → 每国每SOC/ISCO暴露度</li>
+                    <li><code>build_global_data.py</code> — 组装12国数据集（含就业权重）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="en lang-inactive">
+                <p>Last updated: March 2026. Data: Anthropic Economic Index V4 (Nov 2025). Contact: zhxyfisher@gmail.com</p>
+            </div>
+            <div class="cn">
+                <p>最后更新：2026年3月。数据：Anthropic经济指数V4（2025年11月）。联系方式：zhxyfisher@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const enElements = document.querySelectorAll('.en');
+        const cnElements = document.querySelectorAll('.cn');
+
+        function setLanguage(lang) {
+            langButtons.forEach(btn => btn.classList.remove('active'));
+
+            if (lang === 'en') {
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                enElements.forEach(el => el.classList.remove('lang-inactive'));
+                cnElements.forEach(el => el.classList.add('lang-inactive'));
+            } else {
+                document.querySelector('[data-lang="cn"]').classList.add('active');
+                enElements.forEach(el => el.classList.add('lang-inactive'));
+                cnElements.forEach(el => el.classList.remove('lang-inactive'));
+            }
+
+        }
+
+        // Event listeners
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Default to Chinese
+        setLanguage('cn');
+    </script>
+</body>
+</html>
