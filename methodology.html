@@ -326,7 +326,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <a href="index_global.html" class="back-link">← Back to visualization</a>
+            <a href="index.html" class="back-link">← Back to visualization</a>
             <div class="language-toggle">
                 <button class="lang-btn" data-lang="en">EN</button>
                 <button class="lang-btn active" data-lang="cn">中文</button>
@@ -340,387 +340,165 @@
         <p class="subtitle en lang-inactive">Global AI Occupational Exposure Monitor</p>
         <p class="subtitle cn">AI影响就业全球监督</p>
 
-        <!-- Section 1: Overview -->
+        <!-- Section 1: Methodology Comparison — Anthropic vs Karpathy -->
         <h2>
-            <span class="en lang-inactive">Overview</span>
-            <span class="cn">概述</span>
+            <span class="en lang-inactive">Methodology Comparison: Anthropic vs Karpathy</span>
+            <span class="cn">方法论对比：Anthropic vs Karpathy</span>
         </h2>
 
         <div class="section-content">
             <div class="en lang-inactive">
-                <p>This document describes the methodology, data sources, and known limitations of the Global AI Occupational Exposure Monitor. We measure how AI affects jobs across 12 countries using observed Claude usage data from Anthropic's Economic Index.</p>
+                <p>This project offers two independent approaches to measuring AI occupational exposure, available as separate visualization layers:</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic Economic Index (Primary — "Theoretical Exposure")</h3>
+                <ul>
+                    <li><strong>Method:</strong> Bottom-up task-level analysis. Each of 17,998 O*NET task statements was evaluated for whether Claude can meaningfully assist. The <code>task_penetration.csv</code> file records the penetration rate per task. Each occupation's exposure is the weighted sum of its constituent tasks' penetration rates.</li>
+                    <li><strong>Scale:</strong> Raw values 0–0.75 (continuous), normalized to 0–10 for display. The maximum raw observed_exposure in <code>job_exposure.csv</code> is 0.7451 (Telemarketers).</li>
+                    <li><strong>Coverage:</strong> 756 SOC 2018 occupations. Mapped to 417/436 ISCO-08 codes (96% coverage) via crosswalk + 28 manual mappings for critical occupations that changed between SOC versions.</li>
+                    <li><strong>Strengths:</strong> Grounded in actual task analysis rather than subjective rating. High granularity (task-level, not occupation-level). Consistent methodology across all occupations.</li>
+                    <li><strong>Weaknesses:</strong> Based on Claude's current capabilities, which may not represent all AI systems. Task penetration is binary (can/cannot assist) rather than measuring degree of assistance.</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Karpathy LLM Assessment (Comparison — "Karpathy LLM Score")</h3>
+                <ul>
+                    <li><strong>Method:</strong> Top-down LLM judgment. An LLM was asked: "On a scale of 1-10, how much can AI impact this occupation?" with a written rationale for each score.</li>
+                    <li><strong>Scale:</strong> Integer scores 1–10 with text rationale.</li>
+                    <li><strong>Coverage:</strong> 290 US SOC occupations (mapped to 174/436 ISCO codes, 40% coverage).</li>
+                    <li><strong>Strengths:</strong> Intuitive, holistic assessment. Rationale text provides interpretability. Considers factors beyond current tool capabilities (e.g., future AI potential).</li>
+                    <li><strong>Weaknesses:</strong> Subjective — reflects the LLM's training biases. Systematically overestimates exposure for well-known occupations (avg 5.4/10 vs Anthropic's avg 3.2/10). Lower coverage (40% vs 96% of ISCO codes).</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Key Differences</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Anthropic (Theoretical)</th>
+                            <th>Karpathy (LLM Score)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Approach</td><td>Bottom-up task analysis</td><td>Top-down LLM judgment</td></tr>
+                        <tr><td>Granularity</td><td>17,998 individual tasks</td><td>290 occupations (holistic)</td></tr>
+                        <tr><td>Scale type</td><td>Continuous (0–0.75 raw)</td><td>Integer (1–10)</td></tr>
+                        <tr><td>ISCO coverage</td><td>417/436 (96%)</td><td>174/436 (40%)</td></tr>
+                        <tr><td>Average score</td><td>~3.2/10</td><td>~5.4/10</td></tr>
+                        <tr><td>Basis</td><td>Current Claude capabilities</td><td>LLM's general knowledge</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="note">
+                    <strong>Why include both?</strong> The Anthropic method is empirically grounded but limited to what Claude can currently do. The Karpathy method captures broader intuitions about AI's potential impact. Comparing the two reveals where current AI usage lags behind perceived potential — a gap that may close as AI capabilities expand.
+                </div>
             </div>
+
             <div class="cn">
-                <p>本文档描述"AI影响就业全球监督"项目的方法论、数据来源及已知局限性。我们使用Anthropic经济指数中的Claude实际使用数据，测量AI对12个国家就业的影响。</p>
+                <p>本项目提供两种独立的AI职业暴露度测量方法，可作为独立的可视化图层切换：</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic经济指数（主要方法——"理论暴露度"）</h3>
+                <ul>
+                    <li><strong>方法：</strong>自下而上的任务级分析。对17,998条O*NET任务描述逐一评估Claude是否能有效辅助。<code>task_penetration.csv</code>记录了每项任务的渗透率。每个职业的暴露度是其组成任务渗透率的加权总和。</li>
+                    <li><strong>量表：</strong>原始值0–0.75（连续值），显示时归一化到0–10。<code>job_exposure.csv</code>中最高原始observed_exposure为0.7451（电话推销员）。</li>
+                    <li><strong>覆盖范围：</strong>756个SOC 2018职业。通过交叉映射表+28个手动映射（针对SOC版本变更中的关键职业）映射到417/436个ISCO-08代码（96%覆盖率）。</li>
+                    <li><strong>优势：</strong>基于实际任务分析而非主观评分。高粒度（任务级而非职业级）。所有职业采用一致的方法论。</li>
+                    <li><strong>劣势：</strong>基于Claude当前能力，可能无法代表所有AI系统。任务渗透是二元的（能/不能辅助），而非衡量辅助程度。</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Karpathy LLM评估（对比方法——"Karpathy LLM评分"）</h3>
+                <ul>
+                    <li><strong>方法：</strong>自上而下的LLM判断。向LLM提问："在1-10的量表上，AI对这个职业的影响有多大？"并为每个评分附文字理由。</li>
+                    <li><strong>量表：</strong>1–10整数评分，附文字理由。</li>
+                    <li><strong>覆盖范围：</strong>290个美国SOC职业（映射到174/436个ISCO代码，40%覆盖率）。</li>
+                    <li><strong>优势：</strong>直觉性强、整体评估。理由文本提供可解释性。考虑了超越当前工具能力的因素（如未来AI潜力）。</li>
+                    <li><strong>劣势：</strong>主观性强——反映LLM的训练偏差。系统性高估知名职业的暴露度（平均5.4/10 vs Anthropic的平均3.2/10）。覆盖率较低（40% vs 96% ISCO代码）。</li>
+                </ul>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">关键差异</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>Anthropic（理论暴露度）</th>
+                            <th>Karpathy（LLM评分）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>方法</td><td>自下而上任务分析</td><td>自上而下LLM判断</td></tr>
+                        <tr><td>粒度</td><td>17,998个单项任务</td><td>290个职业（整体评估）</td></tr>
+                        <tr><td>量表类型</td><td>连续值（原始0–0.75）</td><td>整数（1–10）</td></tr>
+                        <tr><td>ISCO覆盖率</td><td>417/436（96%）</td><td>174/436（40%）</td></tr>
+                        <tr><td>平均分数</td><td>~3.2/10</td><td>~5.4/10</td></tr>
+                        <tr><td>依据</td><td>Claude当前能力</td><td>LLM的通用知识</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="note">
+                    <strong>为什么同时展示两种方法？</strong>Anthropic方法以实证为基础，但局限于Claude当前能力。Karpathy方法捕捉了对AI潜在影响的更广泛直觉。对比两者可以揭示当前AI使用落后于感知潜力的差距——这个差距可能随着AI能力扩展而缩小。
+                </div>
             </div>
         </div>
 
-        <!-- Section 2: Data Sources -->
+        <!-- Section 2: Data Quality Issues -->
         <h2>
-            <span class="en lang-inactive">Data Sources</span>
-            <span class="cn">数据来源</span>
+            <span class="en lang-inactive">Data Quality Issues & Biases</span>
+            <span class="cn">数据质量问题与偏差</span>
         </h2>
 
         <div class="section-content">
             <div class="en lang-inactive">
-                <p>Three exposure dimensions:</p>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 15px 0;">1. Claude Usage Distribution Bias</h3>
+                <p>The observed exposure data reflects who actually uses Claude, not who could benefit from AI. Claude's user base is heavily concentrated in software development, content writing, and data analysis. This creates systematic blind spots:</p>
                 <ul>
-                    <li><strong>Theoretical AI Exposure</strong> (0-10): LLM capability assessment from Karpathy's analysis — "Can AI technically do this job?" Shared across all countries.</li>
-                    <li><strong>Observed AI Exposure</strong> (0-10): Computed from real Claude usage data. For the US, from Anthropic's <code>job_exposure.csv</code> (756 SOC occupations, released 2026-03-05). For non-US countries, from V4 country-level <code>onet_task_pct</code> distributions (released 2026-01-15, data from 2025-11-13 to 2025-11-20).</li>
-                    <li><strong>Automation vs Augmentation ratio</strong>: From V3 release (2025-08-04 to 2025-08-11), per-country ratio of directive/automated vs collaborative/augmentative AI usage.</li>
+                    <li><strong>Overrepresented:</strong> Software developers, data scientists, content writers, marketing professionals, researchers — these occupations show high observed exposure partly because their practitioners adopted Claude early.</li>
+                    <li><strong>Underrepresented:</strong> Healthcare workers, teachers, legal professionals, tradespeople — many of these occupations could benefit from AI but haven't adopted Claude at scale, making their observed exposure artificially low.</li>
+                    <li><strong>Geographic bias:</strong> English-speaking countries have 5-10x more Claude usage per capita than non-English-speaking countries. India's large sample (58,098 conversations) is almost entirely from IT professionals, not representative of its 560M-person labor force.</li>
                 </ul>
-                <p>Employment data: ILOSTAT where available; otherwise estimated ISCO major group distributions based on ILO World Employment and Social Outlook and country income level.</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">2. SOC Version Mismatch</h3>
+                <p>O*NET task statements use SOC 2010 codes; Anthropic's <code>job_exposure.csv</code> uses SOC 2018 codes. Between these versions, major occupations were restructured:</p>
+                <ul>
+                    <li>Software Developers split from 15-1131/15-1132 (2010) into 15-1252/15-1253/15-1254 (2018)</li>
+                    <li>Web Developers moved from 15-1134 to 15-1254</li>
+                    <li>Database Administrators split into 15-1242/15-1243/15-1244</li>
+                </ul>
+                <p>We mitigate this with 28 manual mappings for critical occupations, but edge cases remain.</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">3. SOC-to-ISCO Mapping Loss</h3>
+                <p>The SOC (US) to ISCO-08 (international) crosswalk is many-to-many. When multiple SOC codes map to one ISCO code, we average their scores. When one SOC maps to multiple ISCO codes, all receive the same score. This averaging smooths out meaningful within-group variation.</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. Pay Data Gaps</h3>
+                <p>ILOSTAT earnings data is available for 9 of 12 countries. Canada, Australia, and Japan lack ILOSTAT earnings coverage. For countries with earnings data, the ILOSTAT unit scale varies (Korea reports in thousands of KRW, India needs a ×100 multiplier) — we apply per-country unit corrections but some inaccuracies may remain.</p>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. Temporal Snapshot</h3>
+                <p>V4 data covers a single week (Nov 13–20, 2025). AI adoption patterns evolve rapidly. A company rolling out Claude enterprise during the sampling week could significantly skew a small country's data. The theoretical exposure (Anthropic task analysis) is also a point-in-time snapshot of Claude's capabilities as of early 2026.</p>
             </div>
 
             <div class="cn">
-                <p>三个暴露维度：</p>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 15px 0;">1. Claude使用分布偏差</h3>
+                <p>实测暴露度数据反映的是谁在实际使用Claude，而非谁能从AI中受益。Claude的用户群高度集中在软件开发、内容写作和数据分析领域。这造成了系统性盲区：</p>
                 <ul>
-                    <li><strong>理论AI暴露度</strong> (0-10)：基于Karpathy的LLM能力评估——"AI技术上能不能影响这个职业？"所有国家共用同一套分数。</li>
-                    <li><strong>实测AI暴露度</strong> (0-10)：基于Claude的真实使用数据。美国数据来自Anthropic的<code>job_exposure.csv</code>（756个SOC职业，2026年3月5日发布）。非美国国家数据来自V4国别<code>onet_task_pct</code>分布（2026年1月15日发布，数据采集期2025年11月13-20日）。</li>
-                    <li><strong>自动化 vs 增强比率</strong>：来自V3版本（2025年8月4-11日），各国AI使用中指令式/自动化与协作式/增强式的比率。</li>
+                    <li><strong>过度代表：</strong>软件开发人员、数据科学家、内容写手、市场营销人员、研究人员——这些职业显示出高实测暴露度，部分原因是其从业者较早采用了Claude。</li>
+                    <li><strong>代表不足：</strong>医护人员、教师、法律专业人士、技工——这些职业中许多可以从AI中受益，但尚未大规模采用Claude，导致其实测暴露度人为偏低。</li>
+                    <li><strong>地理偏差：</strong>英语国家的人均Claude使用量是非英语国家的5-10倍。印度的大样本（58,098次对话）几乎全部来自IT从业者，无法代表其5.6亿劳动力。</li>
                 </ul>
-                <p>就业数据：优先使用ILOSTAT；不可用时按ILO《世界就业和社会展望》及国家收入水平估算ISCO大类分布。</p>
-            </div>
-        </div>
 
-        <!-- Section 3: Computation Pipeline -->
-        <h2>
-            <span class="en lang-inactive">Computation Pipeline</span>
-            <span class="cn">计算管道</span>
-        </h2>
-
-        <div class="section-content">
-            <div class="en lang-inactive">
-                <pre><code>Step 1: Extract each country's onet_task_pct distribution from V4
-Step 2: Map task text → SOC codes via onet_task_statements.csv (18,428 tasks)
-Step 3: For each SOC: raw_score = Σ(task_pct × task_penetration)
-Step 4: Normalize: country_exposure[soc] = (country_raw / us_raw) × us_official_exposure
-Step 5: SOC → ISCO-08 crosswalk (839 SOC → 436 ISCO)
-Step 6: SOCs with no country data → exposure = 0</code></pre>
-            </div>
-
-            <div class="cn">
-                <pre><code>步骤1：从V4数据中提取每个国家的onet_task_pct分布
-步骤2：通过onet_task_statements.csv将任务文本映射到SOC职业代码（18,428个任务）
-步骤3：对每个SOC计算：raw_score = Σ(task_pct × task_penetration)
-步骤4：归一化：country_exposure[soc] = (country_raw / us_raw) × us_official_exposure
-步骤5：SOC → ISCO-08交叉映射（839个SOC → 436个ISCO）
-步骤6：无数据的SOC → 暴露度 = 0</code></pre>
-            </div>
-        </div>
-
-        <!-- Section 4: Data Quality by Country -->
-        <h2>
-            <span class="en lang-inactive">Data Quality by Country</span>
-            <span class="cn">各国数据质量</span>
-        </h2>
-
-        <div class="section-content">
-            <table>
-                <thead>
-                    <tr class="en lang-inactive">
-                        <th>Country</th>
-                        <th>Claude Usage</th>
-                        <th>Tasks</th>
-                        <th>US% Coverage</th>
-                        <th>Non-zero SOCs</th>
-                        <th>Gini</th>
-                        <th>Avg Obs (weighted)</th>
-                        <th>Auto%</th>
-                        <th>Quality Rating</th>
-                    </tr>
-                    <tr class="cn">
-                        <th>国家</th>
-                        <th>Claude用量</th>
-                        <th>任务数</th>
-                        <th>覆盖率(US%)</th>
-                        <th>非零SOC数</th>
-                        <th>基尼系数</th>
-                        <th>加权暴露度</th>
-                        <th>自动化%</th>
-                        <th>质量评级</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>🇺🇸 US</td>
-                        <td>219,666</td>
-                        <td>1,450</td>
-                        <td>100.0%</td>
-                        <td>296</td>
-                        <td>0.727</td>
-                        <td>2.1/10</td>
-                        <td>49%</td>
-                        <td>A+ (baseline)</td>
-                    </tr>
-                    <tr>
-                        <td>🇬🇧 UK</td>
-                        <td>30,707</td>
-                        <td>325</td>
-                        <td>22.4%</td>
-                        <td>151</td>
-                        <td>0.850</td>
-                        <td>0.9/10</td>
-                        <td>46%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇯🇵 JP</td>
-                        <td>31,235</td>
-                        <td>294</td>
-                        <td>20.3%</td>
-                        <td>142</td>
-                        <td>0.880</td>
-                        <td>0.9/10</td>
-                        <td>43%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇰🇷 KR</td>
-                        <td>30,618</td>
-                        <td>284</td>
-                        <td>19.6%</td>
-                        <td>134</td>
-                        <td>0.889</td>
-                        <td>0.8/10</td>
-                        <td>45%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇫🇷 FR</td>
-                        <td>30,208</td>
-                        <td>270</td>
-                        <td>18.6%</td>
-                        <td>137</td>
-                        <td>0.893</td>
-                        <td>0.8/10</td>
-                        <td>49%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇩🇪 DE</td>
-                        <td>25,382</td>
-                        <td>241</td>
-                        <td>16.6%</td>
-                        <td>125</td>
-                        <td>0.907</td>
-                        <td>0.7/10</td>
-                        <td>46%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇮🇳 IN</td>
-                        <td>58,098</td>
-                        <td>407</td>
-                        <td>28.1%</td>
-                        <td>157</td>
-                        <td>0.908</td>
-                        <td>0.3/10</td>
-                        <td>58%</td>
-                        <td>A (biased)</td>
-                    </tr>
-                    <tr>
-                        <td>🇨🇦 CA</td>
-                        <td>22,854</td>
-                        <td>232</td>
-                        <td>16.0%</td>
-                        <td>121</td>
-                        <td>0.892</td>
-                        <td>0.6/10</td>
-                        <td>47%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇦🇺 AU</td>
-                        <td>15,488</td>
-                        <td>169</td>
-                        <td>11.7%</td>
-                        <td>100</td>
-                        <td>0.909</td>
-                        <td>0.7/10</td>
-                        <td>46%</td>
-                        <td>B+</td>
-                    </tr>
-                    <tr>
-                        <td>🇧🇷 BR</td>
-                        <td>27,602</td>
-                        <td>250</td>
-                        <td>17.2%</td>
-                        <td>121</td>
-                        <td>0.939</td>
-                        <td>0.5/10</td>
-                        <td>64%</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>🇲🇽 MX</td>
-                        <td>10,345</td>
-                        <td>94</td>
-                        <td>6.5%</td>
-                        <td>65</td>
-                        <td>0.954</td>
-                        <td>0.3/10</td>
-                        <td>53%</td>
-                        <td>B (sparse)</td>
-                    </tr>
-                    <tr>
-                        <td>🇵🇭 PH</td>
-                        <td>9,935</td>
-                        <td>89</td>
-                        <td>6.1%</td>
-                        <td>64</td>
-                        <td>0.959</td>
-                        <td>0.2/10</td>
-                        <td>52%</td>
-                        <td>B (sparse)</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="en lang-inactive">
-                <h3 style="font-size: 16px; font-weight: 600; margin: 30px 0 20px 0;">Reading the table:</h3>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">2. SOC版本错位</h3>
+                <p>O*NET任务描述使用SOC 2010代码；Anthropic的<code>job_exposure.csv</code>使用SOC 2018代码。两个版本之间，主要职业经历了重组：</p>
                 <ul>
-                    <li><strong>Claude Usage:</strong> Total Claude conversations from that country during the V4 sampling week.</li>
-                    <li><strong>Tasks:</strong> Number of distinct O*NET task statements matched. US has 1,450; this is the denominator for coverage.</li>
-                    <li><strong>Gini coefficient:</strong> Measures concentration of exposure across SOCs. Higher = more concentrated in fewer occupations. US (0.727) is the most evenly distributed; Philippines (0.959) is the most concentrated.</li>
-                    <li><strong>Quality Rating:</strong> A+ = baseline (US only). A = sufficient sample, broad coverage. A (biased) = large sample but concentrated in specific sectors. B+ = adequate but limited coverage. B (sparse) = minimal data, use with caution.</li>
+                    <li>软件开发人员从15-1131/15-1132（2010）拆分为15-1252/15-1253/15-1254（2018）</li>
+                    <li>网页开发人员从15-1134移至15-1254</li>
+                    <li>数据库管理员拆分为15-1242/15-1243/15-1244</li>
                 </ul>
-            </div>
+                <p>我们通过28个关键职业的手动映射来缓解这个问题，但仍存在边界情况。</p>
 
-            <div class="cn">
-                <h3 style="font-size: 16px; font-weight: 600; margin: 30px 0 20px 0;">表格说明：</h3>
-                <ul>
-                    <li><strong>Claude用量：</strong>V4采样周内该国的Claude对话总数。</li>
-                    <li><strong>任务数：</strong>匹配到的O*NET任务描述数量。美国有1,450个，是覆盖率的分母。</li>
-                    <li><strong>基尼系数：</strong>衡量暴露度在各SOC之间的集中程度。越高越集中在少数职业。美国（0.727）分布最均匀；菲律宾（0.959）最集中。</li>
-                    <li><strong>质量评级：</strong>A+ = 基准（仅美国）。A = 样本充足、覆盖面广。A (biased) = 样本大但集中在特定行业。B+ = 足够但覆盖有限。B (sparse) = 数据稀疏，需谨慎使用。</li>
-                </ul>
-            </div>
-        </div>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">3. SOC到ISCO映射损失</h3>
+                <p>SOC（美国）到ISCO-08（国际）的交叉映射是多对多关系。当多个SOC代码映射到一个ISCO代码时，我们取平均值。当一个SOC映射到多个ISCO代码时，所有代码获得相同分数。这种平均化消除了组内的有意义差异。</p>
 
-        <!-- Section 5: Known Limitations -->
-        <h2>
-            <span class="en lang-inactive">Known Limitations</span>
-            <span class="cn">已知局限性</span>
-        </h2>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">4. 薪资数据缺口</h3>
+                <p>ILOSTAT收入数据覆盖12个国家中的9个。加拿大、澳大利亚和日本缺乏ILOSTAT收入数据。对于有收入数据的国家，ILOSTAT的单位标度各不相同（韩国以千韩元为单位，印度需要×100倍数）——我们逐国应用了单位校正，但仍可能存在不准确之处。</p>
 
-        <div class="section-content">
-            <div class="en lang-inactive">
-                <ol style="margin-left: 30px;">
-                    <li style="margin-bottom: 20px;">
-                        <strong>Claude ≠ All AI.</strong> V4 data captures only Claude usage. GitHub Copilot, ChatGPT, Midjourney, and domain-specific AI tools are invisible. Countries where Claude has low market share will appear underexposed.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>Claude users ≠ the labor force.</strong> Claude users skew toward knowledge workers, English speakers, and technology-adjacent roles. India's 58,098 conversations are overwhelmingly from IT professionals. India's 560 million workers in agriculture, construction, and informal services are invisible in this data. The data tells us about the IT sector's AI exposure, not India's.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>Sparse coverage in small markets.</strong> Philippines has 89 tasks (6% of US). This means 352 of 436 ISCO occupations receive zero exposure — not because AI doesn't affect them, but because we have no data. Mexico (94 tasks, 6.5%) has the same problem.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>Single-platform, single-week snapshot.</strong> V4 covers one week (Nov 13-20, 2025) of one platform. Usage patterns may vary by season, product releases, or market events.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>SOC taxonomy mismatch.</strong> O*NET task statements use SOC 2010; job_exposure.csv uses SOC 2018. Some major 2018 occupations (e.g., 15-1252 Software Developers) have no task mapping. Mitigated at ISCO level but causes SOC-level gaps.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>No within-country sector decomposition.</strong> A software developer at TCS Bangalore and at a village startup get the same exposure score. Sector-level data exists in V3/V4 but is not yet integrated.
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>Employment data is estimated.</strong> Non-US employment distributions are ISCO major group estimates, not granular occupation-level census data. This affects weighted averages.
-                    </li>
-                </ol>
-            </div>
-
-            <div class="cn">
-                <ol style="margin-left: 30px;">
-                    <li style="margin-bottom: 20px;">
-                        <strong>Claude ≠ 所有AI。</strong>V4数据只捕获Claude的使用。GitHub Copilot、ChatGPT、Midjourney及领域专用AI工具均不可见。Claude市场份额低的国家会显得暴露不足。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>Claude用户 ≠ 劳动力。</strong>Claude用户偏向知识工作者、英语使用者和技术相关岗位。印度的58,098次对话绝大多数来自IT从业者。印度5.6亿农业、建筑和非正规服务业工人在这份数据中是不可见的。数据告诉我们的是IT行业的AI暴露，而非印度整体的。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>小市场覆盖稀疏。</strong>菲律宾只有89个任务（美国的6%）。这意味着436个ISCO职业中有352个暴露度为零——不是因为AI不影响它们，而是因为我们没有数据。墨西哥（94个任务，6.5%）也有同样的问题。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>单平台、单周快照。</strong>V4覆盖一个平台（Claude）的一周数据（2025年11月13-20日）。使用模式可能因季节、产品发布或市场事件而变化。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>SOC分类体系错位。</strong>O*NET任务描述使用SOC 2010；job_exposure.csv使用SOC 2018。一些主要的2018年职业代码（如15-1252软件开发人员）没有任务映射。在ISCO层面有所缓解，但在SOC层面存在缺口。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>无国内行业分解。</strong>在班加罗尔TCS工作的软件开发人员和在村镇创业公司的开发人员获得相同的暴露分数。V3/V4中存在行业级数据但尚未整合。
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <strong>就业数据为估算值。</strong>非美国国家的就业分布基于ISCO大类估算，而非细粒度的职业级人口普查数据。这影响加权平均值。
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Section 6: Why We Stopped Using Adjustment Factors -->
-        <h2>
-            <span class="en lang-inactive">Why We Stopped Using Adjustment Factors</span>
-            <span class="cn">为什么不再使用调整因子</span>
-        </h2>
-
-        <div class="section-content">
-            <div class="en lang-inactive">
-                <p>The earlier version (V1) adjusted US exposure scores using three factors: digital infrastructure (ITU IDI), informality rate (ILO), and AI adoption (IMF + Tortoise). We abandoned this approach because:</p>
-                <ol style="margin-left: 30px;">
-                    <li style="margin-bottom: 15px;">The factors were national averages applied uniformly to all occupations. India's 89% informality was applied equally to software engineers and street vendors.</li>
-                    <li style="margin-bottom: 15px;">The informality discount values (how much informality reduces exposure per occupation category) were expert judgment, not empirically derived.</li>
-                    <li style="margin-bottom: 15px;">With V4 country-level Claude usage data available, adjustment factors became redundant. The V4 data already implicitly captures infrastructure (poor infrastructure → fewer Claude users), informality (informal workers don't use Claude), and AI adoption (low adoption → fewer conversations). Multiplying by external indices on top of this would be double-counting.</li>
-                </ol>
-            </div>
-
-            <div class="cn">
-                <p>早期版本（V1）使用三个因子调整美国暴露分数：数字基础设施（ITU IDI）、非正规就业率（ILO）和AI采用率（IMF + Tortoise）。我们放弃了这种方法，原因如下：</p>
-                <ol style="margin-left: 30px;">
-                    <li style="margin-bottom: 15px;">这些因子是全国平均值，被统一应用到所有职业上。印度89%的非正规就业率被同等地施加到软件工程师和街头小贩身上。</li>
-                    <li style="margin-bottom: 15px;">非正规就业折扣值（非正规就业在多大程度上降低每类职业的暴露度）是专家判断，而非实证推导。</li>
-                    <li style="margin-bottom: 15px;">有了V4国别级Claude使用数据后，调整因子变得多余。V4数据已经隐含了基础设施（基础设施差→Claude用户少）、非正规性（非正规工人不用Claude）和AI采用率（采用率低→对话量少）。在此基础上再乘外部指数属于重复计算。</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Section 7: Reproducibility -->
-        <h2>
-            <span class="en lang-inactive">Reproducibility</span>
-            <span class="cn">可复现性</span>
-        </h2>
-
-        <div class="section-content">
-            <div class="en lang-inactive">
-                <p>All source data is included in the repository:</p>
-                <ul>
-                    <li>V4: <code>EconomicIndex/release_2026_01_15/data/intermediate/aei_raw_claude_ai_2025-11-13_to_2025-11-20.csv</code></li>
-                    <li>V3: <code>EconomicIndex/release_2025_09_15/data/output/aei_enriched_claude_ai_2025-08-04_to_2025-08-11.csv</code></li>
-                    <li>Task mapping: <code>EconomicIndex/release_2025_03_27/onet_task_statements.csv</code></li>
-                    <li>Job exposure: <code>EconomicIndex/labor_market_impacts/job_exposure.csv</code></li>
-                    <li>Task penetration: <code>EconomicIndex/labor_market_impacts/task_penetration.csv</code></li>
-                </ul>
-                <p style="margin-top: 20px;">Pipeline scripts:</p>
-                <ul>
-                    <li><code>build_country_exposure.py</code> — V4 data → per-country per-SOC/ISCO exposure</li>
-                    <li><code>build_global_data.py</code> — assembles 12-country dataset with employment weights</li>
-                </ul>
-            </div>
-
-            <div class="cn">
-                <p>所有源数据均包含在仓库中：</p>
-                <ul>
-                    <li>V4: <code>EconomicIndex/release_2026_01_15/data/intermediate/aei_raw_claude_ai_2025-11-13_to_2025-11-20.csv</code></li>
-                    <li>V3: <code>EconomicIndex/release_2025_09_15/data/output/aei_enriched_claude_ai_2025-08-04_to_2025-08-11.csv</code></li>
-                    <li>任务映射: <code>EconomicIndex/release_2025_03_27/onet_task_statements.csv</code></li>
-                    <li>职业暴露度: <code>EconomicIndex/labor_market_impacts/job_exposure.csv</code></li>
-                    <li>任务渗透率: <code>EconomicIndex/labor_market_impacts/task_penetration.csv</code></li>
-                </ul>
-                <p style="margin-top: 20px;">管道脚本：</p>
-                <ul>
-                    <li><code>build_country_exposure.py</code> — V4数据 → 每国每SOC/ISCO暴露度</li>
-                    <li><code>build_global_data.py</code> — 组装12国数据集（含就业权重）</li>
-                </ul>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">5. 时间快照</h3>
+                <p>V4数据覆盖单一周（2025年11月13-20日）。AI采用模式在快速演变。一家公司在采样周内部署Claude企业版可能显著扭曲小国的数据。理论暴露度（Anthropic任务分析）也是2026年初Claude能力的时间点快照。</p>
             </div>
         </div>
 
