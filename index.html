@@ -352,6 +352,7 @@ canvas#canvas {
           <button data-mode="observed" class="active"><span class="en">Observed AI Exposure</span><span class="cn">实测AI暴露度</span></button>
           <button data-mode="karpathy"><span class="en">Karpathy LLM Score</span><span class="cn">Karpathy LLM评分</span></button>
           <button data-mode="coface"><span class="en">Coface×OEM Task Risk</span><span class="cn">Coface×OEM任务风险</span></button>
+          <button data-mode="composite"><span class="en">⚡ Composite Risk</span><span class="cn">⚡ 综合风险</span></button>
         </div>
       </div>
       <div class="gradient-legend">
@@ -737,6 +738,39 @@ function exposureColor(v, a) {
   return greenRedCSS(v / 10, a);
 }
 
+// ── Composite phase classification ────────────────────────────────────
+// Combines 3 layers: Anthropic (current), Karpathy (theoretical), Coface (trajectory)
+// Returns: { phase: 0-3, label_en, label_cn, color }
+const COMPOSITE_PHASES = [
+  { phase: 0, key: "already_impacted", label_en: "Already Impacted", label_cn: "已受冲击", color: "rgba(220,38,38,", colorSolid: "#dc2626" },
+  { phase: 1, key: "near_term",        label_en: "Near-term Impact", label_cn: "近期冲击", color: "rgba(234,138,30,", colorSolid: "#ea8a1e" },
+  { phase: 2, key: "mid_term",         label_en: "Mid-term Risk",    label_cn: "中期风险", color: "rgba(202,178,40,", colorSolid: "#cab228" },
+  { phase: 3, key: "long_stable",      label_en: "Long-term Stable", label_cn: "长期稳定", color: "rgba(34,170,80,",  colorSolid: "#22aa50" },
+];
+
+function classifyComposite(d) {
+  const obs = d.observed_exposure || 0;
+  const kar = d.karpathy_exposure || 0;
+  const cof = d.coface_exposure || 0;
+  const theo = d.theoretical_exposure || 0;
+  // Phase 0: Already impacted — strong current AI adoption signal
+  if (obs >= 6 || (obs >= 4.5 && theo >= 6)) return COMPOSITE_PHASES[0];
+  // Phase 1: Near-term — tech ready (Karpathy high) + trajectory confirms (Coface high)
+  if (kar >= 7 && cof >= 5) return COMPOSITE_PHASES[1];
+  if (kar >= 6 && cof >= 6) return COMPOSITE_PHASES[1];
+  if (theo >= 7 && cof >= 5) return COMPOSITE_PHASES[1];
+  // Phase 2: Mid-term — any single strong signal or moderate combined signals
+  if (kar >= 5 || cof >= 4 || theo >= 5) return COMPOSITE_PHASES[2];
+  if ((kar + cof + obs) / 3 >= 3.5) return COMPOSITE_PHASES[2];
+  // Phase 3: Long-term stable
+  return COMPOSITE_PHASES[3];
+}
+
+function compositeColorCSS(d, alpha) {
+  const phase = classifyComposite(d);
+  return phase.color + alpha + ")";
+}
+
 function tileColorCSS(d, alpha) {
   if (colorMode === "theoretical") return exposureColor(d.theoretical_exposure, alpha);
   if (colorMode === "observed") return exposureColor(d.observed_exposure, alpha);
@@ -750,6 +784,7 @@ function tileColorCSS(d, alpha) {
     if (v == null) return `rgba(30,30,40,${alpha})`;
     return exposureColor(v, alpha);
   }
+  if (colorMode === "composite") return compositeColorCSS(d, alpha);
 
   if (colorMode === "outlook") return outlookColor(d.outlook, alpha);
   if (colorMode === "pay") return payColor(d.pay, alpha);
@@ -796,6 +831,10 @@ function tileSubInfo(r) {
   }
   if (colorMode === "coface") {
     return r.coface_task_risk_pct != null ? r.coface_task_risk_pct + '% (' + (T['cf_' + r.coface_family] || r.coface_family) + ')' : '';
+  }
+  if (colorMode === "composite") {
+    const ph = classifyComposite(r);
+    return (currentLang === 'cn' ? ph.label_cn : ph.label_en) + (r.jobs ? ' · ' + formatNumber(r.jobs) + ' jobs' : '');
   }
   return "";
 }
@@ -1029,6 +1068,34 @@ function tooltipHighlight(d) {
       `<div style="margin-top:3px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;">` +
       `<div style="height:100%;width:${d.coface_task_risk_pct / 30 * 100}%;background:${color};border-radius:2px;"></div></div>` +
       `<div style="margin-top:6px;font-size:11px;color:var(--fg2);">${currentLang === 'cn' ? '职业家族' : 'Family'}: ${familyLabel}</div>`;
+  } else if (colorMode === "composite") {
+    const ph = classifyComposite(d);
+    const obs = d.observed_exposure || 0;
+    const kar = d.karpathy_exposure || 0;
+    const cof = d.coface_exposure || 0;
+    const cofPct = d.coface_task_risk_pct || 0;
+    const phLabel = currentLang === 'cn' ? ph.label_cn : ph.label_en;
+    let html = `<span style="color:${ph.colorSolid};font-weight:600;">${currentLang === 'cn' ? '综合评级' : 'Composite Rating'}: ${phLabel}</span>`;
+    html += `<div style="margin-top:8px;display:grid;grid-template-columns:auto 1fr auto;gap:3px 8px;font-size:11px;">`;
+    // Anthropic bar
+    html += `<span style="color:var(--fg2);">Anthropic</span>`;
+    html += `<div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;align-self:center;"><div style="height:100%;width:${obs*10}%;background:${exposureColor(obs,1)};border-radius:3px;"></div></div>`;
+    html += `<span style="color:var(--fg2);">${obs.toFixed(1)}</span>`;
+    // Karpathy bar
+    html += `<span style="color:var(--fg2);">Karpathy</span>`;
+    html += `<div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;align-self:center;"><div style="height:100%;width:${kar*10}%;background:${exposureColor(kar,1)};border-radius:3px;"></div></div>`;
+    html += `<span style="color:var(--fg2);">${kar.toFixed(1)}</span>`;
+    // Coface bar
+    html += `<span style="color:var(--fg2);">Coface</span>`;
+    html += `<div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;align-self:center;"><div style="height:100%;width:${cofPct/30*100}%;background:${exposureColor(cof,1)};border-radius:3px;"></div></div>`;
+    html += `<span style="color:var(--fg2);">${cofPct}%</span>`;
+    html += `</div>`;
+    // Gap analysis
+    const gap = kar - obs;
+    if (gap > 2) {
+      html += `<div style="margin-top:6px;font-size:10px;padding:4px 6px;background:rgba(234,138,30,0.12);border-radius:3px;color:#ea8a1e;">${currentLang === 'cn' ? '⚠ 采纳缺口' : '⚠ Adoption gap'}: ${gap.toFixed(1)} — ${currentLang === 'cn' ? '技术就绪但采纳滞后' : 'tech ready, adoption lagging'}</div>`;
+    }
+    return html;
   }
   return "";
 }
@@ -1068,6 +1135,11 @@ function showTooltip(d, mx, my) {
     rationaleText = d.karpathy_rationale;
   } else if (colorMode === "coface" && d.coface_family) {
     rationaleText = T.coface_source + ' ' + T.coface_family + ' ' + (T['cf_' + d.coface_family] || d.coface_family) + ' | ' + T.coface_task_risk + ' ' + d.coface_task_risk_pct + '%';
+  } else if (colorMode === "composite") {
+    const ph = classifyComposite(d);
+    rationaleText = currentLang === 'cn'
+      ? `综合评级基于三层分析：Anthropic实测采纳(${(d.observed_exposure||0).toFixed(1)}/10) + Karpathy理论能力(${(d.karpathy_exposure||0).toFixed(1)}/10) + Coface任务风险(${d.coface_task_risk_pct||0}%)`
+      : `Composite rating from 3 layers: Anthropic observed (${(d.observed_exposure||0).toFixed(1)}/10) + Karpathy theoretical (${(d.karpathy_exposure||0).toFixed(1)}/10) + Coface task risk (${d.coface_task_risk_pct||0}%)`;
   }
   // Layoff alert info
   const layoffs = getLayoffsForTile(d);
@@ -1180,6 +1252,7 @@ function updateStats() {
   else if (colorMode === "observed") updateExposureStatsGeneric(totalJobs, "observed_exposure");
   else if (colorMode === "karpathy") updateExposureStatsGeneric(totalJobs, "karpathy_exposure", currentLang === 'cn' ? "Karpathy" : "Karpathy");
   else if (colorMode === "coface") updateCofaceStats(totalJobs);
+  else if (colorMode === "composite") updateCompositeStats(totalJobs);
 }
 
 function updateOutlookStats(totalJobs) {
@@ -1512,6 +1585,103 @@ function updateCofaceStats(totalJobs) {
     <div class="stat-label">${T.cf_below_10pct}</div>`;
 }
 
+function updateCompositeStats(totalJobs) {
+  // Block 2: Phase distribution summary
+  const phaseCounts = [0, 0, 0, 0];
+  const phaseJobs = [0, 0, 0, 0];
+  for (const d of data) {
+    const ph = classifyComposite(d);
+    phaseCounts[ph.phase]++;
+    phaseJobs[ph.phase] += (d.jobs || 0);
+  }
+  const impactedPct = totalJobs > 0 ? ((phaseJobs[0] + phaseJobs[1]) / totalJobs * 100).toFixed(0) : 0;
+  document.getElementById("block2").innerHTML = `<h3>${currentLang === 'cn' ? '受冲击占比' : 'Impacted Share'}</h3>
+    <div class="stat-big"><span style="color:#dc2626">${impactedPct}%</span></div>
+    <div class="stat-label">${currentLang === 'cn' ? '已受冲击 + 近期冲击的就业人数' : 'Already impacted + near-term jobs'}</div>`;
+
+  // Block 3: Phase tier bars
+  const tiers = COMPOSITE_PHASES.map((ph, i) => ({
+    label_en: ph.label_en,
+    label_cn: ph.label_cn,
+    jobs: phaseJobs[i],
+    color: ph.colorSolid,
+  }));
+  document.getElementById("block3").innerHTML = `<h3>${currentLang === 'cn' ? 'AI冲击阶段分布' : 'AI Impact Phase Distribution'}</h3><div class="tier-bar">${renderTiers(tiers, totalJobs)}</div>`;
+
+  // Block 4: Adoption gap analysis — top occupations where Karpathy >> Anthropic
+  const gapData = data.filter(d => d.karpathy_exposure != null && d.observed_exposure != null && d.jobs)
+    .map(d => ({ title: d.title, gap: d.karpathy_exposure - d.observed_exposure, jobs: d.jobs }))
+    .filter(d => d.gap > 0)
+    .sort((a, b) => b.gap - a.gap)
+    .slice(0, 6);
+  const maxGap = gapData.length > 0 ? gapData[0].gap : 1;
+  document.getElementById("block4").innerHTML = `<h3>${currentLang === 'cn' ? '最大采纳缺口（技术就绪）' : 'Largest Adoption Gaps (Tech Ready)'}</h3>
+    <div class="hbar-chart">${gapData.map(g => `<div class="hbar-row">
+      <span class="hbar-label" style="font-size:10px;">${g.title.length > 25 ? g.title.slice(0,23) + '…' : g.title}</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:${g.gap/maxGap*100}%;background:#ea8a1e"></div></div>
+      <span class="hbar-val">+${g.gap.toFixed(1)}</span>
+    </div>`).join("")}</div>`;
+
+  // Block 5: Phase distribution by pay band
+  const byPay = PAY_BANDS.map(g => {
+    let impacted = 0, total = 0;
+    for (const d of data) {
+      if (d.pay != null && d.pay >= g.min && d.pay < g.max && d.jobs) {
+        total += d.jobs;
+        const ph = classifyComposite(d);
+        if (ph.phase <= 1) impacted += d.jobs;
+      }
+    }
+    const pct = total > 0 ? impacted / total * 100 : 0;
+    return { label_en: g.label_en, label_cn: g.label_cn, val: pct.toFixed(0) + "%", pct, color: pct > 50 ? "#dc2626" : pct > 30 ? "#ea8a1e" : "#22aa50" };
+  });
+  document.getElementById("block5").innerHTML = `<h3>${currentLang === 'cn' ? '各薪资段冲击率' : 'Impact Rate by Pay Band'}</h3><div class="hbar-chart">${renderHbars(byPay)}</div>`;
+
+  // Block 6: Phase distribution by education
+  const byEdu = EDU_GROUPS.map(g => {
+    let impacted = 0, total = 0;
+    for (const d of data) {
+      if (g.match.includes(d.education) && d.jobs) {
+        total += d.jobs;
+        const ph = classifyComposite(d);
+        if (ph.phase <= 1) impacted += d.jobs;
+      }
+    }
+    const pct = total > 0 ? impacted / total * 100 : 0;
+    return { label_en: g.label_en, label_cn: g.label_cn, val: pct.toFixed(0) + "%", pct, color: pct > 50 ? "#dc2626" : pct > 30 ? "#ea8a1e" : "#22aa50" };
+  });
+  document.getElementById("block6").innerHTML = `<h3>${currentLang === 'cn' ? '各学历段冲击率' : 'Impact Rate by Education'}</h3><div class="hbar-chart">${renderHbars(byEdu)}</div>`;
+
+  // Block 7: Coface phase forward-look
+  document.getElementById("block7").innerHTML = `<h3>${currentLang === 'cn' ? 'AI发展阶段' : 'AI Phase Timeline'}</h3>
+    <div style="font-size:11px;line-height:1.6;">
+      <div style="color:var(--fg2);">① Copilot <span style="color:var(--fg3);">~2%</span></div>
+      <div style="color:#ea8a1e;font-weight:600;">② Special Agent <span style="color:var(--fg);">${currentLang === 'cn' ? '← 当前' : '← Current'} ~13%</span></div>
+      <div style="color:var(--fg2);">③ Conductor <span style="color:var(--fg3);">~41%</span></div>
+      <div style="color:var(--fg2);">④ Prometheus <span style="color:var(--fg3);">~45%</span></div>
+      <div style="color:var(--fg2);">⑤ Superhuman <span style="color:var(--fg3);">~94%</span></div>
+    </div>
+    <div style="margin-top:6px;font-size:10px;color:var(--fg3);">${currentLang === 'cn' ? '来源：Coface×OEM 2025' : 'Source: Coface×OEM 2025'}</div>`;
+
+  // Block 8: Three-layer data quality
+  let hasAll3 = 0, has2 = 0, has1 = 0;
+  for (const d of data) {
+    let layers = 0;
+    if (d.observed_exposure != null) layers++;
+    if (d.karpathy_exposure != null) layers++;
+    if (d.coface_exposure != null) layers++;
+    if (layers === 3) hasAll3++;
+    else if (layers === 2) has2++;
+    else if (layers === 1) has1++;
+  }
+  document.getElementById("block8").innerHTML = `<h3>${currentLang === 'cn' ? '数据覆盖' : 'Data Coverage'}</h3>
+    <div style="font-size:12px;line-height:1.8;">
+      <div><span style="color:#22aa50;font-weight:600;">${hasAll3}</span> ${currentLang === 'cn' ? '个职业有全部3层数据' : 'occupations with all 3 layers'}</div>
+      <div><span style="color:#ea8a1e;font-weight:600;">${has2}</span> ${currentLang === 'cn' ? '个职业有2层数据' : 'with 2 layers'}</div>
+      <div><span style="color:var(--fg2);">${has1}</span> ${currentLang === 'cn' ? '个职业仅有1层' : 'with 1 layer'}</div>
+    </div>`;
+}
+
 // ── Events ─────────────────────────────────────────────────────────────
 
 canvas.addEventListener("mousemove", (e) => {
@@ -1533,6 +1703,7 @@ const LEGEND_CONFIG = {
   observed: { low_en: "Low", high_en: "High", low_cn: "低", high_cn: "高" },
   karpathy: { low_en: "Low", high_en: "High", low_cn: "低", high_cn: "高" },
   coface: { low_en: "Low risk", high_en: "High risk", low_cn: "低风险", high_cn: "高风险" },
+  composite: { low_en: "Stable", high_en: "Impacted", low_cn: "稳定", high_cn: "已冲击" },
 
   outlook:   { low_en: "Declining", high_en: "Growing", low_cn: "下降", high_cn: "增长" },
   pay:       { low_en: "$25K", high_en: "$250K", low_cn: "$25K", high_cn: "$250K" },
@@ -1544,7 +1715,12 @@ function drawGradientLegend() {
   const gctx = c.getContext("2d");
   for (let x = 0; x < 80; x++) {
     const t = x / 79;
-    if (colorMode === "theoretical" || colorMode === "observed" || colorMode === "karpathy" || colorMode === "coface") {
+    if (colorMode === "composite") {
+      // 4-stop gradient: green → yellow → orange → red
+      if (t < 0.33) { const s = t / 0.33; gctx.fillStyle = `rgb(${34+Math.round(s*168)},${170+Math.round(s*8)},${80-Math.round(s*40)})`; }
+      else if (t < 0.66) { const s = (t - 0.33) / 0.33; gctx.fillStyle = `rgb(${202+Math.round(s*32)},${178-Math.round(s*40)},${40-Math.round(s*10)})`; }
+      else { const s = (t - 0.66) / 0.34; gctx.fillStyle = `rgb(${234-Math.round(s*14)},${138-Math.round(s*100)},${30+Math.round(s*8)})`; }
+    } else if (colorMode === "theoretical" || colorMode === "observed" || colorMode === "karpathy" || colorMode === "coface") {
       gctx.fillStyle = greenRedCSS(t, 1);
     } else if (colorMode === "outlook") {
       gctx.fillStyle = greenRedCSS(1 - t, 1);
