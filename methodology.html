@@ -342,13 +342,13 @@
 
         <!-- Section 1: Methodology Comparison — Anthropic vs Karpathy -->
         <h2>
-            <span class="en lang-inactive">Methodology Comparison: Anthropic vs Karpathy</span>
-            <span class="cn">方法论对比：Anthropic vs Karpathy</span>
+            <span class="en lang-inactive">Methodology Comparison: Anthropic vs Karpathy vs Coface×OEM</span>
+            <span class="cn">方法论对比：Anthropic vs Karpathy vs Coface×OEM</span>
         </h2>
 
         <div class="section-content">
             <div class="en lang-inactive">
-                <p>This project offers two independent approaches to measuring AI occupational exposure, available as separate visualization layers:</p>
+                <p>This project offers three independent approaches to measuring AI occupational exposure, available as separate visualization layers:</p>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic Economic Index (Primary — "Theoretical Exposure")</h3>
                 <ul>
@@ -368,6 +368,29 @@
                     <li><strong>Weaknesses:</strong> Subjective — reflects the LLM's training biases. Systematically overestimates exposure for well-known occupations (avg 5.4/10 vs Anthropic's avg 3.2/10). Lower coverage (40% vs 96% of ISCO codes).</li>
                 </ul>
 
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Coface × OEM Task-Level Analysis (New — "Coface×OEM Task Risk")</h3>
+                <ul>
+                    <li><strong>Method:</strong> Task-level triplet decomposition. Each of 923 occupations is broken into elementary actions described as (verb, object, context) triplets. Each triplet is scored using explicit rules based on WordNet semantic categories and a 3×3 <em>task substrate matrix</em> (input substrate × output substrate: matter, person, or data). Tasks are weighted by O*NET importance and frequency.</li>
+                    <li><strong>Scale:</strong> Task automation exposure as a percentage (0–100%). We map this to 0–10 for display. The 30% threshold is identified as the point of "profound transformation" for an occupation.</li>
+                    <li><strong>Coverage:</strong> 923 occupations across ~30 countries (12 detailed with microdata + ~18 European countries via Eurostat proxy). Mapped to our dashboard via 8 broad occupational families.</li>
+                    <li><strong>Forward-looking:</strong> Five AI development phases — Copilot (current LLMs), Special Agent (agentic AI, current phase), Conductor (episodic memory), Prometheus Bound (mature agentic), Superhuman. Dashboard shows the Special Agent scenario.</li>
+                    <li><strong>Strengths:</strong> Highest task-level granularity (triplet decomposition). Explicit, auditable scoring rules (not LLM judgment). Genuine forward-looking dimension with 5 phases. Rich cross-country analysis explaining <em>why</em> countries differ (economic structure, not just scores). Introduces novel concepts: horizontal/vertical complexity as protective factors, 3×3 substrate matrix.</li>
+                    <li><strong>Weaknesses:</strong> Theoretical — measures technical exposure, not actual adoption. Individual occupation scores not publicly available (only family-level averages). Our mapping uses 8 broad family averages, losing within-family variation. No direct validation against real-world automation outcomes.</li>
+                </ul>
+
+                <div class="note">
+                    <strong>Key innovation — the 3×3 substrate matrix:</strong> Tasks are classified by what they operate <em>on</em> (matter, person, data) and what they <em>produce</em> (matter, person, data). Automation potential is lowest for matter→matter tasks (construction, repair) and highest for data→data tasks (drafting, summarizing, classifying). This simple heuristic elegantly explains why AI targets cognitive work while leaving physical work relatively untouched.
+                </div>
+
+                <div class="note">
+                    <strong>The five AI phases:</strong> Unlike Anthropic and Karpathy which provide static snapshots, Coface×OEM projects how exposure evolves:<br>
+                    • <strong>Phase 1 (Copilot):</strong> 2% of occupations above 30% threshold<br>
+                    • <strong>Phase 2 (Special Agent — current):</strong> 13% above threshold — 120 of 923 occupations face profound transformation<br>
+                    • <strong>Phase 3 (Conductor):</strong> 41% — episodic memory enables a massive jump<br>
+                    • <strong>Phase 4A (Prometheus Bound):</strong> 45% — consolidation, diminishing returns<br>
+                    • <strong>Phase 4B (Superhuman):</strong> 94% — only physically anchored occupations remain protected
+                </div>
+
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Key Differences</h3>
                 <table>
                     <thead>
@@ -375,20 +398,21 @@
                             <th>Dimension</th>
                             <th>Anthropic (Theoretical)</th>
                             <th>Karpathy (LLM Score)</th>
+                            <th>Coface×OEM (Task Risk)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Approach</td><td>Bottom-up task analysis</td><td>Top-down LLM judgment</td></tr>
-                        <tr><td>Granularity</td><td>17,998 individual tasks</td><td>290 occupations (holistic)</td></tr>
-                        <tr><td>Scale type</td><td>Continuous (0–0.75 raw)</td><td>Integer (1–10)</td></tr>
-                        <tr><td>ISCO coverage</td><td>417/436 (96%)</td><td>174/436 (40%)</td></tr>
-                        <tr><td>Average score</td><td>~3.2/10</td><td>~5.4/10</td></tr>
-                        <tr><td>Basis</td><td>Current Claude capabilities</td><td>LLM's general knowledge</td></tr>
+                        <tr><td>Approach</td><td>Bottom-up task analysis</td><td>Top-down LLM judgment</td><td>Task-level triplet decomposition</td></tr>
+                        <tr><td>Granularity</td><td>17,998 individual tasks</td><td>290 occupations (holistic)</td><td>923 occupations × task triplets</td></tr>
+                        <tr><td>Scale type</td><td>Continuous (0–0.75 raw)</td><td>Integer (1–10)</td><td>Percentage (0–100% task risk)</td></tr>
+                        <tr><td>ISCO coverage</td><td>417/436 (96%)</td><td>174/436 (40%)</td><td>8 families mapped to all categories</td></tr>
+                        <tr><td>Average score</td><td>~3.2/10</td><td>~5.4/10</td><td>4–27% (family-level avg)</td></tr>
+                        <tr><td>Basis</td><td>Current Claude capabilities</td><td>LLM's general knowledge</td><td>Explicit rules + 5 AI phases</td></tr>
                     </tbody>
                 </table>
 
                 <div class="note">
-                    <strong>Why include both?</strong> The Anthropic method is empirically grounded but limited to what Claude can currently do. The Karpathy method captures broader intuitions about AI's potential impact. Comparing the two reveals where current AI usage lags behind perceived potential — a gap that may close as AI capabilities expand.
+                    <strong>Why include all three?</strong> The Anthropic method is empirically grounded but limited to what Claude can currently do. The Karpathy method captures broader intuitions about AI's potential impact. The Coface×OEM method adds a forward-looking dimension with explicit task-level rules and multi-phase scenarios. Together they form a three-layer framework: current adoption (Anthropic) → theoretical potential (Karpathy) → future trajectory (Coface×OEM).
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Why the Score Gap Is So Large</h3>
@@ -428,7 +452,7 @@
             </div>
 
             <div class="cn">
-                <p>本项目提供两种独立的AI职业暴露度测量方法，可作为独立的可视化图层切换：</p>
+                <p>本项目提供三种独立的AI职业暴露度测量方法，可作为独立的可视化图层切换：</p>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic经济指数（主要方法——"理论暴露度"）</h3>
                 <ul>
@@ -448,6 +472,29 @@
                     <li><strong>劣势：</strong>主观性强——反映LLM的训练偏差。系统性高估知名职业的暴露度（平均5.4/10 vs Anthropic的平均3.2/10）。覆盖率较低（40% vs 96% ISCO代码）。</li>
                 </ul>
 
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Coface × OEM 任务级分析（新增——"Coface×OEM任务风险"）</h3>
+                <ul>
+                    <li><strong>方法：</strong>任务级三元组分解。923个职业被拆解为基本动作三元组（动词、对象、语境）。每个三元组使用基于WordNet语义类别的显式规则评分，并通过3×3<em>任务基质矩阵</em>（输入基质×输出基质：物质、人、数据）分类。任务按O*NET的重要性和频率加权。</li>
+                    <li><strong>量表：</strong>任务自动化暴露度百分比（0–100%）。显示时映射到0–10。30%被确定为职业"深刻变革"的阈值。</li>
+                    <li><strong>覆盖范围：</strong>约30个国家的923个职业（12个有详细微观数据+约18个欧洲国家通过Eurostat代理数据）。通过8个职业大家族映射到我们的仪表盘。</li>
+                    <li><strong>前瞻性：</strong>五个AI发展阶段——副驾驶（当前LLM）、专项代理（代理式AI，当前阶段）、指挥官（情景记忆）、受限的普罗米修斯（成熟代理）、超人类。仪表盘显示"专项代理"场景。</li>
+                    <li><strong>优势：</strong>最高的任务级粒度（三元组分解）。显式可审计的评分规则（非LLM判断）。真正的前瞻性维度（5个阶段）。丰富的跨国分析，解释各国差异的<em>原因</em>（经济结构，而非仅仅是分数）。引入新概念：水平/垂直复杂度作为保护因子，3×3基质矩阵。</li>
+                    <li><strong>劣势：</strong>理论性——衡量技术暴露度而非实际采用率。个体职业分数未公开（仅有家族级平均值）。我们的映射使用8个大家族平均值，损失了家族内部差异。无法直接对照真实世界的自动化结果验证。</li>
+                </ul>
+
+                <div class="note">
+                    <strong>核心创新——3×3基质矩阵：</strong>任务按其<em>操作对象</em>（物质、人、数据）和<em>产出</em>（物质、人、数据）分类。自动化潜力从物质→物质任务（建筑、维修）最低到数据→数据任务（起草、摘要、分类）最高。这个简洁的启发式工具优雅地解释了为什么AI瞄准认知工作而相对不触及体力工作。
+                </div>
+
+                <div class="note">
+                    <strong>五个AI阶段：</strong>与Anthropic和Karpathy提供的静态快照不同，Coface×OEM预测暴露度如何演变：<br>
+                    • <strong>阶段1（副驾驶）：</strong>2%的职业超过30%阈值<br>
+                    • <strong>阶段2（专项代理——当前）：</strong>13%超过阈值——923个职业中120个面临深刻变革<br>
+                    • <strong>阶段3（指挥官）：</strong>41%——情景记忆带来巨大跃升<br>
+                    • <strong>阶段4A（受限的普罗米修斯）：</strong>45%——巩固期，边际递减<br>
+                    • <strong>阶段4B（超人类）：</strong>94%——仅物理锚定的职业受保护
+                </div>
+
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">关键差异</h3>
                 <table>
                     <thead>
@@ -455,20 +502,21 @@
                             <th>维度</th>
                             <th>Anthropic（理论暴露度）</th>
                             <th>Karpathy（LLM评分）</th>
+                            <th>Coface×OEM（任务风险）</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>方法</td><td>自下而上任务分析</td><td>自上而下LLM判断</td></tr>
-                        <tr><td>粒度</td><td>17,998个单项任务</td><td>290个职业（整体评估）</td></tr>
-                        <tr><td>量表类型</td><td>连续值（原始0–0.75）</td><td>整数（1–10）</td></tr>
-                        <tr><td>ISCO覆盖率</td><td>417/436（96%）</td><td>174/436（40%）</td></tr>
-                        <tr><td>平均分数</td><td>~3.2/10</td><td>~5.4/10</td></tr>
-                        <tr><td>依据</td><td>Claude当前能力</td><td>LLM的通用知识</td></tr>
+                        <tr><td>方法</td><td>自下而上任务分析</td><td>自上而下LLM判断</td><td>任务级三元组分解</td></tr>
+                        <tr><td>粒度</td><td>17,998个单项任务</td><td>290个职业（整体评估）</td><td>923个职业×任务三元组</td></tr>
+                        <tr><td>量表类型</td><td>连续值（原始0–0.75）</td><td>整数（1–10）</td><td>百分比（0–100%任务风险）</td></tr>
+                        <tr><td>ISCO覆盖率</td><td>417/436（96%）</td><td>174/436（40%）</td><td>8个家族映射到所有分类</td></tr>
+                        <tr><td>平均分数</td><td>~3.2/10</td><td>~5.4/10</td><td>4–27%（家族级平均值）</td></tr>
+                        <tr><td>依据</td><td>Claude当前能力</td><td>LLM的通用知识</td><td>显式规则+5个AI阶段</td></tr>
                     </tbody>
                 </table>
 
                 <div class="note">
-                    <strong>为什么同时展示两种方法？</strong>Anthropic方法以实证为基础，但局限于Claude当前能力。Karpathy方法捕捉了对AI潜在影响的更广泛直觉。对比两者可以揭示当前AI使用落后于感知潜力的差距——这个差距可能随着AI能力扩展而缩小。
+                    <strong>为什么同时展示三种方法？</strong>Anthropic方法以实证为基础，但局限于Claude当前能力。Karpathy方法捕捉了对AI潜在影响的更广泛直觉。Coface×OEM方法增加了前瞻性维度，使用显式任务级规则和多阶段情景。三者形成三层分析框架：当前采用情况（Anthropic）→ 理论潜力（Karpathy）→ 未来演进路径（Coface×OEM）。
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">为什么两种分数差距这么大</h3>
@@ -1768,10 +1816,10 @@ Sorted by AI exposure (descending), then by number of jobs (descending).
         <!-- Footer -->
         <div class="footer">
             <div class="en lang-inactive">
-                <p>Last updated: March 2026. Data: Anthropic Economic Index V4 (Nov 2025). Contact: zhxyfisher@gmail.com</p>
+                <p>Last updated: April 2026. Data: Anthropic Economic Index V4 (Nov 2025) + Coface×OEM (Apr 2026). Contact: zhxyfisher@gmail.com</p>
             </div>
             <div class="cn">
-                <p>最后更新：2026年3月。数据：Anthropic经济指数V4（2025年11月）。联系方式：zhxyfisher@gmail.com</p>
+                <p>最后更新：2026年4月。数据：Anthropic经济指数V4（2025年11月）+ Coface×OEM（2026年4月）。联系方式：zhxyfisher@gmail.com</p>
             </div>
         </div>
     </div>
