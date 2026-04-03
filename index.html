@@ -378,6 +378,382 @@ canvas#canvas {
 </div>
 
 <canvas id="canvas"></canvas>
+
+<!-- ═══ COFACE × OEM SECTION ═══════════════════════════════════════════════ -->
+<style>
+#coface-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.coface-header { margin-bottom: 36px; }
+.coface-header h2 {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+  margin: 0 0 10px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.coface-header h2 a { font-size: 13px; font-weight: 400; color: var(--fg2); text-decoration: none; }
+.coface-header h2 a:hover { text-decoration: underline; }
+.coface-header p { font-size: 14px; color: var(--fg2); margin: 0; line-height: 1.6; }
+.coface-row { display: flex; gap: 24px; margin-bottom: 28px; }
+.coface-col {
+  flex: 1; min-width: 300px;
+  background: var(--bg2); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 20px 24px;
+}
+.coface-col h3 {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--fg2); margin: 0 0 16px 0;
+}
+/* Country bars */
+.cf-bar-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 8px; }
+.cf-bar-label { width: 100px; flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+.cf-bar-code { font-weight: 600; color: var(--fg); width: 22px; }
+.cf-bar-name { color: var(--fg2); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-bar-track { flex: 1; height: 16px; background: rgba(255,255,255,0.04); border-radius: 2px; overflow: hidden; position: relative; }
+.cf-bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+.cf-bar-fill.in-treemap { border-right: 2px solid rgba(255,255,255,0.5); }
+.cf-bar-val { width: 42px; flex-shrink: 0; font-size: 12px; color: var(--fg); text-align: right; font-weight: 500; }
+/* Phase chart */
+.phase-chart { display: flex; align-items: flex-end; gap: 6px; height: 200px; padding-bottom: 60px; position: relative; }
+.phase-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+.phase-bar-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1; }
+.phase-bar-fill { width: 80%; border-radius: 4px 4px 0 0; position: relative; transition: height 0.3s; min-height: 4px; }
+.phase-bar-fill .pct-label { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 700; color: var(--fg); white-space: nowrap; }
+.phase-info { position: absolute; bottom: -56px; left: 50%; transform: translateX(-50%); text-align: center; width: 110px; }
+.phase-info .phase-name { font-size: 11px; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
+.phase-info .phase-desc { font-size: 9px; color: var(--fg2); line-height: 1.3; }
+.phase-col.current .phase-bar-fill { box-shadow: 0 0 12px rgba(56,189,248,0.4); border: 1px solid rgba(56,189,248,0.6); }
+.phase-col.current .phase-name { color: #38bdf8; }
+/* Substrate matrix */
+.substrate-grid { display: grid; grid-template-columns: 60px 1fr 1fr 1fr; gap: 3px; }
+.sg-header { font-size: 11px; font-weight: 600; color: var(--fg2); display: flex; align-items: center; justify-content: center; padding: 6px; text-align: center; }
+.sg-row-header { font-size: 11px; font-weight: 600; color: var(--fg2); display: flex; align-items: center; justify-content: flex-end; padding: 6px 8px; text-align: right; }
+.sg-cell {
+  border-radius: 4px; padding: 10px 8px; text-align: center; min-height: 70px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  transition: transform 0.15s;
+}
+.sg-cell:hover { transform: scale(1.04); z-index: 1; }
+.sg-cell-label { font-size: 12px; font-weight: 600; }
+.sg-cell-desc { font-size: 9px; opacity: 0.7; line-height: 1.2; }
+.sg-l1 { background: rgba(56,189,248,0.15); color: #7dd3fc; }
+.sg-l2 { background: rgba(56,189,248,0.25); color: #7dd3fc; }
+.sg-l3 { background: rgba(250,204,21,0.2); color: #fde68a; }
+.sg-l4 { background: rgba(251,146,60,0.25); color: #fdba74; }
+.sg-l5 { background: rgba(239,68,68,0.25); color: #fca5a5; }
+.sg-l6 { background: rgba(239,68,68,0.4); color: #fca5a5; }
+/* Scatter canvas */
+.scatter-wrap { position: relative; width: 100%; height: 280px; }
+.scatter-wrap canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.scatter-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; }
+.scatter-legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--fg2); }
+.scatter-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+/* Footer */
+.coface-footer { margin-top: 16px; font-size: 11px; color: var(--fg2); line-height: 1.5; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; }
+.coface-footer strong { color: var(--fg); }
+@media (max-width: 900px) {
+  .coface-row { flex-direction: column; }
+  .coface-col { min-width: 100%; }
+  .phase-chart { height: 160px; }
+}
+</style>
+
+<div id="coface-section">
+  <div class="coface-header">
+    <h2>
+      <span class="en">Coface × OEM: The Next Automation Frontier</span>
+      <span class="cn">Coface × OEM：下一个自动化前沿</span>
+      <a href="https://www.coface.com/news-economy-and-insights/business-risk-dashboard/focus/ai-and-employment-mapping-the-new-frontiers-of-automation" target="_blank">
+        <span class="en">Full Study</span><span class="cn">完整研究</span>
+      </a>
+    </h2>
+    <p class="en">Task-level triplet decomposition (verb, object, context) across 923 occupations in ~30 countries. Five AI development phases from Copilot to Superhuman. Source: Coface & Observatory of Emerging and Threatened Jobs (OEM), April 2026.</p>
+    <p class="cn">基于任务级三元组分解（动词、对象、语境），覆盖约30个国家的923个职业。从副驾驶到超人类的五个AI发展阶段。来源：Coface & 新兴与受威胁职业观测站（OEM），2026年4月。</p>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="coface-row">
+    <div class="coface-col">
+      <h3><span class="en">Task Content at Risk by Country</span><span class="cn">各国任务内容风险度</span></h3>
+      <div id="cfCountryBars"></div>
+      <div style="font-size:10px;color:var(--fg2);margin-top:10px;">
+        <span class="en">% of workforce task content exposed to automation, Special Agent scenario. ◆ = also in treemap above.</span>
+        <span class="cn">劳动力任务内容中面临自动化风险的百分比（专项代理场景）。◆ = 同时出现在上方树状图中。</span>
+      </div>
+    </div>
+    <div class="coface-col">
+      <h3><span class="en">AI Phase Progression: % Occupations above 30% Threshold</span><span class="cn">AI阶段进展：超过30%阈值的职业比例</span></h3>
+      <div class="phase-chart" id="cfPhaseChart"></div>
+      <div style="font-size:10px;color:var(--fg2);margin-top:10px;">
+        <span class="en">30% task automatability = threshold for "profound transformation" of an occupation.</span>
+        <span class="cn">30%任务可自动化 = 职业"深刻变革"的阈值。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="coface-row">
+    <div class="coface-col">
+      <h3><span class="en">3×3 Task Substrate Matrix</span><span class="cn">3×3 任务基质矩阵</span></h3>
+      <div style="font-size:10px;color:var(--fg2);margin-bottom:10px;">
+        <span class="en">Rows = input substrate, Columns = output substrate. Color = automation potential.</span>
+        <span class="cn">行 = 输入基质，列 = 输出基质。颜色 = 自动化潜力。</span>
+      </div>
+      <div class="substrate-grid" id="cfSubstrate">
+        <!-- corner -->
+        <div class="sg-header" style="font-size:9px;">
+          <span class="en">In↓ Out→</span><span class="cn">输入↓ 输出→</span>
+        </div>
+        <!-- col headers -->
+        <div class="sg-header"><span class="en">Matter</span><span class="cn">物质</span></div>
+        <div class="sg-header"><span class="en">Person</span><span class="cn">人</span></div>
+        <div class="sg-header"><span class="en">Data</span><span class="cn">数据</span></div>
+        <!-- Row: Matter -->
+        <div class="sg-row-header"><span class="en">Matter</span><span class="cn">物质</span></div>
+        <div class="sg-cell sg-l1"><div class="sg-cell-label"><span class="en">Handling</span><span class="cn">操作</span></div><div class="sg-cell-desc"><span class="en">Construction, repair</span><span class="cn">建筑、维修</span></div></div>
+        <div class="sg-cell sg-l2"><div class="sg-cell-label"><span class="en">Assisting</span><span class="cn">协助</span></div><div class="sg-cell-desc"><span class="en">Physical care</span><span class="cn">人身照护</span></div></div>
+        <div class="sg-cell sg-l4"><div class="sg-cell-label"><span class="en">Sensing</span><span class="cn">感知</span></div><div class="sg-cell-desc"><span class="en">Quality, inventory</span><span class="cn">质检、库存</span></div></div>
+        <!-- Row: Person -->
+        <div class="sg-row-header"><span class="en">Person</span><span class="cn">人</span></div>
+        <div class="sg-cell sg-l2"><div class="sg-cell-label"><span class="en">Caring</span><span class="cn">照护</span></div><div class="sg-cell-desc"><span class="en">Nursing, hospitality</span><span class="cn">护理、餐饮</span></div></div>
+        <div class="sg-cell sg-l3"><div class="sg-cell-label"><span class="en">Influencing</span><span class="cn">影响</span></div><div class="sg-cell-desc"><span class="en">Negotiating, leading</span><span class="cn">谈判、领导</span></div></div>
+        <div class="sg-cell sg-l5"><div class="sg-cell-label"><span class="en">Transcripting</span><span class="cn">转录</span></div><div class="sg-cell-desc"><span class="en">Call center, notes</span><span class="cn">呼叫中心、笔记</span></div></div>
+        <!-- Row: Data -->
+        <div class="sg-row-header"><span class="en">Data</span><span class="cn">数据</span></div>
+        <div class="sg-cell sg-l4"><div class="sg-cell-label"><span class="en">Controlling</span><span class="cn">控制</span></div><div class="sg-cell-desc"><span class="en">Automation, robotics</span><span class="cn">自动化、机器人</span></div></div>
+        <div class="sg-cell sg-l5"><div class="sg-cell-label"><span class="en">Explaining</span><span class="cn">解释</span></div><div class="sg-cell-desc"><span class="en">Tutoring, replies</span><span class="cn">辅导、回复</span></div></div>
+        <div class="sg-cell sg-l6"><div class="sg-cell-label"><span class="en">Processing</span><span class="cn">处理</span></div><div class="sg-cell-desc"><span class="en">Draft, summarize</span><span class="cn">起草、摘要</span></div></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--fg2);flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(56,189,248,0.25);display:inline-block;"></span><span class="en">Low</span><span class="cn">低</span></span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(250,204,21,0.25);display:inline-block;"></span><span class="en">Medium</span><span class="cn">中</span></span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(239,68,68,0.35);display:inline-block;"></span><span class="en">High</span><span class="cn">高</span></span>
+      </div>
+    </div>
+    <div class="coface-col">
+      <h3><span class="en">Occupational Family: Risk vs. Contribution</span><span class="cn">职业家族：风险度 vs. 贡献度</span></h3>
+      <div class="scatter-wrap"><canvas id="cfScatter"></canvas></div>
+      <div class="scatter-legend" id="cfScatterLegend"></div>
+      <div style="font-size:10px;color:var(--fg2);margin-top:6px;">
+        <span class="en">X = % tasks at risk within family | Y = contribution to total task risk across economy | Bubble size = contribution</span>
+        <span class="cn">X = 家族内任务风险% | Y = 对经济总风险的贡献度 | 气泡大小 = 贡献度</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="coface-footer">
+    <span class="en"><strong>Source:</strong> "The Next Automation Frontier: A Scenario Map of AI Labour Exposure," Coface × OEM, April 2026. Task-level triplet decomposition using WordNet semantic categories and O*NET task weights. Five AI development phases with explicit scoring rules. Country data weighted by employment volume. Special Agent scenario shown unless otherwise noted. <strong>Note:</strong> This measures <em>technical exposure</em> of tasks to automation — it does not predict net job losses.</span>
+    <span class="cn"><strong>来源：</strong>《下一个自动化前沿：AI劳动力风险情景图》，Coface × OEM，2026年4月。基于WordNet语义类别和O*NET任务权重的任务级三元组分解。五个AI发展阶段，采用显式评分规则。国家数据按就业量加权。除非另有说明，显示的是"专项代理"场景。<strong>注意：</strong>本分析衡量的是任务面临自动化的<em>技术暴露度</em>——并非预测净就业损失。</span>
+  </div>
+</div>
+
+<script>
+// ── COFACE DATA ──────────────────────────────────────────────────────────
+const CF_COUNTRIES = [
+  { code:"JP", en:"Japan",   cn:"日本",    pct:15.0 },
+  { code:"FI", en:"Finland", cn:"芬兰",    pct:15.5 },
+  { code:"FR", en:"France",  cn:"法国",    pct:16.0 },
+  { code:"US", en:"United States", cn:"美国", pct:16.0 },
+  { code:"SE", en:"Sweden",  cn:"瑞典",    pct:16.5 },
+  { code:"PL", en:"Poland",  cn:"波兰",    pct:17.0 },
+  { code:"DE", en:"Germany", cn:"德国",    pct:17.0 },
+  { code:"AU", en:"Australia",cn:"澳大利亚",pct:17.5 },
+  { code:"CA", en:"Canada",  cn:"加拿大",  pct:17.5 },
+  { code:"DK", en:"Denmark", cn:"丹麦",    pct:18.0 },
+  { code:"NL", en:"Netherlands",cn:"荷兰", pct:19.0 },
+  { code:"GB", en:"United Kingdom",cn:"英国",pct:20.0 },
+];
+const CF_TREEMAP_CODES = new Set(["US","GB","CA","AU","DE","FR","JP"]);
+
+const CF_PHASES = [
+  { id:"1",  en:"Copilot",       cn:"副驾驶",        desc_en:"One-off LLM supplements", desc_cn:"一次性LLM辅助",         pct:2  },
+  { id:"2",  en:"Special Agent",  cn:"专项代理",      desc_en:"Chatbot → agent",         desc_cn:"聊天机器人→代理",       pct:13 },
+  { id:"3",  en:"Conductor",      cn:"指挥官",        desc_en:"Episodic memory & planning",desc_cn:"情景记忆与规划",     pct:41 },
+  { id:"4A", en:"Prometheus",     cn:"普罗米修斯",    desc_en:"Mature agentic AI",       desc_cn:"成熟代理式AI",          pct:45 },
+  { id:"4B", en:"Superhuman",     cn:"超人类",        desc_en:"AI exceeds human cognition",desc_cn:"AI超越人类认知",    pct:94 },
+];
+
+const CF_FAMILIES = [
+  { en:"Management & Admin",         cn:"管理与行政",     rx:24, ry:28, c:"#e74c3c" },
+  { en:"Engineering & Computational", cn:"工程与计算",     rx:27, ry:17, c:"#3498db" },
+  { en:"Care & Education",           cn:"照护与教育",     rx:13, ry:16, c:"#2ecc71" },
+  { en:"Legal & Financial",          cn:"法律与金融",     rx:22, ry:12, c:"#9b59b6" },
+  { en:"Commercial",                 cn:"商业",           rx:12, ry:9,  c:"#e67e22" },
+  { en:"Creative & Content",         cn:"创意与内容",     rx:20, ry:4,  c:"#1abc9c" },
+  { en:"Skilled Trades",             cn:"技术工种",       rx:6,  ry:10, c:"#f39c12" },
+  { en:"In-person Services",         cn:"面对面服务",     rx:4,  ry:4,  c:"#95a5a6" },
+];
+
+// ── Helpers ──────────────────────────────────────────────────────────────
+function cfLang() { return typeof currentLang !== 'undefined' ? currentLang : 'cn'; }
+function cfT(obj, keyEn, keyCn) { return cfLang() === 'cn' ? obj[keyCn || 'cn'] : obj[keyEn || 'en']; }
+
+// ── Country bars ─────────────────────────────────────────────────────────
+function cfRenderCountry() {
+  const el = document.getElementById('cfCountryBars');
+  if (!el) return;
+  const max = Math.max(...CF_COUNTRIES.map(d => d.pct));
+  const lang = cfLang();
+  el.innerHTML = CF_COUNTRIES.map(d => {
+    const w = ((d.pct / max) * 100).toFixed(1);
+    const inTreemap = CF_TREEMAP_CODES.has(d.code);
+    // Color: interpolate from teal to coral based on pct range 15-20
+    const t = (d.pct - 14) / 7;
+    const r = Math.round(56 + t * 183);
+    const g = Math.round(189 - t * 121);
+    const b = Math.round(248 - t * 180);
+    return `<div class="cf-bar-row">
+      <div class="cf-bar-label"><span class="cf-bar-code">${d.code}</span><span class="cf-bar-name">${lang==='cn'?d.cn:d.en}</span></div>
+      <div class="cf-bar-track"><div class="cf-bar-fill${inTreemap?' in-treemap':''}" style="width:${w}%;background:rgba(${r},${g},${b},0.7)"></div></div>
+      <div class="cf-bar-val">${d.pct.toFixed(1)}%${inTreemap?' ◆':''}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Phase progression ────────────────────────────────────────────────────
+function cfRenderPhases() {
+  const el = document.getElementById('cfPhaseChart');
+  if (!el) return;
+  const max = 100;
+  const lang = cfLang();
+  el.innerHTML = CF_PHASES.map(p => {
+    const h = Math.max(4, (p.pct / max) * 100);
+    const isCurrent = p.id === "2";
+    // Color: blue for current, gradient otherwise
+    const t = p.pct / 100;
+    const bg = isCurrent
+      ? 'rgba(56,189,248,0.6)'
+      : `rgba(${Math.round(56+t*183)},${Math.round(189-t*121)},${Math.round(248-t*180)},0.6)`;
+    return `<div class="phase-col${isCurrent?' current':''}">
+      <div class="phase-bar-wrap">
+        <div class="phase-bar-fill" style="height:${h}%;background:${bg};">
+          <span class="pct-label">${p.pct}%</span>
+        </div>
+      </div>
+      <div class="phase-info">
+        <div class="phase-name">${p.id}: ${lang==='cn'?p.cn:p.en}</div>
+        <div class="phase-desc">${lang==='cn'?p.desc_cn:p.desc_en}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Scatter chart (canvas) ───────────────────────────────────────────────
+function cfRenderScatter() {
+  const canvas = document.getElementById('cfScatter');
+  if (!canvas) return;
+  const wrap = canvas.parentElement;
+  const dpr = window.devicePixelRatio || 1;
+  const w = wrap.clientWidth, h = wrap.clientHeight;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const pad = { t: 20, r: 20, b: 36, l: 44 };
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+  const maxX = 32, maxY = 32;
+  const lang = cfLang();
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 0.5;
+  for (let v = 0; v <= 30; v += 5) {
+    const x = pad.l + (v / maxX) * pw;
+    const y = pad.t + ph - (v / maxY) * ph;
+    ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, pad.t + ph); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+  }
+  // Axes
+  ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t + ph); ctx.lineTo(pad.l + pw, pad.t + ph); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, pad.t + ph); ctx.stroke();
+
+  // Axis tick labels
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  for (let v = 0; v <= 30; v += 10) {
+    ctx.fillText(v + '%', pad.l + (v / maxX) * pw, pad.t + ph + 14);
+  }
+  ctx.textAlign = 'right';
+  for (let v = 0; v <= 30; v += 10) {
+    ctx.fillText(v + '%', pad.l - 6, pad.t + ph - (v / maxY) * ph + 4);
+  }
+
+  // Axis titles
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(lang === 'cn' ? '家族内任务风险%' : 'Task risk within family %', pad.l + pw / 2, pad.t + ph + 30);
+  ctx.save();
+  ctx.translate(12, pad.t + ph / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText(lang === 'cn' ? '总风险贡献%' : 'Contribution to total risk %', 0, 0);
+  ctx.restore();
+
+  // Bubbles
+  CF_FAMILIES.forEach(f => {
+    const x = pad.l + (f.rx / maxX) * pw;
+    const y = pad.t + ph - (f.ry / maxY) * ph;
+    const r = 6 + (f.ry / 28) * 18;
+
+    ctx.globalAlpha = 0.7;
+    ctx.fillStyle = f.c;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = f.c;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Label
+    ctx.fillStyle = '#e0e0e8';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'center';
+    const name = (lang === 'cn' ? f.cn : f.en);
+    // Short name for small bubbles
+    const short = name.length > 6 ? name.substring(0, 6) + '..' : name;
+    ctx.fillText(short, x, y - r - 5);
+  });
+
+  // Legend
+  const leg = document.getElementById('cfScatterLegend');
+  if (leg) {
+    leg.innerHTML = CF_FAMILIES.map(f =>
+      `<span class="scatter-legend-item"><span class="scatter-legend-dot" style="background:${f.c}"></span>${lang==='cn'?f.cn:f.en}</span>`
+    ).join('');
+  }
+}
+
+// ── Init & hooks ─────────────────────────────────────────────────────────
+function cfInit() {
+  cfRenderCountry();
+  cfRenderPhases();
+  cfRenderScatter();
+
+  // Hook into setLang (defined later in main script) to re-render on language switch
+  if (typeof setLang === 'function') {
+    const _origSetLang = setLang;
+    setLang = function(lang) {
+      _origSetLang(lang);
+      cfRenderCountry();
+      cfRenderPhases();
+      cfRenderScatter();
+    };
+  }
+}
+
+// Delay init to ensure main script (which defines currentLang) has loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(cfInit, 50));
+} else {
+  setTimeout(cfInit, 50);
+}
+window.addEventListener('resize', cfRenderScatter);
+</script>
+
 </div>
 
 <div id="tooltip">
