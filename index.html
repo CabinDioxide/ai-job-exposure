@@ -305,6 +305,7 @@ canvas#canvas {
       <span class="en">Global Job Market: AI Exposure by Country</span>
       <span class="cn">全球就业市场：AI职业暴露度</span>
       <a href="methodology.html"><span class="en">Methodology</span><span class="cn">方法论</span></a>
+      <a href="reports/index.html"><span class="en">Reports</span><span class="cn">📄 月报存档</span></a>
       <a href="https://github.com/karpathy/jobs">GitHub</a>
       <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       <button class="lang-btn active" data-lang="cn" onclick="setLang('cn')">中文</button>
@@ -380,6 +381,36 @@ canvas#canvas {
 </div>
 
 <canvas id="canvas"></canvas>
+
+<!-- ── 月报存档区域 ── -->
+<div id="reportsArchive" style="
+  max-width: 900px; margin: 48px auto 0; padding: 0 24px 60px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+">
+  <h2 style="
+    font-size: 20px; font-weight: 600; margin: 32px 0 16px;
+    display: flex; align-items: center; gap: 10px;
+  ">
+    📄
+    <span class="en">Monthly Reports Archive</span>
+    <span class="cn">月报存档</span>
+  </h2>
+  <p style="color: var(--fg2); font-size: 14px; margin-bottom: 20px;">
+    <span class="en">AI Employment Impact monthly reports, auto-generated and archived.</span>
+    <span class="cn">AI就业冲击月度研究报告，自动生成并存档。</span>
+  </p>
+  <div id="reportsList" style="display: flex; flex-direction: column; gap: 8px;">
+  </div>
+  <div style="margin-top: 16px;">
+    <a href="reports/index.html" style="
+      color: #6c8cff; text-decoration: none; font-size: 14px;
+    ">
+      <span class="en">View all reports →</span>
+      <span class="cn">查看全部月报 →</span>
+    </a>
+  </div>
+</div>
+
 </div>
 
 <div id="tooltip">
@@ -1773,6 +1804,50 @@ function switchCountry(code) {
   draw();
 }
 
+// ── Reports Archive ──────────────────────────────────────────────────────
+
+function loadReportsArchive() {
+  fetch("reports/manifest.json")
+    .then(r => r.ok ? r.json() : [])
+    .then(reports => {
+      const container = document.getElementById("reportsList");
+      if (!container) return;
+      if (!reports || reports.length === 0) {
+        container.innerHTML = '<p style="color:var(--fg2);font-size:14px;padding:16px 0;">' +
+          '<span class="en">No reports yet. Monthly reports will appear here once generated.</span>' +
+          '<span class="cn">暂无月报。每月自动生成后将在此显示。</span></p>';
+        return;
+      }
+      // Show latest 6 reports
+      const latest = reports.slice(0, 6);
+      container.innerHTML = latest.map(r => {
+        const emoji = {"ai_employment":"🤖","geopolitics":"🌍","elections":"🗳️"}[r.module] || "📄";
+        return `<a href="reports/${r.filename}" style="
+          display:flex;align-items:center;gap:14px;
+          padding:12px 16px;background:var(--bg2);
+          border:1px solid rgba(255,255,255,0.08);border-radius:8px;
+          text-decoration:none;color:var(--fg);
+          transition:all 0.15s ease;
+        " onmouseover="this.style.background='#1a1a26';this.style.borderColor='#6c8cff'"
+           onmouseout="this.style.background='var(--bg2)';this.style.borderColor='rgba(255,255,255,0.08)'">
+          <span style="font-size:20px">${emoji}</span>
+          <span style="flex:1;font-size:14px">${r.title}</span>
+          <span style="color:var(--fg2);font-size:12px">${r.month}</span>
+          <span style="color:var(--fg2)">→</span>
+        </a>`;
+      }).join("");
+    })
+    .catch(() => {
+      // manifest not found — OK, no reports yet
+      const container = document.getElementById("reportsList");
+      if (container) {
+        container.innerHTML = '<p style="color:var(--fg2);font-size:14px;padding:16px 0;">' +
+          '<span class="en">No reports yet.</span>' +
+          '<span class="cn">暂无月报。</span></p>';
+      }
+    });
+}
+
 // ── Initialization ──────────────────────────────────────────────────────
 
 window.addEventListener("resize", resize);
@@ -1786,6 +1861,7 @@ document.addEventListener("DOMContentLoaded", () => {
   currentCountryCode = "US";
   data = getCurrentCountryData();
   layout();
+  loadReportsArchive();
   updateStats();
   drawGradientLegend();
   draw();
