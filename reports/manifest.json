@@ -5,5 +5,12 @@
     "lang": "zh",
     "filename": "ai_employment_2026-03_zh.html",
     "title": "🤖 AI就业冲击月报 — 2026-03"
+  },
+  {
+    "module": "ai_employment",
+    "month": "2026-03",
+    "lang": "en",
+    "filename": "ai_employment_2026-03_en.html",
+    "title": "🤖 AI Employment Impact Report — 2026-03"
   }
 ]
