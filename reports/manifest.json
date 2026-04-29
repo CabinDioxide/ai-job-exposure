@@ -1,6 +1,15 @@
 [
   {
     "module": "ai_employment",
+    "type": "special_report",
+    "month": "2026-04",
+    "lang": "zh/en",
+    "filename": "ai_employment_tipping_points.html",
+    "title": "对 AI 冲击就业的近未来预测 / Near-Future Forecast: AI's Impact on Employment"
+  },
+  {
+    "module": "ai_employment",
+    "type": "monthly",
     "month": "2026-03",
     "lang": "zh/en",
     "filename": "ai_employment_2026-03.html",

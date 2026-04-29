@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对 AI 冲击就业的近未来预测 / Near-Future Forecast: AI's Impact on Employment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAF7F2;
+  --bg-card:#FFFFFF;
+  --fg:#0B1D3A;
+  --fg-2:#5C7A99;
+  --fg-3:#8B9BAE;
+  --accent:#E94B23;
+  --accent-soft:rgba(233,75,35,0.08);
+  --border:#E5DFD3;
+  --border-2:#D5CDB9;
+  --c-cs:#6B4F8F;     /* 客服 */
+  --c-art:#C2547C;    /* 美术 */
+  --c-code:#2E8B8B;   /* 编程 */
+  --c-vid:#E94B23;    /* 影视 */
+  --c-pro:#2C4F8F;    /* 专业服务 */
+  --c-good:#2E7D5B;
+  --c-bad:#C42B2B;
+  --serif:'Source Serif 4',Georgia,'Songti SC',serif;
+  --sans-en:'Inter',system-ui,sans-serif;
+  --sans-cn:'Noto Sans SC','PingFang SC',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:var(--sans-cn),var(--sans-en);
+  font-feature-settings:'cv05','ss01';
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.lang-en{font-family:var(--sans-en)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:780px;margin:0 auto;padding:0 28px}
+
+/* ===== Top Nav ===== */
+.topnav{
+  background:rgba(250,247,242,0.85);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+  padding:14px 0;
+}
+.topnav-inner{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.topnav-brand{font-family:var(--sans-en);font-weight:700;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:var(--fg)}
+.topnav-brand .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:2px}
+.topnav a.nav-link{font-size:13px;color:var(--fg-2);text-decoration:none;font-weight:500}
+.topnav a.nav-link:hover{color:var(--accent)}
+.lang-toggle{display:flex;gap:0;border:1px solid var(--border-2);border-radius:999px;padding:3px;margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg-2);padding:5px 14px;font-size:12px;font-weight:600;letter-spacing:0.04em;cursor:pointer;border-radius:999px;transition:all 0.18s;font-family:var(--sans-en)}
+.lang-btn.active{background:var(--fg);color:#fff}
+.lang-btn:not(.active):hover{color:var(--fg)}
+.lang-inactive{display:none !important}
+
+/* ===== Hero ===== */
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans-en);font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero h1{
+  font-family:var(--serif);font-weight:600;font-style:italic;
+  font-size:clamp(36px,5.4vw,68px);line-height:1.06;letter-spacing:-0.02em;
+  color:var(--fg);margin-bottom:24px;max-width:18ch;
+}
+body.lang-en .hero h1{font-style:normal}
+.hero .sub{font-size:clamp(16px,1.4vw,19px);color:var(--fg-2);max-width:54ch;margin-bottom:32px;line-height:1.55}
+.hero-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--fg-3);text-transform:uppercase;letter-spacing:0.06em}
+.hero-meta .item{display:flex;align-items:center;gap:8px}
+.hero-meta .item .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* ===== Summary Cards ===== */
+.summary{padding:48px 0;border-bottom:1px solid var(--border)}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:880px){.summary-grid{grid-template-columns:repeat(2,1fr)}}
+.s-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+  padding:24px 22px;position:relative;overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.s-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(11,29,58,0.06)}
+.s-card .label{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-2);margin-bottom:14px}
+.s-card .value{font-family:var(--mono);font-size:34px;font-weight:600;color:var(--fg);line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
+.s-card .value .unit{font-size:18px;color:var(--fg-2);margin-left:4px}
+.s-card .desc{font-size:12px;color:var(--fg-2);line-height:1.5}
+.s-card.accent::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.s-card .source{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border-2);font-family:var(--mono);font-size:10px;color:var(--fg-3);letter-spacing:0.04em;line-height:1.45}
+.s-card .source .src-label{color:var(--accent);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-right:4px}
+.s-card .source a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--fg-3)}
+.s-card .source a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.s-card.accent .value{color:var(--accent)}
+
+/* ===== Section ===== */
+section.chapter{padding:88px 0;border-bottom:1px solid var(--border)}
+.ch-header{margin-bottom:40px}
+.ch-num{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600;letter-spacing:0.1em;margin-bottom:14px}
+.ch-header h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.4vw,44px);line-height:1.15;letter-spacing:-0.01em;color:var(--fg);margin-bottom:18px;max-width:24ch}
+.ch-header .lede{font-size:17px;color:var(--fg-2);max-width:60ch;line-height:1.6}
+.ch-header .lede strong{color:var(--fg);font-weight:600}
+
+/* ===== Chart card ===== */
+.chart-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:18px;
+  padding:32px 28px 24px;
+  box-shadow:0 1px 3px rgba(11,29,58,0.04);
+}
+.chart-title{font-family:var(--sans-en);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg);margin-bottom:6px}
+.chart-sub{font-size:13px;color:var(--fg-2);margin-bottom:24px;line-height:1.5}
+.chart-wrap{position:relative;height:520px;width:100%}
+@media(max-width:680px){.chart-wrap{height:440px}}
+
+/* legend nodes */
+.chart-legend{
+  margin-top:24px;padding-top:20px;border-top:1px dashed var(--border-2);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+}
+.lg-row{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;line-height:1.5;color:var(--fg-2)}
+.lg-row .swatch{flex-shrink:0;width:14px;height:3px;border-radius:2px;margin-top:8px}
+.lg-row .swatch.dashed{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px)}
+.lg-row .lg-name{font-weight:600;color:var(--fg)}
+
+/* nodes legend — color matches industry */
+.nodes-legend{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:12px;color:var(--fg-2);font-family:var(--mono)}
+.nodes-legend .n{display:inline-flex;align-items:center;gap:8px}
+.nodes-legend .n .n-dot{width:9px;height:9px;border-radius:50%;display:inline-block;box-shadow:0 0 0 2px #fff,0 0 0 3px currentColor}
+.nodes-legend .n.cs   {color:var(--c-cs)}
+.nodes-legend .n.art  {color:var(--c-art)}
+.nodes-legend .n.code {color:var(--c-code)}
+.nodes-legend .n.vid  {color:var(--c-vid)}
+.nodes-legend .n.pro  {color:var(--c-pro)}
+.nodes-legend .n .n-dot{background:currentColor}
+.nodes-legend .n span:not(.n-dot){color:var(--fg-2)}
+
+/* ===== Insight strip ===== */
+.insights{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:880px){.insights{grid-template-columns:1fr}}
+.insight{
+  border-left:2px solid var(--accent);
+  padding:8px 0 8px 20px;
+}
+.insight .ix-num{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.1em;margin-bottom:8px}
+.insight p{font-size:14.5px;color:var(--fg);line-height:1.55}
+.insight p strong{font-weight:600}
+
+/* ===== §02 Orchestrator ===== */
+.orch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px}
+@media(max-width:980px){.orch-grid{grid-template-columns:repeat(2,1fr)}}
+.orch-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s}
+.orch-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(11,29,58,0.06)}
+.orch-card.highlight{background:#0B1D3A;color:#fff;border-color:var(--accent)}
+.orch-card.highlight .o-num{color:var(--accent)}
+.orch-card.highlight .o-label{color:#fff}
+.orch-card.highlight .o-desc{color:rgba(255,255,255,0.78)}
+.orch-card.highlight .o-desc strong{color:var(--accent)}
+.o-num{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.1em;margin-bottom:14px}
+.o-val{font-family:var(--mono);font-size:36px;font-weight:600;color:var(--fg);line-height:1;margin-bottom:10px;letter-spacing:-0.02em}
+.orch-card.highlight .o-val{color:var(--accent)}
+.o-unit{font-size:18px;color:var(--fg-2);margin-left:2px}
+.orch-card.highlight .o-unit{color:rgba(255,255,255,0.6)}
+.o-label{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:10px;line-height:1.35}
+.o-desc{font-size:12px;color:var(--fg-2);line-height:1.55;margin-bottom:14px}
+.o-source{padding-top:10px;border-top:1px dashed var(--border-2);font-family:var(--mono);font-size:9.5px;color:var(--fg-3);letter-spacing:0.04em;line-height:1.4;margin-top:auto}
+.o-source .src-label{color:var(--accent);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-right:4px}
+.orch-card.highlight .o-source{border-top-color:rgba(255,255,255,0.18);color:rgba(255,255,255,0.55)}
+.orch-card.highlight .o-source .src-label{color:var(--accent)}
+
+/* Math block */
+.math-block{background:#0B1D3A;color:#fff;border-radius:18px;padding:36px 32px;margin-bottom:40px;text-align:center}
+.math-eyebrow{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.math-formula{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 18px;font-size:14px}
+.m-part{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(255,255,255,0.06);border-radius:999px;border:1px solid rgba(255,255,255,0.12)}
+.m-part .m-emoji{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600}
+.m-part.big{background:var(--accent);border-color:var(--accent);font-size:18px;font-weight:700}
+.m-part.big strong{font-family:var(--mono);font-size:20px}
+.m-part.conclusion{background:transparent;border:1px dashed rgba(255,255,255,0.4);font-weight:600;font-size:15px;color:#fff}
+.m-op{font-family:var(--mono);font-size:18px;font-weight:600;color:rgba(255,255,255,0.5)}
+
+/* Coface 4-stage time line block */
+.coface-block{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:36px;margin-bottom:32px}
+.cf-eyebrow{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.cf-title{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.2;color:var(--fg);margin-bottom:14px}
+.cf-intro{font-size:14.5px;color:var(--fg-2);line-height:1.6;margin-bottom:28px;max-width:62ch}
+.cf-intro a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+.cf-intro strong{color:var(--fg)}
+.cf-stages{display:flex;align-items:stretch;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.cf-stage{flex:1;min-width:180px;border:1px solid var(--border);border-radius:12px;padding:18px 16px;background:var(--bg);position:relative;display:flex;flex-direction:column}
+.cf-stage.past{opacity:0.55}
+.cf-stage.current{border:2px solid var(--accent);background:#fff;box-shadow:0 4px 14px rgba(233,75,35,0.12)}
+.cf-stage.near{border:1.5px dashed var(--accent);background:#fff}
+.cf-stage.far{opacity:0.45;border-style:dashed}
+.cf-num{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.1em;margin-bottom:8px}
+.cf-label{font-family:var(--sans-en);font-size:14px;font-weight:700;color:var(--fg);margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cf-tag{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;color:#fff;background:var(--accent);padding:2px 6px;border-radius:4px;font-weight:600}
+.cf-period{font-family:var(--mono);font-size:11px;color:var(--fg-2);margin-bottom:10px}
+.cf-mult{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;margin-bottom:10px;padding:6px 10px;background:rgba(233,75,35,0.08);border-radius:6px;display:inline-block;align-self:flex-start}
+.cf-mult strong{font-weight:700}
+.cf-stage.past .cf-mult{color:var(--fg-2);background:rgba(11,29,58,0.05)}
+.cf-stage.far .cf-mult{color:var(--fg-2);background:rgba(11,29,58,0.05)}
+.cf-desc{font-size:12px;color:var(--fg-2);line-height:1.55;margin-top:auto}
+.cf-desc strong{color:var(--fg);font-weight:600}
+.cf-arrow{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:24px;color:var(--accent);font-weight:300;flex-shrink:0;padding:0 4px}
+@media(max-width:880px){.cf-arrow{display:none}.cf-stages{flex-direction:column}.cf-stage{min-width:100%}}
+.cf-callout{background:#FFF8E6;border:1px solid #F0E2A5;border-radius:10px;padding:16px 20px;font-size:13.5px;color:#5A4400;line-height:1.6;margin-top:12px}
+.cf-callout strong{color:#3D2E00}
+
+/* Bridge to theory + implications */
+.orch-bridge{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:36px;margin-bottom:32px}
+.bridge-row{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:880px){.bridge-row{grid-template-columns:1fr;gap:32px}}
+.b-eyebrow{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.bridge-left h3,.bridge-right h3{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.25;color:var(--fg);margin-bottom:14px}
+.bridge-left p{font-size:14.5px;color:var(--fg-2);line-height:1.6}
+.bridge-left p strong{color:var(--fg);font-weight:600}
+.bridge-list{list-style:none;padding:0;margin:0}
+.bridge-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--fg-2);line-height:1.5}
+.bridge-list li:last-child{border-bottom:none}
+.bridge-list li strong{color:var(--accent);font-family:var(--sans-en);font-weight:700;font-size:12px;letter-spacing:0.04em;margin-right:6px}
+
+/* Inline micro caveat — replaces the older .caveat / .counter-box yellow blocks */
+.micro-note{font-size:13px;color:var(--fg-2);font-style:italic;line-height:1.65;max-width:62ch;margin:24px 0 0;padding-top:14px;border-top:1px dashed var(--border-2)}
+
+/* ===== Node-case chapter components (§3-§7) ===== */
+/* Each chapter inherits an --ind- color from class on .chapter */
+.chapter.cs   {--ind-color:var(--c-cs);   --ind-soft:rgba(107,79,143,0.08)}
+.chapter.art  {--ind-color:var(--c-art);  --ind-soft:rgba(194,84,124,0.08)}
+.chapter.code {--ind-color:var(--c-code); --ind-soft:rgba(46,139,139,0.08)}
+.chapter.vid  {--ind-color:var(--c-vid);  --ind-soft:rgba(233,75,35,0.08)}
+.chapter.pro  {--ind-color:var(--c-pro);  --ind-soft:rgba(44,79,143,0.08)}
+
+/* Industry-tinted chapter num + section accent */
+.chapter[class*=" "] .ch-num{color:var(--ind-color, var(--accent))}
+
+/* Node badge — chip with letter circle + product title */
+.node-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;margin-bottom:8px}
+.node-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;background:var(--bg-card);border:1px solid var(--border);border-radius:999px;font-size:13px;color:var(--fg);box-shadow:0 1px 3px rgba(11,29,58,0.04)}
+.node-badge .nb-letter{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--ind-color);color:#fff;font-family:var(--mono);font-weight:700;font-size:12px;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 0 0 2px #fff}
+.node-badge .nb-text{font-family:var(--sans-en);font-size:12.5px;color:var(--fg-2);font-weight:500}
+.node-badge .nb-text strong{color:var(--fg);font-weight:600;margin-right:4px}
+
+/* Stat grid */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px 0 28px}
+@media(max-width:980px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 18px;border-top:3px solid var(--ind-color);display:flex;flex-direction:column}
+.stat-num{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--fg);line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
+.stat-num .sn-unit{font-size:16px;color:var(--fg-2);margin-left:2px}
+.stat-label{font-size:12.5px;color:var(--fg);font-weight:600;line-height:1.4;margin-bottom:10px}
+.stat-source{margin-top:auto;padding-top:10px;border-top:1px dashed var(--border-2);font-family:var(--mono);font-size:9.5px;color:var(--fg-3);letter-spacing:0.04em;line-height:1.45}
+.stat-source .src-label{color:var(--ind-color);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-right:4px}
+.stat-source a{color:var(--fg-2);text-decoration:none;border-bottom:1px dotted var(--fg-3)}
+.stat-source a:hover{color:var(--ind-color)}
+
+/* Narrative paragraphs */
+.narrative{max-width:64ch;margin-top:8px}
+.narrative p{font-size:15.5px;color:var(--fg);line-height:1.7;margin-bottom:18px}
+.narrative p strong{font-weight:600;color:var(--fg)}
+.narrative p a{color:var(--ind-color);text-decoration:none;border-bottom:1px dotted var(--ind-color)}
+
+/* Before/After timeline (vertical) */
+.ba-block{margin:36px 0 28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.ba-eyebrow{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ind-color);margin-bottom:16px}
+.ba-table{width:100%;border-collapse:collapse;font-size:14px}
+.ba-table th{text-align:left;font-family:var(--sans-en);font-size:11px;font-weight:600;color:var(--fg-2);letter-spacing:0.06em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--border-2)}
+.ba-table td{padding:11px 10px;border-bottom:1px solid var(--border);color:var(--fg-2);vertical-align:top}
+.ba-table td:first-child{font-family:var(--mono);font-size:12px;color:var(--fg);white-space:nowrap;width:130px}
+.ba-table td:nth-child(2){font-family:var(--mono);font-weight:600;color:var(--ind-color);width:80px}
+.ba-table tr:last-child td{border-bottom:none}
+.ba-table .ba-now td{background:var(--ind-soft)}
+
+/* Counter / reverse view box */
+.counter-box{margin:28px 0;background:#FFF8E6;border:1px solid #F0E2A5;border-radius:12px;padding:22px 24px}
+.counter-eyebrow{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#9A7600;margin-bottom:10px}
+.counter-box h4{font-family:var(--serif);font-size:18px;font-weight:600;color:#3D2E00;margin-bottom:12px;line-height:1.3}
+.counter-box p{font-size:14px;color:#5A4400;line-height:1.6;margin-bottom:10px}
+.counter-box p:last-child{margin-bottom:0}
+.counter-box p strong{color:#3D2E00}
+.counter-box a{color:#9A7600;text-decoration:none;border-bottom:1px dotted #9A7600}
+
+/* Orchestrator-form row — chapter-level summary applying the 12.8x model */
+.orch-row{margin-top:32px;background:#0B1D3A;color:#fff;border-radius:14px;padding:24px 28px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.orch-row-left{flex:0 0 auto;display:flex;align-items:center;gap:12px}
+.orch-row-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.orch-row-mult{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--accent);background:rgba(233,75,35,0.15);padding:6px 14px;border-radius:8px}
+.orch-row-body{flex:1;min-width:280px}
+.orch-row-body p{font-size:14.5px;color:rgba(255,255,255,0.85);line-height:1.6;margin:0}
+.orch-row-body p strong{color:#fff;font-weight:600}
+
+/* §8 Forecast scenario grid (5 industries × 3 scenarios) */
+.scenario-grid{display:grid;grid-template-columns:140px repeat(3, 1fr);gap:0;margin:32px 0 24px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg-card)}
+.sg-cell{padding:18px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);min-height:120px;display:flex;flex-direction:column}
+.sg-cell:nth-child(4n){border-right:none}
+.sg-cell.sg-corner{background:transparent}
+.sg-cell.sg-header{background:var(--bg);min-height:auto;padding:14px 16px;border-bottom:2px solid var(--border-2)}
+.sg-cell.sg-header .sg-h-tag{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-2)}
+.sg-cell.sg-header.baseline .sg-h-tag{color:var(--accent)}
+.sg-cell.sg-header.aggressive .sg-h-tag{color:var(--c-bad)}
+.sg-cell.sg-header .sg-h-desc{font-size:11.5px;color:var(--fg-2);line-height:1.45;margin-top:6px}
+.sg-cell.sg-industry{padding:18px 16px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--fg);background:var(--bg)}
+.sg-cell.sg-industry .sg-dot{width:10px;height:10px;border-radius:50%;background:var(--ind-color);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--ind-color)}
+.sg-cell.baseline{background:rgba(233,75,35,0.04)}
+.sg-cell.aggressive{background:rgba(196,43,43,0.05)}
+.sg-num{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--fg);line-height:1;margin-bottom:10px;letter-spacing:-0.02em}
+.sg-cell.baseline .sg-num{color:var(--accent)}
+.sg-cell.aggressive .sg-num{color:var(--c-bad)}
+.sg-trigger{font-size:12px;color:var(--fg);line-height:1.5;margin-bottom:6px;font-weight:500}
+.sg-mirror{font-size:11px;color:var(--fg-3);line-height:1.5;font-style:italic;margin-top:auto;padding-top:6px}
+.scenario-grid .sg-cell.cs   {--ind-color:var(--c-cs)}
+.scenario-grid .sg-cell.art  {--ind-color:var(--c-art)}
+.scenario-grid .sg-cell.code {--ind-color:var(--c-code)}
+.scenario-grid .sg-cell.vid  {--ind-color:var(--c-vid)}
+.scenario-grid .sg-cell.pro  {--ind-color:var(--c-pro)}
+@media(max-width:880px){
+  .scenario-grid{grid-template-columns:100px repeat(3, 1fr)}
+  .sg-cell{padding:12px 10px;min-height:auto}
+  .sg-num{font-size:18px}
+}
+
+/* §9 Indicator dashboard table */
+.indicator-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:24px 0}
+.indicator-table th{font-family:var(--sans-en);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-2);padding:12px 14px;border-bottom:2px solid var(--border-2);text-align:left;background:var(--bg)}
+.indicator-table td{padding:14px;border-bottom:1px solid var(--border);color:var(--fg-2);vertical-align:top;line-height:1.5}
+.indicator-table td:first-child{color:var(--fg);font-weight:600;width:26%}
+.indicator-table td:nth-child(2){font-family:var(--mono);font-size:12.5px;color:var(--fg);width:20%}
+.indicator-table td:nth-child(3){width:42%}
+.indicator-table td:nth-child(4){font-family:var(--mono);font-size:11px;color:var(--fg-3);width:12%}
+.indicator-table tr.cat-row td{background:var(--bg);font-family:var(--sans-en);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);padding:10px 14px}
+.indicator-table tr.cat-row td:not(:first-child){display:none}
+.indicator-table tr.cat-row td:first-child{width:100%}
+
+/* §10 Appendix two-column grid */
+.appendix-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}
+@media(max-width:880px){.appendix-grid{grid-template-columns:1fr}}
+.appendix-block{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:26px}
+.appendix-block.full{grid-column:1 / -1}
+.appendix-block h3{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--fg);margin-bottom:14px;line-height:1.3}
+.appendix-block .ap-eyebrow{font-family:var(--sans-en);font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.appendix-block ul{list-style:none;padding:0;margin:0}
+.appendix-block ul li{padding:9px 0;font-size:13.5px;color:var(--fg-2);line-height:1.5;border-bottom:1px solid var(--border)}
+.appendix-block ul li:last-child{border-bottom:none}
+.appendix-block ul li strong{color:var(--fg);font-weight:600}
+.appendix-block a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+.appendix-block a:hover{border-bottom-style:solid}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.compare-table th{font-family:var(--sans-en);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-2);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border-2)}
+.compare-table td{padding:10px;border-bottom:1px solid var(--border);color:var(--fg-2);vertical-align:top}
+.compare-table td:first-child{color:var(--fg);font-weight:600;width:24%}
+.compare-table td:nth-child(2){font-family:var(--mono);font-size:11px;width:14%}
+.compare-table td:nth-child(3){width:28%}
+.compare-table td:last-child{font-style:italic;color:var(--fg-3);font-size:12px}
+
+/* B-class footnote inline marker */
+.b-class{display:inline-flex;align-items:center;gap:4px;padding:1px 6px;background:rgba(11,29,58,0.06);border-radius:4px;font-family:var(--mono);font-size:10px;color:var(--fg-2);letter-spacing:0.04em;text-transform:uppercase;margin-left:4px;vertical-align:1px}
+
+/* ===== Footer ===== */
+footer{padding:56px 0 80px;text-align:center}
+footer .f-logo{font-family:var(--sans-en);font-weight:700;font-size:13px;letter-spacing:0.06em;color:var(--fg);margin-bottom:12px}
+footer .f-meta{font-size:12px;color:var(--fg-3);font-family:var(--mono);letter-spacing:0.04em}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* prototype banner */
+.proto-banner{
+  background:#FFF8E6;border-bottom:1px solid #F0E2A5;
+  padding:8px 0;text-align:center;font-size:12px;color:#7A5C00;
+  font-family:var(--mono);letter-spacing:0.04em;
+}
+.proto-banner strong{color:#5A4400}
+</style>
+</head>
+<body>
+
+<!-- ============ TOPNAV ============ -->
+<nav class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="topnav-brand"><span class="dot"></span>AI EMPLOYMENT MONITOR</a>
+  <a href="index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Monthly Archive</span></a>
+  <a href="../methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="cn">中文</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+</div></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">
+    <span class="cn">实证临界点报告 · 2026 年 4 月</span>
+    <span class="en lang-inactive">Empirical Tipping Points Report · April 2026</span>
+  </div>
+  <h1>
+    <span class="cn">对 AI 冲击就业的近未来预测</span>
+    <span class="en lang-inactive">Near-Future Forecast: AI's Impact on Employment</span>
+  </h1>
+  <p class="sub">
+    <span class="cn">五个行业，四个关键节点已突破，第五个正在到来。这份报告用 2022 年以来的实测数据，验证一个核心论点：AI 替代就业不是线性渐进，而是关键应用节点突破后的陡然转折——并据此预测未来 12 个月。</span>
+    <span class="en lang-inactive">Five industries, four key nodes already crossed, the fifth arriving now. This report uses empirical data since 2022 to validate a single thesis: AI's displacement of labor is not gradual but punctuated — it bends sharply only after key application nodes break — and projects the next twelve months on that basis.</span>
+  </p>
+  <div class="hero-meta">
+    <span class="item"><span class="dot"></span><span class="cn">作者 · BD 研究</span><span class="en lang-inactive">By · BD Research</span></span>
+    <span class="item"><span class="cn">数据截至 · 2026.04</span><span class="en lang-inactive">Data through · Apr 2026</span></span>
+    <span class="item"><span class="cn">单页 · 中英双语</span><span class="en lang-inactive">Single page · ZH/EN</span></span>
+  </div>
+</div></header>
+
+<!-- ============ SUMMARY CARDS ============ -->
+<section class="summary"><div class="wrap">
+  <div class="summary-grid">
+    <div class="s-card accent">
+      <div class="label">
+        <span class="cn">Orchestrator 替代乘数</span>
+        <span class="en lang-inactive">Orchestrator Substitution Multiplier</span>
+      </div>
+      <div class="value">12.8<span class="unit">x</span></div>
+      <div class="desc">
+        <span class="cn">同任务 1 人 + AI vs 1 人独立的产出比</span>
+        <span class="en lang-inactive">Same task: 1 person + AI vs 1 alone</span>
+      </div>
+      <div class="source">
+        <span class="src-label">SOURCE</span>
+        <span class="cn">Anthropic Economic Index raw csv (release_2026_03_24, 2026-02-05~12 data window)</span>
+        <span class="en lang-inactive">Anthropic Economic Index raw csv (release_2026_03_24, Feb 5–12 2026 data)</span>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="label">
+        <span class="cn">本报告关注的赛道</span>
+        <span class="en lang-inactive">Sectors this report tracks</span>
+      </div>
+      <div class="value">5<span class="unit"></span></div>
+      <div class="desc">
+        <span class="cn">客服 · 美术 · 编程 · 影视 · 法律 / 金融 / 咨询 / SaaS——每条赛道都已经被关键产品突破</span>
+        <span class="en lang-inactive">CS · Art · Code · Video · Law/Finance/Consulting/SaaS — each one has already been hit by a breakthrough product</span>
+      </div>
+      <div class="source">
+        <span class="src-label">SOURCE</span>
+        <span class="cn">本报告综合（节点列表见 §1 主图与 [_data_verification.md](../_data_verification.md) §VII）</span>
+        <span class="en lang-inactive">Compiled by this report (full node list in §1 main chart &amp; verification appendix)</span>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="label">
+        <span class="cn">SaaSpocalypse 累计蒸发</span>
+        <span class="en lang-inactive">SaaSpocalypse Cumulative Loss</span>
+      </div>
+      <div class="value">$2<span class="unit">T+</span></div>
+      <div class="desc">
+        <span class="cn">2026.1-3 SaaS 板块累计市值损失（48h 单波 $285B）</span>
+        <span class="en lang-inactive">SaaS sector cumulative Jan-Mar 2026 ($285B in single 48h wave)</span>
+      </div>
+      <div class="source">
+        <span class="src-label">SOURCE</span>
+        <a href="https://www.humai.blog/saaspocalypse-why-enterprise-software-has-lost-more-than-2-trillion-in-2026/" target="_blank" rel="noopener">Humai.blog</a>; <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">Taskade</a>; <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-2-25-the-saaspocalypse-of-2026-workday-stock-plummets-as-agentic-ai-fears-overhadow-q4-beat" target="_blank" rel="noopener">FinancialContent (Feb 25 2026)</a>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="label">
+        <span class="cn">12 个月白领招聘预测</span>
+        <span class="en lang-inactive">12-Month White-Collar Hiring</span>
+      </div>
+      <div class="value">−25 <span class="unit">to</span> −32<span class="unit">%</span></div>
+      <div class="desc">
+        <span class="cn">编程 / 影视 / 法金咨 SaaS 三条曲线 12 月落点区间，呈"先陡后缓"S 形（参照 CS 平台至 -28% / Art 至 -32%）</span>
+        <span class="en lang-inactive">12-month landing range for Code / Video / LFCS curves, S-shaped (steep then plateau, mirroring CS at -28% / Art at -32%)</span>
+      </div>
+      <div class="source">
+        <span class="src-label">SOURCE</span>
+        <span class="cn">本报告外推 — 基于客服 + 美术节点后实测 S 形曲线 + 当前节点 E/E2/F/G/H 起点（详见 §1 主图虚线段）</span>
+        <span class="en lang-inactive">Extrapolation — S-curve calibrated to CS+Art post-node empirics + current nodes E/E2/F/G/H (see dashed segments in §1)</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §1 CORE THESIS ============ -->
+<section class="chapter" id="thesis"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 01</div>
+    <h2>
+      <span class="cn">核心论断 ——「节点突破后，曲线陡然转折」</span>
+      <span class="en lang-inactive">The Central Thesis — "After the node, the curve bends sharply"</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">主流机构用任务分解法预测 AI 对就业的渗透，结果普遍比真实数据慢 6–18 个月。根本原因是：<strong>AI 替代就业的轨迹是由"关键应用节点"切割的</strong>——节点之前，能力虽然具备但应用门槛仍在，冲击温和、以辅助为主；节点之后，应用瓶颈一被打通，6–12 个月内替代率就陡升到 40–93%。</span>
+      <span class="en lang-inactive">Mainstream institutions use task-decomposition models to forecast AI's labor penetration, and they consistently run 6–18 months behind the actual data. The root reason: <strong>AI's labor-displacement trajectory is sliced by "key application nodes"</strong> — before the node, capability exists but adoption frictions remain, so the impact is mild and augmentation-led; after the node breaks the bottleneck, displacement climbs sharply to 40–93% within 6–12 months.</span>
+    </p>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">
+      <span class="cn">五行业招聘 / 合同指数 vs 关键节点</span>
+      <span class="en lang-inactive">Five Industries: Hiring / Contract Index vs Key Nodes</span>
+    </div>
+    <div class="chart-sub">
+      <span class="cn">Y 轴 = 相对节点前基线的招聘或合同指数变化（%）。<strong>每个节点圆点贴在它影响的那条曲线上</strong>，颜色 = 行业色。实线 = 已实证（5 行业），虚线 = 12 个月预测带（编程 / 影视 / 法律金融咨询 SaaS — 三个 2025-2026 节点刚突破、最有预测价值的赛道；客服与美术节点已突破 3 年以上，曲线进入平缓段，不再做未来预测）。</span>
+      <span class="en lang-inactive">Y-axis = hiring or contract index change vs pre-node baseline (%). <strong>Each node dot sits on the curve it impacts</strong>, colored by industry. Solid = empirical (5 industries); dashed = 12-month forecast (Code / Video / Law-Finance-Consulting-SaaS — three sectors whose nodes just fired in 2025-26 with most forecast value; CS and Art nodes fired 3+ years ago, curves now plateau, no further forecast).</span>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="thesisChart"></canvas>
+    </div>
+
+    <div class="nodes-legend">
+      <span class="n cs"><span class="n-dot"></span><span class="cn">A · ChatGPT API 商业化 (2023.3.1) → 客服</span><span class="en lang-inactive">A · ChatGPT API (Mar 1 2023) → CS</span></span>
+      <span class="n art"><span class="n-dot"></span><span class="cn">B · ControlNet + ComfyUI (2023.2.10) → 美术</span><span class="en lang-inactive">B · ControlNet + ComfyUI (Feb 10 2023) → Art</span></span>
+      <span class="n code"><span class="n-dot"></span><span class="cn">D · Claude Code 早期 (2024-2025) → 编程</span><span class="en lang-inactive">D · Claude Code early (2024-2025) → Code</span></span>
+      <span class="n code"><span class="n-dot"></span><span class="cn">E · Claude Christmas / Opus 4.5 (2025.11.24) → 编程</span><span class="en lang-inactive">E · Claude Christmas / Opus 4.5 (Nov 24 2025) → Code</span></span>
+      <span class="n code"><span class="n-dot"></span><span class="cn">E2 · Opus 4.6 agent teams (2026.2.5) → 编程</span><span class="en lang-inactive">E2 · Opus 4.6 agent teams (Feb 5 2026) → Code</span></span>
+      <span class="n vid"><span class="n-dot"></span><span class="cn">G1 · Seedance 1.0 (2025.6) → 影视</span><span class="en lang-inactive">G1 · Seedance 1.0 (Jun 2025) → Video</span></span>
+      <span class="n vid"><span class="n-dot"></span><span class="cn">G2 · Seedance 2.0 (2026.2.12) → 影视</span><span class="en lang-inactive">G2 · Seedance 2.0 (Feb 12 2026) → Video</span></span>
+      <span class="n pro"><span class="n-dot"></span><span class="cn">F1 · OpenClaw 开源 agent (2026.1.30) → 法/金/咨/SaaS</span><span class="en lang-inactive">F1 · OpenClaw OSS (Jan 30 2026) → LFCS</span></span>
+      <span class="n pro"><span class="n-dot"></span><span class="cn">F2 · Claude Cowork + 11 垂直插件 (2026.1.12) → 法/金/咨/SaaS</span><span class="en lang-inactive">F2 · Cowork + 11 plugins (Jan 12 2026) → LFCS</span></span>
+      <span class="n pro"><span class="n-dot"></span><span class="cn">H · SaaSpocalypse 多波 (2026.2.12-2.25, $2T 累计) → 法/金/咨/SaaS</span><span class="en lang-inactive">H · SaaSpocalypse multi-wave (Feb 12-25 2026) → LFCS</span></span>
+    </div>
+
+    <div class="chart-legend">
+      <div class="lg-row"><span class="swatch" style="background:var(--c-cs);color:var(--c-cs)"></span><span><span class="lg-name"><span class="cn">客服</span><span class="en lang-inactive">Customer Service</span></span> · <span class="cn">节点 A 后 18 个月内合同指数 −32%</span><span class="en lang-inactive">−32% contract index 18 months after Node A</span></span></div>
+      <div class="lg-row"><span class="swatch" style="background:var(--c-art);color:var(--c-art)"></span><span><span class="lg-name"><span class="cn">美术设计</span><span class="en lang-inactive">Art &amp; Design</span></span> · <span class="cn">节点 B+C 后累计 −32%；英国插画师 32% 失业</span><span class="en lang-inactive">−32% post-B+C; 32% UK illustrators displaced</span></span></div>
+      <div class="lg-row"><span class="swatch" style="background:var(--c-code);color:var(--c-code)"></span><span><span class="lg-name"><span class="cn">编程</span><span class="en lang-inactive">Programming</span></span> · <span class="cn">节点 E 后 5 个月 −20%；入门级结构性消失</span><span class="en lang-inactive">−20% within 5mo of Node E; entry-level disappearing</span></span></div>
+      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-vid)"></span><span><span class="lg-name"><span class="cn">影视 / 视频</span><span class="en lang-inactive">Film &amp; Video</span></span> · <span class="cn">节点 G 刚发生；预测斜率类比美术节点</span><span class="en lang-inactive">Node G just fired; forecast slope mirrors Art</span></span></div>
+      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-pro)"></span><span><span class="lg-name"><span class="cn">法律 / 金融 / 咨询 / SaaS</span><span class="en lang-inactive">Law / Finance / Consulting / SaaS</span></span> · <span class="cn">节点 F1+F2 已触发 SaaSpocalypse；进入早期陡增段</span><span class="en lang-inactive">Nodes F1+F2 triggered SaaSpocalypse; entering early steep phase</span></span></div>
+    </div>
+  </div>
+
+  <div class="insights">
+    <div class="insight">
+      <div class="ix-num">INSIGHT 01</div>
+      <p>
+        <span class="cn">三条已实证曲线都呈现相同形态：<strong>节点前 6–12 个月几乎水平，节点后 6–12 个月陡降至 −20% 至 −35%</strong>。这不是异常值——这是规律。</span>
+        <span class="en lang-inactive">All three empirical curves show the same shape: <strong>nearly flat for 6–12 months before the node, then a sharp 6–12-month drop of 20–35%.</strong> This is not an outlier — it is the pattern.</span>
+      </p>
+    </div>
+    <div class="insight">
+      <div class="ix-num">INSIGHT 02</div>
+      <p>
+        <span class="cn">2026 年 1–2 月内，节点 F、G、H 在 60 天内集中触发——这是 2022 年以来<strong>节点密度最高的窗口</strong>。资本市场已用 SaaSpocalypse $2850 亿单日蒸发完成首次定价。</span>
+        <span class="en lang-inactive">Nodes F, G and H all fired within a 60-day window in early 2026 — the <strong>densest cluster of nodes since 2022.</strong> Capital markets have already priced this in once: $285B evaporated on Feb 3 alone.</span>
+      </p>
+    </div>
+    <div class="insight">
+      <div class="ix-num">INSIGHT 03</div>
+      <p>
+        <span class="cn">把已实证三条曲线的"节点后斜率"投影到影视和专业服务两条曲线上，<strong>未来 12 个月的预测带即可由历史结构外推得出</strong>，无须假设新的中断技术。</span>
+        <span class="en lang-inactive">Projecting the "post-node slope" of the three empirical curves onto Video and Professional Services, <strong>the 12-month forecast band falls out of historical structure</strong> — no new disruptive technology needs to be assumed.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §2 ORCHESTRATOR ============ -->
+<section class="chapter" id="orchestrator"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 02</div>
+    <h2>
+      <span class="cn">替代机制 ——「Orchestrator + AI 12.8x 乘数」</span>
+      <span class="en lang-inactive">The Mechanism — "Orchestrator + AI, 12.8× Multiplier"</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">Anthropic Economic Index 的 4 个时点数据指向一个具体画面：<strong>少数能命令和管理工作流程的「AI 操盘手」用户，正在以大约 1 个顶 12 个的效率，替代原本独立完成同等任务的多数劳动者</strong>。顺便澄清：AEI 数据并不支持"AI 自动化和增强两类完全对调"的简化说法——"用户下指令、AI 直接执行"这类对话占比在 2025 年 8 月冲到 38.78% 后又回落到 32% 左右。真正发生的不是 AI 取代人，而是劳动结构的重排。</span>
+      <span class="en lang-inactive">Four real-time AEI snapshots point to a specific picture: <strong>a small number of "AI operators" — users who command and manage workflows — are substituting for many workers who previously did the same tasks independently, at roughly a 1-replaces-12 ratio.</strong> A clarification: AEI data does not support the simplified "automation and augmentation just swap places" story — the share of "user instructs, AI executes" conversations spiked to 38.78% in Aug 2025 and then fell back to about 32%. What is actually happening is not "AI replaces humans" but a restructuring of labor.</span>
+    </p>
+  </div>
+
+  <!-- Five-data evidence grid -->
+  <div class="orch-grid">
+    <div class="orch-card">
+      <div class="o-num">01</div>
+      <div class="o-val">58<span class="o-unit">%</span></div>
+      <div class="o-label">
+        <span class="cn">用户主导的对话占比</span>
+        <span class="en lang-inactive">User-led conversations</span>
+      </div>
+      <div class="o-desc">
+        <span class="cn">AEI 6 类协作模式中，"用户给指令、AI 直接执行" + "用户主导迭代、AI 反复修改" = 58%。<strong>AI 自己不会启动工作；最大生产力来自"人 + AI 协作"——人是工作流的命令者，AI 是高速执行者</strong>。</span>
+        <span class="en lang-inactive">Two of AEI's six collaboration modes — "user instructs, AI executes" + "user-led iteration, AI revises" — sum to 58%. <strong>AI does not initiate work on its own; maximum productivity emerges from human + AI collaboration — human as workflow commander, AI as high-speed executor</strong>.</span>
+      </div>
+      <div class="o-source"><span class="src-label">来源 / SOURCE</span><span class="cn">AEI 2026 年 2 月数据 · GLOBAL · 「人机协作模式」分布</span><span class="en lang-inactive">AEI Feb 2026 raw data · GLOBAL · "collaboration mode" distribution</span></div>
+    </div>
+    <div class="orch-card">
+      <div class="o-num">02</div>
+      <div class="o-val">3.41<span class="o-unit">/5</span></div>
+      <div class="o-label">
+        <span class="cn">AI 在工作流里的自主程度</span>
+        <span class="en lang-inactive">AI autonomy in the workflow</span>
+      </div>
+      <div class="o-desc">
+        <span class="cn">Anthropic 把每段对话的"AI 自主度"按 0-5 打分（0 = 全靠人；5 = AI 全权决策）。当前均值 3.41 ≈ 7 成自主，意味着 orchestrator 不需要逐步监督每个动作。</span>
+        <span class="en lang-inactive">Anthropic scores each conversation's "AI autonomy" 0–5 (0 = all human; 5 = AI fully decides). Current mean 3.41 ≈ 70% autonomous — orchestrators don't have to supervise step-by-step.</span>
+      </div>
+      <div class="o-source"><span class="src-label">来源 / SOURCE</span><span class="cn">AEI 2026 年 2 月数据 · GLOBAL · 「AI 自主度」均值</span><span class="en lang-inactive">AEI Feb 2026 raw data · GLOBAL · "AI autonomy" mean</span></div>
+    </div>
+    <div class="orch-card">
+      <div class="o-num">03</div>
+      <div class="o-val">+6.1<span class="o-unit">%</span></div>
+      <div class="o-label">
+        <span class="cn">"一对多"模式 3 个月内的增长率</span>
+        <span class="en lang-inactive">"One-to-many" mode growth in 3 months</span>
+      </div>
+      <div class="o-desc">
+        <span class="cn">单次对话里 orchestrator 同时调度多任务的比例，2025-11 的 9.32% → 2026-02 的 9.89%——3 个月内相对增长 +6.1%。<strong>绝对数字仍小，但增长是 orchestrator 模式渗透的领先指标</strong>：当 1 个用户能在 1 次对话里同时指挥多个任务，他实际上在替代多个并行工作的人。</span>
+        <span class="en lang-inactive">Share of conversations where one orchestrator dispatches multiple parallel tasks: 9.32% (Nov 2025) → 9.89% (Feb 2026) — relative growth of +6.1% in 3 months. <strong>Absolute number is still small, but growth is the leading indicator of orchestrator-mode penetration</strong>: when one user can direct several parallel tasks in a single chat, they substitute for multiple workers running those tasks in parallel.</span>
+      </div>
+      <div class="o-source"><span class="src-label">来源 / SOURCE</span><span class="cn">AEI 2025-11 与 2026-02 数据 · GLOBAL · 「单/多任务」分布</span><span class="en lang-inactive">AEI Nov 2025 + Feb 2026 raw data · GLOBAL · single-vs-multitask distribution</span></div>
+    </div>
+    <div class="orch-card">
+      <div class="o-num">04</div>
+      <div class="o-val">88<span class="o-unit">%</span></div>
+      <div class="o-label">
+        <span class="cn">这些 AI 工作，原本人类能独立完成</span>
+        <span class="en lang-inactive">Work humans could already do alone</span>
+      </div>
+      <div class="o-desc">
+        <span class="cn">Anthropic 标注每段对话「这件事如果没有 AI，人类能不能独立完成」—— 答"能"的占 87.76%。这意味着 AI 在做的绝大多数事直接替换人工，不是创造新岗位。</span>
+        <span class="en lang-inactive">Anthropic flags each conversation: "could a human do this without AI?" — 87.76% say yes. Meaning the vast majority of AI work directly substitutes existing labor, not creates new categories.</span>
+      </div>
+      <div class="o-source"><span class="src-label">来源 / SOURCE</span><span class="cn">AEI 2026 年 2 月数据 · GLOBAL · 「人类是否能独立完成」分布</span><span class="en lang-inactive">AEI Feb 2026 raw data · GLOBAL · "human-only ability" distribution</span></div>
+    </div>
+    <div class="orch-card highlight">
+      <div class="o-num">05</div>
+      <div class="o-val">12.8<span class="o-unit">×</span></div>
+      <div class="o-label">
+        <span class="cn">同一任务的产出速度</span>
+        <span class="en lang-inactive">Same-task throughput ratio</span>
+      </div>
+      <div class="o-desc">
+        <span class="cn">同一项任务：人独立完成平均要 3.06 小时，人 + AI 协作平均仅需 14.3 分钟 = <strong>12.8 倍快</strong>。1 个 orchestrator + AI 的产出 ≈ 12 个独立工作者的产出。</span>
+        <span class="en lang-inactive">Same task: human alone avg 3.06h vs human + AI avg 14.3 min = <strong>12.8× faster</strong>. One orchestrator + AI ≈ 12 independent workers.</span>
+      </div>
+      <div class="o-source"><span class="src-label">来源 / SOURCE</span><span class="cn">AEI 2026 年 2 月数据 · GLOBAL · 「人类独立用时」与「人机协作用时」均值</span><span class="en lang-inactive">AEI Feb 2026 raw data · GLOBAL · "human-only time" + "human-with-AI time" means</span></div>
+    </div>
+  </div>
+
+  <!-- Math block -->
+  <div class="math-block">
+    <div class="math-eyebrow">
+      <span class="cn">把五条合起来看</span>
+      <span class="en lang-inactive">Putting the five together</span>
+    </div>
+    <div class="math-formula">
+      <span class="m-part"><span class="m-emoji">①</span><span class="cn">用户主导 workflow</span><span class="en lang-inactive">User-led workflow</span></span>
+      <span class="m-op">+</span>
+      <span class="m-part"><span class="m-emoji">②</span><span class="cn">AI 高自主</span><span class="en lang-inactive">High AI autonomy</span></span>
+      <span class="m-op">+</span>
+      <span class="m-part"><span class="m-emoji">③</span><span class="cn">多任务并行</span><span class="en lang-inactive">Parallel multitasking</span></span>
+      <span class="m-op">+</span>
+      <span class="m-part"><span class="m-emoji">④</span><span class="cn">替代已有工作</span><span class="en lang-inactive">Substituting existing work</span></span>
+      <span class="m-op">×</span>
+      <span class="m-part big"><span class="m-emoji">⑤</span><strong>12.8×</strong></span>
+      <span class="m-op">=</span>
+      <span class="m-part conclusion"><span class="cn">1 个 orchestrator ≈ 12 个独立工作者</span><span class="en lang-inactive">1 orchestrator ≈ 12 independent workers</span></span>
+    </div>
+  </div>
+
+  <!-- Coface 4-stage time line -->
+  <div class="coface-block">
+    <div class="cf-eyebrow">
+      <span class="cn">参照学界框架 ——「Coface × OEM 把 AI 进展分为 4 个阶段」</span>
+      <span class="en lang-inactive">A Framework from the Field — "Coface × OEM's Four-Stage View of AI Progress"</span>
+    </div>
+    <h3 class="cf-title">
+      <span class="cn">三年走完两阶段——Conductor 阶段最快可能在 12-18 个月内到来</span>
+      <span class="en lang-inactive">Two phases crossed in three years — Conductor may arrive within 12-18 months</span>
+    </h3>
+    <p class="cf-intro">
+      <span class="cn">Coface 和 OEM 2026.4 联合发布 <a href="https://www.coface.com/news-economy-and-insights/ai-and-jobs-mapping-the-new-frontier-of-automation" target="_blank" rel="noopener">"AI and Jobs"</a> 把 AI 进展分为 4 个阶段，每跨一阶段，「1 个操盘手能替代多少人」的倍数都会上一个数量级。<strong>关键不是 AGI 何时到来——而是 Conductor 阶段根本不需要 AGI，只要解决"长记忆 + 完整工作流自主管理"，技术路径已经可见，最快 12-18 个月内就能到达</strong>。</span>
+      <span class="en lang-inactive">Coface and OEM's April 2026 joint paper <a href="https://www.coface.com/news-economy-and-insights/ai-and-jobs-mapping-the-new-frontier-of-automation" target="_blank" rel="noopener">"AI and Jobs"</a> splits AI progress into four phases; each transition raises the "1 operator replaces N workers" multiplier by an order of magnitude. <strong>The point isn't when AGI arrives — it's that the Conductor phase needs no AGI, only "long memory + full workflow autonomy." The technical path is already visible; 12-18 months is plausible</strong>.</span>
+    </p>
+
+    <div class="cf-stages">
+      <div class="cf-stage past">
+        <div class="cf-num">①</div>
+        <div class="cf-label">Copilot</div>
+        <div class="cf-period">
+          <span class="cn">2022.11 - 2024 中</span>
+          <span class="en lang-inactive">Nov 2022 - mid 2024</span>
+        </div>
+        <div class="cf-mult">
+          <span class="cn">乘数 ≈ 1.5x</span>
+          <span class="en lang-inactive">Mult. ≈ 1.5×</span>
+        </div>
+        <div class="cf-desc">
+          <span class="cn">LLM 作为按需工具临时辅助；用户提示、核验并整合 — 生产流程不变。</span>
+          <span class="en lang-inactive">LLM as on-demand assistive tool; user prompts, verifies, integrates — production flow unchanged.</span>
+        </div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-stage current">
+        <div class="cf-num">②</div>
+        <div class="cf-label">Special Agent <span class="cf-tag">现在 / NOW</span></div>
+        <div class="cf-period">
+          <span class="cn">2024 中 - 2026 当下</span>
+          <span class="en lang-inactive">mid-2024 - present</span>
+        </div>
+        <div class="cf-mult">
+          <span class="cn">乘数 ≈ <strong>12.8x</strong></span>
+          <span class="en lang-inactive">Mult. ≈ <strong>12.8×</strong></span>
+        </div>
+        <div class="cf-desc">
+          <span class="cn">Agent 能自主规划、调用工具、执行多步任务，但<strong>依赖工程化 harness</strong>（错误累积、工具调用、协调延迟）。Cowork、Claude Code、OpenClaw 都在这个阶段。</span>
+          <span class="en lang-inactive">Agents plan, invoke tools, execute multi-step tasks, but <strong>depend on engineering harness</strong> (error accumulation, tool calling, coordination latency). Cowork, Claude Code, OpenClaw all live here.</span>
+        </div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-stage near">
+        <div class="cf-num">③</div>
+        <div class="cf-label">Conductor</div>
+        <div class="cf-period">
+          <span class="cn">12-18 个月内</span>
+          <span class="en lang-inactive">12-18 months out</span>
+        </div>
+        <div class="cf-mult">
+          <span class="cn">乘数 ≈ <strong>50x+</strong>（推算）</span>
+          <span class="en lang-inactive">Mult. ≈ <strong>50×+</strong> (est.)</span>
+        </div>
+        <div class="cf-desc">
+          <span class="cn">Agent 获得<strong>长记忆 + 全 workflow 管理</strong>，人工干预降至例外。1 个 orchestrator 可同时管理几十条并行 agent 链——无需 AGI。</span>
+          <span class="en lang-inactive">Agents gain <strong>long memory + full workflow management</strong>; human intervention reduces to exceptions. One orchestrator can manage dozens of parallel agent chains — no AGI required.</span>
+        </div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-stage far">
+        <div class="cf-num">④</div>
+        <div class="cf-label">Prometheus / Superhuman</div>
+        <div class="cf-period">
+          <span class="cn">未知（>3 年？）</span>
+          <span class="en lang-inactive">Unknown (>3 years?)</span>
+        </div>
+        <div class="cf-mult">
+          <span class="cn">乘数 → ∞</span>
+          <span class="en lang-inactive">Mult. → ∞</span>
+        </div>
+        <div class="cf-desc">
+          <span class="cn">4A 普罗米修斯被缚（机器人成熟但因果推理未突破）/ 4B 超人 AI（AGI）。本报告不预测此阶段。</span>
+          <span class="en lang-inactive">4A Prometheus Bound (robotics mature but causal reasoning unbroken) / 4B Superhuman AI (AGI). Not forecasted in this report.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cf-callout">
+      <strong><span class="cn">值得警惕的进度</span><span class="en lang-inactive">Pace worth noting</span>：</strong>
+      <span class="cn">从 ChatGPT 发布（2022.11）到 Special Agent 阶段（OpenClaw / Cowork 2026.1）只用 <strong>3 年 2 个月</strong>。Special Agent → Conductor 不需要新基础研究，只需要工程化解决长记忆 + workflow 调度问题——历史上同等量级的工程化整合通常 12-24 个月。本报告 12 个月预测的下限假设 Conductor 不到来；上限假设它在 H2 2026 局部到来。</span>
+      <span class="en lang-inactive">From ChatGPT release (Nov 2022) to Special Agent (OpenClaw / Cowork, Jan 2026) took only <strong>3 years 2 months</strong>. Special Agent → Conductor requires no new fundamental research — only engineering long memory + workflow orchestration. Historically, comparable engineering integrations take 12-24 months. This report's 12-month lower bound assumes Conductor does not arrive; upper bound assumes partial Conductor arrival in H2 2026.</span>
+    </div>
+  </div>
+
+  <!-- Implications: this is the multiplier in action -->
+  <div class="orch-bridge">
+    <div class="bridge-row">
+      <div class="bridge-left">
+        <div class="b-eyebrow">
+          <span class="cn">这个模型怎么用</span>
+          <span class="en lang-inactive">How to use this model</span>
+        </div>
+        <h3>
+          <span class="cn">每一次节点冲击，都是同一个 12 倍乘数在不同行业的具体表现</span>
+          <span class="en lang-inactive">Every node shock is the same 12× multiplier showing up in a different industry</span>
+        </h3>
+        <p>
+          <span class="cn">每个节点本质上都是某个行业的"AI 操盘手工具"成熟了，让 1 个会操盘的人替代 12 个原本独立干活的人。Conductor 阶段一旦到来，这个倍数会从 12 跃升到 50+——这就是 §8 激进情景的预测会突破历史曲线上限的原因。</span>
+          <span class="en lang-inactive">Every node, at its core, is the moment one industry's "AI operator toolkit" matures, letting 1 person who can run the operation replace 12 who used to work independently. Once Conductor arrives, the multiplier jumps from 12 to 50+ — which is why §8's aggressive-scenario forecasts break above the historical curve's ceiling.</span>
+        </p>
+      </div>
+      <div class="bridge-right">
+        <div class="b-eyebrow">
+          <span class="cn">这个乘数在 4 件真事里的具体样子</span>
+          <span class="en lang-inactive">The multiplier in 4 real events</span>
+        </div>
+        <ul class="bridge-list">
+          <li><strong>Cursor</strong> · <span class="cn">工程师从 IDE 用户变 Claude Code orchestrator → 1 人 ≈ 12 人代码产出 → Cursor 失势</span><span class="en lang-inactive">engineers shift from IDE users to Claude Code orchestrators → 1 person ≈ 12 people of code → Cursor dethroned</span></li>
+          <li><strong>Block 4000</strong> · <span class="cn">CEO Dorsey 公开承认"AI 工具能力增长" → orchestrator 效率涨 → 一半员工不再需要</span><span class="en lang-inactive">CEO Dorsey cites "AI tools' growing capability" → orchestrator efficiency gains → half the workforce no longer needed</span></li>
+          <li><strong>华尔街 200K</strong> · <span class="cn">3-5 年削减集中在 back office / KYC / 客服 — 完美匹配 1:12 可替代工种</span><span class="en lang-inactive">3-5yr cuts concentrate in back-office / KYC / CS — perfect 1:12-substitutable roles</span></li>
+          <li><strong>SaaSpocalypse</strong> · <span class="cn">资本市场 48h 蒸发 $285B → 市场以价格定价"per-seat 模式终结"</span><span class="en lang-inactive">$285B in 48h → markets pricing the end of per-seat licensing</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Caveats -->
+  <p class="micro-note">
+    <span class="cn">需要承认两点局限：① AEI 数据样本来自 Claude.ai 用户，给的是行业方向，不是全球普查；② 12.8× 是单任务速度，组织实际产出会被协调和返工成本稀释——但即使打对折到 5-6×，也足以解释本报告记录的所有节点冲击。</span>
+    <span class="en lang-inactive">Two honest limits: (i) the AEI sample is Claude.ai users, so this gives industry direction, not a global census; (ii) the 12.8× ratio is single-task speed — actual organizational output is diluted by coordination and rework costs, but even halved to 5-6× it suffices to explain every node shock recorded here.</span>
+  </p>
+</div></section>
+
+<!-- ============ §3 客服 ============ -->
+<section class="chapter cs" id="cs"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 03</div>
+    <h2>
+      <span class="cn">客服 ——「AI 替代走完整轮的第一个赛道」</span>
+      <span class="en lang-inactive">Customer Service — "The first sector to run a full cycle of AI substitution"</span>
+    </h2>
+    <div class="node-badge-row">
+      <span class="node-badge">
+        <span class="nb-letter">A</span>
+        <span class="nb-text"><strong>ChatGPT API · GPT-3.5 Turbo</strong> · 2023.3.1</span>
+      </span>
+    </div>
+    <p class="lede">
+      <span class="cn">客服是目前数据最完整、AI 替代走完一整轮最早的赛道。<a href="https://techcrunch.com/2023/03/01/openai-launches-an-api-for-chatgpt-plus-dedicated-capacity-for-enterprise-customers/" target="_blank" rel="noopener">2023 年 3 月 1 日 ChatGPT API 把 GPT-3.5 Turbo 推上商用</a>，每千 token 0.002 美元——意思是 AI 处理一次客服对话的成本，瞬间降到了人工客服的 1/52。然后 18 个月内全球自由职业客服合同量跌了 16%；3 年后曲线在 -28% 附近停下来不再下探。</span>
+      <span class="en lang-inactive">Customer service is the sector with the most complete data and the first to have run a full AI-substitution cycle. <a href="https://techcrunch.com/2023/03/01/openai-launches-an-api-for-chatgpt-plus-dedicated-capacity-for-enterprise-customers/" target="_blank" rel="noopener">On March 1 2023 the ChatGPT API put GPT-3.5 Turbo into commercial use</a> at $0.002 per 1k tokens — meaning the cost of one AI customer-service exchange instantly dropped to about 1/52 of a human agent. In the 18 months that followed, global freelance CS contract volume fell 16%; three years on, the curve settled near −28% and stopped going down.</span>
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">−16<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">自由职业客服合同 (节点 A 后 18 月)</span>
+        <span class="en lang-inactive">Freelance CS contracts (18mo post-node)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry · 5M postings analyzed · 2022.11–2024.2</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">−5<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">高暴露 freelancer 月收入 (Brookings 2025)</span>
+        <span class="en lang-inactive">High-exposure freelancer monthly earnings (Brookings 2025)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.brookings.edu/articles/is-generative-ai-a-job-killer-evidence-from-the-freelance-market/" target="_blank" rel="noopener">Brookings 2025.7 · Upwork data</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5500<span class="sn-unit">→2000</span></div>
+      <div class="stat-label">
+        <span class="cn">Klarna 员工数：当前 → 2030 目标 (-64%)</span>
+        <span class="en lang-inactive">Klarna headcount: now → 2030 target (-64%)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://fortune.com/2025/10/10/klarna-ceo-sebastian-siemiatkowski-halved-workforce-says-tech-ceos-sugarcoating-ai-impact-on-jobs-mass-unemployment-warning/" target="_blank" rel="noopener">Fortune 2025.10 · CEO Siemiatkowski</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">93<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">百信银行客服 AI 替代率<span class="b-class">B 类</span></span>
+        <span class="en lang-inactive">BaiXin Bank CS replaced by AI<span class="b-class">B-class</span></span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <span class="cn">据 CASS 团队企业调研（不可公开 web 核验）</span><span class="en lang-inactive">CASS team field research (not publicly verifiable)</span></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      <span class="cn">节点 A 真正引爆的不是 ChatGPT 本身（2022 年 11 月就发布了），而是它<strong>开放了商用 API</strong>——这才让企业能把 LLM 整合进客服系统大规模跑起来。前 18 个月：自由职业市场最先有反应（<a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry 测到客服合同 -16%</a>；<a href="https://www.brookings.edu/articles/is-generative-ai-a-job-killer-evidence-from-the-freelance-market/" target="_blank" rel="noopener">Brookings 测到高暴露自由职业者收入 -5%</a>）。24-36 个月以后是第二波——企业级 AI 客服系统部署成熟：Intercom Fin 已在 8000+ 家企业每周处理 200 万次客服请求；Klarna 上线 AI 客服后员工从 5500 降到 3300；社科院调研报告<span class="b-class">B 类</span>百信银行 93% 的客服已经由 AI 处理。</span>
+      <span class="en lang-inactive">What Node A actually set off was not ChatGPT itself (released Nov 2022) but its <strong>commercial API release</strong> — that's what let enterprises integrate LLMs into customer-service systems at scale. First 18 months: the freelance market reacted first (<a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry measured CS contracts -16%</a>; <a href="https://www.brookings.edu/articles/is-generative-ai-a-job-killer-evidence-from-the-freelance-market/" target="_blank" rel="noopener">Brookings measured high-exposure freelancer income -5%</a>). The second wave came 24-36 months later as enterprise AI-CS deployments matured: Intercom Fin already handles 2M CS requests per week across 8000+ enterprises; Klarna's headcount fell from 5500 to 3300 after going live with its AI agent; CASS field research<span class="b-class">B-class</span> reports 93% of BaiXin Bank's customer-service is now handled by AI.</span>
+    </p>
+    <p>
+      <span class="cn">节点过去 36 个月以后，曲线在 -28% 附近停下不再下探（看 §1 主图）。这不是 AI 失败——而是<strong>剩下没被替代的那 28% 客服工作</strong>（需要高度同理心的场景、复杂的客户升级、合规性审查、跨系统协调），目前还超出 AI 在当前阶段能可靠覆盖的范围。Klarna 现在的"部分回招人"其实是在测试这条边界：用 Uber 式的灵活雇佣方式把人补回来一部分，但<strong>整体员工数的目标还在继续往下走</strong>，2030 年只留 2000 人——这是把工作分层重新洗牌，不是把 AI 替代倒过来。Klarna CEO Siemiatkowski 自己在 <a href="https://fortune.com/2025/10/10/klarna-ceo-sebastian-siemiatkowski-halved-workforce-says-tech-ceos-sugarcoating-ai-impact-on-jobs-mass-unemployment-warning/" target="_blank" rel="noopener">2025 年 10 月接受 Fortune 采访时</a>明确说：<em>"我们去得太急了，但方向是对的——其他 tech bro 一直在粉饰 AI 对就业的影响。"</em></span>
+      <span class="en lang-inactive">36+ months past the node, the curve has settled around −28% and stopped going further down (see §1 main chart). This isn't AI failing — the <strong>residual 28% of CS work that hasn't been replaced</strong> (high-empathy scenarios, complex customer escalations, compliance review, cross-system coordination) currently exceeds what AI can reliably cover at this stage. Klarna's "partial rehiring" is in fact testing that edge: bringing some people back through Uber-style flexible arrangements, but the <strong>overall headcount target keeps falling</strong>, with only 2000 left by 2030 — this is reshuffling work into tiers, not reversing AI substitution. Klarna's CEO Siemiatkowski himself put it bluntly to <a href="https://fortune.com/2025/10/10/klarna-ceo-sebastian-siemiatkowski-halved-workforce-says-tech-ceos-sugarcoating-ai-impact-on-jobs-mass-unemployment-warning/" target="_blank" rel="noopener">Fortune in October 2025</a>: <em>"We moved too aggressively, but the direction is right — other tech bros have been sugarcoating AI's labor impact."</em></span>
+    </p>
+  </div>
+
+  <div class="ba-block">
+    <div class="ba-eyebrow">
+      <span class="cn">客服赛道的 4 年时间线</span>
+      <span class="en lang-inactive">CS sector 4-year timeline</span>
+    </div>
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th><span class="cn">时点</span><span class="en lang-inactive">Time</span></th>
+          <th><span class="cn">合同/招聘指数</span><span class="en lang-inactive">Index</span></th>
+          <th><span class="cn">事件</span><span class="en lang-inactive">Event</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022 Q4</td><td>0%</td>
+          <td><span class="cn">ChatGPT 发布；企业仍在观望，能力具备但商业化未启动</span><span class="en lang-inactive">ChatGPT released; enterprises observing — capability exists but not commercialized</span></td>
+        </tr>
+        <tr>
+          <td>2023 Q2 (Node A)</td><td>−5%</td>
+          <td><span class="cn">ChatGPT API 上线；早期采用者集成进客服 pipeline；Klarna 启动 AI agent 试点</span><span class="en lang-inactive">ChatGPT API launches; early adopters integrate; Klarna pilots AI agent</span></td>
+        </tr>
+        <tr>
+          <td>2024 Q1</td><td>−16%</td>
+          <td><span class="cn">Bloomberry 报告自由职业客服 -16%；Klarna 已减员至 ~4000；Intercom Fin 推出</span><span class="en lang-inactive">Bloomberry reports -16% freelance CS; Klarna headcount ~4000; Intercom Fin launches</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q1</td><td>−22%</td>
+          <td><span class="cn">百信 93% / 韩束 95% 等头部企业完成 80%+ 替代<span class="b-class">B 类</span>；Klarna 至 3422 (-40%)</span><span class="en lang-inactive">BaiXin 93% / Hansu 95% reach 80%+ replacement<span class="b-class">B-class</span>; Klarna at 3422 (-40%)</span></td>
+        </tr>
+        <tr class="ba-now">
+          <td>2026 Q1 (now)</td><td>−28%</td>
+          <td><span class="cn">曲线进入 plateau；Klarna 公布 → 2000 by 2030 目标；CEO 警告 tech bro "在粉饰"</span><span class="en lang-inactive">Curve plateaus; Klarna announces 2000-by-2030 target; CEO warns tech bros are "sugarcoating"</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="orch-row">
+    <div class="orch-row-left">
+      <div>
+        <div class="orch-row-tag">
+          <span class="cn">这一行业的 12 倍乘数长什么样</span>
+          <span class="en lang-inactive">What the 12.8× multiplier looks like here</span>
+        </div>
+        <div class="orch-row-mult">≈ 1 : 12</div>
+      </div>
+    </div>
+    <div class="orch-row-body">
+      <p>
+        <span class="cn"><strong>1 个客服运营经理 + 1 套 AI 客服平台</strong>（Intercom Fin / Klarna 的 AI 客服 / 百信银行智能客服）<strong>≈ 12 个传统一线客服</strong>。消失的不是"客服"这个职业，而是 N 个一线岗位——运营经理这个角色被保留下来，并扩展成"指挥 AI 客服"的角色，工资和责任都上去了。曲线在 -28% 停下来，反映的是剩下那 28% 的活（需要高度同理心、复杂合规、跨系统协调）目前 AI 还做不到——这个边界要等 Conductor 阶段才会被突破。</span>
+        <span class="en lang-inactive"><strong>1 CS operations manager + 1 AI customer-service platform</strong> (Intercom Fin / Klarna's AI CS / BaiXin's smart CS) <strong>≈ 12 traditional first-line agents</strong>. What disappears is not the "CS profession" but N first-line positions — the operations-manager role survives and expands into "directing the AI CS," with higher pay and more responsibility. The curve stopping at −28% reflects the residual 28% of work (high-empathy scenarios, complex compliance, cross-system coordination) that AI currently cannot do — that boundary is what the Conductor phase is expected to break.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §4 美术设计 ============ -->
+<section class="chapter art" id="art"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 04</div>
+    <h2>
+      <span class="cn">美术设计 ——「同一行业内部上下分化的样板」</span>
+      <span class="en lang-inactive">Art &amp; Design — "The textbook case of one industry splitting top from bottom"</span>
+    </h2>
+    <div class="node-badge-row">
+      <span class="node-badge">
+        <span class="nb-letter">B</span>
+        <span class="nb-text"><strong>ControlNet + ComfyUI 生产管线</strong> · 2023.2.10</span>
+      </span>
+    </div>
+    <p class="lede">
+      <span class="cn">美术设计是同一个行业内部上下分化最清楚的赛道。<a href="https://en.wikipedia.org/wiki/Stable_Diffusion" target="_blank" rel="noopener">2022 年 8 月 22 日 Stable Diffusion 开源</a>之后"AI 生图"有了能力，但结果不可控、没法用于商业生产（圈内戏称为"炼丹"）；直到 <a href="https://arxiv.org/abs/2302.05543" target="_blank" rel="noopener">2023 年 2 月 10 日 ControlNet 论文 + 开源</a>加上同期 <a href="https://en.wikipedia.org/wiki/ComfyUI" target="_blank" rel="noopener">ComfyUI</a> 的节点式工作流上线，才真正组成可复现的商业生产线——这才是节点 B。随后 6 个月内自由职业图形设计需求跌了 17%（<a href="https://c3.unu.edu/blog/the-ai-job-shift-new-study-reveals-immediate-impact-on-freelance-market" target="_blank" rel="noopener">UNU 分析 140 万岗位</a>），但同期"全职图形设计岗位"反而涨了 8%——底层外包被吃掉，高端品牌策略反而扩张。</span>
+      <span class="en lang-inactive">Art &amp; design is the sector where the within-industry split between top and bottom shows up most cleanly. After <a href="https://en.wikipedia.org/wiki/Stable_Diffusion" target="_blank" rel="noopener">Stable Diffusion went open source on Aug 22 2022</a>, "AI image generation" was possible but uncontrollable, unusable for commercial production (the community called it "alchemy"). Only with <a href="https://arxiv.org/abs/2302.05543" target="_blank" rel="noopener">ControlNet's paper + release on Feb 10 2023</a> plus <a href="https://en.wikipedia.org/wiki/ComfyUI" target="_blank" rel="noopener">ComfyUI</a>'s node-based workflow did it become a reproducible commercial pipeline — that's Node B. Within six months freelance graphic-design demand fell 17% (<a href="https://c3.unu.edu/blog/the-ai-job-shift-new-study-reveals-immediate-impact-on-freelance-market" target="_blank" rel="noopener">UNU analyzed 1.4M postings</a>), while in the same period full-time graphic-design postings rose 8% — the bottom outsourced out, the top in brand strategy expanded.</span>
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">−17<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">自由职业图形设计需求 (节点 B 后 6 月)</span>
+        <span class="en lang-inactive">Freelance graphic-design demand (6mo post-node)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://c3.unu.edu/blog/the-ai-job-shift-new-style-reveals-immediate-impact-on-freelance-market" target="_blank" rel="noopener">UNU 2023 · 1.4M postings · 2021.7-2023.7</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">+8<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">全职图形设计岗位 (同期内部分化)</span>
+        <span class="en lang-inactive">Full-time graphic-design postings (intra-occupation split)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry 2024 · same period</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">32<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">英国插画师因 AI 失去工作 / 平均损失 £9,262</span>
+        <span class="en lang-inactive">UK illustrators losing work to AI / avg loss £9,262</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://80.lv/articles/a-third-of-translators-a-quarter-of-illustrators-have-lost-their-jobs-to-ai" target="_blank" rel="noopener">Association of Illustrators (AOI) 2025 survey</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">−1/3</div>
+      <div class="stat-label">
+        <span class="cn">华盛顿邮报编辑部 (2026.2 一次性裁员 300+)</span>
+        <span class="en lang-inactive">Washington Post newsroom (300+ in single round, Feb 2026)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.poynter.org/business-work/2026/washington-post-layoffs-sports-books-metro/" target="_blank" rel="noopener">Poynter 2026.2 · Editor Matt Murray quote</a></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      <span class="cn">节点 B 真正引爆的不是 SD 本身，而是 <strong>ControlNet + ComfyUI 组成的可控生产 pipeline</strong>——它让"AI 生图"从"炼丹"变成可复现工业流程。UNU 在 2021.7–2023.7 这两年内对 1.4M 自由职业岗位的研究显示：综合 -17.01% / 图形设计 -18.49% / 3D 建模 -15.57%。但与之并行，<a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry 同期数据显示全职图形设计岗位反而 +8%</a>——这是 orchestrator 模型在职业内部的"剪刀差"形态：低端 outsource 被吞噬，高端品牌策略 + UI/UX 反而扩张。社科院调研发现广告营销公司蓝色光标的 AI 内容已过半，砍掉 90% 初级外包<span class="b-class">B 类</span>。</span>
+      <span class="en lang-inactive">What Node B really triggered was not SD itself but the <strong>controllable production pipeline of ControlNet + ComfyUI</strong> — it turned "AI image generation" from alchemy into a reproducible industrial workflow. UNU's two-year study (2021.7-2023.7) of 1.4M freelance postings showed: composite -17.01% / graphic design -18.49% / 3D modeling -15.57%. But concurrently, <a href="https://dollarsprout.com/freelance-writing-jobs-down-33-since-chatgpt-release-study-finds/" target="_blank" rel="noopener">Bloomberry data show full-time graphic-design postings actually rose +8%</a> — the "scissor gap" form of the orchestrator model inside a single occupation: low-end outsourcing devoured, high-end brand strategy and UI/UX expanding instead. CASS field research found Chinese ad firm BlueFocus's AI-generated content already exceeds half, cutting 90% of junior outsourcing<span class="b-class">B-class</span>.</span>
+    </p>
+    <p>
+      <span class="cn">3 年之后，<a href="https://beda.org/news/take-aways-for-design-from-the-wef-future-of-jobs-2025-report/" target="_blank" rel="noopener">WEF 在 2025 年的《未来就业报告》中把图形设计列入"下降最快的 11 个职业"</a>——比 2023 年那份报告里的"高风险"评级又升了一档，相当于 WEF 这种慢半拍的机构终于追上了一线感受。这种"上下分化"也对应 BCG 2026 年 4 月报告 <em>"AI Will Reshape More Jobs Than It Replaces"</em> 给出的分类："12% 取代 / 12% 分化 / 14% 再平衡"——分化不是平均的，它直接抬高了新人进入门槛（不会用 AI 流水线 = 找不到活）。媒体行业整个 2025 年裁了 17,000+ 人 / 同比 +18%；<a href="https://www.poynter.org/business-work/2026/washington-post-layoffs-sports-books-metro/" target="_blank" rel="noopener">华盛顿邮报 2026 年 2 月一次性砍掉编辑部三分之一（300+ 人）</a>，主编 Matt Murray 直接说 <em>"自然搜索流量过去 3 年掉了将近一半"</em>——根本原因是 <a href="https://www.playwire.com/blog/wapo-cuts-300-staff-as-ai-search-erodes-publisher-traffic" target="_blank" rel="noopener">Google AI Overviews 把出版商的点击量砍掉了 30%-55%</a>（极端情况下 SearchEngineWorld 看到 -64%）。<strong>WaPo 当然不能只怪 AI</strong>——它本身长期亏损（2022 -$100M / 2023 -$77M）+ Bezos 政治压力 + 编辑部内乱多重叠加；但 Google AIO 让流量结构性掉一半这件事是直接、可量化、绕不过去的 AI 因素。这是 AI 操盘手模式在更上一层（搜索分发这层平台）的版本：<strong>1 个 Google AIO 这种平台型操盘手，就替代了 N 家媒体原本的导流位置</strong>——操盘手既可以替代个体劳动力，也可以是平台层把整个上游环节吃掉。</span>
+      <span class="en lang-inactive">Three years on, <a href="https://beda.org/news/take-aways-for-design-from-the-wef-future-of-jobs-2025-report/" target="_blank" rel="noopener">WEF's 2025 Future of Jobs Report listed graphic design among the 11 fastest-declining occupations</a> — an upgrade from the 2023 report's "high risk" rating, meaning even slow-moving bodies like WEF have caught up to what people on the ground had been seeing. This "split top from bottom" pattern also matches BCG's April 2026 report <em>"AI Will Reshape More Jobs Than It Replaces"</em> classification — "12% replaced / 12% bifurcated / 14% rebalanced." Bifurcation isn't even-handed: it sharply raises the entry bar (can't use the AI pipeline = can't get hired). Media-industry layoffs totaled 17,000+ across 2025 (+18% YoY); <a href="https://www.poynter.org/business-work/2026/washington-post-layoffs-sports-books-metro/" target="_blank" rel="noopener">the Washington Post cut a third of its newsroom (300+) in a single round in February 2026</a>, with Executive Editor Matt Murray flatly stating <em>"organic search has fallen by nearly half in the last three years"</em> — the root cause being <a href="https://www.playwire.com/blog/wapo-cuts-300-staff-as-ai-search-erodes-publisher-traffic" target="_blank" rel="noopener">Google AI Overviews dropping publisher click-through 30-55%</a> (extreme case: SearchEngineWorld at -64%). <strong>Of course WaPo's case can't be blamed on AI alone</strong> — it has long-running losses (2022 -$100M / 2023 -$77M) + Bezos political pressure + newsroom turmoil all overlapping; but Google AIO halving organic traffic is a direct, quantifiable AI factor that can't be sidestepped. This is the AI-operator pattern one layer up — at the search-distribution platform: <strong>one Google-AIO-style platform operator substitutes for the traffic-routing role of N media organizations</strong> — operators replace individual labor but also let platforms swallow entire upstream slots.</span>
+    </p>
+  </div>
+
+  <div class="ba-block">
+    <div class="ba-eyebrow">
+      <span class="cn">美术设计赛道的 4 年时间线</span>
+      <span class="en lang-inactive">Art &amp; Design 4-year timeline</span>
+    </div>
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th><span class="cn">时点</span><span class="en lang-inactive">Time</span></th>
+          <th><span class="cn">指数</span><span class="en lang-inactive">Index</span></th>
+          <th><span class="cn">事件</span><span class="en lang-inactive">Event</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022 Q3 (pre-SD)</td><td>0%</td>
+          <td><span class="cn">Stable Diffusion 尚未发布</span><span class="en lang-inactive">Stable Diffusion not yet released</span></td>
+        </tr>
+        <tr>
+          <td>2022 Q3 (SD released)</td><td>−1%</td>
+          <td><span class="cn">SD 2022.8.22 开源；能力具备但商业不可控（俗称"炼丹"）</span><span class="en lang-inactive">SD 2022.8.22 goes open source; capability exists but commercially uncontrollable</span></td>
+        </tr>
+        <tr>
+          <td>2023 Q1 (Node B)</td><td>−3%</td>
+          <td><span class="cn">ControlNet 2023.2.10 + ComfyUI pipeline 上线 → 商业级可复现生产</span><span class="en lang-inactive">ControlNet (Feb 10 2023) + ComfyUI pipeline → commercial reproducible production</span></td>
+        </tr>
+        <tr>
+          <td>2023 Q3 (+6mo)</td><td>−17%</td>
+          <td><span class="cn">UNU 自由职业研究 cut-off：综合 -17%；同期 Bloomberry 全职 +8% 形成"剪刀差"</span><span class="en lang-inactive">UNU freelance study cut-off: -17% composite; Bloomberry full-time +8% in parallel forms the "scissor gap"</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q4</td><td>−28%</td>
+          <td><span class="cn">媒体娱乐 2025 累计裁员 17,000+ / +18% YoY；WEF 2025 报告将图形设计列入 11th 最快下降</span><span class="en lang-inactive">Media-ent layoffs 17,000+ / +18% YoY in 2025; WEF 2025 ranks graphic design 11th fastest-declining</span></td>
+        </tr>
+        <tr class="ba-now">
+          <td>2026 Q1 (now)</td><td>−32%</td>
+          <td><span class="cn">WaPo -1/3 newsroom；UK 插画师 32% 失业；曲线进入 plateau</span><span class="en lang-inactive">WaPo -1/3 newsroom; 32% UK illustrators displaced; curve plateaus</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="orch-row">
+    <div class="orch-row-left">
+      <div>
+        <div class="orch-row-tag">
+          <span class="cn">这一行业的 12 倍乘数长什么样</span>
+          <span class="en lang-inactive">What the 12.8× multiplier looks like here</span>
+        </div>
+        <div class="orch-row-mult">≈ 1 : 12</div>
+      </div>
+    </div>
+    <div class="orch-row-body">
+      <p>
+        <span class="cn"><strong>1 个会用 AI 流水线的资深设计总监 + Midjourney/SD/ComfyUI ≈ 12 个原本的初级插画师 / 外包</strong>。结果：资深的工资 +8%（市场对"会调 AI 工具链的资深人"溢价），初级 -32%（外包通道关闭）。媒体行业还有一个更上一层的版本：<strong>Google 一个 AIO 系统</strong>（搜索结果直接由 AI 生成）<strong>≈ N 家出版商原本的导流权</strong>——AI 操盘手既可以替代个体劳动力，也可以是平台层把上游环节整个吃掉。</span>
+        <span class="en lang-inactive"><strong>1 senior design director who knows the AI pipeline + Midjourney/SD/ComfyUI ≈ 12 junior illustrators / outsource</strong>. Result: senior pay +8% (market premium on "knows the AI toolchain"), juniors -32% (outsourcing channel closed). Media has an additional version one layer up: <strong>1 Google AIO system</strong> (search results generated directly by AI) <strong>≈ the traffic-routing role of N publishers</strong> — AI operators replace individual labor and also let platforms swallow whole upstream slots.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §5 编程 ============ -->
+<section class="chapter code" id="code"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 05</div>
+    <h2>
+      <span class="cn">编程 ——「连续三个节点，工程师圈子已经倒戈」</span>
+      <span class="en lang-inactive">Programming — "Three nodes in a row, and the engineering crowd has already switched sides"</span>
+    </h2>
+    <div class="node-badge-row">
+      <span class="node-badge">
+        <span class="nb-letter">D</span>
+        <span class="nb-text"><strong>Claude Code 早期</strong> · 2024-2025</span>
+      </span>
+      <span class="node-badge">
+        <span class="nb-letter">E</span>
+        <span class="nb-text"><strong>Claude Christmas · Opus 4.5 + Claude Code 新版</strong> · 2025.11.24</span>
+      </span>
+      <span class="node-badge">
+        <span class="nb-letter">E2</span>
+        <span class="nb-text"><strong>Opus 4.6 · agent teams</strong> · 2026.2.5</span>
+      </span>
+    </div>
+    <p class="lede">
+      <span class="cn">编程这条赛道的特殊性在于 <strong>3 个关键节点在 18 个月内连续触发</strong>——AI 操盘手模式跑得最快的就是这里。一年前还被工程师视为标配的 Cursor，正在被 Claude Code 取代：<a href="https://medium.com/utopian/cursors-dead-and-claude-code-killed-it-a4e042af4c53" target="_blank" rel="noopener">Medium 上"Cursor's Dead"病毒级传播</a>、<a href="https://news.ycombinator.com/item?id=47860828" target="_blank" rel="noopener">Hacker News 高赞贴说 "Cursor 基本过时了"</a>、Chamath 公开切换、Cursor 自家工程负责人也已离职。但 Cursor 账面收入还在涨，ARR 报到 $2B——<strong>工程师圈子已经转向，企业账面只是反应慢</strong>，是企业采购周期 12-18 个月的滞后惯性在撑着。</span>
+      <span class="en lang-inactive">What's special about programming is that <strong>3 key nodes fired in a row within 18 months</strong> — this is where the AI-operator pattern runs fastest. Cursor, the default tool for engineers a year ago, has been "taken down" by Claude Code: <a href="https://medium.com/utopian/cursors-dead-and-claude-code-killed-it-a4e042af4c53" target="_blank" rel="noopener">"Cursor's Dead" went viral on Medium</a>, <a href="https://news.ycombinator.com/item?id=47860828" target="_blank" rel="noopener">a top Hacker News thread declared Cursor "basically obsolete"</a>, Chamath publicly switched, and Cursor's own Head of Engineering jumped ship. Yet Cursor's books still show growth at $2B ARR — <strong>engineers voted with their feet long ago; the company's books are just slow to react</strong>, propped up by the 12-18-month lag of enterprise procurement cycles.</span>
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">−80<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">印度 IT fresher hiring (FY22 60万 → FY25 12万)</span>
+        <span class="en lang-inactive">Indian IT fresher hiring (FY22 600k → FY25 120k)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.businesstoday.in/technology/story/indian-its-fresher-hiring-slump-signals-structural-shift-not-just-slowdown-521374-2026-03-21" target="_blank" rel="noopener">BusinessToday 2026.3.21 · TCS -23K</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">−32<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">英国初级开发岗位 (since 2022.11)</span>
+        <span class="en lang-inactive">UK junior developer positions (since 2022.11)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://itbrief.co.uk/story/uk-entry-level-tech-jobs-drop-by-32-amid-chatgpt-rise" target="_blank" rel="noopener">IT Brief UK · 2025</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4000</div>
+      <div class="stat-label">
+        <span class="cn">Block 单次裁员 = 40% 员工 (2026.2.26)</span>
+        <span class="en lang-inactive">Block single-round layoffs = 40% workforce (Feb 26 2026)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/" target="_blank" rel="noopener">Fortune 2026.2.27</a> · CEO Dorsey</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">"solved"</div>
+      <div class="stat-label">
+        <span class="cn">Boris Cherny: "coding is largely solved" / "software engineer 这个 title 年内消失"</span>
+        <span class="en lang-inactive">Boris Cherny: "coding is largely solved" / "software engineer title will disappear within year"</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens" target="_blank" rel="noopener">Lenny's Podcast 2026.2.19</a></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      <span class="cn">节点 D（2024-2025 早期 Claude Code research preview）只是"copilot 升级版"，影响有限。真正引爆的是节点 E：<strong>2025.11.24 Opus 4.5 + Claude Code 新版组成"自主 agent"</strong>——它能在无监督状态下构建功能、运行测试、修复 bug 并自我检查。<a href="https://sfstandard.com/2026/02/19/ai-writes-code-now-s-left-software-engineers/" target="_blank" rel="noopener">SF Standard 2026.2.19 报道</a>显示硅谷工程师将这一时刻命名为 "Claude Christmas"——多位受访者描述其心理冲击 <em>"比 ChatGPT 发布更大"</em>。3 个月后节点 E2：<strong>2026.2.5 Opus 4.6 加 "agent teams" 功能</strong>，让 1 个 orchestrator 同时管理多个 Claude Code 实例并行工作。</span>
+      <span class="en lang-inactive">Node D (2024-2025 early Claude Code research preview) was merely "Copilot upgraded" with limited impact. What actually triggered the steep drop was Node E: <strong>2025.11.24 Opus 4.5 + the new Claude Code together formed an "autonomous agent"</strong> — it could build features, run tests, fix bugs and self-verify without supervision. <a href="https://sfstandard.com/2026/02/19/ai-writes-code-now-s-left-software-engineers/" target="_blank" rel="noopener">SF Standard's 2026.2.19 report</a> shows Silicon Valley engineers christened the moment "Claude Christmas" — multiple interviewees described its psychological impact as <em>"bigger than ChatGPT's release"</em>. Three months later came Node E2: <strong>2026.2.5 Opus 4.6 added the "agent teams" feature</strong>, letting one orchestrator manage multiple Claude Code instances in parallel.</span>
+    </p>
+    <p>
+      <span class="cn">细看 Cursor 这个案例的更多证据：<a href="https://fortune.com/2026/03/21/cursor-ceo-michael-truell-ai-coding-claude-anthropic-venture-capital/" target="_blank" rel="noopener">Fortune 2026 年 3 月报道</a>显示，Cursor 投资人已经承认自己组合里的 startup 在切换走，Cursor 自家工程负责人也辞职了。但同期 Cursor 账面 ARR 仍报到 $2B，60% 来自企业客户——意思是企业续约决策周期慢，2025 年第四季度签的合同还在执行；2026-2027 续约时这些数字才会真正反映工程师的判断。<strong>所以看 Cursor 不能只看营收数字，要听工程师圈子的声音——他们才是实际用产品的人</strong>。这也是本报告反复强调的方法论：当账面数字和一线感受冲突时，一线感受领先 12-18 个月。当然反过来也要承认：Anthropic 那份 132 名工程师的内部研究<a href="https://www.interviewquery.com/p/anthropic-ai-skill-erosion-report" target="_blank" rel="noopener">同时记录了 skill erosion</a>——一名工程师明确说 <em>"我 70%+ 的工作变成审改 AI 的输出，不再是自己写"</em>；<a href="https://fortune.com/2026/04/24/anthropic-engineering-missteps-claude-code-performance-decline-user-backlash/" target="_blank" rel="noopener">Fortune 2026 年 4 月也报道 Claude Code 出现过持续一个月的性能下降 + 用户反弹</a>——工具本身也不是单调向上。</span>
+      <span class="en lang-inactive">More evidence on Cursor: <a href="https://fortune.com/2026/03/21/cursor-ceo-michael-truell-ai-coding-claude-anthropic-venture-capital/" target="_blank" rel="noopener">Fortune's March 2026 report</a> says Cursor's own investors now admit startups in their portfolios are switching away, and Cursor's own Head of Engineering has resigned. Yet over the same period Cursor's book ARR still reads $2B, 60% from enterprise — meaning enterprise renewal cycles are slow; contracts signed in Q4 2025 are still running, and only at 2026-27 renewals will those numbers actually reflect what the engineers think. <strong>So you can't read Cursor off the revenue line alone — you have to listen to the engineering crowd, since they're the people actually using the product</strong>. This is the methodological point the report keeps making: when book numbers and the on-the-ground feel diverge, the on-the-ground feel leads by 12-18 months. The reverse should also be acknowledged: Anthropic's 132-engineer internal study <a href="https://www.interviewquery.com/p/anthropic-ai-skill-erosion-report" target="_blank" rel="noopener">simultaneously recorded skill erosion</a> — one engineer flatly said <em>"70%+ of my work has shifted to reviewing AI output rather than writing it myself"</em>; <a href="https://fortune.com/2026/04/24/anthropic-engineering-missteps-claude-code-performance-decline-user-backlash/" target="_blank" rel="noopener">Fortune in April 2026 also reported a monthlong performance decline in Claude Code with user backlash</a> — the tool itself isn't monotonically improving either.</span>
+    </p>
+    <p>
+      <span class="cn">印度外包是这个模式在"新人通道"上的极端案例：<a href="https://www.businesstoday.in/technology/story/indian-its-fresher-hiring-slump-signals-structural-shift-not-just-slowdown-521374-2026-03-21" target="_blank" rel="noopener">应届生招聘从 FY22 的 60 万跌到 FY25 的 12 万 = -80%</a>，TCS 一家在 FY26 净裁 23,000 人，Wipro 的 offer 推迟了 7 个月。<strong>要承认：这个 -80% 不能 100% 算到 AI 头上</strong>——它叠加了 AI + 全球 IT 周期下行 + 印度行业自身的结构调整，AI 大概占 30-50%。但"资深工程师 + Claude Code 不需要这么多新人陪跑"这个底层逻辑就是本报告说的 1 顶 12 模型——<strong>大公司原本靠"招大量应届生培训"补充人才的通道，正在被这种新模式关闭</strong>。Block 在 2026 年 2 月 26 日一次裁掉 4000 人 = 40% 员工，CEO Dorsey 公开把原因归到 <em>"AI 工具能力增长"</em>——但 <a href="https://www.bloomberg.com/news/articles/2026-03-01/jack-dorsey-s-4-000-job-cuts-at-block-arouse-suspicions-of-ai-washing" target="_blank" rel="noopener">Bloomberg 同期报道</a>引用 Oxford Economics 1 月报告，指出不少 CEO 把"AI"当作简化叙事，掩盖历史超额招聘和战略失误，所谓 AI-washing。同样要带着保留态度看 Boris Cherny 那个"软件工程师这个职位年内消失"的强声明：他是 Claude Code 创建者，存在明显利益相关。</span>
+      <span class="en lang-inactive">Indian outsourcing is the extreme case of this pattern hitting the "new-hire pipeline": <a href="https://www.businesstoday.in/technology/story/indian-its-fresher-hiring-slump-signals-structural-shift-not-just-slowdown-521374-2026-03-21" target="_blank" rel="noopener">fresher hiring fell from FY22's 600K to FY25's 120K = -80%</a>, TCS alone cut 23,000 net positions in FY26, and Wipro deferred offer letters by 7 months. <strong>Honest caveat: that -80% can't all be put on AI</strong> — it stacks AI + the global IT down-cycle + India's industry-internal restructuring, and AI's share is probably 30-50%. But the underlying logic "senior engineers + Claude Code don't need this many freshers walking alongside them" maps directly onto the 1-replaces-12 model in this report — <strong>the channel by which large companies used to refill talent ("hire huge graduate cohorts and train them") is being closed by this new mode of working</strong>. Block laid off 4,000 in a single round on Feb 26 2026 = 40% of staff, with CEO Dorsey publicly attributing it to <em>"the growing capability of AI tools"</em> — but <a href="https://www.bloomberg.com/news/articles/2026-03-01/jack-dorsey-s-4-000-job-cuts-at-block-arouse-suspicions-of-ai-washing" target="_blank" rel="noopener">Bloomberg's same-period report</a> cites a January Oxford Economics paper noting many CEOs use "AI" as a simplifying narrative to mask historical over-hiring and strategic missteps — so-called AI-washing. The same skepticism should be applied to Boris Cherny's strong claim that "the software-engineer title will disappear within a year": he created Claude Code, so the conflict of interest is plain.</span>
+    </p>
+  </div>
+
+  <div class="ba-block">
+    <div class="ba-eyebrow">
+      <span class="cn">编程赛道的 4 年时间线</span>
+      <span class="en lang-inactive">Programming sector 4-year timeline</span>
+    </div>
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th><span class="cn">时点</span><span class="en lang-inactive">Time</span></th>
+          <th><span class="cn">指数</span><span class="en lang-inactive">Index</span></th>
+          <th><span class="cn">事件</span><span class="en lang-inactive">Event</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022-2023</td><td>0%</td>
+          <td><span class="cn">LLM 编程能力具备但只能作为 IDE 内辅助 (Copilot 阶段)</span><span class="en lang-inactive">LLM coding capability exists but limited to IDE assistance (Copilot stage)</span></td>
+        </tr>
+        <tr>
+          <td>2024 Q2 (Node D)</td><td>−1%</td>
+          <td><span class="cn">Anthropic Claude Code research preview 上线；早期采用者尝试自主编程</span><span class="en lang-inactive">Anthropic Claude Code research preview launches; early adopters trial autonomous coding</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q3</td><td>−5%</td>
+          <td><span class="cn">SF Standard "AI 杀死入门级岗位" 报道；22-25 岁开发者就业 -20%</span><span class="en lang-inactive">SF Standard reports "AI killing entry-level jobs"; 22-25-year-old dev employment -20%</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q4 (Node E)</td><td>−8%</td>
+          <td><span class="cn">2025.11.24 Claude Christmas (Opus 4.5 + Claude Code 新版) 引爆"自主 agent" 时代</span><span class="en lang-inactive">2025.11.24 Claude Christmas (Opus 4.5 + new Claude Code) ignites the "autonomous agent" era</span></td>
+        </tr>
+        <tr>
+          <td>2026 Q1 (Node E2)</td><td>−15%</td>
+          <td><span class="cn">2026.2.5 Opus 4.6 + agent teams；2.26 Block 4000 人裁员；3.21 Fortune 报道 Cursor decoupling</span><span class="en lang-inactive">2026.2.5 Opus 4.6 + agent teams; 2.26 Block lays off 4000; 3.21 Fortune reports Cursor decoupling</span></td>
+        </tr>
+        <tr class="ba-now">
+          <td>2026 Q2 (now)</td><td>−20%</td>
+          <td><span class="cn">印度外包累计 fresher -80%；工程师圈子普遍认定 Cursor 已被 Claude Code 抛在身后</span><span class="en lang-inactive">India outsourcing cumulative fresher -80%; engineering community consensus: Cursor has been left behind by Claude Code</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="orch-row">
+    <div class="orch-row-left">
+      <div>
+        <div class="orch-row-tag">
+          <span class="cn">这一行业的 12 倍乘数长什么样</span>
+          <span class="en lang-inactive">What the 12.8× multiplier looks like here</span>
+        </div>
+        <div class="orch-row-mult">≈ 1 : 12</div>
+      </div>
+    </div>
+    <div class="orch-row-body">
+      <p>
+        <span class="cn"><strong>1 个资深工程师 / 架构师 + Claude Code 一组 agent ≈ 12 个初级工程师</strong>。消失的不是"程序员"这个职业，而是 N 个初级编程岗位 + 大公司原本的新人培训通道（印度应届生 -80% 就是这个机制走到极端的样子）。Boris Cherny 说的 "builder" 角色，本质上就是 AI 操盘手——他"软件工程师这个职位年内消失"这种话是不是准确，要等数据来验证；但<strong>方向</strong>跟 §2 的 12 倍乘数模型、跟节点 E2 的 "agent teams" 是完全一致的：传统那种"按规模招初级工程师"的做法正在被结构性关掉。</span>
+        <span class="en lang-inactive"><strong>1 senior engineer / architect + a team of Claude Code agents ≈ 12 junior engineers</strong>. What disappears isn't "programmer" as a profession but N junior positions plus the new-hire training pipeline large companies used to rely on (the -80% fresher hiring in India is this mechanism in its extreme form). The "builder" role Boris Cherny describes is essentially the AI operator — whether his stronger claim that "the software-engineer title will disappear within a year" turns out accurate is for the data to confirm, but the <strong>direction</strong> is fully consistent with §2's 12× multiplier and Node E2's "agent teams": the traditional practice of "hire juniors at scale" is being structurally shut down.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §6 影视 ============ -->
+<section class="chapter vid" id="vid"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 06</div>
+    <h2>
+      <span class="cn">影视 / 视频 ——「节点刚刚突破，未来 12 个月最值得观察」</span>
+      <span class="en lang-inactive">Film &amp; Video — "The node just fired; the next 12 months are the ones to watch"</span>
+    </h2>
+    <div class="node-badge-row">
+      <span class="node-badge">
+        <span class="nb-letter">G1</span>
+        <span class="nb-text"><strong>Seedance 1.0</strong> · 2025.6</span>
+      </span>
+      <span class="node-badge">
+        <span class="nb-letter">G2</span>
+        <span class="nb-text"><strong>Seedance 2.0 · 多模态联合架构</strong> · 2026.2.12</span>
+      </span>
+    </div>
+    <p class="lede">
+      <span class="cn">影视是节点刚刚突破的赛道。OpenAI 的 Sora / Sora 2 引发了广泛行业恐慌，但因为商业访问受限 + OpenAI 自己没有视频分发渠道，实际就业冲击大多停留在"预期层面"。真正在中国大规模落地的是字节跳动的 <a href="https://techcrunch.com/2026/03/26/bytedances-new-ai-video-generation-model-dreamina-seedance-2-0-comes-to-capcut/" target="_blank" rel="noopener">Seedance</a>——2025 年 6 月 Seedance 1.0 上线，2026 年 2 月 12 日 Seedance 2.0 集成"导演级镜头控制 + 自动剪辑"，把原本需要导演、摄影、剪辑协作完成的工作，压缩成单人 prompt 流程。媒体行业 2025 年累计裁员 17,000+ 人 / 同比 +18%；接下来 6-12 个月，影视会经历一段类似美术 2023-2024 的"上下分化"。</span>
+      <span class="en lang-inactive">Video is the sector where the node has just fired. OpenAI's Sora / Sora 2 caused widespread industry panic, but because of limited commercial access and OpenAI's lack of a video distribution channel, the actual employment impact has stayed largely "in anticipation." The model that has actually rolled out at scale (in China) is ByteDance's <a href="https://techcrunch.com/2026/03/26/bytedances-new-ai-video-generation-model-dreamina-seedance-2-0-comes-to-capcut/" target="_blank" rel="noopener">Seedance</a> — Seedance 1.0 in June 2025, then Seedance 2.0 on Feb 12 2026 integrating "director-level camera control + automatic editing," compressing what used to require a director, cinematographer, and editor working together into a single-person prompt flow. Media-industry layoffs in 2025 totaled 17,000+ / +18% YoY; over the next 6-12 months, video will go through something like the 2023-2024 split that art &amp; design experienced.</span>
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">2026<span class="sn-unit">.2.12</span></div>
+      <div class="stat-label">
+        <span class="cn">Seedance 2.0 发布 · 字节跳动多模态联合架构</span>
+        <span class="en lang-inactive">Seedance 2.0 released · ByteDance multimodal joint architecture</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://techcrunch.com/2026/03/26/bytedances-new-ai-video-generation-model-dreamina-seedance-2-0-comes-to-capcut/" target="_blank" rel="noopener">TechCrunch · 2026.3.26 (CapCut 集成)</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">17K<span class="sn-unit">+</span></div>
+      <div class="stat-label">
+        <span class="cn">媒体娱乐 2025 全年裁员（同比 +18%）</span>
+        <span class="en lang-inactive">Media-entertainment 2025 layoffs (+18% YoY)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.thewrap.com/industry-news/business/entertainment-media-layoffs-2025-analysis/" target="_blank" rel="noopener">TheWrap · 2025.12（前 11 个月数据）</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~1000<span class="sn-unit">次</span></div>
+      <div class="stat-label">
+        <span class="cn">DiDi_OK《牌子》单镜头平均生成数（B 站 1800 万播放）</span>
+        <span class="en lang-inactive">DiDi_OK's "Signs" generations per shot (avg, 18M views on Bilibili)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://k.sina.cn/article_5953190046_162d6789e06702ykfw.html?from=ent" target="_blank" rel="noopener">Sina · DiDi_OK 专访</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">−38<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">12 个月内预测落点（参照美术 -32% 终点的 S 形外推）</span>
+        <span class="en lang-inactive">12-month forecast landing point (S-curve, mirroring Art's −32% plateau)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <span class="cn">本报告外推 — 见 §1 主图虚线段</span><span class="en lang-inactive">This report's extrapolation — see dashed segment in §1</span></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      <span class="cn">Seedance 跟 Sora 不是同一类东西。Sora 是"演示型"产品——能力很强但商业接入受限；Seedance 是"生产型"工具——直接接入字节自己的 CapCut（抖音剪辑）和短视频平台，从发布到工厂级落地几乎没有时间差。这就是为什么 Seedance 2.0 上线 6 周内就把节点 G2 钉在了曲线上（看 §1 主图橙色节点）。具体到内容形态：短视频 + 短剧是影视行业最先被冲击的细分。AI 短片创作者 DiDi_OK 在 B 站发布的 8 分钟作品《牌子》<a href="https://k.sina.cn/article_5953190046_162d6789e06702ykfw.html?from=ent" target="_blank" rel="noopener">一周内播放破千万、最终累计 1800 万 + 135 万赞</a>——而单镜头平均生成约 1000 次（其中能用的约 4-500 次）。这种"生产成本几乎为零、迭代上限几乎无穷"的内容形态，会先把短视频 + 短剧的低端外包蚕食掉。</span>
+      <span class="en lang-inactive">Seedance and Sora aren't in the same category. Sora is a "demo" product — very capable but with limited commercial access; Seedance is a "production" tool — plugged directly into ByteDance's own CapCut (TikTok-style editor) and short-video platforms, with almost no gap between release and factory-scale deployment. That's why Seedance 2.0 pinned Node G2 to the curve within six weeks of launching (see the orange node in §1's main chart). On content form: short video and short drama are the segments hit first. AI short-film creator DiDi_OK's 8-minute piece "Signs" on Bilibili <a href="https://k.sina.cn/article_5953190046_162d6789e06702ykfw.html?from=ent" target="_blank" rel="noopener">crossed 10M views in a week and reached 18M views + 1.35M likes</a> — with about 1,000 generations per shot on average (about 4-500 of those usable). Content with "near-zero production cost, near-infinite iteration ceiling" eats away the low-end outsourcing in short video and short drama first.</span>
+    </p>
+    <p>
+      <span class="cn">必须承认一件事：影视行业本身这些年已经在经历多重挤压——商业地产掉头、院线扩张放缓、消费降级、短视频和短剧分流——AI 不是唯一原因，更像是压垮骆驼的最后一根稻草。但 Seedance 2.0 把"导演级镜头控制 + 自动剪辑"做到能商用的水平，节点信号已经很清晰：未来 6-12 个月会出现一段类似美术 2023-2024 那种"低端外包被吃掉、高端总监 / 编剧反而溢价"的上下分化。这也对应 §1 主图里影视赛道的虚线预测段——不是直线下探，而是 6 个月陡降后逐步在 -38% 附近 plateau，参照美术行业 -32% 的终点。</span>
+      <span class="en lang-inactive">One thing has to be acknowledged: the film and TV industry has been under multiple pressures for years — commercial real-estate retreating, theater chain expansion slowing, consumer downgrading, short video and short drama eating attention — AI isn't the sole cause, more like the last straw. But Seedance 2.0 brings "director-level camera control + automatic editing" to a usable commercial level, and the node signal is already clear: the next 6-12 months will see a top-vs-bottom split similar to art &amp; design 2023-2024 — low-end outsourcing devoured, top-tier directors / writers commanding a premium. This corresponds to the dashed forecast segment for video in §1's main chart — not a straight drop, but a 6-month steep decline followed by a gradual plateau around −38%, mirroring art &amp; design's −32% endpoint.</span>
+    </p>
+  </div>
+
+  <div class="ba-block">
+    <div class="ba-eyebrow">
+      <span class="cn">影视赛道的 4 年时间线</span>
+      <span class="en lang-inactive">Film &amp; Video 4-year timeline</span>
+    </div>
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th><span class="cn">时点</span><span class="en lang-inactive">Time</span></th>
+          <th><span class="cn">指数</span><span class="en lang-inactive">Index</span></th>
+          <th><span class="cn">事件</span><span class="en lang-inactive">Event</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024 Q1</td><td>0%</td>
+          <td><span class="cn">影视行业平稳；Sora 引发恐慌但商业访问受限</span><span class="en lang-inactive">Industry steady; Sora caused panic but limited commercial access</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q2 (Node G1)</td><td>−8%</td>
+          <td><span class="cn">Seedance 1.0 发布；早期工业实验，AI 短片在 B 站破亿播放</span><span class="en lang-inactive">Seedance 1.0 launches; early industrial trials, AI short films cross 100M views on Bilibili</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q4</td><td>−20%</td>
+          <td><span class="cn">媒体娱乐 2025 全年裁员 17,000+ / 同比 +18%；Paramount 单家裁 -2,000</span><span class="en lang-inactive">Media-ent 2025 total layoffs 17,000+ / +18% YoY; Paramount alone cuts -2,000</span></td>
+        </tr>
+        <tr>
+          <td>2026 Q1 (Node G2)</td><td>−25%</td>
+          <td><span class="cn">Seedance 2.0 发布（2.12）；WaPo 编辑部 -300（1/3）</span><span class="en lang-inactive">Seedance 2.0 launches (2.12); WaPo cuts a third of newsroom (-300)</span></td>
+        </tr>
+        <tr class="ba-now">
+          <td>2026 Q2 (now)</td><td>−27%</td>
+          <td><span class="cn">节点 G2 刚发生 6 周；CapCut 全球集成（3.26）；行业转型刚开始</span><span class="en lang-inactive">6 weeks past Node G2; CapCut global rollout (3.26); industry transition just starting</span></td>
+        </tr>
+        <tr>
+          <td>2027 Q2 (forecast)</td><td>−38%</td>
+          <td><span class="cn">S 形 plateau 接近；参照美术 -32% 终点</span><span class="en lang-inactive">S-curve plateau approaching; mirroring art &amp; design's -32% endpoint</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="orch-row">
+    <div class="orch-row-left">
+      <div>
+        <div class="orch-row-tag">
+          <span class="cn">这一行业的 12 倍乘数长什么样</span>
+          <span class="en lang-inactive">What the 12.8× multiplier looks like here</span>
+        </div>
+        <div class="orch-row-mult">≈ 1 : 12</div>
+      </div>
+    </div>
+    <div class="orch-row-body">
+      <p>
+        <span class="cn"><strong>1 个会用 Seedance / CapCut 的内容总监 + AI 视频工具链 ≈ 12 个传统影视团队成员</strong>（摄影、剪辑、特效、初级编剧）。消失的不是导演这个职业，而是 N 个一线分工岗位——导演 / 编剧的高端能力反而溢价（"会调 AI 流水线 + 有审美判断"成为新的市场卖点）。和美术行业的"上下分化"几乎是同一个剧本，只是时点晚 3 年。</span>
+        <span class="en lang-inactive"><strong>1 content director who can use Seedance / CapCut + an AI video toolchain ≈ 12 traditional crew members</strong> (cinematographer, editor, VFX, junior writer). What disappears isn't the director profession but N front-line specialty positions — the high-end capability of director / writer commands a premium (knowing the AI pipeline + having aesthetic judgment becomes a new market signal). It's almost the same script as art &amp; design's split, just three years later.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §7 法律 / 金融 / 咨询 / SaaS ============ -->
+<section class="chapter pro" id="pro"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 07</div>
+    <h2>
+      <span class="cn">法律 / 金融 / 咨询 / SaaS ——「节点最近发生、影响最广」</span>
+      <span class="en lang-inactive">Law / Finance / Consulting / SaaS — "The most recent nodes; the broadest impact"</span>
+    </h2>
+    <div class="node-badge-row">
+      <span class="node-badge">
+        <span class="nb-letter">F2</span>
+        <span class="nb-text"><strong>Claude Cowork + 11 垂直插件</strong> · 2026.1.12 起</span>
+      </span>
+      <span class="node-badge">
+        <span class="nb-letter">F1</span>
+        <span class="nb-text"><strong>OpenClaw 开源 agent</strong> · 2026.1.30</span>
+      </span>
+      <span class="node-badge">
+        <span class="nb-letter">H</span>
+        <span class="nb-text"><strong>SaaSpocalypse 多波</strong> · 2026.2.12-2.25 · $2T 累计</span>
+      </span>
+    </div>
+    <p class="lede">
+      <span class="cn">这条赛道节点最近发生、影响面最广。<a href="https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html" target="_blank" rel="noopener">Anthropic 在 2026 年 1 月 12 日发布 Claude Cowork</a>（桌面 AI 工具，能直接接管本地文档），<a href="https://www.paperclipped.de/en/blog/anthropic-claude-plugins-stock-selloff/" target="_blank" rel="noopener">1 月 30 日加上 11 个垂直插件</a>直接攻入法律 / 金融 / 咨询专业 workflow；同期 <a href="https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026" target="_blank" rel="noopener">OpenClaw 开源 agent</a>从另一条路径渗透。22 天后资本市场实时投票：<a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">48 小时内 SaaS 板块蒸发 $285B</a>；<a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-2-25-the-saaspocalypse-of-2026-workday-stock-plummets-as-agentic-ai-fears-overhadow-q4-beat" target="_blank" rel="noopener">Workday 2.25 单日 -10% / 全程 -40%</a>；累计 <a href="https://www.humai.blog/saaspocalypse-why-enterprise-software-has-lost-more-than-2-trillion-in-2026/" target="_blank" rel="noopener">SaaS 板块 1-3 月损失超 $2 万亿</a>——市场用价格行动告诉所有人：per-seat licensing 模式终结了。</span>
+      <span class="en lang-inactive">This sector has the most recent nodes and the broadest reach. <a href="https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html" target="_blank" rel="noopener">Anthropic launched Claude Cowork on Jan 12 2026</a> (a desktop AI tool that can directly take over local documents), <a href="https://www.paperclipped.de/en/blog/anthropic-claude-plugins-stock-selloff/" target="_blank" rel="noopener">added 11 vertical plugins on Jan 30</a> directly attacking legal / finance / consulting workflows; in parallel, <a href="https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026" target="_blank" rel="noopener">the open-source OpenClaw agent</a> penetrated through a different path. 22 days later, capital markets cast their vote in real time: <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">$285B evaporated from SaaS in 48 hours</a>; <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-2-25-the-saaspocalypse-of-2026-workday-stock-plummets-as-agentic-ai-fears-overhadow-q4-beat" target="_blank" rel="noopener">Workday fell -10% in a single day on Feb 25 / -40% overall</a>; cumulative <a href="https://www.humai.blog/saaspocalypse-why-enterprise-software-has-lost-more-than-2-trillion-in-2026/" target="_blank" rel="noopener">SaaS-sector losses Jan-Mar exceeded $2T</a> — the market told everyone in price action: per-seat licensing is over.</span>
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">$2<span class="sn-unit">T</span></div>
+      <div class="stat-label">
+        <span class="cn">SaaS 板块 1-3 月累计市值蒸发（48h 单波 $285B）</span>
+        <span class="en lang-inactive">SaaS sector cumulative loss Jan-Mar (single 48h wave: $285B)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.humai.blog/saaspocalypse-why-enterprise-software-has-lost-more-than-2-trillion-in-2026/" target="_blank" rel="noopener">Humai.blog</a>; <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">Taskade</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">50<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">Harvey 在 AmLaw 100 法律所的渗透率（2025.8 = 42% → 2026.3）</span>
+        <span class="en lang-inactive">Harvey penetration of AmLaw 100 firms (42% in Aug 2025 → 50% in Mar 2026)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.harvey.ai/blog/helping-law-firms-and-companies-collaborate-at-scale" target="_blank" rel="noopener">Harvey 官方 2026.3</a> · $100M ARR / $8B 估值</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">200K</div>
+      <div class="stat-label">
+        <span class="cn">华尔街银行 3-5 年内计划削减岗位（back office / KYC / 客服）</span>
+        <span class="en lang-inactive">Wall Street banks' 3-5yr planned cuts (back office / KYC / CS)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://www.bloomberg.com/news/articles/2025-01-09/wall-street-expected-to-shed-200-000-jobs-as-ai-erodes-roles" target="_blank" rel="noopener">Bloomberg Intelligence · 2025.1</a></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">−42<span class="sn-unit">%</span></div>
+      <div class="stat-label">
+        <span class="cn">美国中层管理岗位招聘 (2022.4 高峰起 / 至 2025.10 仍未恢复)</span>
+        <span class="en lang-inactive">US middle-management postings (since Apr 2022 peak / no recovery as of Oct 2025)</span>
+      </div>
+      <div class="stat-source"><span class="src-label">来源 / SOURCE</span> <a href="https://medium.com/@marc.bara.iniesta/the-42-that-never-recovered-labor-market-data-reveals-managements-permanent-decline-3e730e7ff658" target="_blank" rel="noopener">Revelio Labs · 1 亿就业档案分析</a></div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <p>
+      <span class="cn">先把节点链拆开看：节点 F2 是 Anthropic 官方在 2026.1.12 发布的 Cowork——它能直接接管你电脑上的 Google Drive、Gmail、DocuSign、FactSet 等本地文件，把"知识工作者一天的活"塞进一个 prompt；节点 F1 是奥地利工程师 Peter Steinberger 的开源 agent OpenClaw（先后改名 Clawdbot → Moltbot → OpenClaw），48 小时内 GitHub star 破 10 万——证明 agent 范式不是 Anthropic 一家在推。两边夹击之下，节点 H（SaaSpocalypse）22 天后就触发了：Cowork 在 1.30 加上 11 个垂直插件直接攻入法律 / 金融 / 咨询 workflow，资本市场立刻反应——<a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">2 月 12 日第一波 + 2 月 24-25 日第二波，48 小时蒸发 $285B</a>。Workday 单日 -10%（2.25 财报后）/ 全程 -40%，市场担忧的核心是"AI 操盘手让企业不再需要这么多 HR 和 Workday licensing seat"——per-seat licensing 这个 SaaS 商业模式正在被结构性 challenge。</span>
+      <span class="en lang-inactive">First, break the node chain apart: Node F2 is Anthropic's Cowork, released Jan 12 2026 — it can directly take over local files (Google Drive, Gmail, DocuSign, FactSet) and pack "a knowledge worker's whole day" into a single prompt; Node F1 is Austrian engineer Peter Steinberger's open-source agent OpenClaw (renamed several times: Clawdbot → Moltbot → OpenClaw), which crossed 100K GitHub stars in 48 hours — proof that the agent paradigm isn't being pushed by Anthropic alone. Pinned between these two, Node H (SaaSpocalypse) fired 22 days later: Cowork added 11 vertical plugins on Jan 30 directly attacking legal / finance / consulting workflows, and capital markets responded immediately — <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">Wave 1 on Feb 12 + Wave 2 on Feb 24-25, $285B evaporated in 48 hours</a>. Workday fell -10% in a single day (post-Q4 earnings on 2.25) / -40% overall — the core market concern is that "AI operators mean enterprises no longer need this many HR or Workday seats." Per-seat licensing as a SaaS business model is being structurally challenged.</span>
+    </p>
+    <p>
+      <span class="cn">法律行业的"账面 vs 实质"比编程更隐蔽，必须仔细看：<a href="https://www.nalp.org/0925research" target="_blank" rel="noopener">2024 届美国法律毕业生整体就业率 93.4%</a>（NALP 报告，1982 年以来最高）——单看这个数字，法律行业像是没受到 AI 任何影响。但同时间发生的几件事完全是另一个画面：<a href="https://abovethelaw.com/2026/02/top-10-biglaw-firm-to-conduct-massive-layoff-leaving-hundreds-jobless-thanks-to-ai/" target="_blank" rel="noopener">Top 10 BigLaw 律所 Clifford Chance 公开把部分裁员归因 AI</a>；<a href="https://www.lawfuel.com/how-biglaw-salary-wars-and-ai-are-upending-the-legal-world/" target="_blank" rel="noopener">Baker McKenzie + Clifford Chance 已经启动 "AI Summer Associate" pilot</a>——用 AI 替代暑期实习的 first-year associate，BigLaw 内部引语 <em>"AI assistant 比 first-year associate 的 holiday bonus 还便宜"</em>；Harvey 渗透 AmLaw 100 从 2025.8 的 42% 加速到 2026.3 的 50%（$100M ARR / $8B 估值）。所以 93.4% 这个高就业率主要是 BigLaw partner-track 在撑——而初级实习 / first-year associate / 法律 outsourcing 这条新人通道正在被 AI Summer Associate 关闭，这跟编程行业的"印度 fresher -80%"是同一个机制的不同行业版本。</span>
+      <span class="en lang-inactive">The "books vs substance" gap in law is more subtle than in programming — look closely: <a href="https://www.nalp.org/0925research" target="_blank" rel="noopener">the 2024 US law graduate employment rate was 93.4%</a> (NALP report, the highest since 1982) — read by itself, the legal sector looks untouched by AI. But several concurrent developments paint a completely different picture: <a href="https://abovethelaw.com/2026/02/top-10-biglaw-firm-to-conduct-massive-layoff-leaving-hundreds-jobless-thanks-to-ai/" target="_blank" rel="noopener">Top 10 BigLaw firm Clifford Chance publicly attributed part of its layoffs to AI</a>; <a href="https://www.lawfuel.com/how-biglaw-salary-wars-and-ai-are-upending-the-legal-world/" target="_blank" rel="noopener">Baker McKenzie + Clifford Chance launched an "AI Summer Associate" pilot</a> — using AI in place of summer-intern first-year associates, with the in-house line <em>"an AI assistant costs less than a first-year associate's holiday bonus"</em>; Harvey's penetration of AmLaw 100 accelerated from 42% (Aug 2025) to 50% (Mar 2026) at $100M ARR / $8B valuation. So that 93.4% high employment rate is mostly held up by BigLaw partner-track — while the new-entrant pipeline (junior interns / first-year associates / legal outsourcing) is being closed by AI Summer Associates. Same mechanism as "India fresher hiring -80%" in programming — different industry, same shape.</span>
+    </p>
+    <p>
+      <span class="cn">华尔街银行的削减计划也已经摆出来：<a href="https://www.bloomberg.com/news/articles/2025-01-09/wall-street-expected-to-shed-200-000-jobs-as-ai-erodes-roles" target="_blank" rel="noopener">Bloomberg Intelligence 2025 年 1 月估算 3-5 年内全球银行削减 200,000 岗位</a>，主要冲击 back office、operations、KYC、客服——这些都是 1 顶 12 模型最容易吃掉的工种。咨询行业的中层管理岗位已经先动了：<a href="https://medium.com/@marc.bara.iniesta/the-42-that-never-recovered-labor-market-data-reveals-managements-permanent-decline-3e730e7ff658" target="_blank" rel="noopener">Revelio Labs（基于 1 亿就业档案）测到美国中层管理招聘自 2022 年 4 月高峰起跌了 42%，截至 2025 年 10 月仍未恢复</a>。要承认，这部分削减不能 100% 算到 AI 头上——也叠加经济周期、过往超额招聘等因素；但 Cowork + Harvey + 类似工具的渗透，会在 2026-2027 年的续约周期里把 SaaSpocalypse 的市场判断一一兑现。</span>
+      <span class="en lang-inactive">Wall Street banks' cut plans are also on the table: <a href="https://www.bloomberg.com/news/articles/2025-01-09/wall-street-expected-to-shed-200-000-jobs-as-ai-erodes-roles" target="_blank" rel="noopener">Bloomberg Intelligence's January 2025 estimate puts global-bank cuts at 200,000 jobs over 3-5 years</a>, concentrated in back-office, operations, KYC, customer service — exactly the roles the 1-replaces-12 model devours easily. Consulting middle-management has already moved: <a href="https://medium.com/@marc.bara.iniesta/the-42-that-never-recovered-labor-market-data-reveals-managements-permanent-decline-3e730e7ff658" target="_blank" rel="noopener">Revelio Labs (drawing on 100M employment profiles) measured US middle-management postings down 42% from the April 2022 peak, with no recovery as of October 2025</a>. To be fair, this slide can't all be put on AI — economic cycles and past over-hiring also overlap; but Cowork + Harvey + similar tools penetrating through the 2026-2027 renewal cycles will gradually validate the market's SaaSpocalypse verdict.</span>
+    </p>
+  </div>
+
+  <div class="ba-block">
+    <div class="ba-eyebrow">
+      <span class="cn">法律 / 金融 / 咨询 / SaaS 赛道的 4 年时间线</span>
+      <span class="en lang-inactive">Law / Finance / Consulting / SaaS 4-year timeline</span>
+    </div>
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th><span class="cn">时点</span><span class="en lang-inactive">Time</span></th>
+          <th><span class="cn">指数</span><span class="en lang-inactive">Index</span></th>
+          <th><span class="cn">事件</span><span class="en lang-inactive">Event</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024 Q1</td><td>0%</td>
+          <td><span class="cn">行业平稳；早期 AI 工具（Harvey、CoCounsel）开始进入头部律所</span><span class="en lang-inactive">Sector steady; early AI tools (Harvey, CoCounsel) start entering top firms</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q2</td><td>−3%</td>
+          <td><span class="cn">Harvey 渗透 AmLaw 100 加速；初级法律 / 咨询招聘开始下降</span><span class="en lang-inactive">Harvey adoption in AmLaw 100 accelerates; junior legal / consulting hiring softens</span></td>
+        </tr>
+        <tr>
+          <td>2025 Q4</td><td>−5%</td>
+          <td><span class="cn">Harvey 在 AmLaw 100 达 42%（$100M ARR）；中层管理岗位仍处 -42% 持续状态</span><span class="en lang-inactive">Harvey at 42% of AmLaw 100 ($100M ARR); middle-management postings hold at -42%</span></td>
+        </tr>
+        <tr>
+          <td>2026.1 (Node F1+F2)</td><td>−10%</td>
+          <td><span class="cn">Cowork 上线 (1.12) + 11 垂直插件 (1.30) + OpenClaw 开源 (1.30, 48h 10万 stars)</span><span class="en lang-inactive">Cowork launches (1.12) + 11 vertical plugins (1.30) + OpenClaw open-sourced (1.30, 100K stars in 48h)</span></td>
+        </tr>
+        <tr>
+          <td>2026.2 (Node H)</td><td>−13%</td>
+          <td><span class="cn">SaaSpocalypse 多波：48h 蒸发 $285B → 累计 $2T；Workday -40% / TR -16% / WK -13%；Harvey 加速到 50%</span><span class="en lang-inactive">SaaSpocalypse multi-wave: $285B in 48h → $2T cumulative; Workday -40% / TR -16% / WK -13%; Harvey accelerates to 50%</span></td>
+        </tr>
+        <tr class="ba-now">
+          <td>2026 Q2 (now)</td><td>−13%</td>
+          <td><span class="cn">节点刚发生 6-12 周；进入早期陡增段；BigLaw 启动 AI Summer Associate</span><span class="en lang-inactive">Nodes 6-12 weeks fresh; entering the early steep phase; BigLaw rolls out AI Summer Associate</span></td>
+        </tr>
+        <tr>
+          <td>2027 Q2 (forecast)</td><td>−28%</td>
+          <td><span class="cn">S 形 plateau 接近；参照客服 -28% 终点；Klarna 式部分回招测试边界</span><span class="en lang-inactive">S-curve plateau approaching; mirroring CS's -28% endpoint; Klarna-style partial rehiring tests the edge</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="orch-row">
+    <div class="orch-row-left">
+      <div>
+        <div class="orch-row-tag">
+          <span class="cn">这一行业的 12 倍乘数长什么样</span>
+          <span class="en lang-inactive">What the 12.8× multiplier looks like here</span>
+        </div>
+        <div class="orch-row-mult">≈ 1 : 12</div>
+      </div>
+    </div>
+    <div class="orch-row-body">
+      <p>
+        <span class="cn"><strong>1 个会用 Cowork + Harvey + AI 工具链的合伙人 / VP / 资深咨询师 ≈ 12 个初级律师 / 分析师 / 咨询师</strong>。这是 §3 客服模式的"白领化"延续——消失的不是律师 / 分析师这些职业，而是 N 个初级岗位 + 大型机构的新人培训通道。BigLaw 的 AI Summer Associate pilot、华尔街 200K 削减计划、Harvey 在 AmLaw 100 渗透 50%——都是这个机制在不同细分行业的具体落地。和编程行业不同的是，法律 / 金融 / 咨询的合规和监管壁垒会让 12 倍乘数兑现得慢一些（per-seat 续约要等 12-18 月）——但市场已经在 SaaSpocalypse 中提前定价了。</span>
+        <span class="en lang-inactive"><strong>1 partner / VP / senior consultant who can use Cowork + Harvey + AI toolchain ≈ 12 junior lawyers / analysts / consultants</strong>. This is §3's CS pattern extended into white-collar professional services — what disappears isn't the lawyer/analyst profession but N junior positions + the major-firm new-hire training pipeline. BigLaw's AI Summer Associate pilot, Wall Street's 200K cut plan, Harvey's 50% AmLaw 100 penetration — all are this mechanism playing out in specific sub-sectors. Unlike programming, the compliance and regulatory friction in law / finance / consulting will make the 12× multiplier materialize more slowly (per-seat renewals take 12-18 months) — but the market has already priced it in via SaaSpocalypse.</span>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ §8 12 个月预测 ============ -->
+<section class="chapter" id="forecast"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num" style="color:var(--accent)">§ 08</div>
+    <h2>
+      <span class="cn">未来 12 个月预测 ——「3 个情景 × 5 个赛道」</span>
+      <span class="en lang-inactive">12-Month Forecast — "3 scenarios × 5 sectors"</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">下面这张矩阵给出 5 个赛道在 3 个情景下未来 12 个月的招聘 / 合同指数落点。<strong>基准情景</strong>对应 §1 主图里的虚线段——节点 E2 / F1+F2+H / G2 按当前渗透速度展开，per-seat 模式终结但 Conductor 阶段未到来。<strong>保守情景</strong>假设监管 / 工会大规模介入或主要 AI 公司性能停滞（参考 Fortune 报道的 Claude Code 月度性能下降 + 用户反弹）。<strong>激进情景</strong>假设 H2 2026 局部出现 Conductor 阶段（agent 长记忆 + 全 workflow 自主），让 1 顶 12 的乘数跃升到 1 顶 50+。每个 cell 给出落点数字 + 触发条件 + 历史参照。</span>
+      <span class="en lang-inactive">The matrix below gives the 12-month landing points for hiring / contract indices across 5 sectors and 3 scenarios. <strong>Baseline</strong> matches the dashed segments in §1's main chart — Nodes E2 / F1+F2+H / G2 penetrate at their current pace, per-seat licensing ends, but the Conductor phase has not yet arrived. <strong>Conservative</strong> assumes large-scale regulatory / union intervention or stagnation at major AI providers (cf. Fortune's report on Claude Code's monthlong performance decline + user backlash). <strong>Aggressive</strong> assumes the Conductor phase arrives in H2 2026 in pockets (agent long-memory + full-workflow autonomy), pushing the 1-replaces-12 multiplier to 1-replaces-50+. Each cell gives the landing number + trigger conditions + historical mirror.</span>
+    </p>
+  </div>
+
+  <div class="scenario-grid">
+    <!-- Header row -->
+    <div class="sg-cell sg-corner sg-header"></div>
+    <div class="sg-cell sg-header">
+      <div class="sg-h-tag">
+        <span class="cn">保守情景</span>
+        <span class="en lang-inactive">Conservative</span>
+      </div>
+      <div class="sg-h-desc">
+        <span class="cn">监管/工会介入 OR 模型停滞</span>
+        <span class="en lang-inactive">Regulatory/union intervention OR model stagnation</span>
+      </div>
+    </div>
+    <div class="sg-cell sg-header baseline">
+      <div class="sg-h-tag">
+        <span class="cn">基准情景 · 主线</span>
+        <span class="en lang-inactive">Baseline · main forecast</span>
+      </div>
+      <div class="sg-h-desc">
+        <span class="cn">当前节点按现速度渗透，无 Conductor</span>
+        <span class="en lang-inactive">Current nodes penetrate at current pace, no Conductor</span>
+      </div>
+    </div>
+    <div class="sg-cell sg-header aggressive">
+      <div class="sg-h-tag">
+        <span class="cn">激进情景</span>
+        <span class="en lang-inactive">Aggressive</span>
+      </div>
+      <div class="sg-h-desc">
+        <span class="cn">H2 2026 局部 Conductor 到达，乘数 → 50+</span>
+        <span class="en lang-inactive">Conductor partially arrives in H2 2026, multiplier → 50+</span>
+      </div>
+    </div>
+
+    <!-- Customer Service row -->
+    <div class="sg-cell sg-industry cs">
+      <span class="sg-dot"></span>
+      <span><span class="cn">客服</span><span class="en lang-inactive">Customer Service</span></span>
+    </div>
+    <div class="sg-cell cs">
+      <div class="sg-num">−28%</div>
+      <div class="sg-trigger"><span class="cn">持平当前 plateau；Klarna 式部分回招扩大到行业整体</span><span class="en lang-inactive">Holds at current plateau; Klarna-style partial rehiring spreads industry-wide</span></div>
+      <div class="sg-mirror"><span class="cn">参照：当前已实证位置</span><span class="en lang-inactive">Mirror: currently empirical position</span></div>
+    </div>
+    <div class="sg-cell baseline cs">
+      <div class="sg-num">−30%</div>
+      <div class="sg-trigger"><span class="cn">Cowork 客服细分插件扩展；Klarna 持续向 2030 目标 2000 推进</span><span class="en lang-inactive">Cowork CS-vertical plugins expand; Klarna keeps pushing toward 2030 target of 2000</span></div>
+      <div class="sg-mirror"><span class="cn">参照：客服已 plateau，向下空间有限</span><span class="en lang-inactive">Mirror: CS is already at plateau, limited downside</span></div>
+    </div>
+    <div class="sg-cell aggressive cs">
+      <div class="sg-num">−38%</div>
+      <div class="sg-trigger"><span class="cn">Conductor 长记忆突破"高同理心 + 合规审查"边界；剩余 28% 也被覆盖</span><span class="en lang-inactive">Conductor long-memory breaks the "high-empathy + compliance" boundary; the residual 28% is also covered</span></div>
+      <div class="sg-mirror"><span class="cn">参照：Coface 框架 Conductor 阶段定义</span><span class="en lang-inactive">Mirror: Coface framework's Conductor stage definition</span></div>
+    </div>
+
+    <!-- Art row -->
+    <div class="sg-cell sg-industry art">
+      <span class="sg-dot"></span>
+      <span><span class="cn">美术设计</span><span class="en lang-inactive">Art &amp; Design</span></span>
+    </div>
+    <div class="sg-cell art">
+      <div class="sg-num">−32%</div>
+      <div class="sg-trigger"><span class="cn">版权诉讼 + 工会限制 AI 生图商用范围；UI/UX 全职 +8% 维持</span><span class="en lang-inactive">Copyright litigation + union limits on commercial use; UI/UX full-time +8% holds</span></div>
+      <div class="sg-mirror"><span class="cn">参照：当前已实证位置</span><span class="en lang-inactive">Mirror: currently empirical position</span></div>
+    </div>
+    <div class="sg-cell baseline art">
+      <div class="sg-num">−35%</div>
+      <div class="sg-trigger"><span class="cn">Seedance 类视频工具吃掉短视频领域剩余外包；3D / 游戏美术开始受冲击</span><span class="en lang-inactive">Seedance-class video tools devour residual short-video outsourcing; 3D / game art starts taking hits</span></div>
+      <div class="sg-mirror"><span class="cn">参照：节点 B 后斜率延伸 + 视频版扩散</span><span class="en lang-inactive">Mirror: post-Node B slope extension + video generalization</span></div>
+    </div>
+    <div class="sg-cell aggressive art">
+      <div class="sg-num">−42%</div>
+      <div class="sg-trigger"><span class="cn">Sora 类长视频商业 API 落地；高端品牌策略也开始被 AI 替代</span><span class="en lang-inactive">Sora-class long-video commercial APIs land; even top-tier brand strategy starts being replaced</span></div>
+      <div class="sg-mirror"><span class="cn">参照：Klarna 式企业级激进案例</span><span class="en lang-inactive">Mirror: Klarna-style enterprise aggressive case</span></div>
+    </div>
+
+    <!-- Code row -->
+    <div class="sg-cell sg-industry code">
+      <span class="sg-dot"></span>
+      <span><span class="cn">编程</span><span class="en lang-inactive">Programming</span></span>
+    </div>
+    <div class="sg-cell code">
+      <div class="sg-num">−25%</div>
+      <div class="sg-trigger"><span class="cn">Anthropic 性能问题持续；监管要求 AI 生成代码必须人工审核；Cursor 类工具 fight back</span><span class="en lang-inactive">Anthropic performance issues persist; regulators require human review of AI-generated code; Cursor-class tools fight back</span></div>
+      <div class="sg-mirror"><span class="cn">参照：节点 E 后渗透延缓 6 个月</span><span class="en lang-inactive">Mirror: post-Node E penetration delayed by 6 months</span></div>
+    </div>
+    <div class="sg-cell baseline code">
+      <div class="sg-num">−32%</div>
+      <div class="sg-trigger"><span class="cn">Opus 4.7+ 持续渗透；印度外包 -80% 趋势继续；BigTech 应届生通道大幅收紧</span><span class="en lang-inactive">Opus 4.7+ keeps penetrating; India outsourcing -80% trend continues; BigTech graduate pipeline severely narrowed</span></div>
+      <div class="sg-mirror"><span class="cn">参照：英国初级开发已实证 -32%</span><span class="en lang-inactive">Mirror: UK junior dev empirically already at -32%</span></div>
+    </div>
+    <div class="sg-cell aggressive code">
+      <div class="sg-num">−45%</div>
+      <div class="sg-trigger"><span class="cn">Opus 5.0 + Conductor agent teams + 长记忆 → "1 个 senior + 50 agents" 跑通</span><span class="en lang-inactive">Opus 5.0 + Conductor agent teams + long memory → "1 senior + 50 agents" actually works</span></div>
+      <div class="sg-mirror"><span class="cn">参照：Boris Cherny "software engineer 年内消失" 部分兑现</span><span class="en lang-inactive">Mirror: Boris Cherny's "software-engineer title disappears within a year" partly realized</span></div>
+    </div>
+
+    <!-- Video row -->
+    <div class="sg-cell sg-industry vid">
+      <span class="sg-dot"></span>
+      <span><span class="cn">影视 / 视频</span><span class="en lang-inactive">Film &amp; Video</span></span>
+    </div>
+    <div class="sg-cell vid">
+      <div class="sg-num">−32%</div>
+      <div class="sg-trigger"><span class="cn">Hollywood 工会扩大 AI 限制；中国短剧版权监管收紧</span><span class="en lang-inactive">Hollywood unions expand AI restrictions; China short-drama copyright tightens</span></div>
+      <div class="sg-mirror"><span class="cn">参照：节点 G2 后渗透延缓</span><span class="en lang-inactive">Mirror: post-Node G2 penetration slows</span></div>
+    </div>
+    <div class="sg-cell baseline vid">
+      <div class="sg-num">−38%</div>
+      <div class="sg-trigger"><span class="cn">Seedance 3.0 + CapCut 全球渗透；短视频/短剧 AI 内容比例 &gt; 50%</span><span class="en lang-inactive">Seedance 3.0 + CapCut global rollout; AI content &gt; 50% in short video / short drama</span></div>
+      <div class="sg-mirror"><span class="cn">参照：美术 -32% 终点 + 视频生产成本进一步下降</span><span class="en lang-inactive">Mirror: art &amp; design -32% endpoint + further drop in video production cost</span></div>
+    </div>
+    <div class="sg-cell aggressive vid">
+      <div class="sg-num">−50%</div>
+      <div class="sg-trigger"><span class="cn">Sora 商业化 + 长视频 AI 生成可用 + 实时互动视频突破</span><span class="en lang-inactive">Sora commercialized + long-video AI generation usable + real-time interactive video breakthrough</span></div>
+      <div class="sg-mirror"><span class="cn">参照：影视行业本身已多重承压</span><span class="en lang-inactive">Mirror: film industry already under multiple stresses</span></div>
+    </div>
+
+    <!-- Pro Services row -->
+    <div class="sg-cell sg-industry pro">
+      <span class="sg-dot"></span>
+      <span><span class="cn">法 / 金 / 咨 / SaaS</span><span class="en lang-inactive">Law / Finance / Consulting / SaaS</span></span>
+    </div>
+    <div class="sg-cell pro">
+      <div class="sg-num">−22%</div>
+      <div class="sg-trigger"><span class="cn">SaaS 公司转型 agent 模式成功（Salesforce Einstein 类）；per-seat → outcome-based pricing 缓冲</span><span class="en lang-inactive">SaaS firms successfully pivot to agent model (Salesforce Einstein-class); per-seat → outcome-based pricing buffers</span></div>
+      <div class="sg-mirror"><span class="cn">参照：合规壁垒持续撑住</span><span class="en lang-inactive">Mirror: compliance walls keep holding</span></div>
+    </div>
+    <div class="sg-cell baseline pro">
+      <div class="sg-num">−28%</div>
+      <div class="sg-trigger"><span class="cn">Cowork 插件继续渗透；Harvey AmLaw 100 → 70%；华尔街 200K 削减计划进入第 2 年</span><span class="en lang-inactive">Cowork plugins keep expanding; Harvey AmLaw 100 → 70%; Wall Street's 200K cut plan enters year 2</span></div>
+      <div class="sg-mirror"><span class="cn">参照：客服 -28% 终点 + 12-18 月续约周期兑现</span><span class="en lang-inactive">Mirror: CS -28% endpoint + 12-18 month renewal cycles play out</span></div>
+    </div>
+    <div class="sg-cell aggressive pro">
+      <div class="sg-num">−40%</div>
+      <div class="sg-trigger"><span class="cn">Conductor agent 突破合规审查 → BigLaw 一半中层 associate 被替代；中型咨询所大规模整合</span><span class="en lang-inactive">Conductor agents break compliance review → half of BigLaw mid-tier associates replaced; mid-size consulting consolidates</span></div>
+      <div class="sg-mirror"><span class="cn">参照：Amodei 50% 入门白领警告部分兑现</span><span class="en lang-inactive">Mirror: Amodei's "50% entry-level white-collar" warning partly realized</span></div>
+    </div>
+  </div>
+
+  <p class="micro-note">
+    <span class="cn">数字读法：所有百分比为"相对各赛道节点前基线"的招聘 / 合同指数变化（与 §1 主图同口径）。基准情景列与 §1 主图虚线段一致。"参照"行说明：每个 cell 的数字不是凭空推算，而是对应一个本报告已实证或公开案例的斜率投影——客服 -28% plateau、美术 -32%、英国初级开发 -32%、Klarna 永久 -64% 等都是实测锚点。</span>
+    <span class="en lang-inactive">How to read: all percentages are "relative to each sector's pre-node baseline" hiring/contract index change (same scale as §1's main chart). The baseline column matches the dashed segments in §1. The "Mirror" line clarifies: each cell's number isn't pulled from thin air — it projects against an empirically observed or publicly documented case in this report (CS -28% plateau, Art -32%, UK junior dev -32%, Klarna's permanent -64%, etc.).</span>
+  </p>
+</div></section>
+
+<!-- ============ §9 监测仪表盘 ============ -->
+<section class="chapter" id="dashboard"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num" style="color:var(--accent)">§ 09</div>
+    <h2>
+      <span class="cn">未来 12 个月监测仪表盘 ——「14 个 leading indicators」</span>
+      <span class="en lang-inactive">12-Month Monitoring Dashboard — "14 leading indicators"</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">下表列出 14 个关键 leading indicators——它们的变化会先于招聘 / 合同指数反映，提供 2-6 个月的预测窗口。如果其中多个指标向同一方向偏移，§8 的预测应该相应调整。每个指标给出当前数值 + 什么变化会触发情景切换 + 建议数据源。</span>
+      <span class="en lang-inactive">The table below lists 14 key leading indicators — they shift before hiring / contract indices respond, giving a 2-6 month forecasting window. If several indicators move in the same direction, §8's forecast should be adjusted accordingly. Each row gives current value + what change would trigger a scenario shift + recommended data source.</span>
+    </p>
+  </div>
+
+  <table class="indicator-table">
+    <thead>
+      <tr>
+        <th><span class="cn">指标</span><span class="en lang-inactive">Indicator</span></th>
+        <th><span class="cn">当前数值</span><span class="en lang-inactive">Current</span></th>
+        <th><span class="cn">触发什么变化</span><span class="en lang-inactive">What change triggers</span></th>
+        <th><span class="cn">数据源</span><span class="en lang-inactive">Source</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="cat-row"><td><span class="cn">A · AI 模型节点</span><span class="en lang-inactive">A · AI model nodes</span></td></tr>
+      <tr>
+        <td><span class="cn">Anthropic Opus 5.x / GPT-5 发布</span><span class="en lang-inactive">Anthropic Opus 5.x / GPT-5 release</span></td>
+        <td><span class="cn">Opus 4.7 / GPT-4o</span><span class="en lang-inactive">Opus 4.7 / GPT-4o</span></td>
+        <td><span class="cn">代际更替时点；任一发布都会推动节点 E2 后续陡降</span><span class="en lang-inactive">Generation transition; either release pushes the post-Node-E2 steep drop further</span></td>
+        <td>anthropic.com/news</td>
+      </tr>
+      <tr>
+        <td><span class="cn">Anthropic agent "长记忆 + workflow 自主"功能</span><span class="en lang-inactive">Anthropic agent "long memory + autonomous workflow"</span></td>
+        <td><span class="cn">未发布</span><span class="en lang-inactive">Not yet released</span></td>
+        <td><span class="cn">Conductor 阶段直接信号——任一公司发布即触发激进情景</span><span class="en lang-inactive">Direct signal of Conductor phase — any vendor's release triggers aggressive scenario</span></td>
+        <td>vendor blogs / dev forums</td>
+      </tr>
+      <tr>
+        <td><span class="cn">Seedance 3.0 / Sora 商业 API</span><span class="en lang-inactive">Seedance 3.0 / Sora commercial API</span></td>
+        <td><span class="cn">Seedance 2.0（2026.2）</span><span class="en lang-inactive">Seedance 2.0 (Feb 2026)</span></td>
+        <td><span class="cn">影视赛道 G3 节点；触发后 6 个月内影视陡降扩大</span><span class="en lang-inactive">Video sector G3 node; once fired, video drop deepens within 6 months</span></td>
+        <td>ByteDance / OpenAI</td>
+      </tr>
+
+      <tr class="cat-row"><td><span class="cn">B · 行业渗透</span><span class="en lang-inactive">B · Sector penetration</span></td></tr>
+      <tr>
+        <td><span class="cn">Anthropic Cowork 已发布的垂直插件数</span><span class="en lang-inactive">Anthropic Cowork vertical plugins shipped</span></td>
+        <td>11 (2026.1.30)</td>
+        <td><span class="cn">从 11 → 30 触发 §7 加速；从 11 → 100 触发激进情景</span><span class="en lang-inactive">11 → 30 accelerates §7; 11 → 100 triggers aggressive scenario</span></td>
+        <td>anthropic.com</td>
+      </tr>
+      <tr>
+        <td><span class="cn">Harvey 在 AmLaw 100 的渗透率</span><span class="en lang-inactive">Harvey AmLaw 100 penetration</span></td>
+        <td>50% (2026.3)</td>
+        <td><span class="cn">→ 70% 触发法律基准情景；→ 90% 触发激进</span><span class="en lang-inactive">→ 70% triggers law baseline; → 90% triggers aggressive</span></td>
+        <td>harvey.ai blog / Artificial Lawyer</td>
+      </tr>
+      <tr>
+        <td><span class="cn">短视频平台 AI 内容占比</span><span class="en lang-inactive">AI content share on short-video platforms</span></td>
+        <td><span class="cn">未公开统计</span><span class="en lang-inactive">No public number</span></td>
+        <td><span class="cn">CapCut + 抖音公开披露 AI 内容比例 &gt; 30% 触发影视加速</span><span class="en lang-inactive">CapCut + Douyin disclosing AI content &gt; 30% triggers video acceleration</span></td>
+        <td>ByteDance / TikTok</td>
+      </tr>
+
+      <tr class="cat-row"><td><span class="cn">C · 资本市场</span><span class="en lang-inactive">C · Capital markets</span></td></tr>
+      <tr>
+        <td><span class="cn">IGV 软件 ETF 走势</span><span class="en lang-inactive">IGV software ETF trajectory</span></td>
+        <td><span class="cn">较 2025.9 高点 -28%</span><span class="en lang-inactive">-28% from Sept 2025 peak</span></td>
+        <td><span class="cn">反弹至 -15% 内 = 保守情景；继续下探 -40% = 激进</span><span class="en lang-inactive">Bounce to within -15% = conservative; further down to -40% = aggressive</span></td>
+        <td>iShares.com</td>
+      </tr>
+      <tr>
+        <td><span class="cn">Workday / Salesforce / Wolters Kluwer 季报</span><span class="en lang-inactive">Workday / Salesforce / Wolters Kluwer earnings</span></td>
+        <td><span class="cn">Workday Q4 2026 已破位</span><span class="en lang-inactive">Workday Q4 2026 already broke</span></td>
+        <td><span class="cn">连续两季 net retention &lt; 100% = per-seat 模式终结确认</span><span class="en lang-inactive">Two consecutive quarters of net retention &lt; 100% = end of per-seat confirmed</span></td>
+        <td>investor relations</td>
+      </tr>
+
+      <tr class="cat-row"><td><span class="cn">D · 招聘市场</span><span class="en lang-inactive">D · Labor market</span></td></tr>
+      <tr>
+        <td><span class="cn">印度 IT fresher hiring (年度)</span><span class="en lang-inactive">India IT fresher hiring (annual)</span></td>
+        <td><span class="cn">FY25 12 万 (FY22 60 万 = -80%)</span><span class="en lang-inactive">FY25 120K (vs FY22 600K = -80%)</span></td>
+        <td><span class="cn">FY26 跌破 8 万 = 编程激进情景信号</span><span class="en lang-inactive">FY26 below 80K = programming aggressive-scenario signal</span></td>
+        <td>BusinessToday / NASSCOM</td>
+      </tr>
+      <tr>
+        <td><span class="cn">英国初级开发岗位</span><span class="en lang-inactive">UK junior dev postings</span></td>
+        <td><span class="cn">since 2022.11 -32%</span><span class="en lang-inactive">-32% since Nov 2022</span></td>
+        <td><span class="cn">触及 -50% = 编程基准情景兑现</span><span class="en lang-inactive">Touching -50% = programming baseline realized</span></td>
+        <td>NFER / IT Brief UK</td>
+      </tr>
+      <tr>
+        <td><span class="cn">美国 22-25 岁 SWE 就业率</span><span class="en lang-inactive">US 22-25 SWE employment rate</span></td>
+        <td><span class="cn">since ChatGPT -20%</span><span class="en lang-inactive">-20% since ChatGPT</span></td>
+        <td><span class="cn">跌破 -30% = 大公司新人通道全面关闭确认</span><span class="en lang-inactive">Below -30% = full closure of major-company new-hire pipeline confirmed</span></td>
+        <td>BLS / Stanford research</td>
+      </tr>
+      <tr>
+        <td><span class="cn">下一期 AEI 数据 (release_2026_06+)</span><span class="en lang-inactive">Next AEI release (2026.06+)</span></td>
+        <td><span class="cn">directive 32.64% / ai_autonomy 3.41</span><span class="en lang-inactive">directive 32.64% / autonomy 3.41</span></td>
+        <td><span class="cn">directive 升回 38%+ OR autonomy &gt; 4.0 = orchestrator 模式深化</span><span class="en lang-inactive">directive back above 38% OR autonomy &gt; 4.0 = orchestrator pattern deepens</span></td>
+        <td>Anthropic Economic Index</td>
+      </tr>
+
+      <tr class="cat-row"><td><span class="cn">E · 监管 / 司法</span><span class="en lang-inactive">E · Regulatory / judicial</span></td></tr>
+      <tr>
+        <td><span class="cn">EU AI Act 实施细则（招聘 / 客服 / 法律审查）</span><span class="en lang-inactive">EU AI Act enforcement (hiring / CS / legal review)</span></td>
+        <td><span class="cn">2026.8 部分生效</span><span class="en lang-inactive">Partial enforcement Aug 2026</span></td>
+        <td><span class="cn">禁止 AI 自主做雇佣决定 = 法/金/咨/SaaS 推向保守情景</span><span class="en lang-inactive">Banning AI autonomous hiring decisions = pushes Pro Services toward conservative</span></td>
+        <td>EUR-Lex / Commission</td>
+      </tr>
+      <tr>
+        <td><span class="cn">中国 AI 就业风险评估细则</span><span class="en lang-inactive">China AI employment-risk assessment rules</span></td>
+        <td><span class="cn">2026 政府工作报告已写入</span><span class="en lang-inactive">In 2026 Govt Work Report</span></td>
+        <td><span class="cn">国务院出强制企业评估细则 = 推迟 BigTech 应届生通道关闭</span><span class="en lang-inactive">State Council mandates enterprise assessments = delays closure of BigTech graduate pipeline</span></td>
+        <td>State Council documents</td>
+      </tr>
+      <tr>
+        <td><span class="cn">主要 AI 替代相关仲裁 / 判决</span><span class="en lang-inactive">Major AI-replacement arbitrations / rulings</span></td>
+        <td><span class="cn">Mobley v. Workday 推进中</span><span class="en lang-inactive">Mobley v. Workday in progress</span></td>
+        <td><span class="cn">任一国出现"裁员归因 AI 违法"判决 = 全行业回归保守</span><span class="en lang-inactive">Any country ruling "AI-attributed layoffs unlawful" = sector-wide retreat to conservative</span></td>
+        <td>court records / Reuters Legal</td>
+      </tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- ============ §10 附录 ============ -->
+<section class="chapter" id="appendix"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num" style="color:var(--accent)">§ 10</div>
+    <h2>
+      <span class="cn">附录 ——「数据来源 / 假设清单 / 主流机构对比」</span>
+      <span class="en lang-inactive">Appendix — "Sources / Assumptions / Comparison with Mainstream Institutions"</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">本节给出三件事：① 本报告核心数据点的核验状态（详细在项目根目录的 <code>_data_verification.md</code>）；② 本报告的主要假设清单 + 什么会让预测错；③ 与主流机构同期预测的横向对比，让读者看到本报告在哪里站位。</span>
+      <span class="en lang-inactive">This section provides three things: (1) verification status for the report's core data points (full table in <code>_data_verification.md</code> at project root); (2) the report's main assumptions and what could break the forecast; (3) a side-by-side comparison with mainstream institutional forecasts so readers can see where this report sits.</span>
+    </p>
+  </div>
+
+  <div class="appendix-grid">
+    <div class="appendix-block">
+      <div class="ap-eyebrow">
+        <span class="cn">A · 数据来源</span>
+        <span class="en lang-inactive">A · Sources</span>
+      </div>
+      <h3>
+        <span class="cn">53+ 数据点全部经独立核验</span>
+        <span class="en lang-inactive">All 53+ data points independently verified</span>
+      </h3>
+      <ul>
+        <li><strong>A 类（公开可核验）</strong>：<span class="cn">Anthropic Economic Index 4 时点 raw csv、Bloomberry、UNU、Brookings、SF Standard、Fortune、TechCrunch、Bloomberg、NALP、AOI、TheWrap、Poynter、FinancialContent、Coface、WEF 等约 35 项，全部带 inline URL</span><span class="en lang-inactive">Anthropic AEI 4-time-point raw csv, Bloomberry, UNU, Brookings, SF Standard, Fortune, TechCrunch, Bloomberg, NALP, AOI, TheWrap, Poynter, FinancialContent, Coface, WEF — about 35 items, all with inline URLs</span></li>
+        <li><strong>B 类（不可公开核验）</strong>：<span class="cn">百信银行 93%、韩束 95%、蓝色光标 90%、新加坡 crypto 公司、火山+瑞幸 等 7 项——全部明确标注 "据 CASS 团队调研" 或 "据作者访谈"</span><span class="en lang-inactive">BaiXin 93%, Hansu 95%, BlueFocus 90%, Singapore crypto firm, Volcano + Luckin — 7 items, all flagged "per CASS field research" or "per author's interview"</span></li>
+        <li><strong>AEI csv 直接提取</strong>：<span class="cn">2025-08, 2025-11, 2026-02 三个时点 + automation_vs_augmentation_v2.csv（2024.12-2025.2 时点）；用 Python 直接 grep facet/variable</span><span class="en lang-inactive">three time points (2025-08, 2025-11, 2026-02) plus the v2 aggregated file (2024.12-2025.2); extracted via Python directly grepping facet/variable</span></li>
+        <li><strong><a href="../_data_verification.md">→ 完整核验表（_data_verification.md）</a></strong></li>
+      </ul>
+    </div>
+
+    <div class="appendix-block">
+      <div class="ap-eyebrow">
+        <span class="cn">B · 主要假设 + 什么会让预测错</span>
+        <span class="en lang-inactive">B · Main assumptions + what would break the forecast</span>
+      </div>
+      <h3>
+        <span class="cn">5 个假设清单（公开方便读者挑战）</span>
+        <span class="en lang-inactive">5 assumptions, listed openly for reader challenge</span>
+      </h3>
+      <ul>
+        <li><strong>① orchestrator 模式延续</strong>：<span class="cn">如果 directive 模式继续回落到 25% 以下 → 12.8x 乘数估值过高，§8 数字应整体下修 5-8pp</span><span class="en lang-inactive">If directive mode keeps falling below 25% → 12.8× multiplier is overstated, §8 numbers should be adjusted down 5-8pp</span></li>
+        <li><strong>② 节点斜率</strong>：<span class="cn">假设节点 E2 / F1+F2+H / G2 按客服 + 美术节点的历史斜率渗透；监管 / 工会大规模介入会推向保守列</span><span class="en lang-inactive">Assumes Nodes E2 / F1+F2+H / G2 penetrate at the historical slopes of CS + art nodes; large-scale regulatory / union intervention pushes toward the conservative column</span></li>
+        <li><strong>③ Conductor 不需要 AGI</strong>：<span class="cn">如果"长记忆 + workflow 自主管理"出现工程瓶颈（不是基础研究瓶颈）→ 激进情景延后 12-24 个月</span><span class="en lang-inactive">If "long memory + autonomous workflow" hits engineering bottlenecks (not basic-research bottlenecks) → aggressive scenario delayed 12-24 months</span></li>
+        <li><strong>④ 数据样本偏倚</strong>:<span class="cn">AEI 来自 Claude.ai 用户，行业方向准确但数字不能直接外推到全球普查</span><span class="en lang-inactive">AEI sample is Claude.ai users — direction reliable, numbers not directly extrapolatable to a global census</span></li>
+        <li><strong>⑤ 中国市场未充分覆盖</strong>：<span class="cn">中国 SaaS / agent 生态自成体系（DeepSeek / Doubao / Coze），本报告主要覆盖美/欧；中国独立报告见《全球 AI 月度洞察》系列</span><span class="en lang-inactive">China's SaaS / agent ecosystem (DeepSeek / Doubao / Coze) is self-contained; this report mainly covers US/EU; for China see the Global AI Monthly Insights series</span></li>
+      </ul>
+    </div>
+
+    <div class="appendix-block full">
+      <div class="ap-eyebrow">
+        <span class="cn">C · 与主流机构同期预测的横向对比</span>
+        <span class="en lang-inactive">C · Side-by-side with mainstream institutional forecasts</span>
+      </div>
+      <h3>
+        <span class="cn">本报告基准情景 ≈ BCG / Coface 框架；激进情景 ≈ Amodei 警告</span>
+        <span class="en lang-inactive">This report's baseline ≈ BCG / Coface frameworks; aggressive ≈ Amodei's warning</span>
+      </h3>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th><span class="cn">机构</span><span class="en lang-inactive">Institution</span></th>
+            <th><span class="cn">时点</span><span class="en lang-inactive">Date</span></th>
+            <th><span class="cn">核心预测</span><span class="en lang-inactive">Core forecast</span></th>
+            <th><span class="cn">与本报告对比</span><span class="en lang-inactive">vs this report</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>McKinsey</td>
+            <td>2025.6</td>
+            <td><span class="cn">2030 年前 25-30% 现存岗位被自动化</span><span class="en lang-inactive">25-30% of existing jobs automated by 2030</span></td>
+            <td><span class="cn">滞后——任务分解法没考虑节点效应；本报告 12 月内已观测到 30%+ 局部行业</span><span class="en lang-inactive">Lagging — task-decomposition doesn't account for node effects; this report sees 30%+ already in specific sectors within 12 months</span></td>
+          </tr>
+          <tr>
+            <td>Goldman Sachs</td>
+            <td>2025.3</td>
+            <td><span class="cn">AI 推动全球 GDP +6-7%；失业率小幅上升</span><span class="en lang-inactive">AI lifts global GDP +6-7%; small uptick in unemployment</span></td>
+            <td><span class="cn">乐观——只看宏观聚合，没看微观结构性 (印度 -80% / 英国初级 -32%)</span><span class="en lang-inactive">Optimistic — macro aggregates only, misses micro-structural (India -80% / UK junior dev -32%)</span></td>
+          </tr>
+          <tr>
+            <td>IMF</td>
+            <td>2025.1</td>
+            <td><span class="cn">40% 全球岗位"暴露于"AI</span><span class="en lang-inactive">40% of global jobs "exposed to" AI</span></td>
+            <td><span class="cn">"暴露"≠"实际替代"；本报告聚焦实际节点冲击</span><span class="en lang-inactive">"Exposure" ≠ "actual displacement"; this report focuses on observed node shocks</span></td>
+          </tr>
+          <tr>
+            <td>Dario Amodei (Anthropic)</td>
+            <td>2025.5.28</td>
+            <td><span class="cn">5 年内消除 50% 入门级白领，失业率冲到 10-20%</span><span class="en lang-inactive">50% of entry-level white-collar gone within 5yr; unemployment to 10-20%</span></td>
+            <td><span class="cn">≈ 本报告激进情景；时间窗 12 个月内已部分兑现（Block 4000、印度 -80%、Cowork→SaaSpocalypse）</span><span class="en lang-inactive">≈ This report's aggressive scenario; partly realized within 12-month window (Block 4000, India -80%, Cowork→SaaSpocalypse)</span></td>
+          </tr>
+          <tr>
+            <td>BCG</td>
+            <td>2026.4</td>
+            <td><span class="cn">12% 取代 + 12% 分化 + 14% 再平衡 + 5% 增强 + 57% 不太受影响</span><span class="en lang-inactive">12% replaced + 12% bifurcated + 14% rebalanced + 5% enhanced + 57% not much affected</span></td>
+            <td><span class="cn">≈ 本报告基准情景；§4 美术 +8% / §5 编程"writer→reviewer" 都是 BCG"分化 + 再平衡"的实例</span><span class="en lang-inactive">≈ This report's baseline; §4 art's +8% / §5 code's "writer→reviewer" are instances of BCG's "bifurcated + rebalanced"</span></td>
+          </tr>
+          <tr>
+            <td>Coface × OEM</td>
+            <td>2026.4</td>
+            <td><span class="cn">4 阶段框架：Copilot → Special Agent → Conductor → Prometheus/Superhuman</span><span class="en lang-inactive">4 phases: Copilot → Special Agent → Conductor → Prometheus/Superhuman</span></td>
+            <td><span class="cn">本报告理论基础；§2 12.8x 乘数对应 Special Agent 阶段；§8 激进情景对应 Conductor 局部到达</span><span class="en lang-inactive">Theoretical foundation of this report; §2's 12.8× multiplier maps to Special Agent; §8's aggressive scenario maps to Conductor partly arriving</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="micro-note">
+    <span class="cn">阅读建议：本报告的"基准情景"是中庸描述，与 BCG / Coface 框架对应；"激进情景"对应 Amodei 警告与 Anthropic / OpenAI 内部观察；"保守情景"假设监管 / 工会反弹，与 Goldman / 任正非的 "解决问题主要靠社会" 立场接近。读者在评估自己行业的暴露时，建议交叉对比 §1 主图（已实证）+ §8 矩阵（预测）+ §9 leading indicators（监测哪条情景在兑现）三处。</span>
+    <span class="en lang-inactive">Reading guidance: this report's "baseline" is the middle-of-the-road description, aligned with BCG / Coface frameworks; "aggressive" aligns with Amodei's warning and Anthropic / OpenAI internal observations; "conservative" assumes regulatory / union pushback and aligns with positions like Goldman's or Ren Zhengfei's "society should solve this." When assessing your own sector's exposure, cross-reference §1 (empirical), §8 (forecast), and §9 (leading indicators showing which scenario is materializing).</span>
+  </p>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer><div class="wrap-narrow">
+  <div class="f-logo">AI EMPLOYMENT MONITOR · TIPPING POINTS</div>
+  <div class="f-meta">
+    <span class="cn">原型版 · 2026.04 · <a href="../index.html">返回 Dashboard</a> · <a href="index.html">月报存档</a></span>
+    <span class="en lang-inactive">Prototype · Apr 2026 · <a href="../index.html">Dashboard</a> · <a href="index.html">Archive</a></span>
+  </div>
+</div></footer>
+
+<script>
+// ============ Language toggle ============
+const lb = document.querySelectorAll('.lang-btn');
+function setLang(l){
+  lb.forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  document.body.classList.toggle('lang-en', l === 'en');
+  document.querySelectorAll('.cn').forEach(e => e.classList.toggle('lang-inactive', l !== 'cn'));
+  document.querySelectorAll('.en').forEach(e => e.classList.toggle('lang-inactive', l !== 'en'));
+  if (window._thesisChart) window._thesisChart.update();
+}
+lb.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+// ============ Thesis chart ============
+const css = getComputedStyle(document.documentElement);
+const C = {
+  cs:   css.getPropertyValue('--c-cs').trim(),
+  art:  css.getPropertyValue('--c-art').trim(),
+  code: css.getPropertyValue('--c-code').trim(),
+  vid:  css.getPropertyValue('--c-vid').trim(),
+  pro:  css.getPropertyValue('--c-pro').trim(),
+  acc:  css.getPropertyValue('--accent').trim(),
+  fg:   css.getPropertyValue('--fg').trim(),
+  fg2:  css.getPropertyValue('--fg-2').trim(),
+  bord: css.getPropertyValue('--border').trim(),
+  bord2:css.getPropertyValue('--border-2').trim(),
+};
+
+// X-axis: monthly labels Jan 2022 → Jun 2027 (66 months)
+function months(){
+  const out = [];
+  let y = 2022, m = 0;
+  for(let i=0;i<66;i++){
+    out.push(`${y}-${String(m+1).padStart(2,'0')}-01`);
+    m++; if(m===12){m=0;y++;}
+  }
+  return out;
+}
+const labels = months();
+
+// Helper: build dataset filling nulls before/after a window
+function series(values, startIdx){
+  const arr = new Array(labels.length).fill(null);
+  values.forEach((v,i) => arr[startIdx+i] = v);
+  return arr;
+}
+
+// Customer Service: ChatGPT API at 2023-03 (idx 14), Bloomberry -16% confirmed at 2024-02
+const csVals = [
+  0,0,0,0,0,0,0,0,0,0,0,0,            // 2022 (12)
+  -1,-2,-3,-5,-7,-9,-11,-12,-13,-14,-15,-15, // 2023 (Node A fires Mar)
+  -16,-16,-17,-17,-18,-19,-19,-20,-21,-22,-23,-24, // 2024
+  -25,-25,-26,-26,-26,-27,-27,-27,-27,-28,-28,-28, // 2025
+  -28,-28,-28,-28                     // 2026 Jan-Apr
+];
+
+// Art & Design: SD 2022-08 (idx 7), ControlNet 2023-02 (idx 13)
+const artVals = [
+  0,0,0,0,0,0,0,                      // 2022 Jan-Jul
+  -1,-1,-1,-1,-1,                     // 2022 Aug (SD) - Dec
+  -2,-3,                              // 2023 Jan-Feb (Node B fires)
+  -5,-8,-11,-13,-15,-16,-17,-17,-17,-17, // 2023 Mar-Dec (UNU -17%)
+  -18,-19,-20,-21,-22,-23,-23,-24,-24,-25,-26,-27, // 2024
+  -27,-28,-28,-29,-29,-30,-30,-31,-31,-31,-32,-32, // 2025
+  -32,-32,-32,-32                     // 2026 Jan-Apr (UK illustrators 32%)
+];
+
+// Programming: Node D early (2024 throughout), E 2025-11 Claude Christmas, E2 2026-02 Opus 4.6
+const codeVals = [
+  0,0,0,0,0,0,0,0,0,0,0,0,            // 2022
+  0,0,0,0,0,0,0,0,0,0,0,0,            // 2023
+  0,0,0,-1,-1,-1,-2,-2,-2,-3,-3,-3,   // 2024 (Node D early Claude Code)
+  -4,-4,-4,-5,-5,-5,-5,-5,-5,-5,-6,-8,// 2025 (Jan-Dec; Node E fires Nov 24)
+  -12,-15,-18,-20                     // 2026 Jan-Apr (E2 fires Feb 5; Block Feb 26)
+];
+
+// Video / Film: G1 Seedance 1.0 at 2025-06 (idx 41), G2 Seedance 2.0 at 2026-02 (idx 49)
+// empirical: 2024-01 (idx 24) to 2026-04 (idx 51), forecast: 2026-05 (idx 52) to 2027-06 (idx 65)
+const vidEmp = [
+  0,0,0,0,0,-2,-3,-4,-5,-6,-7,-8,     // 2024
+  -9,-11,-13,-15,-17,-18,-19,-20,-21,-22,-23,-24, // 2025 (Node G1 fires Jun)
+  -25,-25,-26,-27                     // 2026 Jan-Apr (Node G2 fires Feb 12, WaPo Feb)
+];
+// Forecast: S-shape deceleration (mirroring CS/Art post-node pattern: steep 6 months, then plateau)
+// Reasoning: post-node 6-12mo deepest cut, then the residual work is "AI-resistant" (judgment, compliance,
+// regulation, pushback) — same shape as CS plateau at -28%, Art plateau at -32% that we already observe.
+const vidFc = [
+  // 2026 May -> 2027 Apr: from -27 base, steep first 6mo, then plateau approach
+  -29,-31,-33,-34,-35,-36,-37,-37,-38,-38,-38,-38, // 2026 May - 2027 Apr
+  -38,-38                             // 2027 May-Jun (plateau)
+];
+
+// Professional Services (Law/Fin/Consulting/SaaS): F2 Cowork 2026-01 (idx 48), F1 OpenClaw 2026-01 (idx 48), H 2026-02 (idx 49)
+// empirical: 2024-01 (idx 24) to 2026-04 (idx 51), forecast after
+const proEmp = [
+  0,0,0,0,0,0,-1,-1,-1,-1,-2,-2,      // 2024
+  -2,-2,-2,-3,-3,-3,-3,-4,-4,-4,-5,-5, // 2025
+  -7,-10,-12,-13                      // 2026 Jan-Apr (Cowork Jan 12 + OpenClaw Jan 30 + SaaSpocalypse Feb 12-25)
+];
+// LFCS: F+H just fired Q1 2026; expect rapid 6mo cut, then plateau at -28% (legal compliance, KYC,
+// senior judgment etc remain human; Klarna-style "rehire some" partial reversion)
+const proFc = [
+  -15,-17,-19,-21,-23,-24,-25,-26,-27,-27,-28,-28, // 2026 May - 2027 Apr
+  -28,-28                             // 2027 May-Jun (plateau)
+];
+
+// Programming forecast: extrapolating post-E2 (Feb 5 2026) steep slope, then plateau
+// Reasoning: senior/architect work resists; "code reviewer/reviser" role stabilizes (Anthropic 132 study)
+// empirical ends 2026-04 (idx 51) at -20%; forecast begins 2026-05 (idx 52)
+const codeFc = [
+  -22,-24,-26,-27,-28,-29,-30,-30,-31,-31,-32,-32, // 2026 May - 2027 Apr
+  -32,-32                             // 2027 May-Jun (plateau ~-32%, comparable to UK junior dev observed -32%)
+];
+
+// Build forecast datasets that join cleanly with empirical at idx 51
+function joinForecast(empirical, forecast, empStartIdx){
+  const arr = new Array(labels.length).fill(null);
+  // Last empirical point as starting anchor
+  arr[empStartIdx + empirical.length - 1] = empirical[empirical.length - 1];
+  forecast.forEach((v,i) => arr[empStartIdx + empirical.length + i] = v);
+  return arr;
+}
+
+const baseDS = (label, color, data, opts={}) => ({
+  label, data, borderColor: color, backgroundColor: color+'22',
+  borderWidth: 2.5, tension: 0.25, pointRadius: 0,
+  pointHoverRadius: 4, pointHoverBackgroundColor: color, pointHoverBorderColor: '#fff',
+  spanGaps: false, ...opts
+});
+
+const datasets = [
+  baseDS('客服 / Customer Service', C.cs, csVals),
+  baseDS('美术 / Art & Design', C.art, artVals),
+  baseDS('编程 / Programming', C.code, codeVals),
+  baseDS('编程预测 / Code forecast', C.code, joinForecast(codeVals, codeFc, 0), {borderDash:[6,5], borderWidth:2}),
+  baseDS('影视 / Video', C.vid, series(vidEmp, 24)),
+  baseDS('影视预测 / Video forecast', C.vid, joinForecast(vidEmp, vidFc, 24), {borderDash:[6,5], borderWidth:2}),
+  baseDS('法律/金融/咨询/SaaS / Law-Finance-Consulting-SaaS', C.pro, series(proEmp, 24)),
+  baseDS('法律金融咨询SaaS预测 / LFCS forecast', C.pro, joinForecast(proEmp, proFc, 24), {borderDash:[6,5], borderWidth:2}),
+];
+
+// Node markers — each node attaches to the curve it impacts, colored by industry
+// yVal = the curve's Y value at node's idx (precomputed from the dataset arrays above)
+// industry: 'cs' | 'art' | 'code' | 'vid' | 'pro' (drives color)
+// stack (optional): vertical offset in pixels (for nodes at the same x near same curve)
+const nodes = [
+  {idx: 14, yVal: -3,  label:'A',  industry:'cs',   tip:'ChatGPT API (Mar 1 2023)'},
+  {idx: 13, yVal: -3,  label:'B',  industry:'art',  tip:'ControlNet + ComfyUI (Feb 10 2023)'},
+  {idx: 29, yVal: -1,  label:'D',  industry:'code', tip:'Claude Code early (2024.6 anchor)',     size:'sub'},
+  {idx: 46, yVal: -6,  label:'E',  industry:'code', tip:'Claude Christmas / Opus 4.5 (Nov 24 2025)'},
+  {idx: 49, yVal: -15, label:'E2', industry:'code', tip:'Opus 4.6 agent teams (Feb 5 2026)',      size:'sub'},
+  {idx: 41, yVal: -18, label:'G1', industry:'vid',  tip:'Seedance 1.0 (Jun 2025)',                size:'sub'},
+  {idx: 49, yVal: -25, label:'G2', industry:'vid',  tip:'Seedance 2.0 (Feb 12 2026)'},
+  {idx: 48, yVal: -7,  label:'F2', industry:'pro',  tip:'Cowork + 11 plugins (Jan 12-30 2026)'},
+  {idx: 48, yVal: -7,  label:'F1', industry:'pro',  tip:'OpenClaw OSS (Jan 30 2026)',  size:'sub', stack:24},
+  {idx: 49, yVal: -10, label:'H',  industry:'pro',  tip:'SaaSpocalypse multi-wave (Feb 12-25 $2T)'},
+];
+
+// Custom plugin: each node attaches to its industry curve
+//  - Circle drawn ABOVE the curve at (xp, yp - lift), colored by industry
+//  - Short connector line from circle bottom to the curve
+//  - Sub nodes are slightly smaller; stack offset for nodes sharing the same time+industry
+// NOTE: Chart.js v4 time scale needs timestamp/Date for getPixelForValue, not string label
+const industryColor = {cs:C.cs, art:C.art, code:C.code, vid:C.vid, pro:C.pro};
+const labelTs = labels.map(s => new Date(s).getTime());
+const nodePlugin = {
+  id: 'nodeMarkers',
+  afterDatasetsDraw(chart){
+    const {ctx, scales:{x,y}} = chart;
+    nodes.forEach(n => {
+      const isSub = n.size === 'sub';
+      const r = isSub ? 8 : 11;
+      const lift = 18 + (n.stack || 0);
+      const color = industryColor[n.industry] || C.acc;
+      const xp = x.getPixelForValue(labelTs[n.idx]);
+      const yp = y.getPixelForValue(n.yVal);
+      const cy = yp - lift;
+      ctx.save();
+      // connector line from circle bottom to curve point
+      ctx.strokeStyle = color + '70';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(xp, cy + r);
+      ctx.lineTo(xp, yp);
+      ctx.stroke();
+      // small dot ON the curve to mark exact contact
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(xp, yp, 2.6, 0, Math.PI*2);
+      ctx.fill();
+      // node circle (filled industry color)
+      ctx.beginPath();
+      ctx.arc(xp, cy, r, 0, Math.PI*2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      // letter label
+      ctx.fillStyle = '#fff';
+      ctx.font = `600 ${isSub ? 9 : 11}px JetBrains Mono, monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, xp, cy + 0.5);
+      ctx.restore();
+    });
+  }
+};
+
+// Forecast band shading (light orange) covering 2026-05 onwards
+const forecastBandPlugin = {
+  id: 'forecastBand',
+  beforeDatasetsDraw(chart){
+    const {ctx, chartArea: ca, scales:{x}} = chart;
+    const xStart = x.getPixelForValue(labelTs[51]);  // 2026-04 (last empirical)
+    const xEnd = x.getPixelForValue(labelTs[65]);    // 2027-06
+    ctx.save();
+    ctx.fillStyle = C.acc + '0D';  // very light
+    ctx.fillRect(xStart, ca.top, xEnd - xStart, ca.bottom - ca.top);
+    // label
+    ctx.fillStyle = C.acc + 'AA';
+    ctx.font = '600 10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    const isEn = document.body.classList.contains('lang-en');
+    const tx = (xStart + xEnd) / 2;
+    ctx.fillText(isEn ? 'FORECAST · 12 MONTHS' : '预测带 · 12 个月', tx, ca.top + 14);
+    ctx.restore();
+  }
+};
+
+const ctx = document.getElementById('thesisChart').getContext('2d');
+window._thesisChart = new Chart(ctx, {
+  type: 'line',
+  data: { labels, datasets },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'nearest', axis: 'x', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0B1D3A',
+        titleFont: { family: 'JetBrains Mono', size: 11, weight: '600' },
+        bodyFont: { family: 'Inter', size: 12 },
+        padding: 10, cornerRadius: 8,
+        callbacks: {
+          title: (items) => items[0].label.slice(0,7),  // YYYY-MM
+          label: (it) => `${it.dataset.label}: ${it.formattedValue}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'time',
+        time: { unit: 'year', displayFormats: { year: 'yyyy' } },
+        grid: { color: C.bord, drawTicks: false },
+        ticks: {
+          color: C.fg2,
+          font: { family: 'JetBrains Mono', size: 11, weight: '500' },
+          padding: 8,
+        },
+        border: { color: C.bord2 }
+      },
+      y: {
+        min: -55, max: 5,
+        grid: { color: C.bord, drawTicks: false },
+        ticks: {
+          color: C.fg2,
+          font: { family: 'JetBrains Mono', size: 11 },
+          padding: 8,
+          callback: v => v + '%'
+        },
+        border: { color: C.bord2 }
+      }
+    }
+  },
+  plugins: [forecastBandPlugin, nodePlugin]
+});
+</script>
+
+</body>
+</html>
