@@ -363,7 +363,14 @@ section.chapter{padding:88px 0;border-bottom:1px solid var(--border)}
 .compare-table td:nth-child(3){width:28%}
 .compare-table td:last-child{font-style:italic;color:var(--fg-3);font-size:12px}
 
-/* Takeaway annotation — one-sentence reader-friendly summary above each chart/card group */
+/* "How to read the chart" explainer block (above §1 main chart) */
+.how-to-read{margin:0 0 32px;padding:24px 28px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--accent)}
+.how-to-read .htr-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.how-to-read .htr-title::before{content:'';width:20px;height:1px;background:var(--accent)}
+.how-to-read p{font-size:14.5px;color:var(--fg);line-height:1.75;margin-bottom:14px;max-width:64ch}
+.how-to-read p:last-child{margin-bottom:0}
+.how-to-read p strong{font-weight:600;color:var(--fg)}
+.how-to-read p em{font-style:normal;background:rgba(233,75,35,0.1);padding:1px 6px;border-radius:3px;color:var(--fg)}
 
 /* B-class footnote inline marker */
 .b-class{display:inline-flex;align-items:center;gap:4px;padding:1px 6px;background:rgba(11,29,58,0.06);border-radius:4px;font-family:var(--mono);font-size:10px;color:var(--fg-2);letter-spacing:0.04em;text-transform:uppercase;margin-left:4px;vertical-align:1px}
@@ -498,6 +505,21 @@ footer a:hover{text-decoration:underline}
     <p class="lede">
       <span class="cn">主流机构用任务分解法预测 AI 对就业的渗透，结果普遍比真实数据慢 6–18 个月。根本原因是：<strong>AI 替代就业的轨迹是由"关键应用节点"切割的</strong>——节点之前，能力虽然具备但应用门槛仍在，冲击温和、以辅助为主；节点之后，应用瓶颈一被打通，6–12 个月内替代率就陡升到 40–93%。</span>
       <span class="en lang-inactive">Mainstream institutions use task-decomposition models to forecast AI's labor penetration, and they consistently lag the actual data by 6–18 months. The reason is structural: <strong>AI's labor-displacement trajectory is punctuated by "key application nodes."</strong> Before the node, capability exists but adoption friction persists — impact is mild, augmentation-led. Once the node breaks the bottleneck open, displacement climbs sharply to 40–93% within 6–12 months.</span>
+    </p>
+  </div>
+
+  <div class="how-to-read">
+    <div class="htr-title">
+      <span class="cn">观察方法 · 怎么读下面这张图</span>
+      <span class="en lang-inactive">Method · How to Read the Chart Below</span>
+    </div>
+    <p>
+      <span class="cn">每个行业都有一个 <em>关键应用节点</em>——某款产品让 AI 第一次能在这个行业大规模落地的那一刻。是<strong>应用层</strong>的事，跟模型能力本身的进步是两回事：能力早就够用了，缺的是一个<strong>让企业和个人都愿意真正部署起来的产品</strong>。客服的节点是 <strong>2023 年 3 月 ChatGPT API 商用</strong>；美术的节点是 <strong>2023 年 2 月 ControlNet 让生图可控</strong>；编程的节点是 <strong>2025 年 11 月 Claude Code 能自主完成任务</strong>。每条曲线就是该行业的招聘或合同指数，用节点当时间锚点对齐。</span>
+      <span class="en lang-inactive">Every industry has one <em>key application node</em> — the moment a specific product lets AI deploy at scale there for the first time. It's an <strong>application-layer</strong> event, distinct from raw capability progress: the model was already strong enough; what was missing was <strong>a product that both enterprises and individuals would actually adopt</strong>. Customer service's node is the <strong>ChatGPT API going commercial in March 2023</strong>; art &amp; design's is <strong>ControlNet making image generation controllable in February 2023</strong>; programming's is <strong>Claude Code completing tasks autonomously in November 2025</strong>. Each curve is the industry's hiring or contract index, time-aligned to its own node.</span>
+    </p>
+    <p>
+      <span class="cn">客服（ChatGPT API 商业化）与美术设计（ControlNet）的节点均触发于 <strong>2023 年初</strong>，两条曲线已完成完整周期，分别稳定在 <strong>−28%</strong> 与 <strong>−32%</strong>，未再下探。影视制作（Seedance 2.0）的节点触发于 <strong>2026 年 2 月</strong>，当前雇佣量变动约为 −27%，处于下行周期中段。编程（Claude Code）与法律 / 金融 / 咨询 / SaaS（Anthropic Cowork）的节点触发于过去 6 至 12 个月内，两条曲线均处于下行初期的陡降阶段。图中<strong>实线</strong>为实测数据，<strong>虚线</strong>为影视制作、编程及法律 / 金融 / 咨询 / SaaS 三个行业未来 12 个月的预测区间，依据客服与美术设计曲线所确立的形态外推得出。</span>
+      <span class="en lang-inactive">Customer service (ChatGPT API commercialization) and art &amp; design (ControlNet) crossed their inflection nodes in <strong>early 2023</strong>; both curves have since completed a full cycle and settled at <strong>−28%</strong> and <strong>−32%</strong> respectively, with no further decline observed. Film &amp; video (Seedance 2.0) triggered its node in <strong>February 2026</strong>, with the current employment-change reading at −27%, placing it at the midpoint of its downward cycle. Programming (Claude Code) and law / finance / consulting / SaaS (Anthropic Cowork) crossed their nodes within the past 6–12 months and remain in the early steep-decline phase. Solid lines represent empirical data; dashed lines denote 12-month forecasts for film &amp; video, programming, and law / finance / consulting / SaaS, extrapolated from the cycle shape established by the customer service and art &amp; design curves.</span>
     </p>
   </div>
 
