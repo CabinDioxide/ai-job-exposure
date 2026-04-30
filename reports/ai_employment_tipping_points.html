@@ -537,6 +537,14 @@ footer a:hover{text-decoration:underline}
       <canvas id="thesisChart"></canvas>
     </div>
 
+    <div class="chart-legend">
+      <div class="lg-row"><span class="swatch" style="background:var(--c-cs);color:var(--c-cs)"></span><span><span class="lg-name"><span class="cn">客服</span><span class="en lang-inactive">Customer Service</span></span> · <span class="cn">节点 A 后 18 个月内合同指数 −32%</span><span class="en lang-inactive">−32% contract index 18 months after Node A</span></span></div>
+      <div class="lg-row"><span class="swatch" style="background:var(--c-art);color:var(--c-art)"></span><span><span class="lg-name"><span class="cn">美术设计</span><span class="en lang-inactive">Art &amp; Design</span></span> · <span class="cn">节点 B+C 后累计 −32%；英国插画师 32% 失业</span><span class="en lang-inactive">−32% post-B+C; 32% UK illustrators displaced</span></span></div>
+      <div class="lg-row"><span class="swatch" style="background:var(--c-code);color:var(--c-code)"></span><span><span class="lg-name"><span class="cn">编程</span><span class="en lang-inactive">Programming</span></span> · <span class="cn">节点 E 后 5 个月录得 −20%；入门级岗位结构性收缩</span><span class="en lang-inactive">−20% within 5mo of Node E; entry-level disappearing</span></span></div>
+      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-vid)"></span><span><span class="lg-name"><span class="cn">影视 / 视频</span><span class="en lang-inactive">Film &amp; Video</span></span> · <span class="cn">节点 G 刚刚触发；预测斜率参照美术节点</span><span class="en lang-inactive">Node G just fired; forecast slope mirrors Art</span></span></div>
+      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-pro)"></span><span><span class="lg-name"><span class="cn">法律 / 金融 / 咨询 / SaaS</span><span class="en lang-inactive">Law / Finance / Consulting / SaaS</span></span> · <span class="cn">节点 F1+F2 触发 SaaSpocalypse；进入早期陡降段</span><span class="en lang-inactive">Nodes F1+F2 triggered SaaSpocalypse; entering early steep phase</span></span></div>
+    </div>
+
     <div class="nodes-legend">
       <span class="n cs"><span class="n-dot"></span><span class="cn">A · ChatGPT API 商业化 (2023.3.1) → 客服</span><span class="en lang-inactive">A · ChatGPT API (Mar 1 2023) → CS</span></span>
       <span class="n art"><span class="n-dot"></span><span class="cn">B · ControlNet + ComfyUI (2023.2.10) → 美术</span><span class="en lang-inactive">B · ControlNet + ComfyUI (Feb 10 2023) → Art</span></span>
@@ -548,14 +556,6 @@ footer a:hover{text-decoration:underline}
       <span class="n pro"><span class="n-dot"></span><span class="cn">F1 · OpenClaw 开源 agent (2026.1.30) → 法/金/咨/SaaS</span><span class="en lang-inactive">F1 · OpenClaw OSS (Jan 30 2026) → LFCS</span></span>
       <span class="n pro"><span class="n-dot"></span><span class="cn">F2 · Claude Cowork + 11 垂直插件 (2026.1.12) → 法/金/咨/SaaS</span><span class="en lang-inactive">F2 · Cowork + 11 plugins (Jan 12 2026) → LFCS</span></span>
       <span class="n pro"><span class="n-dot"></span><span class="cn">H · SaaSpocalypse 多波 (2026.2.12-2.25, $2T 累计) → 法/金/咨/SaaS</span><span class="en lang-inactive">H · SaaSpocalypse multi-wave (Feb 12-25 2026) → LFCS</span></span>
-    </div>
-
-    <div class="chart-legend">
-      <div class="lg-row"><span class="swatch" style="background:var(--c-cs);color:var(--c-cs)"></span><span><span class="lg-name"><span class="cn">客服</span><span class="en lang-inactive">Customer Service</span></span> · <span class="cn">节点 A 后 18 个月内合同指数 −32%</span><span class="en lang-inactive">−32% contract index 18 months after Node A</span></span></div>
-      <div class="lg-row"><span class="swatch" style="background:var(--c-art);color:var(--c-art)"></span><span><span class="lg-name"><span class="cn">美术设计</span><span class="en lang-inactive">Art &amp; Design</span></span> · <span class="cn">节点 B+C 后累计 −32%；英国插画师 32% 失业</span><span class="en lang-inactive">−32% post-B+C; 32% UK illustrators displaced</span></span></div>
-      <div class="lg-row"><span class="swatch" style="background:var(--c-code);color:var(--c-code)"></span><span><span class="lg-name"><span class="cn">编程</span><span class="en lang-inactive">Programming</span></span> · <span class="cn">节点 E 后 5 个月录得 −20%；入门级岗位结构性收缩</span><span class="en lang-inactive">−20% within 5mo of Node E; entry-level disappearing</span></span></div>
-      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-vid)"></span><span><span class="lg-name"><span class="cn">影视 / 视频</span><span class="en lang-inactive">Film &amp; Video</span></span> · <span class="cn">节点 G 刚刚触发；预测斜率参照美术节点</span><span class="en lang-inactive">Node G just fired; forecast slope mirrors Art</span></span></div>
-      <div class="lg-row"><span class="swatch dashed" style="color:var(--c-pro)"></span><span><span class="lg-name"><span class="cn">法律 / 金融 / 咨询 / SaaS</span><span class="en lang-inactive">Law / Finance / Consulting / SaaS</span></span> · <span class="cn">节点 F1+F2 触发 SaaSpocalypse；进入早期陡降段</span><span class="en lang-inactive">Nodes F1+F2 triggered SaaSpocalypse; entering early steep phase</span></span></div>
     </div>
   </div>
 
@@ -2143,19 +2143,38 @@ window._thesisChart = new Chart(ctx, {
   data: { labels, datasets },
   options: {
     responsive: true, maintainAspectRatio: false,
-    interaction: { mode: 'nearest', axis: 'x', intersect: false },
+    // hover: nearest curve in 2D distance, only 1 dataset shown — so user immediately sees which industry
+    interaction: { mode: 'nearest', axis: 'xy', intersect: false },
     plugins: {
       legend: { display: false },
       tooltip: {
+        mode: 'nearest', axis: 'xy', intersect: false,
         backgroundColor: '#0B1D3A',
         titleFont: { family: 'JetBrains Mono', size: 11, weight: '600' },
-        bodyFont: { family: 'Inter', size: 12 },
-        padding: 10, cornerRadius: 8,
+        bodyFont: { family: 'Inter', size: 13, weight: '600' },
+        padding: 12, cornerRadius: 8,
+        displayColors: true,
+        boxWidth: 10, boxHeight: 10, boxPadding: 6,
         callbacks: {
           title: (items) => items[0].label.slice(0,7),  // YYYY-MM
-          label: (it) => `${it.dataset.label}: ${it.formattedValue}%`
+          label: (it) => `  ${it.dataset.label}: ${it.formattedValue}%`
         }
       }
+    },
+    onHover: (e, items, chart) => {
+      // Highlight the hovered curve: thicken its line, dim the others
+      const hoveredIdx = items && items.length ? items[0].datasetIndex : -1;
+      let needUpdate = false;
+      chart.data.datasets.forEach((ds, i) => {
+        const targetWidth = (hoveredIdx < 0) ? (ds.borderDash ? 2 : 2.5)
+                          : (i === hoveredIdx) ? 4
+                          : (ds.borderDash ? 1 : 1.2);
+        if (Math.abs((ds.borderWidth || 2.5) - targetWidth) > 0.05) {
+          ds.borderWidth = targetWidth;
+          needUpdate = true;
+        }
+      });
+      if (needUpdate) chart.update('none');
     },
     scales: {
       x: {
