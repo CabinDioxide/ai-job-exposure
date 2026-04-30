@@ -389,6 +389,27 @@ footer a:hover{text-decoration:underline}
   font-family:var(--mono);letter-spacing:0.04em;
 }
 .proto-banner strong{color:#5A4400}
+
+/* ============ §1.5 country decomposition charts ============ */
+.cd-card .chart-title{display:flex;align-items:center;gap:10px}
+.cd-card .ind-bullet{display:inline-block;width:12px;height:12px;border-radius:3px;flex-shrink:0;background:var(--accent)}
+.cd-card.cs   .ind-bullet{background:var(--c-cs)}
+.cd-card.art  .ind-bullet{background:var(--c-art)}
+.cd-card.code .ind-bullet{background:var(--c-code)}
+.cd-card.vid  .ind-bullet{background:var(--c-vid)}
+.cd-card.pro  .ind-bullet{background:var(--c-pro)}
+.cd-legend{
+  margin-top:14px;display:flex;flex-wrap:wrap;gap:14px 22px;
+  font-family:var(--mono);font-size:11.5px;color:var(--fg-2);letter-spacing:0.02em
+}
+.cd-legend .lg-item{display:inline-flex;align-items:center;gap:6px}
+.cd-legend .lg-swatch{display:inline-block;width:18px;height:3px;border-radius:1px;flex-shrink:0}
+.cd-legend .lg-swatch.dashed{
+  height:2px;background-image:linear-gradient(to right,currentColor 50%,transparent 50%);
+  background-size:6px 2px;background-color:transparent;border:none
+}
+.cd-legend .lg-name{font-weight:600;color:var(--fg)}
+
 </style>
 </head>
 <body>
@@ -584,6 +605,80 @@ footer a:hover{text-decoration:underline}
     </div>
   </div>
 </div></section>
+
+<!-- ============ §1.5 COUNTRY DECOMPOSITION · 5 INDUSTRIES × COUNTRY SUB-CURVES ============ -->
+<section class="chapter" id="country-decomposition"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 1.5</div>
+    <h2>
+      <span class="cn">按国别拆分</span>
+      <span class="en lang-inactive">By Country</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">下方五张图按国别拆出 §1 主图的同一批锚点，呈现各行业在不同国家的就业份额变化轨迹。坐标轴口径与 §1 一致。</span>
+      <span class="en lang-inactive">The five charts below split §1's anchor data by country, showing each industry's employment-share trajectory across different countries. Axes match §1.</span>
+    </p>
+  </div>
+
+  <!-- Five stacked charts: one per industry -->
+
+  <!-- (1) Customer Service -->
+  <div class="chart-card cd-card cs">
+    <div class="chart-title">
+      <span class="ind-bullet"></span>
+      <span class="cn">客服 · 国别拆解</span>
+      <span class="en lang-inactive">Customer Service · Country Lines</span>
+    </div>
+    <div class="chart-wrap" style="height:340px"><canvas id="cdChart_cs"></canvas></div>
+    <div class="cd-legend" data-industry="customer_service"></div>
+  </div>
+
+  <!-- (2) Art & Design -->
+  <div class="chart-card cd-card art" style="margin-top:28px">
+    <div class="chart-title">
+      <span class="ind-bullet"></span>
+      <span class="cn">美术设计 · 国别拆解</span>
+      <span class="en lang-inactive">Art &amp; Design · Country Lines</span>
+    </div>
+    <div class="chart-wrap" style="height:340px"><canvas id="cdChart_art"></canvas></div>
+    <div class="cd-legend" data-industry="art_design"></div>
+  </div>
+
+  <!-- (3) Programming -->
+  <div class="chart-card cd-card code" style="margin-top:28px">
+    <div class="chart-title">
+      <span class="ind-bullet"></span>
+      <span class="cn">编程 · 国别拆解</span>
+      <span class="en lang-inactive">Programming · Country Lines</span>
+    </div>
+    <div class="chart-wrap" style="height:380px"><canvas id="cdChart_code"></canvas></div>
+    <div class="cd-legend" data-industry="programming"></div>
+  </div>
+
+  <!-- (4) Film & Video -->
+  <div class="chart-card cd-card vid" style="margin-top:28px">
+    <div class="chart-title">
+      <span class="ind-bullet"></span>
+      <span class="cn">影视 · 国别拆解</span>
+      <span class="en lang-inactive">Film &amp; Video · Country Lines</span>
+    </div>
+    <div class="chart-wrap" style="height:340px"><canvas id="cdChart_vid"></canvas></div>
+    <div class="cd-legend" data-industry="film_video"></div>
+  </div>
+
+  <!-- (5) LFCS -->
+  <div class="chart-card cd-card pro" style="margin-top:28px">
+    <div class="chart-title">
+      <span class="ind-bullet"></span>
+      <span class="cn">法律 / 金融 / 咨询 / SaaS · 国别拆解</span>
+      <span class="en lang-inactive">Law / Finance / Consulting / SaaS · Country Lines</span>
+    </div>
+    <div class="chart-wrap" style="height:380px"><canvas id="cdChart_pro"></canvas></div>
+    <div class="cd-legend" data-industry="pro_services_lfcs"></div>
+  </div>
+
+</div></section>
+
 
 <!-- ============ §2 ORCHESTRATOR ============ -->
 <section class="chapter" id="orchestrator"><div class="wrap">
@@ -2203,6 +2298,277 @@ window._thesisChart = new Chart(ctx, {
   },
   plugins: [forecastBandPlugin, nodePlugin]
 });
+
+// ============ §1.5 Country Decomposition: 5 industries × multiple country lines ============
+(async function(){
+
+  const fmt = v => (v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
+
+  // Per-industry node anchors (subset of §1's nodes that belong to each industry)
+  // Format: {idx, label, tip, defaultY (used to position the node circle above any line)}
+  const INDUSTRY_NODES = {
+    customer_service: [
+      {idx: 14, label: 'A',  tip: 'ChatGPT API (Mar 1 2023)'},
+    ],
+    art_design: [
+      {idx: 13, label: 'B',  tip: 'ControlNet + ComfyUI (Feb 10 2023)'},
+    ],
+    programming: [
+      {idx: 29, label: 'D',  tip: 'Claude Code early (2024.6)', size:'sub'},
+      {idx: 46, label: 'E',  tip: 'Claude Christmas (Nov 24 2025)'},
+      {idx: 49, label: 'E2', tip: 'Opus 4.6 + Block (Feb 5 2026)', size:'sub'},
+    ],
+    film_video: [
+      {idx: 41, label: 'G1', tip: 'Seedance 1.0 (Jun 2025)', size:'sub'},
+      {idx: 49, label: 'G2', tip: 'Seedance 2.0 (Feb 12 2026)'},
+    ],
+    pro_services_lfcs: [
+      {idx: 48, label: 'F2', tip: 'Cowork + 11 plugins (Jan 12-30 2026)'},
+      {idx: 48, label: 'F1', tip: 'OpenClaw OSS (Jan 30 2026)', size:'sub', stack: 24},
+      {idx: 49, label: 'H',  tip: 'SaaSpocalypse (Feb 12-25 2026, $2T)'},
+    ],
+  };
+
+  let DATA = null;
+  try {
+    const r = await fetch('data/country_curves.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    DATA = await r.json();
+  } catch (err) {
+    console.error('country_curves load failed:', err);
+    return;
+  }
+
+  const labels = DATA.labels;                     // 66 month strings
+  const labelTs = labels.map(s => new Date(s).getTime());
+  const empEnd = DATA.emp_end_idx;                // 51
+  const fcstStart = DATA.fcst_start_idx;          // 52
+
+  // Build datasets for one industry: solid empirical + dashed forecast (only if has_forecast)
+  function buildDatasets(ind, indData){
+    const dsList = [];
+    for (const [country, c] of Object.entries(indData.countries)){
+      const fullEmp = new Array(labels.length).fill(null);
+      // Empirical 0..51
+      for (let i = 0; i <= empEnd; i++) fullEmp[i] = c.empirical[i];
+      // For non-forecast industries (CS / Art): plateau through end as solid
+      if (!indData.has_forecast){
+        for (let i = empEnd + 1; i < labels.length; i++) fullEmp[i] = c.plateau;
+      }
+      dsList.push({
+        label: DATA.country_label[country] + ' · ' + country,
+        country: country,
+        data: fullEmp,
+        borderColor: c.color,
+        backgroundColor: c.color + '22',
+        borderWidth: 2.5,
+        tension: 0.25,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: c.color,
+        pointHoverBorderColor: '#fff',
+        spanGaps: false,
+      });
+      // Forecast dataset (dashed) only if industry forecasts
+      if (indData.has_forecast){
+        const fc = new Array(labels.length).fill(null);
+        // Anchor connection: last empirical value at idx empEnd
+        fc[empEnd] = c.empirical[empEnd];
+        for (let k = 0; k < c.forecast.length; k++){
+          fc[fcstStart + k] = c.forecast[k];
+        }
+        dsList.push({
+          label: DATA.country_label[country] + ' · ' + country + ' (forecast)',
+          country: country,
+          isForecast: true,
+          data: fc,
+          borderColor: c.color,
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [6,5],
+          tension: 0.25,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: c.color,
+          pointHoverBorderColor: '#fff',
+          spanGaps: false,
+        });
+      }
+    }
+    return dsList;
+  }
+
+  // Forecast band shading + node markers, scoped per industry
+  function makeNodePlugin(ind){
+    const nodes = INDUSTRY_NODES[ind] || [];
+    return {
+      id: 'nodeMarkers_' + ind,
+      afterDatasetsDraw(chart){
+        const {ctx, scales:{x,y}} = chart;
+        nodes.forEach(n => {
+          const isSub = n.size === 'sub';
+          const r = isSub ? 7 : 10;
+          const lift = 16 + (n.stack || 0);
+          const xp = x.getPixelForValue(labelTs[n.idx]);
+          // Anchor on the topmost (highest Y / least negative) curve at this idx
+          let topY = -100;
+          chart.data.datasets.forEach(ds => {
+            const v = ds.data[n.idx];
+            if (v !== null && v !== undefined && v > topY) topY = v;
+          });
+          if (topY === -100) return;
+          const yp = y.getPixelForValue(topY);
+          const cy = yp - lift;
+          // Use industry color for node (matches §1)
+          const indColors = {customer_service:'#6B4F8F', art_design:'#C2547C', programming:'#2E8B8B', film_video:'#E94B23', pro_services_lfcs:'#2C4F8F'};
+          const color = indColors[ind] || '#666';
+          ctx.save();
+          ctx.strokeStyle = color + '70';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(xp, cy + r);
+          ctx.lineTo(xp, yp);
+          ctx.stroke();
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(xp, yp, 2.6, 0, Math.PI*2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(xp, cy, r, 0, Math.PI*2);
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.fillStyle = '#fff';
+          ctx.font = `600 ${isSub ? 9 : 11}px JetBrains Mono, monospace`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(n.label, xp, cy + 0.5);
+          ctx.restore();
+        });
+      }
+    };
+  }
+
+  function makeForecastBand(ind){
+    return {
+      id: 'forecastBand_' + ind,
+      beforeDatasetsDraw(chart){
+        const {ctx, chartArea: ca, scales:{x}} = chart;
+        const xS = x.getPixelForValue(labelTs[empEnd]);
+        const xE = x.getPixelForValue(labelTs[labels.length-1]);
+        ctx.save();
+        ctx.fillStyle = '#FF6E2D0D';
+        ctx.fillRect(xS, ca.top, xE - xS, ca.bottom - ca.top);
+        ctx.fillStyle = '#FF6E2DAA';
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        const isEn = document.body.classList.contains('lang-en');
+        ctx.fillText(isEn ? 'FORECAST · 12 MONTHS' : '预测带 · 12 个月', (xS + xE)/2, ca.top + 14);
+        ctx.restore();
+      }
+    };
+  }
+
+  function makeOptions(ind){
+    return {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'nearest', axis: 'xy', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'nearest', axis: 'xy', intersect: false,
+          backgroundColor: '#0B1D3A',
+          titleFont: { family: 'JetBrains Mono', size: 11, weight: '600' },
+          bodyFont: { family: 'Inter', size: 13, weight: '600' },
+          padding: 12, cornerRadius: 8,
+          displayColors: true, boxWidth: 10, boxHeight: 10, boxPadding: 6,
+          callbacks: {
+            title: items => items[0].label.slice(0,7),
+            label: it => `  ${it.dataset.label}: ${fmt(it.parsed.y)}`,
+          }
+        }
+      },
+      onHover: (e, items, chart) => {
+        const hi = items && items.length ? items[0].datasetIndex : -1;
+        let need = false;
+        chart.data.datasets.forEach((ds, i) => {
+          const target = (hi < 0)
+            ? (ds.borderDash ? 2 : 2.5)
+            : (i === hi ? 4 : (ds.borderDash ? 1 : 1.2));
+          if (Math.abs((ds.borderWidth || 2.5) - target) > 0.05) {
+            ds.borderWidth = target; need = true;
+          }
+        });
+        if (need) chart.update('none');
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: { unit: 'year', displayFormats: { year: 'yyyy' } },
+          grid: { color: '#E5DFD3', drawTicks: false },
+          ticks: { color: '#5C7A99', font: { family: 'JetBrains Mono', size: 11, weight: '500' }, padding: 8 },
+          border: { color: '#D5CDB9' }
+        },
+        y: {
+          min: ind === 'programming' ? -85 : -55,
+          max: 5,
+          grid: { color: '#E5DFD3', drawTicks: false },
+          ticks: {
+            color: '#5C7A99',
+            font: { family: 'JetBrains Mono', size: 11 },
+            padding: 8,
+            callback: v => v + '%'
+          },
+          border: { color: '#D5CDB9' }
+        }
+      }
+    };
+  }
+
+  function buildLegend(industryEl, ind, indData){
+    industryEl.innerHTML = '';
+    for (const [country, c] of Object.entries(indData.countries)){
+      const item = document.createElement('span');
+      item.className = 'lg-item';
+      item.innerHTML = `<span class="lg-swatch" style="background:${c.color}"></span><span class="lg-name" style="color:${c.color}">${DATA.country_label[country]}</span>`;
+      industryEl.appendChild(item);
+    }
+    if (indData.has_forecast){
+      const item = document.createElement('span');
+      item.className = 'lg-item';
+      item.innerHTML = `<span class="lg-swatch dashed" style="color:var(--fg-2)"></span><span style="color:var(--fg-2)">虚线 = 12 月预测 / dashed = 12-mo forecast</span>`;
+      industryEl.appendChild(item);
+    }
+  }
+
+  // Render each industry chart
+  const industriesToRender = ['customer_service','art_design','programming','film_video','pro_services_lfcs'];
+  const idMap = {customer_service:'cs', art_design:'art', programming:'code', film_video:'vid', pro_services_lfcs:'pro'};
+
+  for (const ind of industriesToRender){
+    const indData = DATA.industries[ind];
+    if (!indData) continue;
+    const cvId = 'cdChart_' + idMap[ind];
+    const cv = document.getElementById(cvId);
+    if (!cv) continue;
+    const ctx2 = cv.getContext('2d');
+    const datasets = buildDatasets(ind, indData);
+    const plugins = [makeNodePlugin(ind)];
+    if (indData.has_forecast) plugins.unshift(makeForecastBand(ind));
+    const chart = new Chart(ctx2, {
+      type: 'line',
+      data: { labels, datasets },
+      options: makeOptions(ind),
+      plugins: plugins,
+    });
+    window['_cdChart_' + ind] = chart;
+    // Build legend from data
+    const lg = document.querySelector(`.cd-legend[data-industry="${ind}"]`);
+    if (lg) buildLegend(lg, ind, indData);
+  }
+})();
 </script>
 
 </body>
