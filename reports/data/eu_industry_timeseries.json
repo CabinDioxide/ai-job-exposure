@@ -1,0 +1,142 @@
+{
+  "country": "EU",
+  "source": "Eurostat lfsa_egai2d (employment by sex, age, ISCO-08 2-digit, country)",
+  "source_url": "https://ec.europa.eu/eurostat/databrowser/view/lfsa_egai2d/",
+  "countries_summed": [
+    "DE",
+    "FR",
+    "IT",
+    "ES",
+    "NL",
+    "PL",
+    "SE"
+  ],
+  "method": "Sum 7 large EU economies (DE+FR+IT+ES+NL+PL+SE), age 15-64, sex total. ISCO 2-digit fans out to 3-digit master with uniform weights per child; weighted sum per 5-industry bucket. Total employment = sum of 5 industries + NA + unmapped. Output: each industry's share of total employment, change in percentage points vs 2021. No forecast: empirical 2021-2024 only.",
+  "base_year": 2021,
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "industries": [
+    "customer_service",
+    "art_design",
+    "programming",
+    "film_video",
+    "pro_services_lfcs"
+  ],
+  "share_pp_change": {
+    "customer_service": [
+      0.0,
+      -0.027,
+      -0.056,
+      -0.061
+    ],
+    "art_design": [
+      0.0,
+      0.008,
+      0.025,
+      0.05
+    ],
+    "programming": [
+      0.0,
+      0.109,
+      0.26,
+      0.384
+    ],
+    "film_video": [
+      0.0,
+      0.01,
+      0.016,
+      0.026
+    ],
+    "pro_services_lfcs": [
+      0.0,
+      0.058,
+      0.228,
+      0.376
+    ]
+  },
+  "share_2021_pct": {
+    "customer_service": 1.482,
+    "art_design": 0.945,
+    "programming": 3.001,
+    "film_video": 0.59,
+    "pro_services_lfcs": 6.882
+  },
+  "raw_employment_thousands": {
+    "customer_service": [
+      2149.254,
+      2130.175,
+      2014.67,
+      2035.2510000000002,
+      2049.465,
+      2037.2060000000001,
+      2043.9940000000001
+    ],
+    "art_design": [
+      1319.9502091,
+      1361.1826386,
+      1220.9165377,
+      1298.3991547,
+      1342.6339039,
+      1386.0849418,
+      1431.8391932000002
+    ],
+    "programming": [
+      3250.045,
+      3501.67,
+      3753.575,
+      4121.7375,
+      4381.9825,
+      4658.475,
+      4870.465
+    ],
+    "film_video": [
+      717.3750000000001,
+      738.0,
+      776.7350000000001,
+      809.9125000000001,
+      844.3975,
+      865.7450000000001,
+      886.4750000000001
+    ],
+    "pro_services_lfcs": [
+      9007.093544199999,
+      9321.637087100002,
+      9105.7773138,
+      9451.4441281,
+      9776.2769594,
+      10156.637135899999,
+      10443.2263538
+    ],
+    "NA": [
+      121471.07904139996,
+      122468.9319694,
+      118657.02366050001,
+      119620.2531071,
+      122479.4413969,
+      123752.74910190003,
+      124217.6975614
+    ],
+    "UNMAPPED": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "total_employment_thousands": {
+    "2018": 137914.79679469997,
+    "2019": 139521.59669510002,
+    "2020": 135528.697512,
+    "2021": 137336.9973899,
+    "2022": 140874.1972602,
+    "2023": 142856.89717960003,
+    "2024": 143893.6971084
+  }
+}

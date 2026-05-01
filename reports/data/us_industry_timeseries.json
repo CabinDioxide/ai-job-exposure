@@ -1,0 +1,134 @@
+{
+  "country": "US",
+  "source": "BLS OES research estimates (state × industry, all sectors, 2018-2024)",
+  "source_url": "https://www.bls.gov/oes/special-requests/",
+  "method": "Sum detailed-occupation employment across all states × all NAICS-2-digit sectors per year; map SOC->ISCO via industry_mapper (3-digit precision). Total = sum of 5 industries + NA + unmapped. Output: each industry's share of total employment, change in percentage points vs 2021. 2018-2020 dropped from output: includes SOC-2010 -> SOC-2018 classification transition (2018->2019) and BLS internal reclassification (2020->2021), both creating spurious shifts unrelated to AI.",
+  "classification_notes": "SOC-2018 used for 2021-2024 (post-transition stable window).",
+  "base_year": 2021,
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "industries": [
+    "customer_service",
+    "art_design",
+    "programming",
+    "film_video",
+    "pro_services_lfcs"
+  ],
+  "share_pp_change": {
+    "customer_service": [
+      0.0,
+      -0.07,
+      -0.162,
+      -0.323
+    ],
+    "art_design": [
+      0.0,
+      0.059,
+      0.047,
+      0.04
+    ],
+    "programming": [
+      0.0,
+      0.085,
+      0.111,
+      0.055
+    ],
+    "film_video": [
+      0.0,
+      0.024,
+      0.016,
+      0.005
+    ],
+    "pro_services_lfcs": [
+      0.0,
+      0.016,
+      0.109,
+      0.169
+    ]
+  },
+  "share_2021_pct": {
+    "customer_service": 3.653,
+    "art_design": 0.605,
+    "programming": 3.207,
+    "film_video": 0.14,
+    "pro_services_lfcs": 7.688
+  },
+  "raw_employment": {
+    "customer_service": [
+      6151031.12447,
+      5366619.56168,
+      5057143.62786,
+      5012734.59534,
+      5185445.67041,
+      5200081.20197,
+      5008141.0285
+    ],
+    "art_design": [
+      855916.5,
+      865755.0,
+      776672.0,
+      829948.5,
+      960256.75,
+      970463.0,
+      969607.25
+    ],
+    "programming": [
+      4185693.5,
+      2673695.5,
+      2584754.5,
+      4400855.0,
+      4764435.0,
+      4941382.5,
+      4905855.0
+    ],
+    "film_video": [
+      236614.96004,
+      235058.6284,
+      209545.29752999998,
+      192373.63636,
+      236912.13685,
+      232562.80381,
+      217947.63887999998
+    ],
+    "pro_services_lfcs": [
+      9041284.651749998,
+      8545184.78731,
+      8467941.32137,
+      10549161.9295,
+      11147297.89622,
+      11611979.66317,
+      11816932.33011
+    ],
+    "NA": [
+      116685659.26374,
+      107866266.52261,
+      100718463.25324002,
+      105010446.3388,
+      110511692.54652,
+      113519120.83105001,
+      114557286.75251
+    ],
+    "UNMAPPED": [
+      4083520.0,
+      17452000.0,
+      17330410.0,
+      11224450.0,
+      11901200.0,
+      12457370.0,
+      12929290.0
+    ]
+  },
+  "total_employment": {
+    "2018": 141239720.0,
+    "2019": 143004580.0,
+    "2020": 135144930.0,
+    "2021": 137219970.0,
+    "2022": 144707240.0,
+    "2023": 148932960.0,
+    "2024": 150405060.0
+  }
+}

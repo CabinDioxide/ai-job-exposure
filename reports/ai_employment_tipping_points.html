@@ -680,6 +680,46 @@ footer a:hover{text-decoration:underline}
 </div></section>
 
 
+<!-- ============ §1.6 US + EU INDUSTRY SHARE OF TOTAL EMPLOYMENT (empirical only) ============ -->
+<section class="chapter" id="share-shift"><div class="wrap">
+  <div class="ch-header">
+    <div class="ch-num">§ 1.6</div>
+    <h2>
+      <span class="cn">职业份额变化（美国 + 欧盟 · 实测）</span>
+      <span class="en lang-inactive">Industry Share Shift (US + EU · Empirical)</span>
+    </h2>
+    <p class="lede">
+      <span class="cn">本节切换至官方就业统计的口径，采用 BLS OES 与 Eurostat 的行业占比数据，以 2021 年为基准计算份额变动（pp）。受年度数据频次与 12 至 18 个月的发布滞后约束，仅呈现 <strong>2021–2024</strong> 四个实测点，不作外推。即便如此，信号已经显形：客服业是美欧两侧唯一份额下行的赛道（美 <strong>−0.32pp</strong>、欧 <strong>−0.06pp</strong>），与 §1 的 Node A（2023 年 3 月 ChatGPT API）相吻合；美国编程业份额在 2023 年触顶 <strong>+0.11pp</strong> 后于 2024 年小幅回落，提前印证 Node D（2024 年 6 月 Claude Code）。其余赛道仍在扩张，§1 所预测的 2025–2026 年拐点，须待官方数据迟至 2026 年末方能验证。</span>
+      <span class="en lang-inactive">This section shifts to official labor statistics — BLS OES and Eurostat share-of-employment series, indexed in percentage-point change versus the 2021 base. Annual cadence and a 12–18 month publication lag confine the empirical record to <strong>2021–2024</strong>; no forecast is overlaid. The signal is already legible: customer service is the only sector whose share contracts in both economies (US <strong>−0.32pp</strong>, EU <strong>−0.06pp</strong>), aligning with §1's Node A (ChatGPT API, March 2023). US programming peaked at <strong>+0.11pp</strong> in 2023 and slipped in 2024 — an early echo of Node D (Claude Code, June 2024). The remaining sectors still gain share; §1's predicted 2025–2026 inflection cannot be confirmed in government data until late 2026 at earliest.</span>
+    </p>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">
+      <span class="cn">美国 · 五行业占总就业份额变化（pp，<strong>2021 = 0</strong>）</span>
+      <span class="en lang-inactive">United States · Five-Industry Share of Total Employment, pp Change (<strong>2021 = 0</strong>)</span>
+    </div>
+    <div class="chart-sub">
+      <span class="cn">数据：BLS OES research estimates（state × industry，全部州 + 全部 NAICS sector，按 SOC→ISCO 映射至五行业）。</span>
+      <span class="en lang-inactive">Source: BLS OES research estimates (state × industry, all states + all NAICS sectors, SOC→ISCO mapped to 5 industries).</span>
+    </div>
+    <div class="chart-wrap" style="height:380px"><canvas id="usEmpChart"></canvas></div>
+  </div>
+
+  <div class="chart-card" style="margin-top:28px">
+    <div class="chart-title">
+      <span class="cn">欧盟 · 五行业占总就业份额变化（pp，<strong>2021 = 0</strong>，DE+FR+IT+ES+NL+PL+SE 7 国合计）</span>
+      <span class="en lang-inactive">EU · Five-Industry Share of Total Employment, pp Change (<strong>2021 = 0</strong>, DE+FR+IT+ES+NL+PL+SE 7-country sum)</span>
+    </div>
+    <div class="chart-sub">
+      <span class="cn">数据：Eurostat lfsa_egai2d（按性别、年龄、ISCO-08 2-digit、国家），<strong>15–64</strong> 岁，性别合计；ISCO 2-digit fan-out 至 3-digit master 后加权汇总。</span>
+      <span class="en lang-inactive">Source: Eurostat lfsa_egai2d (employment by sex, age, ISCO-08 2-digit, country), age <strong>15–64</strong>, both sexes; ISCO 2-digit fanned out to 3-digit master then weighted sum.</span>
+    </div>
+    <div class="chart-wrap" style="height:380px"><canvas id="euEmpChart"></canvas></div>
+  </div>
+</div></section>
+
+
 <!-- ============ §2 ORCHESTRATOR ============ -->
 <section class="chapter" id="orchestrator"><div class="wrap">
   <div class="ch-header">
@@ -2568,6 +2608,121 @@ window._thesisChart = new Chart(ctx, {
     const lg = document.querySelector(`.cd-legend[data-industry="${ind}"]`);
     if (lg) buildLegend(lg, ind, indData);
   }
+})();
+
+// ============ §1.6 US + EU industry-share charts (empirical 2021-2024 only, no forecast) ============
+(async function(){
+  const fmtPp = v => (v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + 'pp');
+  const palette = [
+    {key:'customer_service', label:'客服 / Customer Service',  color: C.cs},
+    {key:'art_design',       label:'美术 / Art & Design',     color: C.art},
+    {key:'programming',      label:'编程 / Programming',      color: C.code},
+    {key:'film_video',       label:'影视 / Film & Video',     color: C.vid},
+    {key:'pro_services_lfcs',label:'法/金/咨/SaaS / LFCS',    color: C.pro},
+  ];
+
+  function buildDatasets(json){
+    return palette.map(p => ({
+      label: p.label,
+      data: json.share_pp_change[p.key] || [],
+      borderColor: p.color,
+      backgroundColor: p.color + '22',
+      borderWidth: 2.5, tension: 0.25,
+      pointRadius: 4, pointHoverRadius: 7,
+      pointBackgroundColor: p.color, pointBorderColor: '#fff', pointBorderWidth: 1.5,
+      spanGaps: false,
+    }));
+  }
+
+  const zeroLinePlugin = {
+    id: 'zeroLine',
+    afterDatasetsDraw(chart){
+      const {ctx, scales:{x,y}} = chart;
+      const y0 = y.getPixelForValue(0);
+      ctx.save();
+      ctx.strokeStyle = C.fg2 + '88'; ctx.lineWidth = 1.2;
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(x.left, y0); ctx.lineTo(x.right, y0); ctx.stroke();
+      ctx.setLineDash([]); ctx.restore();
+    }
+  };
+
+  function makeOptions(){
+    return {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'nearest', axis: 'xy', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'nearest', axis: 'xy', intersect: false,
+          backgroundColor: '#0B1D3A',
+          titleFont: { family: 'JetBrains Mono', size: 11, weight: '600' },
+          bodyFont: { family: 'Inter', size: 13, weight: '600' },
+          padding: 12, cornerRadius: 8,
+          displayColors: true, boxWidth: 10, boxHeight: 10, boxPadding: 6,
+          callbacks: {
+            title: items => items[0].label,
+            label: it => `  ${it.dataset.label}: ${fmtPp(it.parsed.y)}`,
+          }
+        }
+      },
+      onHover: (e, items, chart) => {
+        const hi = items && items.length ? items[0].datasetIndex : -1;
+        let need = false;
+        chart.data.datasets.forEach((ds, i) => {
+          const target = (hi < 0) ? 2.5 : (i === hi ? 4 : 1.2);
+          if (Math.abs((ds.borderWidth || 2.5) - target) > 0.05) {
+            ds.borderWidth = target; need = true;
+          }
+        });
+        if (need) chart.update('none');
+      },
+      scales: {
+        x: {
+          grid: { color: C.bord, drawTicks: false },
+          ticks: { color: C.fg2, font: { family: 'JetBrains Mono', size: 11, weight: '500' }, padding: 8 },
+          border: { color: C.bord2 }
+        },
+        y: {
+          grid: { color: C.bord, drawTicks: false },
+          ticks: {
+            color: C.fg2,
+            font: { family: 'JetBrains Mono', size: 11 },
+            padding: 8,
+            callback: v => (v >= 0 ? '+' : '') + v + 'pp'
+          },
+          border: { color: C.bord2 }
+        }
+      }
+    };
+  }
+
+  async function loadAndRender(canvasId, jsonPath){
+    try {
+      const r = await fetch(jsonPath);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const json = await r.json();
+      const ctx2 = document.getElementById(canvasId).getContext('2d');
+      const chart = new Chart(ctx2, {
+        type: 'line',
+        data: { labels: json.years, datasets: buildDatasets(json) },
+        options: makeOptions(),
+        plugins: [zeroLinePlugin],
+      });
+      window['_' + canvasId] = chart;
+    } catch (err) {
+      console.error('share chart load failed:', canvasId, err);
+      const el = document.getElementById(canvasId);
+      if (el && el.parentElement) {
+        el.parentElement.innerHTML = '<div style="color:var(--fg-2);font-size:13px;padding:40px;text-align:center">数据加载失败 / Load failed: ' + err.message + '</div>';
+      }
+    }
+  }
+
+  await Promise.all([
+    loadAndRender('usEmpChart', 'data/us_industry_timeseries.json'),
+    loadAndRender('euEmpChart', 'data/eu_industry_timeseries.json'),
+  ]);
 })();
 </script>
 
