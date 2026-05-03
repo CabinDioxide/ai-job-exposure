@@ -158,6 +158,23 @@ section.chapter{padding:88px 0;border-bottom:1px solid var(--border)}
 .insight p{font-size:14.5px;color:var(--fg);line-height:1.55}
 .insight p strong{font-weight:600}
 
+/* Single highlighted "key takeaway" callout (used under §1.6 charts) */
+.key-takeaway{
+  margin-top:32px;
+  background:var(--bg-card);
+  border:1px solid var(--accent);
+  border-left:4px solid var(--accent);
+  border-radius:10px;
+  padding:24px 28px;
+}
+.key-takeaway .kt-label{
+  font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px
+}
+.key-takeaway p{font-size:15.5px;color:var(--fg);line-height:1.65;margin:0}
+.key-takeaway p + p{margin-top:14px}
+.key-takeaway p strong{font-weight:600;color:var(--accent)}
+
 /* ===== §02 Orchestrator ===== */
 .orch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px}
 @media(max-width:980px){.orch-grid{grid-template-columns:repeat(2,1fr)}}
@@ -735,6 +752,17 @@ footer a:hover{text-decoration:underline}
       <span class="en lang-inactive">The data source is Eurostat lfsa_egai2d (employment data classified by sex, age, ISCO-08 2-digit, and country), covering the population aged <strong>15 to 64</strong> and aggregated across both sexes. The ISCO 2-digit data are fanned out to the 3-digit master classification and then aggregated by weighted sum.</span>
     </div>
     <div class="chart-wrap" style="height:380px"><canvas id="euEmpChart"></canvas></div>
+  </div>
+
+  <div class="key-takeaway">
+    <div class="kt-label">
+      <span class="cn">关键发现</span>
+      <span class="en lang-inactive">KEY FINDING</span>
+    </div>
+    <p>
+      <span class="cn">客户服务业是迄今唯一在 BLS OES 与 Eurostat 两套国家级统计中均出现份额下行的行业（美国 <strong>−0.32pp</strong>、欧盟 <strong>−0.06pp</strong>），完整闭合了"产品节点（ChatGPT API 2023 年 3 月）→ 自由职业合同 tracker → 政府就业份额"的三步链条。其余四个行业的产品节点（美术 ControlNet 2023 年 2 月、编程 Claude Code 2024–2025、影视 Seedance 2025–2026、专业服务 Cowork / SaaSpocalypse 2026 年 1–2 月）均已触发，按照同一条三步走路径，对应的官方就业份额拐点预计将在 <strong>2026 至 2027 年</strong>的 BLS OES 与 Eurostat 数据中陆续显现。</span>
+      <span class="en lang-inactive">Customer service is so far the only sector in which both BLS OES (US) and Eurostat (EU-7) confirm a declining share of total employment (US <strong>−0.32pp</strong>, EU <strong>−0.06pp</strong>), closing the full three-step chain from product milestone (ChatGPT API, March 2023) through freelance-contract trackers to government employment statistics. The product milestones for the remaining four sectors (visual art: ControlNet, Feb 2023; coding: Claude Code, 2024–2025; film/video: Seedance, 2025–2026; professional services: Cowork / SaaSpocalypse, Jan–Feb 2026) have all already fired; following the same three-step pathway, the corresponding inflection points in official employment shares are expected to surface in BLS OES and Eurostat releases over <strong>2026 to 2027</strong>.</span>
+    </p>
   </div>
 </div></section>
 
