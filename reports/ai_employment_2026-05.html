@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Employment Impact Report / AI就业冲击月报 — 2026-05</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);--accent2:#ffaa55;--india:#ff9933;--phl:#0038a8}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:900px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .sep{color:var(--fg2);font-size:12px}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.language-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px;transition:all 0.2s}
+.lang-btn.active{background:var(--accent);color:white}
+.lang-btn:hover{color:var(--fg)}
+.lang-inactive{display:none}
+.report-header{padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.report-header .emoji{font-size:48px;margin-bottom:16px}
+.report-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.3}
+.report-header .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--fg2)}
+.report-header .badge{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px}
+.report-body{padding-bottom:80px}
+.report-body h2.report-heading{font-size:20px;font-weight:600;margin:36px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.report-body h3.report-heading{font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--accent)}
+.report-body h4.report-heading{font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.04em}
+.report-body p{margin-bottom:14px;font-size:15px}
+.report-body strong{color:#fff;font-weight:600}
+.report-body a{color:var(--accent);text-decoration:none}
+.report-body a:hover{text-decoration:underline}
+.report-body .report-list{margin:12px 0 18px 22px}
+.report-body .report-list li{margin-bottom:10px;font-size:15px;line-height:1.6}
+.report-body code{background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:13px}
+.report-body table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.report-body th,.report-body td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.report-body th{background:var(--bg3);font-weight:600;color:var(--fg)}
+.report-body td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:6px;padding:14px 18px;margin:20px 0;font-size:14px}
+.callout .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent2);margin-bottom:6px}
+.spotlight-section{background:linear-gradient(180deg,rgba(255,153,51,0.04),rgba(0,56,168,0.04));border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:32px 0}
+.spotlight-section h2{font-size:22px;font-weight:700;margin-bottom:8px;padding-bottom:0;border:none;color:var(--fg)}
+.spotlight-section .subtitle{font-size:13px;color:var(--fg2);margin-bottom:20px}
+.report-footer{border-top:1px solid var(--border);padding:24px 0 48px;text-align:center;color:var(--fg2);font-size:13px}
+.report-footer a{color:var(--accent);text-decoration:none}
+.src{font-size:12px;color:var(--fg2);font-style:italic}
+</style>
+<script>
+function setLang(lang){
+  document.querySelectorAll('.cn, .en').forEach(el=>{
+    if(el.classList.contains(lang)){el.classList.remove('lang-inactive');}
+    else if(el.classList.contains(lang==='cn'?'en':'cn')){el.classList.add('lang-inactive');}
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+});
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="../index.html">&larr; Dashboard</a>
+  <span class="sep">|</span>
+  <a href="index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+  <a href="../methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn active" data-lang="cn">中文</button>
+  </div>
+</div></nav>
+<div class="wrapper">
+  <div class="report-header">
+    <div class="emoji">🤖</div>
+    <h1 class="cn">AI就业冲击月报 — 2026年5月</h1>
+    <h1 class="en lang-inactive">AI Employment Impact Report — May 2026</h1>
+    <div class="meta">
+      <span class="badge"><span class="cn">月报</span><span class="en lang-inactive">Monthly</span></span>
+      <span><span class="cn">报告期：2026-04-20 至 2026-05-20</span><span class="en lang-inactive">Period: 2026-04-20 to 2026-05-20</span></span>
+      <span><span class="cn">本期专题：印度 &amp; 菲律宾</span><span class="en lang-inactive">Spotlight: India &amp; Philippines</span></span>
+    </div>
+  </div>
+
+  <div class="report-body">
+    <!-- ============== 中文版 ============== -->
+    <div class="cn">
+
+<h2 class="report-heading">📋 本月概要</h2>
+<p>2026 年 4 月下旬至 5 月中旬是 AI 驱动裁员从"事件密集期"进入"<strong>制度化加速期</strong>"的转折窗口。<strong>Meta 于 5 月 20 日（本报告截稿当日）启动全年最受关注的 8,000 人单次裁员</strong>，影响范围覆盖招聘、客户支持、内容审核及非 AI 产品团队；与此同时，<strong>Cloudflare 5 月宣布裁减约 1,100 人（占员工 20%）</strong>，<strong>PayPal 计划在 2–3 年内裁员 4,760 人（20% 员工）</strong>，<strong>Upwork 裁员约 25%</strong>，<strong>BILL 公司宣布最多 30% 裁员</strong>。Layoffs.fyi 与 TechTimes 跟踪数据显示，<strong>2026 年迄今全球科技业累计裁员已超过 113,000 人</strong>，日均约 825 人 — 速率高于 2025 全年。</p>
+
+<p>本月最重要的结构性信号来自<strong>印度 IT 五巨头 Q4 FY26 业绩集中披露</strong>。<strong>TCS 在 FY26 财年员工净减少约 24,000 人</strong>（人力资源平台 PeopleMatters 4 月报道），公司表示"裁员周期已结束"但维持"AI-first 服务模式"转型；<strong>Infosys Q4 FY26 末员工总数 328,594 人</strong>（环比 −2.5%），自愿离职率从一年前的 14.1% 降至 12.6%，FY27 仍计划招聘 20,000 名应届毕业生；<strong>Wipro Q4 FY26 IT 服务收入 $26.51 亿（QoQ +0.6%）</strong>，员工总数 242,156 人，TTM 流失率 13.8%。这是"低招聘、低裁员、内部 AI 替代"格局在印度 IT 服务业的具体表现。</p>
+
+<p>更深一层信号来自<strong>"AI 替代失败案例"开始公开化</strong>。瑞典金融科技公司 <strong>Klarna 公开承认 AI 替代 700 名客服人员"走得太远"</strong>，CEO Sebastian Siemiatkowski 承认 AI-first 战略损害了服务质量，公司转向 "AI 处理日常 + 人类处理升级" 的混合模式。这与 <strong>Salesforce 累计裁员 5,000 名客服</strong>（CEO Marc Benioff 称 AI agent 已处理 50% 客户交互）形成对照 — 两种路径分化已显现。</p>
+
+<p>在官方劳动力市场数据方面：<strong>印度 MoSPI 发布 PLFS 4 月 2026 月度公报</strong>，15+ LFPR 微降至 55.0%（vs 3 月 55.4%、去年 4 月 55.6%），UR 5.2%（vs 3 月 / 去年 4 月皆 5.1%），城市 UR 6.6% / 农村 UR 4.6%；<strong>菲律宾 PSA 公布 2026 年 3 月失业率为 5.0%</strong>（劳动市场条件"改善"），但 4 月 LFS 数据将首次纳入"非正规就业"专项问题（5 月底至 6 月初公布）。</p>
+
+<p>结合 Dashboard 三层方法论：科技、客服、初级编程岗位继续位于 Coface 模型的 "Special Agent → Conductor" 转换前沿；本月新增证据指向<strong>客服与中后台的 Conductor 阶段已局部达成</strong>，但同一周期的 Klarna 反例提示 — 仅凭技术能力闭环不等于业务闭环。本期专题首次聚焦<strong>印度与菲律宾</strong>这两个全球 IT-BPM 供给端的核心国家，从五巨头公司动向、政府政策、客户撤单信号、本地劳动力指标四个维度评估"AI 冲击外包"的真实节奏。</p>
+
+<h2 class="report-heading">📉 新增事件</h2>
+
+<ol class="report-list">
+<li><strong>Meta 5 月 20 日启动 8,000 人裁员，配合 2026 年 $145B AI 资本支出（5 月 20 日）</strong>
+<p>Meta 本月最受关注的单次裁员事件预计影响 8,000 人，约占全公司 10% 员工，且 6,000 个空岗位不再填补。受影响最重的部门为招聘、客户支持、内容审核及非 AI 产品团队。剩余团队将整合进 Meta Superintelligence Labs 部门。Meta 同时上调 2026 全年资本支出上限至 $1,450 亿美元，几乎全部投向 AI 基础设施。<span class="src">来源：TechRepublic（May 2026）、CNBC（2026-04-24）、Yahoo Finance（2026-05）。</span></p></li>
+
+<li><strong>Cloudflare 全球裁员 1,100 人，占员工 20%（5 月初）</strong>
+<p>Cloudflare 周四宣布全球裁员超过 1,100 人，占其 5,156 人员工队伍的约 20%。这是 Cloudflare 历史上规模最大的一次裁员，公司在公开声明中强调"组织结构优化与 AI 工程效率提升"。<span class="src">来源：Yahoo Finance（2026-05）。</span></p></li>
+
+<li><strong>PayPal 计划 2–3 年内裁员 4,760 人（5 月公告）</strong>
+<p>PayPal 宣布将在未来 2–3 年内裁减约 20% 员工，对应其 23,800 人员工规模的约 4,760 人。这是金融服务行业中迄今规模最大、时间跨度最长的 AI 重组规划之一。<span class="src">来源：Yahoo Finance（2026-05）。</span></p></li>
+
+<li><strong>BILL 公司最多 30% 裁员、Upwork CEO 通知裁员约 25%（5 月初）</strong>
+<p>财务自动化公司 BILL 宣布最多 30% 员工削减；自由职业者市场 Upwork CEO Hayden Brown 通知员工公司将裁减约 25% 员工。两家公司均明确将 AI 工具集成作为重组动因。<span class="src">来源：Yahoo Finance（2026-05）。</span></p></li>
+
+<li><strong>TCS FY26 全财年员工净减少约 24,000 人，公司宣布"裁员周期结束"（4 月）</strong>
+<p>印度 IT 服务龙头 Tata Consultancy Services 2026 财年员工总数净减少近 24,000 人。公司在 Q4 业绩会上表示"重组驱动的裁员周期已完成，招聘节奏维持正常"，但其"AI-first 服务模式"转型继续推进。TCS 早前披露的 2% 减员目标（约 12,000 人）现已超额完成。<span class="src">来源：PeopleMatters（2026-04）、Analytics Insight。</span></p></li>
+
+<li><strong>Infosys Q4 FY26：员工 328,594 / 流失率 12.6% / FY27 招 20,000 应届（4 月公告）</strong>
+<p>Infosys Q4 FY26 末员工总数 328,594 人，环比下降 2.5%（vs 337,034），但同比小幅上升（vs 323,578）。自愿离职率从一年前 14.1% 降至 12.6%。公司宣布 FY27 仍计划招聘约 20,000 名应届毕业生 — 数量与 FY26 持平，但优先 AI / 云技能岗位。这种"总量保持 + 结构调整"的策略反映"AI 转型不等于停招"的服务业逻辑。<span class="src">来源：PeopleMatters、BW People、Outlook Business（2026-04）。</span></p></li>
+
+<li><strong>Wipro Q4 FY26：IT 服务营收 $26.51 亿（QoQ +0.6%）、员工 242,156、TTM 流失 13.8%（4 月公告）</strong>
+<p>Wipro 2026 财年 Q4 IT 服务营收同比上升 2.1%，营业利润率 17.3%（QoQ −0.3pp）。员工总数 242,156。公司在 SEC 6-K 中披露已完成印度新《劳动法典》合规调整。Wipro 与 TCS、Infosys 一同进入"利润维持 + 人员紧缩"轨道。<span class="src">来源：Wipro SEC Form 6-K（2026-04-15 / 2026-04-17）。</span></p></li>
+
+<li><strong>Klarna 公开撤回 AI 替代客服策略，CEO 承认"走得太远"（早 2026）</strong>
+<p>瑞典金融科技 Klarna 此前宣布 AI 替代约 700 名客服人员，但 2026 年初 CEO Sebastian Siemiatkowski 公开承认 AI-first 替代策略"对服务和产品质量造成负面影响"。公司转向 hybrid 模式 — AI 处理高频常规咨询，人类客服负责升级、复杂案例和高价值客户。这是 2026 年首批被广泛传播的"AI 替代失败回滚"案例。<span class="src">来源：Tech.co、Digital Applied、MLQ.ai。</span></p></li>
+
+<li><strong>Salesforce 累计裁员 5,000 名客服，Benioff 称 AI agent 已处理 50% 客户交互（2026 年累计）</strong>
+<p>Salesforce 在 2026 年初再裁约 1,000 名客服岗位（此前已裁约 4,000 人，累计约 5,000）。CEO Marc Benioff 公开表示，AI agent 目前处理 Salesforce 约 50% 的客户支持交互。与 Klarna 撤回不同，Salesforce 选择继续推进 AI-first 客服路径。<span class="src">来源：Tech.co、Programs.com。</span></p></li>
+
+<li><strong>Duolingo 4 月宣布停止使用 AI 可替代的承包商工作（4 月）</strong>
+<p>在线教育公司 Duolingo 表示，"AI 能做的工作将不再使用承包商"，此前已宣布裁减约 45% 承包商规模（388 人）。这是教育科技 / 内容生成行业首批将 AI 自动化与外部承包商削减直接挂钩的案例。<span class="src">来源：AdWeek、Tech.co。</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 行业趋势</h2>
+
+<h3 class="report-heading">科技行业：5 月成全年最密集裁员窗口</h3>
+<p>2026 年迄今全球科技业累计裁员已超过 <strong>113,000 人</strong>（Layoffs.fyi / TechTimes），单日均裁员约 825 人，速率高于 2025 全年。5 月前两周 Meta（8,000）+ Cloudflare（1,100）+ PayPal（4,760，多年规划）+ BILL（~30%）+ Upwork（~25%）单月新增公告规模超过任一 2025 单月。CNBC 4 月 24 日报道指出，<strong>仅 Meta 与 Microsoft 两家在 4 月底前已宣布裁员总和达 20,000 人</strong>，市场开始担忧"AI 驱动的劳动力危机已经到来"。</p>
+
+<p>但本月也出现关键的"行业内分化"。AI 原生公司（Anthropic、OpenAI、xAI）持续招聘，而传统科技巨头（Oracle、Dell、Intel、Cloudflare）通过裁员为 AI 基建腾出预算。这种结构性资本再分配 — 把人力资本预算切给计算资本 — 已是 2026 财年企业战略的清晰特征。</p>
+
+<h3 class="report-heading">客户服务 / BPO：路径分化首次显形</h3>
+<p>本月最具方法论意义的发现来自客服领域的两条相反路径：</p>
+<ul class="report-list">
+<li><strong>路径 A（继续 AI-first）</strong>：Salesforce 累计裁员 5,000、Meta 客户支持团队为 5 月 8,000 重灾区、Duolingo 弃用 AI 可替代的承包商。这些案例的共同点是 — 客户为<strong>大规模、标准化、低单价</strong>业务，AI agent 的错误成本被 ROI 计算所吸收。</li>
+<li><strong>路径 B（撤回到 hybrid）</strong>：Klarna 公开承认"走得太远"，CEO Siemiatkowski 表示重新雇佣客服人员；多家欧美零售商在 2025 Q4 / 2026 Q1 经过 AI-first 实验后回到 hybrid 模型。这些案例的共同点是 — 客户为<strong>高单价、品牌敏感</strong>业务，AI 错误的客户流失成本超过节约的人力成本。</li>
+</ul>
+<p>这一分化对印度 / 菲律宾 BPO 行业意义重大 — 它意味着"全部 BPO 工作都会被 AI agent 替代"的叙事并不准确，下游需求结构决定了哪些工作真正会被替代、哪些会进入 hybrid 配合模式。</p>
+
+<h3 class="report-heading">印度 IT 服务业：从"扩张"转"AI-first 服务模式"</h3>
+<p>TCS、Infosys、Wipro、HCLTech 四家在 FY26 完成了一次"全行业减员 + 招聘减速"。<a href="https://www.theregister.com/2026/01/19/hcl_infosys_tcs_wipro_results">The Register 1 月 19 日报道</a>指出，四大外包商"基本停止招聘"，与其增加 AI 在交付实践中的使用直接相关。但本月 Q4 FY26 业绩披露后的图景更细致 — 不是"全面冻结"，而是"<strong>总员工数下降 + 应届招聘维持但偏 AI / 云岗位</strong>"。Infosys FY27 仍招 20,000 应届即为典型。</p>
+
+<p>这与<a href="https://www.business-standard.com/industry/news/tcs-infosys-lay-off-indian-it-sector-job-cuts-automation-ai-reskilling-125072800505_1.html">Business Standard 2025 年报道</a>判断一致：客户采用 AI 编程与测试工具直接削减第三方服务合同金额，印度 IT 公司不能仅通过工时定价模型应对，必须把 AI 嵌入交付能力本身。</p>
+
+<h3 class="report-heading">劳动力市场宏观：从 "AI 洗白" 辩论到结构性证据</h3>
+<p>2025 年下半年 "AI washing" 争论的核心是 — 多少裁员真的因 AI、多少是借 AI 之名行成本削减之实。2026 年 4–5 月的 Q1 财报季正在缩小这个争论：当 Salesforce 公开宣称"AI agent 处理 50% 客户交互"、TCS 公开宣称"AI-first 服务模式"、Meta 把剩余人员重组进"Superintelligence Labs"，企业层面的归因已不再隐晦。但 Klarna 反例也提示 — 不是所有 AI 替代都能产生预期 ROI，"AI 洗白"中"以 AI 之名行成本削减之实"的部分会随时间通过失败案例自然显形。</p>
+
+<h2 class="report-heading">🌍 地域分布</h2>
+
+<h3 class="report-heading">美国：5 月单月新增裁员超 14,000，仍是全球震中</h3>
+<p>Meta（8,000）+ Cloudflare（1,100）+ BILL（~1,500，估算）+ Upwork（~500，估算）+ PayPal 起步阶段 — 5 月美国单月新增公告超 14,000 人。这相当于 2026 年累计 113,000 中约 12% 集中在单月。CNBC 报道指出，Meta 重组涉及"Superintelligence Labs" 整合 — 这是大型企业首次把 AI 重组直接命名为部门战略，而非 cost-cutting 措施。</p>
+
+<h3 class="report-heading">印度：IT 五巨头 Q4 FY26 完成"减员 + AI-first"转型，本国劳动力总盘稳定</h3>
+<p>印度本月在"国家级"和"行业级"出现两个相反信号：</p>
+<ul class="report-list">
+<li><strong>行业级（IT-BPM）</strong>：TCS −24,000、Infosys 环比 −2.5%、Wipro 持平于 24.2 万。Oracle 3 月那波约 12,000 印度岗位裁员的尾部效应仍在传导。</li>
+<li><strong>国家级（PLFS）</strong>：印度 MoSPI 4 月 2026 月度公报显示 15+ LFPR 55.0%（同比 −0.6pp），UR 5.2%（同比 +0.1pp）— 整体劳动力总盘几乎稳定，未显示出宏观层面的"AI 危机"信号。</li>
+</ul>
+<p>这一矛盾的解读 — 印度 IT-BPM 大约雇佣 1,600 万人（NASSCOM 数据），仅占印度全国就业（约 5–6 亿）的约 3%。IT 五巨头净减员 24K 在国家总盘上是 0.005% 量级，PLFS 自然测不出来。但<strong>对 IT-BPM 这一外向型增长引擎本身</strong>，FY26 的拐点意义巨大。</p>
+
+<h3 class="report-heading">菲律宾：BPO 韧性叙事 + DOLE 公开承认部分置换</h3>
+<p>菲律宾 PSA 公布 2026 年 2 月失业率 5.1%、3 月失业率 5.0%（劳动市场"改善"）。但<a href="https://www.gmanetwork.com/news/money/economy/876628/laguesma-admits-possible-worker-displacement-due-to-artificial-intelligence/story/">DOLE 部长 Bienvenido Laguesma 公开承认</a>"已有菲律宾工人因 AI 失业"，并指出"manual operations 是 AI 部署首先冲击的领域"。IBPAP（菲律宾 IT-BPM 协会）则维持 2026 全年 $42B 出口、2028 年达到 $59B / 2.5M 工人的预测 — <em>这是产业协会预测，不是已实现事实</em>。第 9 章专题章节将拆解这些数字。</p>
+
+<h3 class="report-heading">欧洲与其他</h3>
+<p>欧洲层面，Klarna（瑞典）的撤退案例是本月最重要事件，对客服 BPO 走向意义重大。MIT CSAIL 与 IMF 此前的"技能准备度"分析将芬兰、爱尔兰、丹麦列在前列；但本月没有出现新的欧洲国家级宏观裁员数据。</p>
+
+<h2 class="report-heading">📑 重要研究 / 政策</h2>
+
+<ol class="report-list">
+<li><strong>MoSPI 印度 PLFS 4 月 2026 月度公报（2026-05 中旬发布）</strong>
+<p>这是新版"月度 + 季度"PLFS 的第 13 期。关键数字 — 15+ LFPR 55.0%（vs 3 月 55.4%、去年 4 月 55.6%）；UR 5.2%（vs 3 月 5.1%、去年 4 月 5.1%）；城市 UR 6.6%（自 6.8% 改善）；农村 UR 4.6%（自 4.3% 微升）。意味着即便 Oracle 12,000 印度岗位 + TCS 24,000 全财年减员的报道铺天盖地，国家级 LFPR/UR 仍处于稳定带。<span class="src">来源：<a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261386">PIB India 新闻稿 PRID 2261386</a>、<a href="https://www.newkerala.com/news/a/indias-labour-force-participation-slips-marginally-april-as-158.htm">NewKerala</a>。</span></p></li>
+
+<li><strong>菲律宾 PSA 2026 年 2 月、3 月劳动力调查公报</strong>
+<p>2 月失业率 5.1%、3 月失业率 5.0%，PSA 称"劳动市场条件改善"。<strong>4 月 2026 LFS 数据是首次纳入"非正规就业 / 无偿照料 / 家务工作"专项问题的调查</strong>，将于 2026 年 5 月底至 6 月初公布 — 这是判断 BPO 行业是否吸纳因正规岗位 AI 替代而流向非正规部门工人的关键窗口。<span class="src">来源：<a href="https://psa.gov.ph/content/unemployment-rate-declined-51-percent-labor-market-conditions-improved-february-2026">PSA 2 月 LFS 公报</a>、<a href="https://rsso12.psa.gov.ph/content/psa-south-cotabato-conduct-april-2026-labor-force-survey-focus-informal-employment-unpaid">PSA South Cotabato 通告</a>。</span></p></li>
+
+<li><strong>NITI Aayog × NASSCOM × BCG 联合报告《Roadmap for Job Creation in the AI Economy》（2025-10 发布）</strong>
+<p>印度国家智库 NITI Aayog 与 NASSCOM、Boston Consulting Group 联合发布的就业路线图。核心论点 — 印度 AI 战略应聚焦"workforce transformation"而非简单替代；NASSCOM 预测印度 AI 人才池将由 2024 年的约 60 万翻倍至 <strong>2027 年 125 万</strong>。文件指出印度 IT 行业雇佣约 1,600 万人，其中约 900 万在"低技能服务与 BPO 岗位"— 这是 AI 冲击的主要敞口。<span class="src">来源：<a href="https://www.niti.gov.in/sites/default/files/2025-10/Roadmap_for_Job_Creation_in_the_AI_Economy.pdf">NITI Aayog PDF</a>、<a href="https://nasscom.in/voices/indias-services-sector-and-ai-opportunity">NASSCOM Voices</a>。</span></p></li>
+
+<li><strong>印度 IndiaAI Mission 计算资源扩张（持续推进至 2026 Q2）</strong>
+<p>MeitY 旗下 IndiaAI 自治单位执行的 <strong>₹10,371.92 crore（约 $1.24B）</strong>计划于 2024-03 内阁批准。截至本月，GPU 部署目标从 38,000 提升至 <strong>58,000+</strong>（新增 20,000 个高端单元），以补贴价 <strong>₹65 / 小时</strong>对外开放。FutureSkills Prime（MeitY × NASSCOM 合作平台）已注册学习者 <strong>253 万人</strong>，3,000+ 课程对齐国家职业标准。<span class="src">来源：<a href="https://ddnews.gov.in/en/transforming-india-with-ai-rs-10300-crore-mission-38000-gpus-a-vision-for-inclusive-growth/">DD News</a>、<a href="https://organiser.org/2026/01/03/333328/bharat/indian-artificial-intelligence-vision-ecosystem-and-the-indiaai-mission/">Organiser</a>。</span></p></li>
+
+<li><strong>菲律宾 Project UNLAD：₱740M 政府-产业联合 BPO 再培训计划</strong>
+<p>菲律宾通信与信息部（DICT）、IBPAP 与 TESDA 联合发起的 <strong>₱740 百万比索</strong>BPO 工人再培训项目。设计目标是把传统 BPO 工人（呼叫中心、数据录入、初级文员）转入更高价值的数字技能岗位。配套的 <strong>TESDA AI Tech Academy 已于 2026-01-16 在宿务开业</strong>（IBPAP × StackTrek × PEZA 合作），是 TESDA 首个 AI 专项培训设施。另据 Nearshore Americas 报道，菲律宾政府额外承诺 <strong>$25 百万美元</strong>用于 BPO 工人保护。<span class="src">来源：<a href="https://thebusinessmanual.ph/features/2026-bpo-outlook-is-ai-replacing-or-assisting-filipinos/">The Business Manual</a>、<a href="https://nearshoreamericas.com/philippines-bets-25-million-to-shield-bpo-jobs-from-ai-disruption/">Nearshore Americas</a>。</span></p></li>
+
+<li><strong>美国 HIRE Act（S. 2976）截至 2026 年 4 月仍 stalled（4 月分析）</strong>
+<p>由 Bernie Moreno 参议员 2025-10 提出的《Halting International Relocation of Employment Act》提议对外包付款征收 <strong>25% 消费税</strong>并取消税前抵扣。截至 2026 年 4 月，该法案仍滞留参议院财政委员会，无新增联署人也无委员会听证会。GovTrack 自动化预测给出 <strong>0% 通过概率</strong>。但分析师警告 — 如果 Moreno 把 HIRE 相关条款作为<strong>修正案</strong>挂到其他正在审议的税收立法上，形势会立刻改变。2026-02 白宫宣布的美印框架性临时贸易协议被认为<strong>反向</strong>降低了 HIRE 推进概率。<span class="src">来源：<a href="https://www.wisemonk.io/news/hire-act-outsourcing-tax">WiseMonk</a>、<a href="https://taxfoundation.org/blog/hire-act-outsourcing-tax-global-business/">Tax Foundation</a>。</span></p></li>
+
+<li><strong>2026 年 5 月 Tech 裁员追踪：113,000+ 累计、无联邦 AI 披露法（TechTimes 2026-05-18）</strong>
+<p>美国科技公司 2026 年至今裁员超 113,000 人。<strong>美国联邦层面尚无法律要求企业披露"裁员是否由 AI 驱动"</strong>。WARN 法案要求大规模裁员通知，但不要求归因。这造成 — 全部"AI 归因裁员"统计依赖企业自愿披露，"AI 洗白"和"未披露的 AI 裁员"两个方向的误差都难以校准。<span class="src">来源：<a href="https://www.techtimes.com/articles/316802/20260518/tech-layoffs-surpass-113000-2026-no-federal-law-requiring-ai-disclosure.htm">TechTimes 2026-05-18</a>。</span></p></li>
+</ol>
+
+<h2 class="report-heading">🔮 下月关注</h2>
+<ol class="report-list">
+<li><strong>Meta 5/20 裁员落地后的客户支持 / 内容审核生态影响</strong>
+<p>Meta 8,000 裁员重点击中招聘、客户支持、内容审核 — 客户支持和内容审核此前是大量外包给印度、菲律宾、越南 BPO 的工作类型。Meta 是否同时削减外部 BPO 合同（而非仅内部员工），将是 6 月需要追踪的核心信号。如果合同同步缩减，将首次出现"大平台直接 AI 替代而非内化"对 BPO 的扩散效应。</p></li>
+
+<li><strong>菲律宾 PSA 4 月 2026 LFS 数据（首次纳入非正规就业）</strong>
+<p>预计 2026-05 月底至 6 月初公布。如果非正规就业比例显著上升，可能意味着部分被 BPO 行业排除的工人转入非正规部门 — 这是评估"AI 替代正规就业"真实压力的最直接窗口。</p></li>
+
+<li><strong>印度 PLFS 5 月 2026 月度公报（预计 6 月中旬）</strong>
+<p>看 LFPR 55.0% 是继续下滑还是反弹、UR 5.2% 是企稳还是上探 5.5%。如果两个指标同时恶化，将首次出现"宏观层面的印度 IT-BPM AI 冲击信号"。</p></li>
+
+<li><strong>HIRE Act 是否以修正案形式被挂入其他税收立法</strong>
+<p>HIRE Act 独立通过几乎不可能，但分析师警告 Moreno 可能在 2026 年中期税收立法窗口尝试以"修正案"形式挂载。如果发生，将立即改变印菲 BPO 行业的合同经济学。</p></li>
+
+<li><strong>印度 IT 五巨头 Q1 FY27 业绩（2026 年 7 月披露开始）</strong>
+<p>TCS 已宣称"裁员周期结束"。Q1 FY27 数据将首次检验 — 在"AI-first 服务模式"完成第一年后，印度 IT 服务业能否实现"收入增长 + 员工保持平稳"，还是会出现"收入下降 + 员工继续减少"的负反馈。</p></li>
+
+<li><strong>Klarna 撤退后客服 BPO 行业的 hybrid 模式扩散</strong>
+<p>Klarna 是首个公开撤回的样本。6 月将关注其他 2025 年 AI-first 客服公司（如 Bigjpg、Ada）是否跟进撤退或维持 AI-first 路径。这是判断"路径 A vs 路径 B"分化将延续多久的关键。</p></li>
+</ol>
+
+<!-- ============== 印菲专题 ============== -->
+<div class="spotlight-section">
+<h2><span style="color:var(--india)">🇮🇳</span> <span style="color:var(--phl)">🇵🇭</span> 本期专题：印度与菲律宾 — AI 冲击外包行业的两个核心节点</h2>
+<p class="subtitle">从 IT 五巨头动向、政府政策、客户撤单信号、本地劳动力指标四个维度，评估 2026 年 4–5 月 AI 对全球 IT-BPM 供给端两个核心国家的真实影响节奏。</p>
+
+<h3 class="report-heading">§9.1 IT 五巨头动向（Infosys / TCS / Wipro / Accenture-PH）</h3>
+
+<p><strong>核心判断：</strong>FY26 是印度 IT 五巨头第一次"全员减员 + 应届招聘减速 + AI-first 战略宣告"同时发生的财年。这不是周期性收缩，而是商业模型的结构性转向 — 工时定价（time-and-materials）让位于成果定价（outcome-based）+ AI 嵌入交付。</p>
+
+<h4 class="report-heading">FY26 关键数字汇总（Q4 FY26 披露，2026 年 4 月）</h4>
+<table>
+<thead><tr><th>公司</th><th class="num">FY26 末员工</th><th class="num">FY26 净变动</th><th class="num">流失率</th><th>FY27 招聘指引</th><th>战略表态</th></tr></thead>
+<tbody>
+<tr><td><strong>TCS</strong></td><td class="num">~580K（估）</td><td class="num"><strong>−24,000</strong></td><td class="num">~13%</td><td>"招聘维持正常"</td><td>"裁员周期已结束"、"AI-first 服务模式"</td></tr>
+<tr><td><strong>Infosys</strong></td><td class="num">328,594</td><td class="num">+5,016（同比）<br>−8,440（环比）</td><td class="num">12.6%（↓1.5pp YoY）</td><td>20,000 应届（与 FY26 持平）</td><td>"AI / 云岗位优先"</td></tr>
+<tr><td><strong>Wipro</strong></td><td class="num">242,156</td><td class="num">基本持平</td><td class="num">13.8%</td><td>未明确指引</td><td>已完成《新劳动法典》合规调整</td></tr>
+<tr><td><strong>HCLTech</strong></td><td class="num">~230K（估）</td><td class="num">小幅净减少</td><td class="num">~13%</td><td>保守</td><td>与三家同步"基本停止净招聘"</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">关键发现</div>
+<p>四家合计 FY26 净减员约 <strong>30,000+ 人</strong>。但同时 Infosys 仍维持 20,000 应届招聘目标 — 这意味着印度 IT 服务业不是"全面冻结"，而是"<strong>金字塔结构性重塑</strong>"。Tier 1（中高级工程师）通过自然离职 + 选择性裁员压缩；Tier 0（应届）通过维持招聘但偏 AI / 云技能延续金字塔基础。这是"加速沙漏化"而非"全面停止"。</p>
+</div>
+
+<h4 class="report-heading">菲律宾侧（Accenture-PH、Concentrix、Convergys、Sutherland 等）</h4>
+<p>菲律宾的 BPO 行业结构与印度不同 — 不是少数巨头主导，而是<strong>跨国客服外包 + 本地 IT-BPM 协会 IBPAP 协调</strong>的多公司格局。Accenture Philippines、Concentrix、Sitel、Sutherland、TaskUs 是头部雇主，但单家公司规模远低于 TCS / Infosys。本月没有出现菲律宾单家 BPO 公司公布大规模裁员，但 IBPAP 的 2026 年员工预测从早期的"超过 200 万"修订为"<strong>1.97 百万</strong>"（数据见 §9.4）— 是<strong>下修</strong>而非上修，反映行业内部对 AI 替代风险的认知收紧。</p>
+
+<h3 class="report-heading">§9.2 政府政策与监管（MeitY / DOLE / IBPAP / NITI Aayog）</h3>
+
+<h4 class="report-heading">印度：从"基建+人才"双轨</h4>
+<ul class="report-list">
+<li><strong>IndiaAI Mission（₹10,371.92 crore，2024-03 内阁批准、持续推进）</strong>：基建侧将 GPU 部署从 38K 扩到 58K+；学术界 / 创业公司可以 ₹65 / 小时的<strong>补贴价</strong>访问算力。</li>
+<li><strong>FutureSkills Prime（MeitY × NASSCOM）</strong>：注册学习者 253 万，3,000+ 课程对齐 National Occupational Standards。</li>
+<li><strong>NITI Aayog Roadmap for Job Creation in the AI Economy（2025-10）</strong>：明确"transformation 而非 replacement"立场。NASSCOM 预测 AI 人才池 2027 翻倍到 125 万。</li>
+<li><strong>新《劳动法典》</strong>：Wipro 已在 SEC 6-K 中披露完成相关合规调整 — 印度劳动法典的统一带来薪酬结构变化（基础工资比例提升），间接影响印度 IT 公司利润率。</li>
+</ul>
+
+<h4 class="report-heading">菲律宾：从"防御+培训"双轨</h4>
+<ul class="report-list">
+<li><strong>Project UNLAD（DICT × IBPAP × TESDA，₱740M）</strong>：把传统 BPO 工人（呼叫中心、数据录入、初级文员）转入更高价值数字技能岗位。</li>
+<li><strong>TESDA AI Tech Academy（2026-01-16 宿务开业）</strong>：菲律宾首个 TESDA 认证 AI 培训设施，IBPAP × StackTrek × PEZA 合作。</li>
+<li><strong>DOLE 紧急就业援助（2026 Q1）</strong>：援助 110,106 工人，分发 ₱753.69 百万比索。</li>
+<li><strong>$25M BPO 保护拨款</strong>（Nearshore Americas 报道）：直接拨款保护 BPO 就业，是东南亚国家罕见的"产业保护性"AI 政策。</li>
+<li><strong>DOLE 部长 Laguesma 公开承认</strong>"已有菲律宾工人因 AI 失业"，与 IBPAP 的"$42B 增长"叙事形成<strong>官民温度差</strong>。</li>
+</ul>
+
+<div class="callout">
+<div class="label">两国政策对比</div>
+<p>印度政策的重心是<strong>供给侧能力建设</strong>（GPU 基建、AI 人才培养）— 把印度从 IT 服务出口升级为 AI 能力出口。菲律宾政策的重心是<strong>需求侧防御性保护</strong>（BPO 工人再培训、专项拨款、TESDA 培训设施）— 把现有 BPO 岗位尽量保留在韧性更高的工作类型上。两种策略反映两国在全球 IT-BPM 价值链中的位置差异 — 印度是核心创新国，菲律宾是规模执行国。</p>
+</div>
+
+<h3 class="report-heading">§9.3 客户撤单与 onshore 回流信号</h3>
+
+<p><strong>核心判断：</strong>截至 2026 年 5 月，"美国客户大规模撤回 BPO 合同"<strong>没有发生</strong>。但"<strong>客户用 AI agent 削减 BPO 合同金额 / 缩减合同范围 / 转向 GCC（自营全球能力中心）</strong>"已成结构性趋势。F3 规则：把"假设"和"已发生"区分清楚 —</p>
+
+<table>
+<thead><tr><th>信号</th><th>状态</th><th>证据</th></tr></thead>
+<tbody>
+<tr><td>HIRE Act 通过</td><td><strong>未发生（0% prognosis）</strong></td><td>S.2976 仍在 Senate Finance Committee 停滞，无联署人增加，无委员会听证。GovTrack 给 0%。</td></tr>
+<tr><td>美国大规模撤单第三方 BPO</td><td><strong>未发生</strong></td><td>分析师指出实际反应"more modest than anticipated"。多数公司选择 hybrid 而非完全撤离。</td></tr>
+<tr><td>客户用 AI agent 削减 BPO 合同金额</td><td><strong>已发生</strong></td><td>The Register 报道印度四大外包商"因客户采用 AI coding / testing tools 而失去合同"。Business Standard 报道印度 IT 行业承压。</td></tr>
+<tr><td>客户从第三方 BPO 转向 GCC（自营）</td><td><strong>已发生</strong></td><td>多份 2026 行业报告指出"Talent Access 与 Global Capability Centers (GCCs)"成为客户首选模式。</td></tr>
+<tr><td>onshore 回流（AI 替代后将工作搬回美国）</td><td><strong>部分发生（特定行业）</strong></td><td>~40% 工作含 AI agent 可自动化任务，"映射到历史上外包的后台与行政工作"。但回流的是 AI 而非人。</td></tr>
+<tr><td>Klarna 模式（AI-first 撤回到 hybrid）</td><td><strong>已发生（具体案例 1 个）</strong></td><td>Klarna CEO Siemiatkowski 公开承认"走得太远"。这是 2026 年首个被广泛传播的撤回案例。</td></tr>
+</tbody>
+</table>
+
+<p><strong>对印菲 BPO 的实际意义：</strong>HIRE Act 25% 消费税是<strong>悬剑</strong>但截至本月未落 — 即便落，分析师认为公司更可能消化税负或迁向其他东南亚国家（越南、马来西亚）而非全面回流美国。真正在发生的<strong>渐进式收缩</strong>是 — 客户合同金额每季压低 5-10%、AI 工具集成减少所需人天数、GCC 抢占第三方 BPO 份额。这种"温水煮青蛙"对印菲 BPO 行业的累积影响在国家级劳动力指标上要 3–5 年才能显形，但已经在公司层面通过流失率、应届招聘、利润率改变所反映。</p>
+
+<h3 class="report-heading">§9.4 本地劳动力市场指标</h3>
+
+<h4 class="report-heading">印度 PLFS 2023-24 全年职业分布（基于 MoSPI Annual Report Table 25）</h4>
+<p>下表展示印度 PLFS 2023-24 年度报告中按 NCO 2015 / ISCO-08 1-digit 的就业分布（百分比），<strong>聚焦于工作年龄就业人口分布</strong>（Principal Status + Subsidiary Status 合并）：</p>
+
+<table>
+<thead><tr><th>NCO 1-digit / ISCO-08 1-digit</th><th class="num">农村 %</th><th class="num">城市 %</th><th class="num">合计 %</th></tr></thead>
+<tbody>
+<tr><td>1. 立法者、高级官员与管理人员</td><td class="num">1.37</td><td class="num">8.24</td><td class="num">3.17</td></tr>
+<tr><td>2. 专业人员</td><td class="num">2.56</td><td class="num">12.99</td><td class="num">5.27</td></tr>
+<tr><td>3. 技师与助理专业人员</td><td class="num">1.27</td><td class="num">5.06</td><td class="num">2.26</td></tr>
+<tr><td>4. 文员</td><td class="num">1.21</td><td class="num">4.63</td><td class="num">2.11</td></tr>
+<tr><td>5. 服务与销售工人</td><td class="num">8.03</td><td class="num">21.54</td><td class="num">11.54</td></tr>
+<tr><td>6. 熟练农林渔业工人</td><td class="num"><strong>49.45</strong></td><td class="num">5.17</td><td class="num"><strong>37.97</strong></td></tr>
+<tr><td>7. 手工与相关行业工人</td><td class="num">9.06</td><td class="num">16.88</td><td class="num">11.07</td></tr>
+<tr><td>8. 机器操作员与装配工</td><td class="num">4.22</td><td class="num">8.43</td><td class="num">5.32</td></tr>
+<tr><td>9. 基本职业</td><td class="num">22.78</td><td class="num">17.02</td><td class="num">21.28</td></tr>
+</tbody>
+</table>
+<p class="src">数据：印度 MoSPI《PLFS Annual Report 2023-24》Table 25。处理：从 3-digit NCO 代码聚合至 1-digit。基础数据文件：<code>national_data_phase3/IN_PLFS/india_plfs_2023_24_nco1.csv</code></p>
+
+<h4 class="report-heading">菲律宾 LFS PUF April 2025 加权扩展（基于 PSA 微观数据自算）</h4>
+<p>基于 PSA 2025 年 4 月 LFS 公开使用文件（172,057 行家庭成员级微观数据），用 PUFPWGTPRV 个人权重加权扩展至全国 15+ 人口：</p>
+
+<table>
+<thead><tr><th>ISCO-08 1-digit（PSOC 2-digit 映射）</th><th class="num">就业人数</th><th class="num">占比 %</th></tr></thead>
+<tbody>
+<tr><td>1. 管理人员</td><td class="num">1,585,687</td><td class="num">3.30</td></tr>
+<tr><td>2. 专业人员</td><td class="num">2,735,498</td><td class="num">5.69</td></tr>
+<tr><td>3. 技师与助理专业人员</td><td class="num">1,997,317</td><td class="num">4.15</td></tr>
+<tr><td>4. 文员</td><td class="num">3,844,520</td><td class="num"><strong>7.99</strong></td></tr>
+<tr><td>5. 服务与销售工人</td><td class="num">11,658,296</td><td class="num"><strong>24.24</strong></td></tr>
+<tr><td>6. 熟练农林渔业工人</td><td class="num">5,246,863</td><td class="num">10.91</td></tr>
+<tr><td>7. 手工与相关行业工人</td><td class="num">3,403,097</td><td class="num">7.07</td></tr>
+<tr><td>8. 机器操作员与装配工</td><td class="num">4,180,817</td><td class="num">8.69</td></tr>
+<tr><td>9. 基本职业</td><td class="num">13,318,788</td><td class="num">27.69</td></tr>
+<tr><td>0. 武装部队</td><td class="num">132,079</td><td class="num">0.27</td></tr>
+<tr><td><strong>就业总数 15+</strong></td><td class="num"><strong>48,102,960</strong></td><td class="num">100.00</td></tr>
+</tbody>
+</table>
+<p class="src">数据：PSA 菲律宾《LFS PUF April 2025》原始微观数据。处理：作者自算（age &ge; 15 过滤、PUFC11_WORK=1 为就业、PSOC 2-digit 首位映射 ISCO-08 1-digit）。基础数据文件：<code>national_data_phase3/PH_ILOSTAT/philippines_lfs_2025_04_isco1.json</code>。注 — UR 自算 2.68% 低于 PSA 官方公布的同期 ~4%（差异来源：官方使用更严格的 ILO 失业定义含 active search + availability，本表用 PUFC30_LOOKW=1 作为简化失业判断）。</p>
+
+<h4 class="report-heading">印菲对比：BPO 行业的国家级 AI 敞口</h4>
+<p>以"白领 + 服务"暴露面（管理 + 专业 + 文员 + 服务销售四类合计）作为 AI 第一波冲击的近似指标：</p>
+<table>
+<thead><tr><th>国家</th><th class="num">管理 1</th><th class="num">专业 2</th><th class="num">文员 4</th><th class="num">服务销售 5</th><th class="num"><strong>暴露面合计</strong></th><th class="num">农业 6</th></tr></thead>
+<tbody>
+<tr><td><strong>印度 PLFS 2023-24</strong></td><td class="num">3.17</td><td class="num">5.27</td><td class="num">2.11</td><td class="num">11.54</td><td class="num"><strong>22.1%</strong></td><td class="num">37.97</td></tr>
+<tr><td><strong>菲律宾 LFS 2025-04</strong></td><td class="num">3.30</td><td class="num">5.69</td><td class="num"><strong>7.99</strong></td><td class="num"><strong>24.24</strong></td><td class="num"><strong>41.2%</strong></td><td class="num">10.91</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">关键对比</div>
+<p>菲律宾"白领 + 服务"暴露面 <strong>41.2%</strong> 是印度 <strong>22.1%</strong> 的 1.87 倍。文员（4）和服务销售（5）的差距尤其明显 — 菲律宾文员雇佣比例 7.99% 是印度 2.11% 的 3.8 倍；服务销售 24.24% vs 11.54%。这与 BPO 经济结构吻合 — 呼叫中心、客户服务、数据录入等典型 BPO 工种在菲律宾职业分布中占据更大份额。<strong>从国家级敞口看，菲律宾对 AI 第一波（客服 + 文员 + 销售）冲击的敞口显著高于印度</strong>。印度则因 38% 农业人口和 21% Elementary 占比，第一波 AI 冲击的国家级敞口被相对稀释。但<strong>印度 IT-BPM 行业本身（1,600 万雇佣，占国家就业 ~3%）</strong>的敞口与菲律宾 BPO 相当甚至更高。</p>
+</div>
+
+<h4 class="report-heading">国家级宏观指标快照（2026 年最新可得数据）</h4>
+<table>
+<thead><tr><th>指标</th><th class="num">印度（PLFS 4 月 2026）</th><th class="num">菲律宾（PSA 3 月 2026）</th></tr></thead>
+<tbody>
+<tr><td>失业率（15+）</td><td class="num">5.2%</td><td class="num">5.0%</td></tr>
+<tr><td>劳动力参与率（15+）</td><td class="num">55.0%</td><td class="num">~64%（PSA 公布）</td></tr>
+<tr><td>城市失业率</td><td class="num">6.6%</td><td class="num">未公布单独城市数</td></tr>
+<tr><td>农村失业率</td><td class="num">4.6%</td><td class="num">未公布单独农村数</td></tr>
+<tr><td>同比变化</td><td class="num">UR +0.1pp、LFPR −0.6pp</td><td class="num">UR 自 5.1% 微降</td></tr>
+</tbody>
+</table>
+<p class="src">来源：印度 PIB PRID 2261386（2026-05）、菲律宾 PSA 2026-04-30 press release。</p>
+
+<p><strong>结论：</strong>截至 2026 年 5 月，印菲两国国家级失业率均处于稳定带，未显示宏观层面的"AI 危机"。但行业级（IT-BPM 与 BPO）的结构性变化（印度 IT 五巨头 FY26 净减员 30,000+、菲律宾 IBPAP 员工预测从 ">200 万" 下修至 197 万）已构成<strong>领先指标</strong>。建议持续关注 — 印度 PLFS 5 月公报、菲律宾 PSA 4 月 LFS 首次含非正规就业问题的调查结果、印度 IT 五巨头 Q1 FY27 业绩。如这三个指标同时恶化，则确认"行业级冲击"开始向"国家级"传导。</p>
+
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 三层方法论分析</h2>
+
+<p>本节用 Dashboard 三层方法论（Anthropic 经济指数 + 采用缺口 + Coface×OEM 阶段模型）解读本月事件 — 尤其是印菲专题。</p>
+
+<p><strong>第一层：Anthropic 经济指数视角</strong></p>
+<p>客户服务代表（observed_raw=0.7011，Claude 实际使用度第二高）与计算机程序员（0.7451，全样本最高）是本月裁员事件的核心暴露点。Meta 8,000 / Cloudflare 1,100 / PayPal 4,760 全部集中击中这两类职业；TCS / Infosys / Wipro 的"AI-first 服务模式"转型直接对应程序员类岗位的内部 AI 替代。</p>
+<p>菲律宾国家级 ISCO 分布显示文员（4）+ 服务销售（5）合计 32.2%，是 Anthropic 指数 0.6+ 高暴露职业的主要聚集 — 这是菲律宾在国家级敞口上高于印度的根本原因。</p>
+
+<p><strong>第二层：采用缺口（Adoption Gap）分析</strong></p>
+<p>采用缺口 = Karpathy 评分 − Anthropic 评分。本月观察到的核心动向是 <strong>BPO / 客服领域的采用缺口正在加速收窄</strong>。Klarna 撤回不否定这点 — 撤回的是<strong>过度 AI-first 的极端配置</strong>，回到 hybrid 后 AI 在客服中的实际部署比例仍显著高于 2024 水平。Salesforce 累计 5,000 客服裁员 + Benioff 公开称 AI 处理 50% 交互，是采用缺口直接收窄的数字证据。</p>
+<p>印度 IT 五巨头的"AI-first 服务模式"是<strong>供给侧主动收窄缺口</strong> — 不是等客户要求 AI 部署，而是把 AI 嵌入交付能力作为竞争优势。这种"主动收窄"在历史上的服务业转型周期中加速效应通常超过被动跟随。</p>
+
+<p><strong>第三层：Coface × OEM 任务级阶段分析</strong></p>
+<p>五阶段模型（Copilot → Special Agent → Conductor → Prometheus Bound → Superhuman）。本月信号 —</p>
+<ul class="report-list">
+<li><strong>Conductor 阶段（41% 职业中 &gt;30% 任务可自动化）已局部达成</strong>：客户服务（Salesforce 50% AI 处理）、初级编程（印度 IT 五巨头交付端 AI 嵌入）、内容审核（Meta 整合进 Superintelligence Labs）三类职业已超过 30% 任务阈值。</li>
+<li><strong>但同期 Klarna 反例提示 — 技术可行性闭环 ≠ 业务可行性闭环</strong>。Klarna 撤回意味着 — 即便 Coface 模型说"30% 任务可自动化"，业务层面的客户流失成本可能使企业回到 hybrid。这是阶段模型需要补充的"业务约束维度"。</li>
+<li>3×3 基质矩阵层面，本月集中冲击仍在"数据→数据"（编程）与"数据→人"（客服、招聘）象限。"物质→物质"（制造、建筑）"人→人"（医疗、教育）未见加速。这符合理论预期。</li>
+</ul>
+
+<p><strong>综合判断：</strong></p>
+<p>三层方法论一致指向 — 本月是 BPO / 客服 / 初级编程三类职业从 Special Agent 阶段进入 Conductor 阶段的转换窗口。印度 IT 五巨头 FY26 净减员 30,000+ 和菲律宾 IBPAP 员工预测下修是行业级证据。但 Klarna 撤回提示我们 — Conductor 阶段的<strong>实际渗透率</strong>可能低于技术可行性预测，"业务约束"将成为下一阶段最重要的分析维度。下月需关注 Meta 8,000 裁员落地后是否带动外部 BPO 合同收缩，以及菲律宾 PSA 4 月 LFS 是否显示非正规就业反弹 — 这两个信号将分别从"客户侧"和"工人侧"对 Conductor 阶段的实际渗透率给出独立验证。</p>
+
+    </div>
+    <!-- ============== End 中文版 ============== -->
+
+    <!-- ============== English version ============== -->
+    <div class="en lang-inactive">
+
+<h2 class="report-heading">📋 Executive Summary</h2>
+<p>April-late through mid-May 2026 marks the transition of AI-driven layoffs from "event-dense period" to <strong>institutionalized acceleration</strong>. <strong>Meta launched its 8,000-person layoff on May 20 (today, the cutoff date for this report)</strong>, the most-watched single layoff event of the year, with recruiting, customer support, content moderation, and non-AI product teams hit hardest. In parallel: <strong>Cloudflare cut ~1,100 (20% of its 5,156-person workforce)</strong>, <strong>PayPal plans 4,760 reductions over 2–3 years (20%)</strong>, <strong>Upwork ~25%</strong>, <strong>BILL up to 30%</strong>. Layoffs.fyi and TechTimes tracking show <strong>113,000+ cumulative tech layoffs in 2026 YTD</strong>, averaging ~825 per day — a pace exceeding all of 2025.</p>
+
+<p>The most important structural signal this month came from the <strong>concurrent Q4 FY26 earnings of India's IT Big Five</strong>. <strong>TCS reduced its workforce by ~24,000 net in FY26</strong> (PeopleMatters, April); the company stated "the layoff cycle is over" but maintained the "AI-first services model" transition. <strong>Infosys ended Q4 FY26 with 328,594 employees</strong> (QoQ −2.5%), voluntary attrition fell from 14.1% YoY to 12.6%, and FY27 fresher hiring guidance remains 20,000. <strong>Wipro Q4 FY26 IT services revenue $2.651B (QoQ +0.6%)</strong>, headcount 242,156, TTM attrition 13.8%. This is the operational shape of "low-hire / low-fire / internal AI substitution" in Indian IT services.</p>
+
+<p>A deeper signal came from <strong>publicly disclosed "AI replacement failure" cases</strong>. Sweden's Klarna publicly admitted that replacing ~700 customer service agents with AI "went too far"; CEO Sebastian Siemiatkowski acknowledged the AI-first strategy hurt service quality. The company shifted to a "AI handles routine + humans handle escalations" hybrid. This contrasts with <strong>Salesforce's cumulative 5,000 customer service layoffs</strong> (CEO Marc Benioff: AI agents now handle ~50% of customer interactions). Two divergent paths are now visible.</p>
+
+<p>On official labor-market data: <strong>India's MoSPI released the PLFS April 2026 monthly bulletin</strong> — 15+ LFPR eased to 55.0% (vs 55.4% in March, 55.6% April 2025), UR 5.2% (vs 5.1% in March / April 2025), urban UR 6.6% / rural UR 4.6%. <strong>The Philippines PSA reported March 2026 unemployment at 5.0%</strong> (labor market "improved"); the April 2026 LFS — which for the first time includes informal employment, unpaid care, and domestic work questions — will be released in late May or early June.</p>
+
+<p>Within our three-layer methodology: tech, customer service, and junior programming jobs remain at the Coface model's Special Agent → Conductor transition frontier. This month's new evidence indicates <strong>customer service and back-office Conductor stage has been partially achieved</strong>, while Klarna's reversal in the same cycle reminds us — technical feasibility is not business feasibility. This issue's spotlight examines <strong>India and the Philippines</strong> — the two core supply-side nodes of global IT-BPM — across the IT-majors, government policy, client-cancellation, and local-labor-indicator dimensions.</p>
+
+<h2 class="report-heading">📉 New Events</h2>
+<ol class="report-list">
+<li><strong>Meta initiates 8,000-person layoff on May 20, paired with $145B 2026 AI capex (May 20)</strong>
+<p>Meta's most-watched single layoff event of the year is expected to affect 8,000 employees, ~10% of the workforce, with 6,000 open roles left unfilled. Recruiting, customer support, content moderation, and non-AI product teams are hit hardest. Remaining teams will be consolidated into Meta Superintelligence Labs. Meta simultaneously raised its 2026 capex ceiling to as much as $145 billion, nearly all directed at AI infrastructure. <span class="src">Sources: TechRepublic (May 2026), CNBC (2026-04-24), Yahoo Finance (2026-05).</span></p></li>
+
+<li><strong>Cloudflare cuts 1,100+ globally, ~20% of workforce (early May)</strong>
+<p>Cloudflare announced on Thursday it would cut more than 1,100 jobs globally — about 20% of its 5,156-person workforce. This is the largest layoff in Cloudflare's history. The company's public statement emphasized "organizational restructuring and AI engineering efficiency gains." <span class="src">Source: Yahoo Finance (2026-05).</span></p></li>
+
+<li><strong>PayPal plans 4,760 reductions over 2–3 years (May announcement)</strong>
+<p>PayPal announced it will eliminate approximately 20% of its workforce over the next 2–3 years, corresponding to about 4,760 of its 23,800 employees. This is one of the largest and longest-horizon AI restructuring plans in financial services. <span class="src">Source: Yahoo Finance (2026-05).</span></p></li>
+
+<li><strong>BILL up to 30% cut; Upwork CEO informs ~25% layoff (early May)</strong>
+<p>Financial automation firm BILL announced cuts of up to 30% of its workforce; Upwork CEO Hayden Brown informed employees that the company would cut roughly 25% of headcount. Both explicitly cited AI tool integration as a restructuring driver. <span class="src">Source: Yahoo Finance (2026-05).</span></p></li>
+
+<li><strong>TCS FY26 full-year net workforce reduction of ~24,000; "layoff cycle is over" (April)</strong>
+<p>India's IT services giant Tata Consultancy Services reduced its total workforce by ~24,000 net during FY26. The company stated at its Q4 earnings call that "the restructuring-driven layoff cycle is now complete; hiring continues normally," while the "AI-first services model" transition continues. The previously disclosed 2% reduction target (~12,000) is now exceeded. <span class="src">Sources: PeopleMatters (2026-04), Analytics Insight.</span></p></li>
+
+<li><strong>Infosys Q4 FY26: 328,594 employees / 12.6% attrition / 20,000 freshers for FY27 (April announcement)</strong>
+<p>Infosys ended Q4 FY26 with 328,594 employees, down 2.5% QoQ (from 337,034), but slightly up YoY (from 323,578). Voluntary attrition fell from 14.1% a year ago to 12.6%. The company plans to hire about 20,000 freshers in FY27 — the same as FY26 — but prioritizing AI / cloud skills. This "total-size maintenance + structural adjustment" strategy reflects "AI transformation does not mean hiring freeze" in services. <span class="src">Sources: PeopleMatters, BW People, Outlook Business (2026-04).</span></p></li>
+
+<li><strong>Wipro Q4 FY26: IT services revenue $2.651B (QoQ +0.6%), headcount 242,156, TTM attrition 13.8% (April)</strong>
+<p>Wipro Q4 FY26 IT services revenue grew 2.1% YoY, operating margin 17.3% (QoQ −0.3pp), headcount 242,156. The company disclosed in SEC Form 6-K that it has completed compliance adjustments for India's new Labour Codes. Wipro joins TCS and Infosys on a "margin maintenance + headcount tightening" trajectory. <span class="src">Source: Wipro SEC Form 6-K (2026-04-15 / 2026-04-17).</span></p></li>
+
+<li><strong>Klarna publicly reverses AI-first customer-service strategy; CEO admits "went too far" (early 2026)</strong>
+<p>Klarna previously announced AI replaced approximately 700 customer service agents, but in early 2026 CEO Sebastian Siemiatkowski publicly admitted the AI-first replacement strategy "negatively affected service and product quality." The company shifted to a hybrid model — AI handles routine high-volume queries; human agents handle escalations, complex cases, and high-value customer interactions. This is the first widely-reported "AI replacement reversal" case of 2026. <span class="src">Sources: Tech.co, Digital Applied, MLQ.ai.</span></p></li>
+
+<li><strong>Salesforce cumulative 5,000 customer-service layoffs; Benioff: AI agents now handle 50% of customer interactions (2026 cumulative)</strong>
+<p>Salesforce cut another ~1,000 customer service positions in early 2026 (in addition to ~4,000 prior, for a cumulative ~5,000). CEO Marc Benioff publicly stated that AI agents now handle about 50% of Salesforce customer support interactions. Unlike Klarna's reversal, Salesforce chose to continue the AI-first customer service path. <span class="src">Sources: Tech.co, Programs.com.</span></p></li>
+
+<li><strong>Duolingo announces in April it will stop using contractors for AI-replaceable work (April)</strong>
+<p>Online education company Duolingo said it will "stop using contractors for work that AI can handle"; the company had previously announced cuts of about 45% of contractors (388 people). This is among the first edtech / content-generation cases to explicitly tie AI automation to external contractor reductions. <span class="src">Sources: AdWeek, Tech.co.</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 Industry Trends</h2>
+
+<h3 class="report-heading">Tech: May 2026 becomes the year's most dense layoff window</h3>
+<p>Cumulative tech-sector layoffs in 2026 YTD exceed <strong>113,000</strong> (Layoffs.fyi / TechTimes), averaging ~825 per day — faster than all of 2025. In the first two weeks of May alone: Meta (8,000) + Cloudflare (1,100) + PayPal (4,760, multi-year) + BILL (~30%) + Upwork (~25%) exceeded any single month in 2025. CNBC reported on April 24 that <strong>Meta and Microsoft alone had announced ~20,000 cuts by end of April</strong>, raising market concerns that "the AI-driven labor crisis is here."</p>
+
+<p>This month also revealed clear "intra-industry divergence": AI-native firms (Anthropic, OpenAI, xAI) continue to hire, while traditional tech giants (Oracle, Dell, Intel, Cloudflare) cut to fund AI infrastructure. This structural capital reallocation — converting human-capital budget into compute-capital budget — is now a clear feature of FY26 enterprise strategy.</p>
+
+<h3 class="report-heading">Customer service / BPO: path divergence appears for the first time</h3>
+<p>The most methodologically significant finding this month is two opposite paths in customer service:</p>
+<ul class="report-list">
+<li><strong>Path A (continue AI-first)</strong>: Salesforce cumulative 5,000 cuts, Meta's May 8,000 with customer support as a heavy area, Duolingo's contractor cut. The shared feature: business serving <strong>large-scale, standardized, low-unit-price</strong> customers, where AI agent error cost is absorbed in ROI math.</li>
+<li><strong>Path B (reverse to hybrid)</strong>: Klarna publicly admits "went too far"; CEO Siemiatkowski indicates rehiring agents. Multiple US / European retailers returned to hybrid after AI-first experiments in 2025 Q4 / 2026 Q1. The shared feature: business serving <strong>high-unit-price, brand-sensitive</strong> customers, where AI error churn cost exceeds the labor savings.</li>
+</ul>
+<p>This divergence has major implications for India / Philippines BPO — the narrative "all BPO work will be replaced by AI agents" is not accurate. Downstream demand structure determines which jobs get truly replaced and which move into hybrid configuration.</p>
+
+<h3 class="report-heading">Indian IT services: from "expansion" to "AI-first services model"</h3>
+<p>TCS, Infosys, Wipro, HCLTech together completed an industry-wide "headcount reduction + hiring slowdown" in FY26. <a href="https://www.theregister.com/2026/01/19/hcl_infosys_tcs_wipro_results">The Register (Jan 19)</a> reported that the big four outsourcers had "essentially stopped hiring," directly correlated with their increased use of AI in delivery practice. But the post-Q4-FY26 picture is more nuanced — not "complete freeze" but "<strong>total headcount falls + fresher hiring maintained but skewed to AI / cloud</strong>." Infosys's FY27 plan of 20,000 freshers is the canonical example.</p>
+
+<p>This aligns with <a href="https://www.business-standard.com/industry/news/tcs-infosys-lay-off-indian-it-sector-job-cuts-automation-ai-reskilling-125072800505_1.html">Business Standard's 2025 reporting</a>: client adoption of AI coding and testing tools directly reduces third-party service contract value. Indian IT firms cannot respond solely through hours-pricing models; they must embed AI into delivery capability itself.</p>
+
+<h3 class="report-heading">Macro labor market: from "AI washing" debate to structural evidence</h3>
+<p>The "AI washing" debate of 2H 2025 centered on — how many layoffs are genuinely AI-driven vs. cost-cutting under AI's banner. The Q1 2026 earnings season is narrowing this debate. When Salesforce publicly claims "AI agents handle 50% of customer interactions," when TCS publicly declares "AI-first services model," when Meta consolidates remaining staff into "Superintelligence Labs" — corporate attribution is no longer ambiguous. But Klarna's reversal reminds us — not all AI replacement produces expected ROI; the "AI as fig leaf for cost cutting" portion of "AI washing" will reveal itself over time through failure cases.</p>
+
+<h2 class="report-heading">🌍 Geographic Distribution</h2>
+
+<h3 class="report-heading">United States: 14,000+ new May announcements, still the global epicenter</h3>
+<p>Meta (8,000) + Cloudflare (1,100) + BILL (~1,500 est.) + Upwork (~500 est.) + PayPal (initial phase) — May US new announcements exceed 14,000. This is roughly 12% of the 2026 YTD 113,000 concentrated in one month. CNBC reports Meta's restructuring involves the new "Superintelligence Labs" consolidation — the first time a large enterprise has named AI restructuring directly as a strategic department rather than a cost-cutting measure.</p>
+
+<h3 class="report-heading">India: IT Big Five complete FY26 "reduction + AI-first" pivot; national labor pool stable</h3>
+<p>India this month showed two opposite signals at the "national" vs "industry" level:</p>
+<ul class="report-list">
+<li><strong>Industry (IT-BPM)</strong>: TCS −24,000; Infosys QoQ −2.5%; Wipro flat at ~242K. The tail effects of Oracle's March round of ~12,000 India cuts are still propagating.</li>
+<li><strong>National (PLFS)</strong>: India MoSPI April 2026 monthly bulletin shows 15+ LFPR 55.0% (YoY −0.6pp), UR 5.2% (YoY +0.1pp) — overall labor pool nearly stable, no national-level "AI crisis" signal.</li>
+</ul>
+<p>The interpretation: India's IT-BPM employs ~16M (NASSCOM data), only ~3% of India's ~500–600M national employment. The IT Big Five net reduction of ~24K is 0.005% of the national pool — PLFS naturally cannot detect it. But <strong>for the IT-BPM outward-oriented growth engine itself</strong>, the FY26 inflection point is highly significant.</p>
+
+<h3 class="report-heading">Philippines: BPO-resilience narrative + DOLE public acknowledgment of partial displacement</h3>
+<p>Philippines PSA reported February 2026 unemployment at 5.1% and March at 5.0% (labor market "improved"). But DOLE Secretary Bienvenido Laguesma <a href="https://www.gmanetwork.com/news/money/economy/876628/laguesma-admits-possible-worker-displacement-due-to-artificial-intelligence/story/">publicly admitted</a> "some Filipinos are already losing jobs to AI," noting "manual operations are the first to be affected by AI deployment." IBPAP (the Philippine IT-BPM industry association) maintained 2026 full-year $42B export and 2028 $59B / 2.5M worker projections — <em>these are industry-association projections, not realized facts</em>. Chapter 9 dissects these figures.</p>
+
+<h3 class="report-heading">Europe and others</h3>
+<p>At the European level, Klarna's (Sweden) reversal is the month's most important event, with major implications for customer service BPO trajectory. MIT CSAIL and IMF's earlier "skills readiness" analyses rank Finland, Ireland, Denmark at the top; but no new European country-level macro layoff data appeared this month.</p>
+
+<h2 class="report-heading">📑 Important Research / Policy</h2>
+<ol class="report-list">
+<li><strong>India MoSPI PLFS April 2026 monthly bulletin (released mid-May 2026)</strong>
+<p>The 13th issue in the new "monthly + quarterly" PLFS series. Key figures: 15+ LFPR 55.0% (vs March 55.4%, April 2025 55.6%); UR 5.2% (vs March 5.1%, April 2025 5.1%); urban UR 6.6% (improved from 6.8%); rural UR 4.6% (slightly up from 4.3%). Even as headlines feature Oracle's 12K India cuts and TCS's 24K FY26 reduction, the national LFPR/UR stay in the stable band. <span class="src">Sources: <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261386">PIB India PRID 2261386</a>, NewKerala.</span></p></li>
+
+<li><strong>Philippines PSA February and March 2026 LFS bulletins</strong>
+<p>February UR 5.1%, March UR 5.0%; PSA says "labor market conditions improved." <strong>The April 2026 LFS is the first to include questions on informal employment, unpaid care, and domestic work</strong>, scheduled for release in late May to early June 2026 — a key window for assessing whether the BPO sector is absorbing workers displaced from formal positions into informal work. <span class="src">Sources: PSA February LFS bulletin, PSA South Cotabato notification.</span></p></li>
+
+<li><strong>NITI Aayog × NASSCOM × BCG Roadmap for Job Creation in the AI Economy (October 2025)</strong>
+<p>The joint job-creation roadmap from India's national think tank NITI Aayog, NASSCOM, and Boston Consulting Group. Core thesis — India's AI strategy should focus on "workforce transformation" rather than simple replacement. NASSCOM projects India's AI talent pool will double from ~600K in 2024 to <strong>1.25M by 2027</strong>. The document notes India's IT sector employs ~16M, of which ~9M are in "low-skilled services and BPO roles" — the primary AI-exposure surface. <span class="src">Sources: <a href="https://www.niti.gov.in/sites/default/files/2025-10/Roadmap_for_Job_Creation_in_the_AI_Economy.pdf">NITI Aayog PDF</a>, NASSCOM Voices.</span></p></li>
+
+<li><strong>India IndiaAI Mission compute expansion (ongoing through 2026 Q2)</strong>
+<p>The <strong>₹10,371.92 crore (~$1.24B)</strong> initiative under MeitY's IndiaAI autonomous unit, cleared by the Union Cabinet March 2024. As of this month: GPU deployment target raised from 38,000 to <strong>58,000+</strong> (including 20,000 new high-end units), available at subsidized <strong>₹65/hour</strong>. FutureSkills Prime (MeitY × NASSCOM) registers <strong>2.53M learners</strong>, 3,000+ courses aligned with National Occupational Standards. <span class="src">Sources: DD News, Organiser.</span></p></li>
+
+<li><strong>Philippines Project UNLAD: ₱740M government-industry BPO retraining program</strong>
+<p>Initiated by the Philippines DICT (Department of Information and Communications Technology), IBPAP, and TESDA — a <strong>₱740M peso</strong> reskilling program designed to migrate traditional BPO workers (call centers, data entry, junior clerks) into higher-value digital-skill positions. The associated <strong>TESDA AI Tech Academy launched January 16, 2026 in Cebu</strong> (IBPAP × StackTrek × PEZA), the first TESDA-accredited AI training facility. Nearshore Americas additionally reports the Philippine government has committed <strong>$25M USD</strong> specifically for BPO worker protection. <span class="src">Sources: The Business Manual, Nearshore Americas.</span></p></li>
+
+<li><strong>US HIRE Act (S. 2976) still stalled as of April 2026</strong>
+<p>Introduced by Senator Bernie Moreno in October 2025, the Halting International Relocation of Employment Act proposes a <strong>25% excise tax</strong> on outsourcing payments plus removal of tax deductibility. As of April 2026, the bill remains in the Senate Finance Committee with no new co-sponsors and no committee hearings. GovTrack's automated prognosis gives <strong>0% enactment probability</strong>. But analysts warn — if Moreno attaches HIRE-related provisions as <strong>amendments</strong> to other tax legislation in motion, the calculus shifts immediately. The February 2026 US-India interim trade framework announcement is seen as <strong>reducing</strong> HIRE's near-term momentum. <span class="src">Sources: WiseMonk, Tax Foundation.</span></p></li>
+
+<li><strong>Tech layoffs 2026 tracker: 113,000+ cumulative; no federal AI disclosure law (TechTimes 2026-05-18)</strong>
+<p>US tech sector 2026 YTD layoffs exceed 113,000. <strong>There is no federal law in the US requiring firms to disclose whether layoffs are AI-driven.</strong> The WARN Act requires large-layoff notification but not attribution. This means — all "AI-attributed layoff" statistics depend on voluntary corporate disclosure, with errors in both "AI washing" and "undisclosed AI layoffs" directions difficult to calibrate. <span class="src">Source: TechTimes 2026-05-18.</span></p></li>
+</ol>
+
+<h2 class="report-heading">🔮 Watch Next Month</h2>
+<ol class="report-list">
+<li><strong>Customer-support / content-moderation ecosystem impact after Meta's May 20 cuts</strong>
+<p>Meta's 8,000 cuts heavily hit recruiting, customer support, content moderation — areas previously substantially outsourced to India, Philippines, Vietnam BPOs. Whether Meta simultaneously reduces external BPO contracts (rather than cutting only internal staff) is the key signal to track in June. If contracts contract in sync, we will see for the first time "large platform direct AI substitution rather than internalization" with downstream BPO spillover.</p></li>
+
+<li><strong>Philippines PSA April 2026 LFS (first with informal employment module)</strong>
+<p>Expected late May / early June 2026. A material rise in informal employment share could indicate some workers excluded from BPO are migrating into informal sectors — the most direct window for evaluating "AI replacement of formal employment" pressure.</p></li>
+
+<li><strong>India PLFS May 2026 monthly bulletin (mid-June)</strong>
+<p>Watch whether LFPR 55.0% continues to slide or rebounds, and whether UR 5.2% stabilizes or rises toward 5.5%. If both deteriorate simultaneously, we will see the first national-level India IT-BPM AI-impact signal.</p></li>
+
+<li><strong>Whether the HIRE Act gets attached as an amendment to other tax legislation</strong>
+<p>Standalone HIRE passage is nearly impossible, but analysts warn Moreno may try amendment attachment during mid-2026 tax-legislation windows. If it happens, it will immediately change the contract economics of India / Philippines BPO.</p></li>
+
+<li><strong>Q1 FY27 earnings of India IT Big Five (disclosures begin July 2026)</strong>
+<p>TCS has declared "the layoff cycle is over." Q1 FY27 data will be the first test — after one full year of "AI-first services model," can Indian IT services achieve "revenue growth + headcount stable," or will it show "revenue decline + further headcount reduction" in a negative feedback loop.</p></li>
+
+<li><strong>Hybrid-model diffusion in customer-service BPO post-Klarna reversal</strong>
+<p>Klarna is the first publicly reversed case. June will track whether other 2025 AI-first customer-service firms (Bigjpg, Ada, etc.) follow the reversal or maintain AI-first. This is key to judging how long the "Path A vs Path B" divergence will persist.</p></li>
+</ol>
+
+<!-- spotlight EN -->
+<div class="spotlight-section">
+<h2><span style="color:var(--india)">🇮🇳</span> <span style="color:var(--phl)">🇵🇭</span> Spotlight: India &amp; Philippines — Two Core Nodes for AI Impact on Outsourcing</h2>
+<p class="subtitle">Across the IT-majors, government-policy, client-cancellation, and local-labor-indicator dimensions, this section evaluates the actual cadence of AI impact on the two core supply-side nodes of global IT-BPM in April–May 2026.</p>
+
+<h3 class="report-heading">§9.1 Big Five IT Movements (Infosys / TCS / Wipro / Accenture-PH)</h3>
+<p><strong>Core finding:</strong> FY26 is the first year India's IT Big Five simultaneously executed "industry-wide reductions + fresher hiring slowdown + AI-first strategic declaration." This is not cyclical contraction but a structural business-model shift — time-and-materials pricing yields to outcome-based pricing plus AI embedded in delivery.</p>
+
+<h4 class="report-heading">FY26 Key Numbers (Q4 FY26 disclosures, April 2026)</h4>
+<table>
+<thead><tr><th>Company</th><th class="num">FY26 End Headcount</th><th class="num">FY26 Net Change</th><th class="num">Attrition</th><th>FY27 Hiring Guidance</th><th>Strategic Statement</th></tr></thead>
+<tbody>
+<tr><td><strong>TCS</strong></td><td class="num">~580K (est.)</td><td class="num"><strong>−24,000</strong></td><td class="num">~13%</td><td>"Hiring normal"</td><td>"Layoff cycle over"; "AI-first services model"</td></tr>
+<tr><td><strong>Infosys</strong></td><td class="num">328,594</td><td class="num">+5,016 YoY<br>−8,440 QoQ</td><td class="num">12.6% (↓1.5pp YoY)</td><td>20,000 freshers (= FY26)</td><td>"AI / cloud roles prioritized"</td></tr>
+<tr><td><strong>Wipro</strong></td><td class="num">242,156</td><td class="num">~flat</td><td class="num">13.8%</td><td>Not specified</td><td>Labour Codes compliance completed</td></tr>
+<tr><td><strong>HCLTech</strong></td><td class="num">~230K (est.)</td><td class="num">small net decrease</td><td class="num">~13%</td><td>Conservative</td><td>Aligned with peers in "essentially stopped net hiring"</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">Key Finding</div>
+<p>The four together net reduced <strong>~30,000+ employees</strong> in FY26. But Infosys maintains 20,000 fresher hires — meaning Indian IT services are not in "complete freeze" but in "<strong>structural pyramid reshape</strong>." Tier 1 (mid/senior engineers) compresses through attrition + selective layoffs; Tier 0 (freshers) continues but skewed to AI / cloud skills, preserving the pyramid base. This is "accelerated hourglassing," not "full stop."</p>
+</div>
+
+<h4 class="report-heading">Philippines side (Accenture-PH, Concentrix, Convergys, Sutherland, etc.)</h4>
+<p>The Philippines BPO structure differs from India's — not dominated by a few giants but a <strong>multinational customer-service-BPO + local IT-BPM IBPAP-coordinated</strong> multi-firm pattern. Accenture Philippines, Concentrix, Sitel, Sutherland, TaskUs are the top employers, but each is much smaller than TCS / Infosys. This month, no single Philippine BPO firm announced large-scale layoffs, but IBPAP's 2026 employment forecast was revised from earlier "&gt;2.0M" down to "<strong>1.97M</strong>" (see §9.4) — a <strong>downward</strong> revision, reflecting industry-internal tightening of AI replacement risk perception.</p>
+
+<h3 class="report-heading">§9.2 Government Policy and Regulation</h3>
+
+<h4 class="report-heading">India: dual track of "infrastructure + talent"</h4>
+<ul class="report-list">
+<li><strong>IndiaAI Mission</strong>: ₹10,371.92 crore infrastructure expansion — GPU pool to 58K+ at subsidized ₹65/hour.</li>
+<li><strong>FutureSkills Prime</strong> (MeitY × NASSCOM): 2.53M registered learners, 3,000+ courses.</li>
+<li><strong>NITI Aayog Roadmap</strong> (October 2025): "transformation, not replacement" stance; NASSCOM projects 1.25M AI talent by 2027.</li>
+<li><strong>New Labour Codes</strong>: Wipro disclosed compliance completion in SEC 6-K — unified codes raise basic-pay component, indirectly affecting margins.</li>
+</ul>
+
+<h4 class="report-heading">Philippines: dual track of "defense + retraining"</h4>
+<ul class="report-list">
+<li><strong>Project UNLAD</strong> (DICT × IBPAP × TESDA, ₱740M): retrain BPO workers into higher-value digital skills.</li>
+<li><strong>TESDA AI Tech Academy</strong> (January 16, 2026 in Cebu): first TESDA-accredited AI training facility, IBPAP × StackTrek × PEZA.</li>
+<li><strong>DOLE Q1 2026 Emergency Assistance</strong>: 110,106 workers assisted, ₱753.69M disbursed.</li>
+<li><strong>$25M BPO worker-protection allocation</strong> (Nearshore Americas): direct funding to protect BPO employment — a rare "industry-protective" AI policy among Southeast Asian states.</li>
+<li><strong>DOLE Secretary Laguesma's public admission</strong> that Filipinos are losing jobs to AI contrasts with IBPAP's "$42B growth" narrative — a <strong>government-industry temperature gap</strong>.</li>
+</ul>
+
+<div class="callout">
+<div class="label">Two-Country Policy Comparison</div>
+<p>India's policy focus is <strong>supply-side capability building</strong> (GPU infrastructure, AI talent cultivation) — upgrading India from IT services export to AI capability export. The Philippines' focus is <strong>demand-side defensive protection</strong> (BPO retraining, dedicated allocations, TESDA AI facility) — retaining current BPO positions in higher-resilience work types. These strategies reflect each country's position in the global IT-BPM value chain — India as innovation core, the Philippines as scale execution.</p>
+</div>
+
+<h3 class="report-heading">§9.3 Client cancellation and onshore-reshoring signals</h3>
+<p><strong>Core finding:</strong> As of May 2026, "US clients canceling BPO contracts en masse" has <strong>not happened</strong>. But "<strong>clients using AI agents to reduce BPO contract values / scope, or shifting to GCCs (Global Capability Centers)</strong>" is now a structural trend. F3 rule — separate "hypothetical" from "occurred":</p>
+
+<table>
+<thead><tr><th>Signal</th><th>Status</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>HIRE Act passage</td><td><strong>Not occurred (0% prognosis)</strong></td><td>S.2976 stalled in Senate Finance Committee; no new co-sponsors, no hearings. GovTrack 0%.</td></tr>
+<tr><td>US mass BPO contract cancellation</td><td><strong>Not occurred</strong></td><td>Analysts find actual response "more modest than anticipated." Most companies chose hybrid over full exit.</td></tr>
+<tr><td>Clients reducing BPO contract value via AI agents</td><td><strong>Occurred</strong></td><td>The Register reports India big four outsourcers "losing contracts as clients adopt AI coding / testing tools."</td></tr>
+<tr><td>Clients shifting from third-party BPO to GCC (in-house)</td><td><strong>Occurred</strong></td><td>Multiple 2026 industry reports identify "Talent Access and Global Capability Centers (GCCs)" as the preferred client model.</td></tr>
+<tr><td>Onshore reshoring (work returning to the US after AI replacement)</td><td><strong>Partial (sector-specific)</strong></td><td>~40% of jobs contain tasks automatable by current AI agents, "mapping to back-office and administrative work historically sent offshore." But what returns is AI, not labor.</td></tr>
+<tr><td>Klarna pattern (AI-first reversed to hybrid)</td><td><strong>Occurred (1 specific case)</strong></td><td>Klarna CEO Siemiatkowski publicly admits "went too far." First widely-reported reversal case in 2026.</td></tr>
+</tbody>
+</table>
+
+<p><strong>Implications for Philippines / India BPO:</strong> The HIRE Act's 25% excise tax remains a <strong>hanging sword</strong> but has not fallen this month — even if it does, analysts believe companies are more likely to absorb the tax burden or migrate to other Southeast Asian destinations (Vietnam, Malaysia) rather than fully reshore. What is genuinely happening is <strong>gradual contraction</strong> — contract values dropping 5-10% per quarter, AI integration reducing required man-days, GCCs eating into third-party BPO share. This "boiling-frog" cumulative effect on Philippines / India BPO will take 3-5 years to surface in country-level labor indicators, but is already reflected at the firm level through attrition, fresher hiring, and margin changes.</p>
+
+<h3 class="report-heading">§9.4 Local Labor Market Indicators</h3>
+
+<h4 class="report-heading">India PLFS 2023-24 Annual Occupational Distribution (MoSPI Annual Report Table 25)</h4>
+<table>
+<thead><tr><th>NCO 1-digit / ISCO-08 1-digit</th><th class="num">Rural %</th><th class="num">Urban %</th><th class="num">Total %</th></tr></thead>
+<tbody>
+<tr><td>1. Legislators, senior officials, managers</td><td class="num">1.37</td><td class="num">8.24</td><td class="num">3.17</td></tr>
+<tr><td>2. Professionals</td><td class="num">2.56</td><td class="num">12.99</td><td class="num">5.27</td></tr>
+<tr><td>3. Technicians, associate professionals</td><td class="num">1.27</td><td class="num">5.06</td><td class="num">2.26</td></tr>
+<tr><td>4. Clerks</td><td class="num">1.21</td><td class="num">4.63</td><td class="num">2.11</td></tr>
+<tr><td>5. Service &amp; sales workers</td><td class="num">8.03</td><td class="num">21.54</td><td class="num">11.54</td></tr>
+<tr><td>6. Skilled agri / forestry / fishery</td><td class="num"><strong>49.45</strong></td><td class="num">5.17</td><td class="num"><strong>37.97</strong></td></tr>
+<tr><td>7. Craft &amp; related trade workers</td><td class="num">9.06</td><td class="num">16.88</td><td class="num">11.07</td></tr>
+<tr><td>8. Plant &amp; machine operators</td><td class="num">4.22</td><td class="num">8.43</td><td class="num">5.32</td></tr>
+<tr><td>9. Elementary occupations</td><td class="num">22.78</td><td class="num">17.02</td><td class="num">21.28</td></tr>
+</tbody>
+</table>
+<p class="src">Source: MoSPI PLFS Annual Report 2023-24, Table 25. Processing: aggregated from 3-digit NCO codes to 1-digit. Underlying file: <code>national_data_phase3/IN_PLFS/india_plfs_2023_24_nco1.csv</code></p>
+
+<h4 class="report-heading">Philippines LFS PUF April 2025 weighted expansion (PSA microdata, author calc)</h4>
+<table>
+<thead><tr><th>ISCO-08 1-digit (PSOC 2-digit mapped)</th><th class="num">Employed</th><th class="num">Share %</th></tr></thead>
+<tbody>
+<tr><td>1. Managers</td><td class="num">1,585,687</td><td class="num">3.30</td></tr>
+<tr><td>2. Professionals</td><td class="num">2,735,498</td><td class="num">5.69</td></tr>
+<tr><td>3. Technicians and associate professionals</td><td class="num">1,997,317</td><td class="num">4.15</td></tr>
+<tr><td>4. Clerical support workers</td><td class="num">3,844,520</td><td class="num"><strong>7.99</strong></td></tr>
+<tr><td>5. Service and sales workers</td><td class="num">11,658,296</td><td class="num"><strong>24.24</strong></td></tr>
+<tr><td>6. Skilled agricultural, forestry and fishery workers</td><td class="num">5,246,863</td><td class="num">10.91</td></tr>
+<tr><td>7. Craft and related trades workers</td><td class="num">3,403,097</td><td class="num">7.07</td></tr>
+<tr><td>8. Plant and machine operators, and assemblers</td><td class="num">4,180,817</td><td class="num">8.69</td></tr>
+<tr><td>9. Elementary occupations</td><td class="num">13,318,788</td><td class="num">27.69</td></tr>
+<tr><td>0. Armed forces occupations</td><td class="num">132,079</td><td class="num">0.27</td></tr>
+<tr><td><strong>Total Employed 15+</strong></td><td class="num"><strong>48,102,960</strong></td><td class="num">100.00</td></tr>
+</tbody>
+</table>
+<p class="src">Source: PSA Philippines LFS PUF April 2025 microdata. Processing: author-calculated (age ≥ 15, PUFC11_WORK=1 as employed, PSOC 2-digit first character mapped to ISCO-08 1-digit). Underlying file: <code>national_data_phase3/PH_ILOSTAT/philippines_lfs_2025_04_isco1.json</code>. Note: self-calculated UR of 2.68% is below PSA's official ~4% for the same period (difference: PSA uses the stricter ILO definition requiring active search + availability; this calculation uses PUFC30_LOOKW=1 as a simplified unemployment indicator).</p>
+
+<h4 class="report-heading">India-Philippines comparison: country-level BPO AI exposure</h4>
+<table>
+<thead><tr><th>Country</th><th class="num">Mgrs 1</th><th class="num">Profs 2</th><th class="num">Clerks 4</th><th class="num">Svc/Sales 5</th><th class="num"><strong>Exposure Sum</strong></th><th class="num">Agriculture 6</th></tr></thead>
+<tbody>
+<tr><td><strong>India PLFS 2023-24</strong></td><td class="num">3.17</td><td class="num">5.27</td><td class="num">2.11</td><td class="num">11.54</td><td class="num"><strong>22.1%</strong></td><td class="num">37.97</td></tr>
+<tr><td><strong>Philippines LFS 2025-04</strong></td><td class="num">3.30</td><td class="num">5.69</td><td class="num"><strong>7.99</strong></td><td class="num"><strong>24.24</strong></td><td class="num"><strong>41.2%</strong></td><td class="num">10.91</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">Key Comparison</div>
+<p>The Philippines' "white-collar + service" exposure of <strong>41.2%</strong> is 1.87× India's <strong>22.1%</strong>. The clerk-share gap is especially stark — the Philippines' clerk share of 7.99% is 3.8× India's 2.11%; service/sales 24.24% vs 11.54%. This aligns with BPO economic structure — call centers, customer service, data entry occupations make up a larger share of Philippine labor. <strong>From country-level exposure, the Philippines is significantly more exposed than India to the first AI wave (customer service + clerks + sales).</strong> India's exposure is diluted by 38% agriculture and 21% Elementary occupations. But <strong>India's IT-BPM sector itself (16M employed, ~3% of national)</strong> has exposure comparable to or higher than Philippines BPO.</p>
+</div>
+
+<h4 class="report-heading">National macro snapshot (latest 2026 data)</h4>
+<table>
+<thead><tr><th>Indicator</th><th class="num">India (PLFS April 2026)</th><th class="num">Philippines (PSA March 2026)</th></tr></thead>
+<tbody>
+<tr><td>Unemployment Rate (15+)</td><td class="num">5.2%</td><td class="num">5.0%</td></tr>
+<tr><td>Labour Force Participation Rate (15+)</td><td class="num">55.0%</td><td class="num">~64% (PSA)</td></tr>
+<tr><td>Urban UR</td><td class="num">6.6%</td><td class="num">Not separately published</td></tr>
+<tr><td>Rural UR</td><td class="num">4.6%</td><td class="num">Not separately published</td></tr>
+<tr><td>YoY change</td><td class="num">UR +0.1pp, LFPR −0.6pp</td><td class="num">UR slightly down from 5.1%</td></tr>
+</tbody>
+</table>
+<p class="src">Sources: India PIB PRID 2261386 (May 2026); Philippines PSA press release 2026-04-30.</p>
+
+<p><strong>Conclusion:</strong> As of May 2026, both India and Philippines national unemployment rates remain in the stable band, with no macro-level "AI crisis" signal. But sector-level (IT-BPM and BPO) structural change — India IT Big Five FY26 net reduction of ~30,000 and IBPAP employment forecast revised down from "&gt;2M" to 1.97M — constitutes a <strong>leading indicator</strong>. Recommend continued attention to — India PLFS May bulletin, the Philippines PSA April LFS (first to include informal employment), and India IT Big Five Q1 FY27 earnings. If all three deteriorate simultaneously, the "sector-level shock" begins transmitting to "country-level."</p>
+
+</div>
+<!-- end spotlight EN -->
+
+<h2 class="report-heading">🔬 Three-Layer Methodology Analysis</h2>
+<p>This section applies the Dashboard's three-layer methodology (Anthropic Economic Index + Adoption Gap + Coface×OEM stage model) to interpret this month's events — especially the India / Philippines spotlight.</p>
+
+<p><strong>Layer 1: Anthropic Economic Index Perspective</strong></p>
+<p>Customer service representatives (observed_raw=0.7011, second-highest actual Claude usage) and computer programmers (0.7451, highest in the sample) are the core exposure points of this month's layoffs. Meta 8,000 / Cloudflare 1,100 / PayPal 4,760 all concentrate in these two job families; the TCS / Infosys / Wipro "AI-first services model" pivot directly corresponds to internal AI substitution for programmer roles.</p>
+<p>The Philippines' country-level ISCO distribution shows clerks (4) + service/sales (5) summing to 32.2% — the primary concentration of Anthropic-Index 0.6+ high-exposure occupations. This is the fundamental reason Philippines country-level exposure exceeds India's.</p>
+
+<p><strong>Layer 2: Adoption Gap Analysis</strong></p>
+<p>Adoption Gap = Karpathy Score − Anthropic Score. The core trend this month is <strong>the gap narrowing rapidly in BPO / customer service</strong>. Klarna's reversal does not contradict this — what was reversed is the <strong>over-aggressive AI-first configuration</strong>; after returning to hybrid, AI's actual deployment share in customer service is still significantly higher than 2024 levels. Salesforce's cumulative 5,000 customer service cuts plus Benioff's public claim that AI handles 50% of interactions is direct numerical evidence of gap narrowing.</p>
+<p>India IT Big Five's "AI-first services model" is <strong>supply-side proactive gap narrowing</strong> — not waiting for clients to demand AI deployment, but embedding AI into delivery capability as a competitive moat. This "proactive narrowing" historically tends to accelerate beyond the rate of passive following.</p>
+
+<p><strong>Layer 3: Coface × OEM Task-Level Stage Analysis</strong></p>
+<p>Five-stage model (Copilot → Special Agent → Conductor → Prometheus Bound → Superhuman). Signals this month —</p>
+<ul class="report-list">
+<li><strong>Conductor stage (41% of occupations with &gt;30% tasks automatable) partially reached</strong>: customer service (Salesforce 50% AI processing), junior programming (India IT Big Five delivery-side AI embedding), content moderation (Meta consolidated into Superintelligence Labs) — all three occupation families now exceed the 30% task threshold.</li>
+<li><strong>But Klarna's same-cycle reversal reminds us — technical-feasibility closure ≠ business-feasibility closure</strong>. Klarna's reversal means — even when Coface's model says "30% of tasks automatable," the business-side customer-churn cost can drive companies back to hybrid. This is a "business-constraint dimension" that the stage model needs to supplement.</li>
+<li>In the 3×3 matrix layer, this month's impact remains concentrated in "data → data" (programming) and "data → people" (customer service, recruiting) quadrants. "Material → material" (manufacturing, construction) and "people → people" (healthcare, education) show no acceleration. This matches theoretical expectation.</li>
+</ul>
+
+<p><strong>Integrated judgment:</strong></p>
+<p>The three layers converge on the same conclusion — this month is the transition window for BPO / customer service / junior programming from Special Agent to Conductor. India IT Big Five FY26 net reduction of 30,000+ and the Philippines IBPAP employment forecast revision are industry-level evidence. But Klarna's reversal reminds us — Conductor-stage <strong>actual penetration</strong> may be lower than technical-feasibility predictions; "business constraints" will become the most important analytical dimension in the next stage. Next month, watch whether Meta's 8,000-layoff landing pulls external BPO contracts in sync, and whether the Philippines PSA April LFS shows informal-employment rebound — these two signals will independently verify Conductor-stage actual penetration from the "client side" and "worker side" respectively.</p>
+
+    </div>
+    <!-- ============== End English version ============== -->
+  </div>
+
+  <div class="report-footer">
+    <p>
+      <span class="cn">本期月报由 AI 研究助手自动生成 · 数据截至 2026-05-20</span>
+      <span class="en lang-inactive">Auto-generated by AI Research Assistant · Data through 2026-05-20</span>
+    </p>
+    <p style="margin-top:8px">
+      <a href="../index.html"><span class="cn">← 返回 Dashboard</span><span class="en lang-inactive">← Back to Dashboard</span></a>
+      <span style="margin:0 12px;color:var(--fg2)">|</span>
+      <a href="index.html"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
