@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Employment Impact Report / AI就业冲击月报 — 2026-06</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);--accent2:#ffaa55;--early:#34d3a6;--early2:#a06cff}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:900px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .sep{color:var(--fg2);font-size:12px}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.language-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px;transition:all 0.2s}
+.lang-btn.active{background:var(--accent);color:white}
+.lang-btn:hover{color:var(--fg)}
+.lang-inactive{display:none}
+.report-header{padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.report-header .emoji{font-size:48px;margin-bottom:16px}
+.report-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.3}
+.report-header .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--fg2)}
+.report-header .badge{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px}
+.report-body{padding-bottom:80px}
+.report-body h2.report-heading{font-size:20px;font-weight:600;margin:36px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.report-body h3.report-heading{font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--accent)}
+.report-body h4.report-heading{font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.04em}
+.report-body p{margin-bottom:14px;font-size:15px}
+.report-body strong{color:#fff;font-weight:600}
+.report-body a{color:var(--accent);text-decoration:none}
+.report-body a:hover{text-decoration:underline}
+.report-body .report-list{margin:12px 0 18px 22px}
+.report-body .report-list li{margin-bottom:10px;font-size:15px;line-height:1.6}
+.report-body code{background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:13px}
+.report-body table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.report-body th,.report-body td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.report-body th{background:var(--bg3);font-weight:600;color:var(--fg)}
+.report-body td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:6px;padding:14px 18px;margin:20px 0;font-size:14px}
+.callout .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent2);margin-bottom:6px}
+.spotlight-section{background:linear-gradient(180deg,rgba(52,211,166,0.05),rgba(160,108,255,0.04));border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:32px 0}
+.spotlight-section h2{font-size:22px;font-weight:700;margin-bottom:8px;padding-bottom:0;border:none;color:var(--fg)}
+.spotlight-section .subtitle{font-size:13px;color:var(--fg2);margin-bottom:20px}
+.report-footer{border-top:1px solid var(--border);padding:24px 0 48px;text-align:center;color:var(--fg2);font-size:13px}
+.report-footer a{color:var(--accent);text-decoration:none}
+.src{font-size:12px;color:var(--fg2);font-style:italic}
+</style>
+<script>
+function setLang(lang){
+  document.querySelectorAll('.cn, .en').forEach(el=>{
+    if(el.classList.contains(lang)){el.classList.remove('lang-inactive');}
+    else if(el.classList.contains(lang==='cn'?'en':'cn')){el.classList.add('lang-inactive');}
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+});
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="../index.html">&larr; Dashboard</a>
+  <span class="sep">|</span>
+  <a href="index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+  <a href="../methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn active" data-lang="cn">中文</button>
+  </div>
+</div></nav>
+<div class="wrapper">
+  <div class="report-header">
+    <div class="emoji">🎓</div>
+    <h1 class="cn">AI就业冲击月报 — 2026年6月</h1>
+    <h1 class="en lang-inactive">AI Employment Impact Report — June 2026</h1>
+    <div class="meta">
+      <span class="badge"><span class="cn">月报</span><span class="en lang-inactive">Monthly</span></span>
+      <span><span class="cn">报告期：2026-05-21 至 2026-06-22</span><span class="en lang-inactive">Period: 2026-05-21 to 2026-06-22</span></span>
+      <span><span class="cn">本期专题：应届生与早期职业岗位</span><span class="en lang-inactive">Spotlight: Entry-Level &amp; Early-Career Jobs</span></span>
+    </div>
+  </div>
+
+  <div class="report-body">
+    <!-- ============== 中文版 ============== -->
+    <div class="cn">
+
+<h2 class="report-heading">📋 本月概要</h2>
+<p>2026 年 5 月下旬至 6 月中旬，AI 就业叙事出现一次显著的<strong>"降温与精化"</strong>转折。一方面，裁员绝对量继续累积 —— 据科技裁员追踪器（skillsyncer 口径）<strong>2026 年迄今全球科技业累计裁员已达约 185,894 人（267 起事件，截至 6 月 19 日）</strong>，其中<strong>约 56% 的事件（150 起、约 156,270 人）明确援引 AI / 自动化为动因</strong>。另一方面，本月最重要的信号不是"又一波裁员"，而是<strong>对"AI 末日论"的集体退潮</strong>：OpenAI 的 Sam Altman 公开承认自己"pretty wrong（相当错误）"，Anthropic 的 Dario Amodei 把"消灭 50% 白领岗位"重新表述为"生产率倍增器"，多家最权威的一手数据源（纽约联储、Indeed Hiring Lab、SignalFire）也在收紧 AI 因果归因的措辞。</p>
+
+<p>本月最具结构意义的事件是 <strong>GitLab 6 月 2 日宣布裁员约 350 人（占员工约 14%）、退出 22 个国家、把研发重组为 60 个自治团队</strong>，公司称之为面向"agentic era（智能体时代）"的"GitLab Act 2"。CEO Bill Staples 表示，智能体工作负载对开发者基础设施的压力超出原设计 —— 这是首个把裁员与"为 AI 智能体重构产品"直接绑定的开发者工具公司案例。同期 <strong>Amazon 在过去五个月累计裁减约 30,000 个岗位（其中 Q1 约 16,000 个公司职能岗）</strong>，而四大科技巨头 2026 年 AI 资本支出合计约 <strong>$725B（同比 +77%）</strong> —— "把人力资本预算切给计算资本"的结构性再分配仍在延续。</p>
+
+<p>但本月真正值得放大的是<strong>一手数据对"AI 正在批量消灭岗位"叙事的反向校准</strong>。<strong>纽约联储 6 月 1 日发布的研究将年轻毕业生失业率上升的约三分之二归因于<u>远程办公</u>而非 AI</strong>；其 5 月 14 日的另一份分析则指出"岗位招聘数据几乎看不到明确的、AI 驱动的劳动需求下降"。Goldman Sachs 把净 AI 归因的月度岗位流失从 4 月的约 16,000 下修至 <strong>6 月的约 11,000</strong>（对应约 1.25 亿岗位池中 ~0.4% 量级）。换言之 —— <strong>"应届生 / 早期职业岗位确实在收缩"是稳健的描述性事实，但"主因是 AI"这一因果判断，目前在最严谨的一手数据里仍有争议</strong>。这正是本期专题的核心张力。</p>
+
+<p>官方劳动力数据本月也有两个关键更新：<strong>印度 MoSPI 发布 PLFS 5 月 2026 月度公报</strong> —— 15+ UR 升至 5.5%（环比 4 月的 5.2% 上行、为 11 个月新高；同比则略低于去年 5.6%），同时 LFPR 从 4 月的 55.0% 下滑至 <strong>54.4%</strong>，城市 UR 6.4%；<strong>菲律宾 PSA 公布 4 月 2026 LFS（首次纳入非正规就业 / 无偿照料专项模块）</strong> —— UR <strong>升至 4.7%</strong>（去年同期 4.1%）、失业人数 241 万、LFPR 62.7%。菲律宾 UR 的同比上行正好验证了上期月报埋下的"下月关注"信号。</p>
+
+<p>结合 Dashboard 三层方法论：本月的证据指向一个比"AI 替代加速"更精确的判断 —— AI 对劳动力市场的第一作用力是<strong>压制"招聘进入"而非摧毁"已有岗位"</strong>。受冲击最重的不是在岗者，而是<strong>本该被雇进来的那个岗位</strong>。本期专题首次聚焦<strong>应届生与早期职业（22–25 岁）</strong>这一最脆弱的群体，以美国为主、欧盟为对照，从"实测信号 / 竞争性解释 / 跨区域对比 / 双轨与反例"四个维度，评估"AI 是否、以及在多大程度上正在掐断职业阶梯的第一级"。</p>
+
+<h2 class="report-heading">📉 新增事件</h2>
+
+<ol class="report-list">
+<li><strong>GitLab 裁员约 350 人（~14%）、退出 22 国、重组为 60 个自治团队（6 月 2–3 日）</strong>
+<p>GitLab 宣布裁减约 350 名全职员工（约占员工 14%），并退出 22 个国家、将国家覆盖收缩约 30%、把研发重组为 60 个自治团队。公司称此举为"GitLab Act 2"，目标是面向"agentic era"重构 —— 即由自治 AI 智能体在人类监督下承担大量编码、评审、部署与维护工作。CEO Bill Staples 在电话会上表示，智能体工作负载对开发者基础设施的压力超出原设计。公司预计 $30–35M 税前重组费用，同时 Q1 FY27（截至 2026-04-30）营收 $264.2M、同比 +23%，超预期。<span class="src">来源：<a href="https://techcrunch.com/2026/06/03/gitlab-cuts-14-of-staff-as-it-scales-its-platform-to-serve-ai-workloads/">TechCrunch（2026-06-03）</a>、<a href="https://about.gitlab.com/blog/gitlab-act-2/">GitLab Act 2 官方博客</a>、TheNextWeb。</span></p></li>
+
+<li><strong>Amazon 五个月内累计裁减约 30,000 岗位（Q1 约 16,000 公司职能岗）（持续至 6 月）</strong>
+<p>Amazon 在 2026 年 Q1 裁减约 16,000 个公司职能岗位（占当季全行业科技裁员的一半以上），同期 AWS 增长 28%（15 季最快）；过去五个月累计裁员约 30,000。公司将其框定为"组织层级精简 + 效率"，而非单一 AI 归因 —— 《华盛顿邮报》5 月 1 日报道明确指出，Amazon / Meta / Microsoft 的裁员"并不全是 AI"，相当部分是疫情期超量招聘的回吐与利润率管理。<span class="src">来源：<a href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html">CNBC（2026-04-24）</a>、<a href="https://www.washingtonpost.com/technology/2026/05/01/ai-jobs-tech-layoffs-austerity/">Washington Post（2026-05-01）</a>、24/7 Wall St.。</span></p></li>
+
+<li><strong>Sam Altman 与 Dario Amodei 集体收回"AI 就业末日"预言（5 月 26 日）</strong>
+<p>OpenAI CEO Sam Altman 在与澳洲联邦银行 CEO 的对谈中称自己"pretty wrong"，承认"我以为现在入门级白领岗位被消灭的程度会比实际更高"，回撤其 2025 年 6 月"大量岗位会消失"的警告。Anthropic CEO Dario Amodei（曾称 AI 可能在五年内消灭 50% 入门白领岗位、失业率飙至 10–20%）现把自动化重新表述为生产率倍增器："如果自动化了一份工作的 90%，那每个人就去做剩下的 10%"，再放大回 100% 从而使生产率提升十倍。两家公司据报道均于 2026 年 5 月秘密递交 IPO 文件 —— 这一叙事转向与万亿美元估值显然更兼容。Yale Budget Lab 的研究亦发现，自 2022 年末 ChatGPT 发布以来，高 AI 暴露职业的职业构成与失业持续时间"没有显著变化"。<span class="src">来源：<a href="https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/">Fortune（2026-05-26）</a>、<a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openAI-/">TIME（2026-05-26）</a>、The Decoder。</span></p></li>
+
+<li><strong>2026 科技裁员累计约 185,894 人、56% 援引 AI；"裁员浪潮成火药桶"（6 月）</strong>
+<p>据科技裁员追踪器（skillsyncer 口径），2026 年迄今累计裁员约 185,894 人（267 起事件，截至 6 月 19 日），日均逾千人，约为 2025 年节奏的近两倍；其中约 56% 的事件（150 起、约 156,270 人）明确援引 AI / 自动化。但 TechCrunch 6 月 15 日《AI 裁员浪潮正在成为火药桶》指出 —— 企业以 AI 为名的裁员未能转化为预期回报，"AI redundancy washing（以 AI 之名行裁员之实）"成为德意志银行分析师关注的主题，连 OpenAI CEO 都承认部分公司"把本就要做的裁员归咎于 AI"。<span class="src">来源：<a href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg/">TechCrunch（2026-06-15）</a>、<a href="https://www.techtimes.com/articles/318466/20260616/tech-layoffs-hit-1115-day-2026-companies-cite-ai-cuts-fail-boost-returns.htm">TechTimes（2026-06-16）</a>。注：不同追踪器口径差异较大（另一追踪器报 399 起、153,608 人），统计依赖企业自愿披露，无联邦强制 AI 归因要求。</span></p></li>
+
+<li><strong>菲律宾 PSA 4 月 2026 LFS：失业率升至 4.7%（首次含非正规就业模块）（6 月初公布）</strong>
+<p>菲律宾 PSA 公布 4 月 2026 LFS —— 失业率从去年同期的 4.1% 升至 <strong>4.7%</strong>，失业人数 241 万（去年同期 206 万），就业率 95.3%（低于去年 95.9%），LFPR 62.7%。这是首次纳入"非正规就业 / 无偿照料 / 家务工作"专项模块的调查。失业率的同比上行正好回应了上期月报"下月关注"埋下的信号 —— 但需谨慎：单月波动尚不足以归因于 AI，PSA 官方将其框定为常规劳动市场动态。<span class="src">来源：<a href="https://www.gmanetwork.com/news/money/economy/990740/unemployment-rate-april-2026-jobless-filipinos-psa/story/">GMA News / PSA（2026-06）</a>。</span></p></li>
+
+<li><strong>印度 MoSPI PLFS 5 月 2026 月度公报：UR 5.5%、LFPR 滑至 54.4%（6 月中旬）</strong>
+<p>印度 5 月 UR 升至 5.5%（环比 4 月的 5.2% 上行、为 11 个月新高；同比去年 5.6% 则略低），城市 UR 6.4%；同时 15+ LFPR 从 4 月的 55.0% 下滑至 <strong>54.4%</strong>，农村 WPR 从 54.9% 降至 53.8%、城市 WPR 46.8%→46.6%。LFPR / WPR 同步下滑，通常意味着部分劳动力退出 —— UR 在同比口径上的"略降"主要由参与率下降驱动，是需要警惕的"虚降"，而非就业实质改善。<span class="src">来源：<a href="https://www.deccanherald.com/amp/story/india/unemployment-rate-marginally-dips-to-55-in-may-govt-survey-4039946">Deccan Herald / MoSPI（2026-06）</a>。</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 行业趋势</h2>
+
+<h3 class="report-heading">叙事转向：从"末日论"到"双轨论"</h3>
+<p>本月是 2025 年以来 AI 就业话语的一个明显拐点。2025 年由 AI 实验室掌门人主导的"末日叙事"（Amodei 的"50% 白领消失"、Altman 的"大量岗位消失"）在 5–6 月集中退潮。取而代之的是基于一手数据的<strong>"双轨论（two-track）"</strong>：<a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html">PwC 2026 全球 AI 就业晴雨表</a>（分析逾 10 亿条招聘广告）发现 —— <strong>AI 高暴露的入门级岗位自 2019 年以来增长约 35%，而其他入门级岗位下降约 10%</strong>。这意味着 AI 不是简单地抹平入门级市场，而是把它劈成两半：会用 AI 的入门岗在扩张，不会用 AI 的入门岗在萎缩。</p>
+
+<h3 class="report-heading">开发者工具：从"卖席位"到"卖智能体"</h3>
+<p>GitLab 的"Act 2"是本月最具范式意义的公司动作。开发者工具行业的传统商业模型是"按席位（per-seat）订阅"—— 用的人越多，收入越高。而 agentic 编码意味着<strong>一个工程师 + N 个 AI 智能体</strong>的新配置：席位数可能下降，但每席位的计算消耗与产出大幅上升。GitLab 把研发重组为 60 个自治团队、退出 22 国、同时 Q1 营收仍 +23%，正是这一转型的财务侧写 —— 不是收入崩塌下的被动收缩，而是<strong>主动把组织结构对齐到"智能体优先"的产品形态</strong>。这对印度 IT 服务业上月披露的"AI-first 服务模式"是同一逻辑在不同价值链位置的呼应。</p>
+
+<h3 class="report-heading">招聘端：入门级被"经验门槛上移"挤压</h3>
+<p>本月最稳健的微观证据来自 Indeed Hiring Lab：<strong>初级岗位招聘同比 −7%，而高级岗位 +4%</strong>（2024-08 → 2025-09）；在科技业内部，<strong>初级岗位招聘较 2020 年 2 月下降 34%，高级岗位仅降 19%</strong>，要求 5 年以上经验的岗位占比从 37% 升至 42%。SignalFire 的《2025 科技人才报告》进一步指出 —— <strong>15 家最大科技公司的应届生招聘自 2019 年以来下降逾 50%，应届生现仅占新雇佣的约 7%</strong>（疫情前约 15%）。但<strong>关键的归因克制</strong>：Indeed 与 SignalFire 这两个最好的一手源都<strong>明确拒绝把这主要归咎于 AI</strong> —— Indeed 称之为"停滞而非危机"，SignalFire 强调"真实故事更微妙"（融资环境、团队变小、应届项目被砍）。</p>
+
+<h3 class="report-heading">蓝领与技能工种：反向受益</h3>
+<p>与白领入门岗收缩相对照，本月多份报道指向技能工种的<strong>反向韧性</strong>。CNBC 5 月 19 日《AI 经济正在重写美国梦 —— 蓝领工人有望胜出》报道，AT&amp;T 计划五年投入约 $38B 招聘 / 培训技术员；Randstad 数据显示技能工种约 30% 的薪资跳涨。这与 Dashboard 三层方法论的预期一致 —— AI 第一波冲击集中在"数据→数据"（编程）与"数据→人"（客服）象限，"物质→物质"（制造、建筑、维修）象限尚未见加速。<em>（平衡提示：部分媒体亦报道蓝领招聘同步走软，此处不宜过度乐观。）</em></p>
+
+<h2 class="report-heading">🌍 地域分布</h2>
+
+<h3 class="report-heading">美国：应届生失业率创纪录高于总体，但因果存疑</h3>
+<p>美国仍是 AI 就业叙事的震中，但本月的焦点从"裁员总量"转向"入门级阶梯"。纽约联储数据显示，<strong>近期大学毕业生（22–27 岁）失业率 5.6%（2026 年 3 月），高于总体约 4.2%</strong>，且达到有记录以来"毕业生劣势"最宽的水平；毕业生不充分就业率 41.5%。但同一个纽约联储在 <strong>6 月 1 日的研究中把这一上升的约三分之二归因于<u>远程办公</u></strong>（远程岗位让管理者不愿招聘 / 培训新人），而非 AI；其 5 月 14 日的另一份分析则称招聘数据"几乎看不到明确的 AI 驱动需求下降"。这构成了本期专题的内在张力。</p>
+
+<h3 class="report-heading">欧盟：青年失业率 15.1%，结构性而非 AI 突变</h3>
+<p>欧盟层面，<strong>25 岁以下青年失业率 EU-27 为 15.1%、欧元区 14.7%（2026 年 4 月，Eurostat）</strong>，同比基本持平（官方措辞为"stable"）；<strong>NEET 率（15–29 岁）2025 年为 11.0%</strong>（2024 年 11.1%，欧盟 2030 目标 9%）。欧盟青年失业是长期结构性问题（南欧尤甚：法国约 21.2%、德国约 7.1%），AI 在其中尚未表现为可识别的突变。英国侧信号较强：<strong>毕业生招聘同比 −8%（ISE 调查，2021 年以来最弱年份）</strong>，Adzuna 报告<strong>入门级岗位空缺自 2022 年 11 月（ChatGPT 发布）以来下降 31.9%</strong> —— 但媒体均指出最低工资、雇主国民保险（NICs）上调等成本因素是重要混杂变量。</p>
+
+<h3 class="report-heading">印度与菲律宾：上期专题的月度追踪</h3>
+<p>承接上期印菲 BPO 专题，本月两国官方数据更新：<strong>印度</strong> PLFS 5 月 UR 升至 5.5%（环比 4 月 5.2%、11 个月新高）、LFPR 滑至 54.4%（UR 同比"略降"由参与率下滑驱动，"虚降"组合值得警惕）；<strong>菲律宾</strong> 4 月 LFS（首含非正规模块）UR 升至 4.7%、失业 241 万 —— 同比上行正好验证上期"下月关注"信号。两国国家级指标仍处温和区间，未显示宏观"AI 危机"，但菲律宾的同比恶化提示行业级压力可能开始向国家级渗透。印度 IT 五巨头 Q1 FY27 业绩（7 月起披露）将是下一个关键检验点。</p>
+
+<h2 class="report-heading">📑 重要研究 / 政策</h2>
+
+<ol class="report-list">
+<li><strong>Stanford《Canaries in the Coal Mine》+ AI 经济指标平台上线（2025-11 论文 / 2026-06-10 平台）</strong>
+<p>Stanford 数字经济实验室（Brynjolfsson, Chandar, Chen）基于 ADP 工资微观数据（每月约 350–500 万工人）的研究。<strong>核心发现：22–25 岁早期职业工人在 AI 高暴露职业中相对就业下降 16%</strong>（控制企业层冲击后；与最低暴露五分位相比的<em>相对</em>下降，非绝对裁员），而有经验工人就业保持稳定。该 16% 为 2025-11-13 版（数据至 2025-10）；初版（2025-08，数据至 2025-07）为 13%。<strong>2026-06-10 实验室上线"AI 经济指标"平台</strong>，将 Canaries 转为基于 ADP 的月度仪表盘。<span class="src">来源：<a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">Stanford Digital Economy Lab（2025-11-13）</a>、<a href="https://www.prnewswire.com/news-releases/stanford-digital-economy-lab-launches-the-ai-economic-indicators-tracking-ais-impact-on-the-economy-302797326.html">平台发布稿（2026-06-10）</a>。</span></p></li>
+
+<li><strong>纽约联储：年轻毕业生失业上升约三分之二归因于"远程办公"而非 AI（2026-06-01）</strong>
+<p>纽约联储 Liberty Street Economics《远程办公让年轻工人靠边站》—— 年轻毕业生 UR 5.6%（2026-03）vs 3.6%（2019-03），"可远程"岗位（如软件）的 UR 在疫情后上升约 1pp。机制：远程办公使管理者不愿雇佣 / 培训初级员工。这是本月最重要的<strong>AI 因果反向校准</strong>。同一机构 5 月 14 日的分析亦指出："招聘数据几乎看不到明确的、AI 驱动的劳动需求下降"，高 / 低暴露分化"始于 2022 年之前，2022 年后无明显额外断点"。<span class="src">来源：<a href="https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/">Liberty Street Economics（2026-06-01）</a>、<a href="https://libertystreeteconomics.newyorkfed.org/2026/05/do-job-postings-show-early-labor-market-effects-of-ai/">同（2026-05-14）</a>。</span></p></li>
+
+<li><strong>Goldman Sachs AI 采用追踪器：净 AI 月度岗位流失约 11,000（下修，2026-06-01）</strong>
+<p>Goldman Sachs Research（经济学家 Joseph Briggs, Sarah Dong）把净 AI 归因的月度岗位流失从 4 月的约 16,000 <strong>下修至约 11,000</strong>（毛替代约 25k − 增益约 9k）—— 下修原因是数据中心建设抵消了更多替代（自 2022 年新增约 21.2 万岗位、约 9k/月，但可能是暂时的）。对照约 1.25 亿岗位池，约 0.4% 量级。Goldman 另一份分析指出 AI 替代效应"通常在两年后消退"，可替代工作占劳动力 6–7%（区间 3–14%）。<span class="src">来源：<a href="https://fortune.com/2026/06/01/how-many-jobs-is-ai-destroying-goldman-sachs-11000-per-month-gen-z-economy/">Fortune 报道 Goldman（2026-06-01）</a>、<a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-global-workforce">Goldman Insights</a>。</span></p></li>
+
+<li><strong>PwC 2026 全球 AI 就业晴雨表：入门级市场"双轨化"（约 2026-06-15）</strong>
+<p>PwC 分析逾 10 亿条招聘广告：<strong>AI 高暴露的入门级岗位自 2019 年以来增长约 35%，其他入门级岗位下降约 10%</strong> —— 形成"双轨"市场。这是对"AI 一刀切消灭入门岗"叙事的最强反例：AI 技能正在重塑而非简单摧毁入门级市场。<span class="src">来源：<a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html">PwC 2026 AI Jobs Barometer</a>。注：发布页 403，关键数字待对照在线 PDF 再次复核。</span></p></li>
+
+<li><strong>NACE 春季更新 + Strada 雇主调查：雇主预期偏乐观（2026 春 / 6 月初）</strong>
+<p>美国大学与雇主协会（NACE）春季更新显示，雇主对 2026 届毕业生的招聘预期<strong>上修至 +5.6%</strong>（2025 秋季调查为 +1.6%；调查窗口 2026-02-12 至 03-17）。Strada Institute 早 6 月雇主调查则发现 —— <strong>预期 AI 将<u>增加</u>入门级招聘的领导者数量，是预期减少者的 2.7 倍</strong>，46% 报告 2025 年入门级招聘实际上升。这两组数据是雇主侧的乐观对冲，但需与一手就业数据的疲弱并置阅读。<span class="src">来源：<a href="https://www.naceweb.org/talent-acquisition/trends-and-predictions/employers-expect-to-hire-5-point-6-percent-more-new-college-graduates-this-year">NACE</a>、<a href="https://www.strada.org/news-insights/entry-level-hiring-in-the-ai-era-what-employers-are-thinking-and-doing">Strada Institute</a>。</span></p></li>
+
+<li><strong>"学习曲线（learning-by-doing）"长期风险：阿罗 1962 年定理被重提（Fortune 2026-05-21）</strong>
+<p>Fortune《AI 正在消灭入门级岗位 —— 1962 年诺奖经济学家早有预言》援引一份亚特兰大联储工作论文，套用 Kenneth Arrow 的"干中学（learning-by-doing）"理论指出 —— 即便 AI 替代入门岗在短期是"效率改进"，但入门岗是人力资本积累的入口；掐断职业阶梯的第一级，会在长期削弱整个高级人才管线。这是一个"<strong>是—而—且（both-and）</strong>"的精化论点，而非单纯反例。<span class="src">来源：<a href="https://fortune.com/2026/05/21/kenneth-arrow-learning-by-doing-entry-level-work-automation/">Fortune（2026-05-21）</a>。注：亚特兰大联储原论文标题 / 作者待核实后引用。</span></p></li>
+
+<li><strong>欧盟 AI 法案：招聘 / 选拔 AI 列为"高风险"，指南征询至 2026-06-23</strong>
+<p>欧盟委员会关于 AI 法案高风险系统的实施指南征询窗口开放至 2026 年 6 月 23 日 —— 用于招聘、筛选、晋升决策的 AI 系统被列为"高风险"，将触发更严格的透明度、人类监督与合规义务。这是监管侧对"AI 重塑入门级招聘"的直接回应：不阻止技术采用，但要求招聘环节的算法可问责。<span class="src">来源：European Commission（AI Act high-risk guidance consultation）。</span></p></li>
+</ol>
+
+<h2 class="report-heading">🔮 下月关注</h2>
+<ol class="report-list">
+<li><strong>印度 IT 五巨头 Q1 FY27 业绩（7 月起披露）</strong>
+<p>TCS 已宣称"裁员周期结束"。Q1 FY27 是检验"AI-first 服务模式"满一年后能否实现"收入增长 + 员工平稳"的首个窗口，也将首次显示印度 IT 公司 FY27 应届招聘（Infosys 指引 20,000）的实际落地节奏 —— 入门级管线是否真的被保留。</p></li>
+<li><strong>Stanford AI 经济指标平台首批月度更新</strong>
+<p>6 月 10 日上线的 ADP 月度仪表盘将首次提供"准实时"的早期职业就业曲线。关注 22–25 岁 AI 高暴露职业的相对就业是继续下探还是企稳 —— 这是检验"16% 相对下降"是否还在加深的最直接指标。</p></li>
+<li><strong>菲律宾 PSA 5 月 LFS：4.7% 是趋势还是单月波动</strong>
+<p>4 月 UR 同比升至 4.7% 是否延续，将决定能否把它从"单月噪声"升级为"行业级压力向国家级渗透"的证据。非正规就业模块的完整结果也值得追踪。</p></li>
+<li><strong>美国应届生秋招季（毕业生失业率 vs NACE +5.6% 预期的对账）</strong>
+<p>NACE 预期招聘 +5.6%，但纽约联储 / Indeed 的一手失业数据偏弱。2026 秋招季将是"雇主意向"与"实际雇佣"两组信号对账的关键 —— 若实际落地远低于 +5.6%，则"乐观对冲"被证伪。</p></li>
+<li><strong>"远程办公 vs AI"归因之争的后续证据</strong>
+<p>纽约联储把年轻毕业生失业的三分之二归因于远程办公，是对 AI 叙事的重大校准。下月关注是否有其他机构（BLS、学界）跟进验证或反驳 —— 这决定"早期职业崩塌"的主因究竟落在 AI、远程办公还是宏观回吐。</p></li>
+<li><strong>欧盟 AI 法案招聘高风险指南定稿（6-23 征询结束后）</strong>
+<p>征询 6 月 23 日结束后，最终指南将界定哪些招聘 AI 落入"高风险"。这是全球首个针对"AI 重塑入门级招聘"的硬性监管框架，其严格程度将影响欧美企业的应届招聘算法部署。</p></li>
+</ol>
+
+<!-- ============== 应届生专题 ============== -->
+<div class="spotlight-section">
+<h2>🎓 本期专题：应届生与早期职业 — AI 是否正在掐断职业阶梯的第一级</h2>
+<p class="subtitle">以美国为主、欧盟为对照，从"实测信号 / 竞争性解释 / 跨区域对比 / 双轨与反例"四个维度，评估 22–25 岁早期职业群体在 2026 年的真实处境，以及"AI 主因论"在最严谨一手数据中的成色。</p>
+
+<h3 class="report-heading">§9.1 实测信号：早期职业就业确实在收缩</h3>
+
+<p><strong>核心判断：</strong>"应届生 / 早期职业岗位正在收缩"是<strong>稳健的描述性事实</strong>，由多个独立一手源相互印证 —— 但需把"相对下降"与"绝对下降"、"已测量"与"被预测"严格分开。</p>
+
+<h4 class="report-heading">两组最硬的测量数字（均为已发生、非预测）</h4>
+<table>
+<thead><tr><th>指标</th><th class="num">数值</th><th>口径与来源</th></tr></thead>
+<tbody>
+<tr><td>22–25 岁在 AI 高暴露职业的<strong>相对</strong>就业变化</td><td class="num"><strong>−16%</strong></td><td>控制企业层冲击后，相对最低暴露五分位的相对下降。Stanford / ADP，数据至 2025-10（2025-11-13 版；初版 −13%，数据至 2025-07）</td></tr>
+<tr><td>软件开发者（22–25 岁）<strong>绝对</strong>就业 vs 2022 末峰值</td><td class="num"><strong>−20%</strong></td><td>该职业×年龄单元的绝对水平下降，至 2025-09。Stanford / ADP</td></tr>
+<tr><td>近期毕业生（22–27 岁）失业率</td><td class="num"><strong>5.6%</strong></td><td>2026-03，高于总体约 4.2%；不充分就业 41.5%。纽约联储</td></tr>
+<tr><td>初级岗位招聘同比（vs 高级 +4%）</td><td class="num"><strong>−7%</strong></td><td>2024-08 → 2025-09。Indeed Hiring Lab</td></tr>
+<tr><td>科技业初级岗位招聘 vs 2020-02（vs 高级 −19%）</td><td class="num"><strong>−34%</strong></td><td>要求 5 年+ 经验岗位占比 37%→42%。Indeed Hiring Lab</td></tr>
+<tr><td>15 大科技公司应届招聘 vs 2019</td><td class="num"><strong>&gt;−50%</strong></td><td>应届占新雇佣约 7%（疫情前约 15%）。SignalFire（2025-05-20）</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">引用纪律</div>
+<p>Stanford 的 <strong>16%</strong> 是<strong>相对</strong>下降（vs 最低暴露五分位、控制企业层冲击），不是"22–25 岁工人凭空少了 16%"；软件开发者 <strong>20%</strong> 才是该单元的绝对水平下降，两者不可混用。同样，13% 与 16% 是同一论文不同数据截止期（2025-07 vs 2025-10）的两个版本，引用时必须注明口径。这类"同一指标在不同时点 / 不同设定下的多个真值"，是本专题最容易被误读为"自相矛盾"的地方。</p>
+</div>
+
+<h3 class="report-heading">§9.2 竞争性解释：把"AI 主因"放回不确定性里</h3>
+
+<p><strong>核心判断：</strong>描述性的"入门级收缩"稳健，但"<strong>主因是 AI</strong>"这一<strong>因果</strong>判断，在最严谨的一手数据里仍有争议。最强的反向校准恰恰来自最权威的机构。F3 / F5 规则：区分"已发生"与"假设"，避免零和替代叙事。</p>
+
+<table>
+<thead><tr><th>竞争性解释</th><th>证据</th><th>来源</th></tr></thead>
+<tbody>
+<tr><td><strong>远程办公（非 AI）</strong></td><td>年轻毕业生失业上升的约 <strong>2/3</strong> 归因于远程办公 —— 远程岗位让管理者不愿招 / 训新人；"可远程"岗位 UR 疫情后升约 1pp</td><td>纽约联储 Liberty Street（2026-06-01）</td></tr>
+<tr><td><strong>招聘数据无明确 AI 断点</strong></td><td>"岗位招聘数据几乎看不到明确的、AI 驱动的需求下降"；高 / 低暴露分化"始于 2022 年之前，2022 年后无明显额外断点"</td><td>纽约联储 Liberty Street（2026-05-14）</td></tr>
+<tr><td><strong>疫情期超量招聘的回吐</strong></td><td>Meta 三年 45k→86k、Alphabet 119k→190k（ZIRP 时代超招），叠加 40 年来最快加息 + 2022 年 R&amp;D 费用化税改</td><td>Stanford Review（2026-04-09）</td></tr>
+<tr><td><strong>一手源拒绝归因 AI</strong></td><td>Indeed 称"停滞而非危机"；SignalFire 称"真实故事更微妙"（融资、团队变小、应届项目被砍）</td><td>Indeed Hiring Lab / SignalFire</td></tr>
+<tr><td><strong>AI 实验室自身收回末日论</strong></td><td>Altman"pretty wrong"；Amodei 改口"生产率倍增器"；Yale Budget Lab 称高暴露职业构成无显著变化</td><td>Fortune / TIME（2026-05-26）</td></tr>
+<tr><td><strong>Goldman：替代效应通常两年后消退</strong></td><td>净 AI 月度流失下修至约 11k（约 0.4% 岗位池）；替代效应"通常两年后消退"</td><td>Goldman Sachs（2026-06）</td></tr>
+</tbody>
+</table>
+
+<p>这并不意味着"AI 与早期职业无关"。更准确的表述是 —— <strong>AI、远程办公、宏观回吐三者在同一时间窗口叠加，且高度共线</strong>（都偏向打击可远程、可标准化、低经验门槛的白领入门岗）。把全部归因于任一单一因素都是过度简化。当前一手证据支持的最强主张是："AI 是若干并行力量之一，其作用更多体现在<strong>压制招聘进入</strong>，而非批量摧毁在岗岗位。"</p>
+
+<h3 class="report-heading">§9.3 跨区域对比：美国 vs 欧盟 vs 英国</h3>
+
+<table>
+<thead><tr><th>区域 / 指标</th><th class="num">数值</th><th>口径与来源</th></tr></thead>
+<tbody>
+<tr><td>美国 近期毕业生 UR（22–27）</td><td class="num">5.6%</td><td>2026-03，总体约 4.2%。纽约联储</td></tr>
+<tr><td>欧盟 EU-27 青年 UR（&lt;25）</td><td class="num">15.1%</td><td>2026-04，同比"stable"。Eurostat</td></tr>
+<tr><td>欧元区 青年 UR（&lt;25）</td><td class="num">14.7%</td><td>2026-04，失业青年 233.7 万（EU-27 为 291.3 万）。Eurostat</td></tr>
+<tr><td>欧盟 NEET 率（15–29）</td><td class="num">11.0%</td><td>2025（2024 为 11.1%，2030 目标 9%）。Eurostat</td></tr>
+<tr><td>德国 青年 UR / 法国 青年 UR</td><td class="num">~7.1% / ~21.2%</td><td>2026 初。Eurostat / Trading Economics</td></tr>
+<tr><td>英国 毕业生招聘同比</td><td class="num">−8%</td><td>2024/25，2021 年来最弱。ISE 调查</td></tr>
+<tr><td>英国 入门级岗位空缺 vs 2022-11（ChatGPT 发布）</td><td class="num">−31.9%</td><td>Adzuna（2025-06）；含最低工资 / NICs 等成本混杂</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">关键对比</div>
+<p>美国早期职业困境的<strong>独特性</strong>不在失业率的绝对水平（欧盟青年 UR 15.1% 远高于美国毕业生 5.6%），而在<strong>方向反转</strong> —— 美国近期毕业生 UR 历史上低于总体，如今首次系统性高于总体，达到有记录以来"毕业生劣势"最宽水平。欧盟青年失业是<strong>长期结构性</strong>问题（南欧劳动力市场刚性、学徒制差异），AI 在其中尚未表现为可识别的突变。英国则是除美国外 AI 时间线相关性信号最强的市场（入门级空缺自 ChatGPT 发布下降 31.9%），但同样被最低工资与雇主税负上调严重混杂。<strong>结论 —— 这是一个美国（及英国）特征显著、欧盟大陆尚不明显的现象，与"AI 全球同步冲击入门岗"的简单叙事不符。</strong></p>
+</div>
+
+<h3 class="report-heading">§9.4 双轨与反例：AI 不是抹平入门级，而是把它劈成两半</h3>
+
+<p><strong>核心判断：</strong>把"AI 消灭入门岗"修正为"<strong>AI 让入门级市场双轨化</strong>"，是本月一手数据支持的最精确表述。会用 AI 的入门岗在扩张，不会用 AI 的入门岗在萎缩 —— 同时存在一个被低估的雇主侧乐观信号。</p>
+
+<table>
+<thead><tr><th>信号</th><th class="num">数值</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>PwC：AI 高暴露入门岗 vs 2019</td><td class="num"><strong>+35%</strong></td><td>会用 AI 的入门岗在<strong>扩张</strong></td></tr>
+<tr><td>PwC：其他入门岗 vs 2019</td><td class="num"><strong>−10%</strong></td><td>不会用 AI 的入门岗在萎缩 —— "双轨"</td></tr>
+<tr><td>NACE：2026 届招聘预期（春季上修）</td><td class="num"><strong>+5.6%</strong></td><td>从 2025 秋的 +1.6% 上修</td></tr>
+<tr><td>Strada：预期 AI 增 vs 减入门招聘的领导者之比</td><td class="num"><strong>2.7×</strong></td><td>46% 报告 2025 入门招聘实际上升</td></tr>
+</tbody>
+</table>
+
+<h4 class="report-heading">长期风险：阿罗"干中学"与职业阶梯第一级</h4>
+<p>即便短期"双轨"叙事成立，仍有一个不可忽视的<strong>长期</strong>隐忧。Fortune 援引亚特兰大联储工作论文，重提 Kenneth Arrow 1962 年的"干中学（learning-by-doing）"理论 —— 入门级岗位不只是"低价值劳动"，更是人力资本积累与高级人才管线的<strong>入口</strong>。即便用 AI 替代入门岗在当下是效率改进，掐断职业阶梯的第一级，会在 5–10 年后削弱整个资深人才供给。这是一个"是—而—且"的精化：<strong>AI 短期确实可能不造成大规模失业（Altman / Goldman / 纽约联储均指向这点），但"招聘进入被压制"对长期人力资本的侵蚀，是比短期失业率更值得担忧的慢变量。</strong></p>
+
+<div class="callout">
+<div class="label">专题结论</div>
+<p>截至 2026 年 6 月，关于"AI 与早期职业"，一手证据支持四个有梯度的判断：<strong>(1)</strong> 早期职业就业在收缩 —— <strong>稳健事实</strong>（Stanford 16% 相对 / 软件开发 20% 绝对 / 毕业生 UR 5.6%）；<strong>(2)</strong> 主因是否为 AI —— <strong>有争议</strong>（纽约联储归因远程办公约 2/3，Indeed / SignalFire 拒绝归因 AI，宏观回吐共线）；<strong>(3)</strong> 现象分布 —— <strong>美国 / 英国显著、欧盟大陆不明显</strong>，与"全球同步"叙事不符；<strong>(4)</strong> 最精确的形态 —— <strong>不是抹平而是双轨化</strong>（AI 入门岗 +35% vs 其他 −10%），叠加"干中学"的长期管线风险。建议下月持续对账 —— Stanford ADP 月度仪表盘、菲律宾 PSA 5 月 LFS、美国秋招实际落地 vs NACE +5.6% 预期。</p>
+</div>
+
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 三层方法论分析</h2>
+
+<p>本节用 Dashboard 三层方法论（Anthropic 经济指数 + 采用缺口 + Coface×OEM 阶段模型）解读本月事件 —— 尤其是早期职业专题。</p>
+
+<p><strong>第一层：Anthropic 经济指数视角</strong></p>
+<p>计算机程序员（observed_raw=0.7451，全样本最高）与客户服务代表（0.7011，第二高）仍是最高暴露职业。本月的新意在于 —— 这两类职业的<strong>年龄结构敏感性</strong>首次被量化。Stanford / ADP 显示，软件开发<strong>初级（22–25 岁）</strong>就业较 2022 末峰值降约 20%，而资深开发者就业稳定。这说明 Anthropic 指数的"职业级"暴露需要叠加一个"<strong>经验级</strong>"维度 —— 同一高暴露职业内，AI 优先替代的是可被快速学会、codified 的初级任务，而非依赖隐性知识的资深任务。GitLab"一个工程师 + N 个智能体"的重构正是这一机制的组织化落地。</p>
+
+<p><strong>第二层：采用缺口（Adoption Gap）分析</strong></p>
+<p>采用缺口 = Karpathy 评分 − Anthropic 评分。本月观察到一个反直觉现象 —— <strong>缺口在"入门级任务"上收窄最快，但在"招聘行为"上的传导被多重因素噪声化</strong>。PwC 的"双轨"数据是直接证据：AI 高暴露入门岗 +35% 说明<strong>会用 AI 的入门岗采用缺口在快速收窄（人 + AI 协同扩张）</strong>，而其他入门岗 −10% 说明<strong>不采用 AI 的岗位被竞争性淘汰</strong>。这比"AI 替代人"更接近真相 —— 真正的分水岭不是"人 vs AI"，而是"<strong>用 AI 的人 vs 不用 AI 的人</strong>"。这与 Amodei 改口的"自动化 90% 后每人做剩下 10% 再放大"逻辑一致。</p>
+
+<p><strong>第三层：Coface × OEM 任务级阶段分析</strong></p>
+<p>五阶段模型（Copilot → Special Agent → Conductor → Prometheus Bound → Superhuman）。本月信号 ——</p>
+<ul class="report-list">
+<li><strong>初级编程已进入 Conductor 阶段，但表现为"招聘压制"而非"在岗替代"</strong>：GitLab agentic 重构 + 软件开发初级就业 −20% 表明，编程的初级任务已越过 30% 自动化阈值。但关键观察是 —— 阶段推进的<strong>第一现象学</strong>是"<u>不再招进来</u>"，而非"<u>把在岗的裁掉</u>"。这是 Conductor 阶段对劳动力市场的真实作用面。</li>
+<li><strong>纽约联储的"远程办公归因"提示阶段模型需补充"组织约束维度"</strong>：技术上 30% 任务可自动化，但"是否招初级人"还取决于远程办公等组织形态。上期 Klarna 提示了"业务约束"，本期纽约联储提示了"<strong>组织约束</strong>"—— 两者都说明，从"任务可自动化"到"岗位实际消失"之间，隔着多层非技术性的传导阀门。</li>
+<li>3×3 基质矩阵层面，本月冲击仍集中在"数据→数据"（编程）象限，且首次清晰显示该象限内部的<strong>经验梯度</strong>（初级 ≫ 资深）。"物质→物质"（蓝领技能工种）象限本月出现<strong>反向韧性</strong>信号（AT&amp;T $38B 招技术员、技能工种 30% 涨薪），符合理论预期。</li>
+</ul>
+
+<p><strong>综合判断：</strong></p>
+<p>三层方法论一致指向一个比"AI 替代加速"更精确的判断 —— <strong>AI 对劳动力市场的第一作用力是"压制招聘进入"，且高度集中于高暴露职业的初级 / 早期职业端</strong>。但本月最重要的方法论收获，是来自最权威一手源（纽约联储、Indeed、SignalFire、甚至 AI 实验室自身）的<strong>因果克制</strong> —— 描述性的"入门级收缩"稳健，但"主因是 AI"的因果判断必须放回"AI / 远程办公 / 宏观回吐三者共线"的不确定性里。下月需关注 —— Stanford ADP 月度仪表盘是否显示初级就业继续下探，以及美国秋招实际落地能否对账 NACE +5.6% 的乐观预期。这两个信号将分别从"供给侧测量"和"需求侧意向"对早期职业阶梯的真实健康度给出独立验证。短期失业率可能温和（末日论退潮是对的），但"干中学"管线被侵蚀的长期慢变量，才是这一专题真正的 KEY FINDING。</p>
+
+    </div>
+    <!-- ============== End 中文版 ============== -->
+
+    <!-- ============== English version ============== -->
+    <div class="en lang-inactive">
+
+<h2 class="report-heading">📋 Executive Summary</h2>
+<p>Late May through mid-June 2026 marks a notable <strong>"cooling and refinement"</strong> turn in the AI-employment narrative. On one hand, absolute layoffs keep accumulating — A tech-layoffs tracker (skillsyncer) puts <strong>2026 YTD cumulative tech layoffs at ~185,894 (267 events, through June 19)</strong>, of which <strong>~56% of events (150 events, ~156,270 workers) explicitly cite AI / automation</strong>. On the other hand, the month's most important signal is not "another layoff wave" but a <strong>collective retreat from the "AI apocalypse"</strong>: OpenAI's Sam Altman publicly admitted he was "pretty wrong," Anthropic's Dario Amodei recast "eliminating 50% of white-collar jobs" as a "productivity multiplier," and the most authoritative primary sources (NY Fed, Indeed Hiring Lab, SignalFire) all tightened their AI-causation language.</p>
+
+<p>The month's most structurally significant event was <strong>GitLab's June 2 announcement of ~350 layoffs (~14% of staff), exiting 22 countries, and reorganizing R&amp;D into 60 autonomous teams</strong> — what the company calls "GitLab Act 2" for the "agentic era." CEO Bill Staples said agentic workloads stress developer infrastructure beyond its original design — the first developer-tools case to directly tie layoffs to "rebuilding the product around AI agents." Meanwhile <strong>Amazon cut ~30,000 roles over five months (~16,000 corporate in Q1)</strong>, while the four big tech giants' 2026 AI capex totals ~<strong>$725B (+77% YoY)</strong> — the structural reallocation of "human-capital budget into compute-capital budget" continues.</p>
+
+<p>But what truly deserves amplification this month is <strong>primary data recalibrating the "AI is mass-destroying jobs" narrative in reverse</strong>. <strong>The NY Fed's June 1 study attributes about two-thirds of the rise in young-graduate unemployment to <u>remote work</u>, not AI</strong>; its May 14 analysis finds "job-postings data show little indication of a distinct AI-driven decline in labor demand." Goldman Sachs cut its net AI-attributed monthly job losses from ~16,000 in April to <strong>~11,000 in June</strong> (~0.4% of a ~125M-role pool). In other words — <strong>"entry-level / early-career jobs are genuinely contracting" is a robust descriptive fact, but "the main cause is AI" remains contested in the most rigorous primary data</strong>. That is the core tension of this issue's spotlight.</p>
+
+<p>Two official labor updates this month: <strong>India's MoSPI released the PLFS May 2026 monthly bulletin</strong> — 15+ UR rose to 5.5% (an 11-month high, up from 5.2% in April; though below 5.6% a year ago), while LFPR slipped from 55.0% in April to <strong>54.4%</strong>, urban UR 6.4%; <strong>the Philippines PSA released the April 2026 LFS (first with informal-employment / unpaid-care modules)</strong> — UR <strong>rose to 4.7%</strong> (4.1% a year ago), 2.41M unemployed, LFPR 62.7%. The Philippine YoY uptick precisely validates the "watch next month" signal planted in last issue.</p>
+
+<p>Within our three-layer methodology: this month's evidence points to a judgment more precise than "AI replacement is accelerating" — AI's first-order effect on the labor market is to <strong>suppress hiring "entry" rather than destroy existing jobs</strong>. The hardest-hit is not the incumbent, but <strong>the job that would have been hired into</strong>. This issue's spotlight focuses for the first time on <strong>entry-level and early-career workers (ages 22–25)</strong> — the most vulnerable cohort — with the US primary and the EU as comparison, across four dimensions: measured signal, competing explanations, cross-region comparison, two-track and counter-evidence.</p>
+
+<h2 class="report-heading">📉 New Events</h2>
+
+<ol class="report-list">
+<li><strong>GitLab cuts ~350 (~14%), exits 22 countries, reorganizes into 60 autonomous teams (June 2–3)</strong>
+<p>GitLab announced ~350 full-time layoffs (~14% of staff), exiting 22 countries (shrinking its country footprint ~30%) and reorganizing R&amp;D into 60 autonomous teams. The company calls this "GitLab Act 2," a rebuild for the "agentic era" where autonomous AI agents handle much of coding, reviewing, deploying, and maintaining under human oversight. CEO Bill Staples said agentic workloads stress developer infrastructure beyond its original design. Expected $30–35M pre-tax restructuring charges; Q1 FY27 (ended 2026-04-30) revenue was $264.2M, up 23% YoY, beating expectations. <span class="src">Sources: <a href="https://techcrunch.com/2026/06/03/gitlab-cuts-14-of-staff-as-it-scales-its-platform-to-serve-ai-workloads/">TechCrunch (2026-06-03)</a>, <a href="https://about.gitlab.com/blog/gitlab-act-2/">GitLab Act 2 blog</a>, TheNextWeb.</span></p></li>
+
+<li><strong>Amazon cuts ~30,000 roles over five months (~16,000 corporate in Q1) (ongoing through June)</strong>
+<p>Amazon cut ~16,000 corporate roles in Q1 2026 (more than half of all quarterly tech layoffs) while AWS grew 28% (fastest in 15 quarters); ~30,000 cumulative over five months. The company frames this as "delayering + efficiency," not single-cause AI — the Washington Post (May 1) explicitly noted that Amazon / Meta / Microsoft layoffs "aren't all about AI," with much being a give-back of pandemic-era over-hiring and margin management. <span class="src">Sources: <a href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html">CNBC (2026-04-24)</a>, <a href="https://www.washingtonpost.com/technology/2026/05/01/ai-jobs-tech-layoffs-austerity/">Washington Post (2026-05-01)</a>, 24/7 Wall St.</span></p></li>
+
+<li><strong>Sam Altman and Dario Amodei collectively walk back the "AI jobs apocalypse" (May 26)</strong>
+<p>OpenAI CEO Sam Altman, speaking with CBA's CEO, called himself "pretty wrong," admitting "I thought there would have been more impact on entry-level white-collar jobs being eliminated by now than has actually happened," retracting his June 2025 warning that "a lot of jobs will go away." Anthropic CEO Dario Amodei — who once said AI could dissolve 50% of entry-level white-collar jobs and push unemployment to 10–20% — now recasts automation as a productivity multiplier: "if you automate 90% of the job, then everyone does the 10%," scaled back to 100%, boosting productivity tenfold. Both firms reportedly filed confidential IPO paperwork in May 2026 — a narrative shift more compatible with trillion-dollar valuations. The Yale Budget Lab also found no significant change in occupational mix or unemployment duration in high-AI-exposure jobs since ChatGPT launched in late 2022. <span class="src">Sources: <a href="https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/">Fortune (2026-05-26)</a>, <a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openAI-/">TIME (2026-05-26)</a>, The Decoder.</span></p></li>
+
+<li><strong>2026 tech layoffs ~185,894 cumulative, 56% cite AI; "the layoff wave is becoming a powder keg" (June)</strong>
+<p>A tech-layoffs tracker (skillsyncer) puts 2026 YTD layoffs at ~185,894 (267 events, through June 19), over a thousand per day — nearly double the 2025 pace; ~56% of events (150 events, ~156,270 workers) explicitly cite AI / automation. But TechCrunch's June 15 "The AI layoff wave is becoming a powder keg" notes that AI-branded layoffs have failed to deliver expected returns — "AI redundancy washing" is now a theme for Deutsche Bank analysts, and even OpenAI's CEO admits some firms "blame AI for layoffs they'd have made anyway." <span class="src">Sources: <a href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg/">TechCrunch (2026-06-15)</a>, <a href="https://www.techtimes.com/articles/318466/20260616/tech-layoffs-hit-1115-day-2026-companies-cite-ai-cuts-fail-boost-returns.htm">TechTimes (2026-06-16)</a>. Note: trackers vary widely (another reports 399 events / 153,608 workers); stats rely on voluntary corporate disclosure with no federal AI-attribution requirement.</span></p></li>
+
+<li><strong>Philippines PSA April 2026 LFS: UR rises to 4.7% (first with informal-employment module) (early June)</strong>
+<p>The Philippines PSA released the April 2026 LFS — UR rose to <strong>4.7%</strong> from 4.1% a year earlier, with 2.41M unemployed (vs 2.06M), employment rate 95.3% (down from 95.9%), LFPR 62.7%. This is the first survey to include "informal employment / unpaid care / domestic work" modules. The YoY uptick answers the "watch next month" signal from last issue — but caution: a single month's move is insufficient to attribute to AI, and PSA frames it as ordinary labor-market dynamics. <span class="src">Source: <a href="https://www.gmanetwork.com/news/money/economy/990740/unemployment-rate-april-2026-jobless-filipinos-psa/story/">GMA News / PSA (2026-06)</a>.</span></p></li>
+
+<li><strong>India MoSPI PLFS May 2026 bulletin: UR 5.5%, LFPR slips to 54.4% (mid-June)</strong>
+<p>India's May UR rose to 5.5% (an 11-month high, up from 5.2% in April; below 5.6% a year ago), urban UR 6.4%; meanwhile 15+ LFPR slipped from 55.0% in April to <strong>54.4%</strong>, rural WPR 54.9%→53.8%, urban WPR 46.8%→46.6%. Falling LFPR / WPR usually signals labor-force exit — the YoY "easing" of UR is driven mainly by declining participation, a "false improvement" rather than a genuine employment gain, worth watching. <span class="src">Source: <a href="https://www.deccanherald.com/amp/story/india/unemployment-rate-marginally-dips-to-55-in-may-govt-survey-4039946">Deccan Herald / MoSPI (2026-06)</a>.</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 Industry Trends</h2>
+
+<h3 class="report-heading">Narrative shift: from "apocalypse" to "two-track"</h3>
+<p>This month is a clear inflection in AI-employment discourse since 2025. The lab-leader-driven "apocalypse" narratives of 2025 (Amodei's "50% of white-collar gone," Altman's "a lot of jobs gone") retreated in May–June. In their place is a data-grounded <strong>"two-track"</strong> view: the <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html">PwC 2026 Global AI Jobs Barometer</a> (analyzing 1B+ job ads) finds that <strong>AI-exposed entry-level roles have grown ~35% since 2019, while other entry-level roles fell ~10%</strong>. AI is not flattening the entry-level market but splitting it in two: AI-fluent entry roles expanding, AI-illiterate entry roles shrinking.</p>
+
+<h3 class="report-heading">Developer tools: from "selling seats" to "selling agents"</h3>
+<p>GitLab's "Act 2" is the month's most paradigmatic corporate move. The developer-tools model has traditionally been per-seat subscriptions — more users, more revenue. Agentic coding implies a new configuration of <strong>one engineer + N AI agents</strong>: seat counts may fall while compute consumption and output per seat rise sharply. GitLab reorganizing R&amp;D into 60 autonomous teams, exiting 22 countries, while revenue still grew 23% in Q1 is the financial signature of this pivot — not passive contraction amid collapsing revenue, but <strong>proactively aligning org structure to an "agent-first" product form</strong>. This echoes the "AI-first services model" disclosed by Indian IT services last month — the same logic at a different point in the value chain.</p>
+
+<h3 class="report-heading">Hiring side: entry-level squeezed by rising experience bars</h3>
+<p>The most robust micro-evidence this month comes from Indeed Hiring Lab: <strong>junior postings −7% YoY, senior +4%</strong> (Aug 2024 → Sep 2025); within tech, <strong>junior postings −34% vs Feb 2020, senior only −19%</strong>, with the share requiring 5+ years rising from 37% to 42%. SignalFire's 2025 Tech Talent Report adds that <strong>new-grad hiring at the 15 largest tech firms is down over 50% since 2019, with new grads now ~7% of hires</strong> (vs ~15% pre-pandemic). But note the <strong>causal restraint</strong>: Indeed and SignalFire — the two best primary sources — both <strong>explicitly decline to pin this mainly on AI</strong> — Indeed calls it "stagnation rather than crisis," SignalFire stresses "the real story is more nuanced" (funding, smaller teams, cut new-grad programs).</p>
+
+<h3 class="report-heading">Blue-collar and skilled trades: benefiting in reverse</h3>
+<p>In contrast to the white-collar entry squeeze, multiple reports point to <strong>reverse resilience</strong> in skilled trades. CNBC's May 19 "The AI economy is rewriting the American Dream — and blue-collar workers are poised to win" reports AT&amp;T plans ~$38B over five years to hire / train technicians; Randstad data shows ~30% pay jumps in skilled trades. This matches the three-layer methodology's expectation — the first AI wave concentrates in "data → data" (programming) and "data → people" (customer service) quadrants, with "material → material" (manufacturing, construction, repair) not yet accelerating. <em>(Balance: some outlets report blue-collar hiring also softening; don't over-read optimism here.)</em></p>
+
+<h2 class="report-heading">🌍 Geographic Distribution</h2>
+
+<h3 class="report-heading">United States: recent-grad UR at a record above overall, but causation in doubt</h3>
+<p>The US remains the epicenter, but the focus shifted from "total layoffs" to "the entry-level rung." NY Fed data show <strong>recent college graduates (22–27) at 5.6% unemployment (March 2026), above the ~4.2% overall</strong>, reaching the widest "graduate disadvantage" on record; graduate underemployment 41.5%. But the same NY Fed, in its <strong>June 1 study, attributes about two-thirds of this rise to <u>remote work</u></strong> (remote jobs make managers reluctant to hire / train juniors), not AI; its May 14 analysis says postings "show little indication of a distinct AI-driven decline in demand." This is the spotlight's built-in tension.</p>
+
+<h3 class="report-heading">EU: youth UR 15.1%, structural rather than an AI break</h3>
+<p>At the EU level, <strong>youth unemployment (under-25) is 15.1% in EU-27, 14.7% in the euro area (April 2026, Eurostat)</strong>, roughly stable YoY; the <strong>NEET rate (15–29) was 11.0% in 2025</strong> (11.1% in 2024; EU 2030 target 9%). European youth unemployment is a long-run structural issue (acute in southern Europe: France ~21.2%, Germany ~7.1%), where AI has not yet manifested as an identifiable break. The UK signal is stronger: <strong>graduate hiring −8% YoY (ISE survey, weakest year since 2021)</strong>, and Adzuna reports <strong>entry-level vacancies down 31.9% since November 2022 (ChatGPT launch)</strong> — but media note minimum wage and employer NICs increases as significant confounders.</p>
+
+<h3 class="report-heading">India and the Philippines: monthly tracking of last issue's spotlight</h3>
+<p>Continuing last issue's India / Philippines BPO spotlight, official updates this month: <strong>India</strong> PLFS May UR rose to 5.5% (an 11-month high, from 5.2% in April), LFPR slipping to 54.4% (the YoY "easing" of UR driven by falling participation — a "false improvement" worth watching); <strong>Philippines</strong> April LFS (first with informal module) UR rose to 4.7%, 2.41M unemployed — the YoY uptick validating last issue's "watch next month." Both countries' national indicators remain in a moderate band with no macro "AI crisis," but the Philippine YoY deterioration suggests sector-level pressure may be starting to seep to the national level. India IT Big Five Q1 FY27 earnings (from July) will be the next key test.</p>
+
+<h2 class="report-heading">📑 Important Research / Policy</h2>
+
+<ol class="report-list">
+<li><strong>Stanford "Canaries in the Coal Mine" + AI Economic Indicators platform launch (Nov 2025 paper / June 10, 2026 platform)</strong>
+<p>Stanford Digital Economy Lab research (Brynjolfsson, Chandar, Chen) using ADP payroll microdata (~3.5–5M workers/month). <strong>Core finding: early-career workers (22–25) in AI-exposed occupations saw 16% relative employment decline</strong> (after controlling for firm-level shocks; a <em>relative</em> decline vs the least-exposed quintile, not raw layoffs), while experienced workers stayed stable. The 16% is the Nov 13, 2025 version (data through Oct 2025); the original (Aug 2025, data through July) was 13%. <strong>On June 10, 2026 the lab launched an "AI Economic Indicators" platform</strong> turning Canaries into a monthly ADP-based dashboard. <span class="src">Sources: <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">Stanford Digital Economy Lab (2025-11-13)</a>, <a href="https://www.prnewswire.com/news-releases/stanford-digital-economy-lab-launches-the-ai-economic-indicators-tracking-ais-impact-on-the-economy-302797326.html">platform release (2026-06-10)</a>.</span></p></li>
+
+<li><strong>NY Fed: about two-thirds of the rise in young-grad unemployment attributed to "remote work," not AI (2026-06-01)</strong>
+<p>NY Fed Liberty Street Economics, "Remote Work Leaves Younger Workers Sidelined" — young-grad UR 5.6% (Mar 2026) vs 3.6% (Mar 2019); UR in "remotable" jobs (e.g. software) rose ~1pp post-pandemic. Mechanism: remote work makes managers reluctant to hire / train juniors. This is the month's most important <strong>AI-causation recalibration</strong>. The same institution's May 14 analysis also found "job-postings data show little indication of a distinct AI-driven decline," with the high/low-exposure divergence "beginning before 2022 and showing no clear additional break after 2022." <span class="src">Sources: <a href="https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/">Liberty Street Economics (2026-06-01)</a>, <a href="https://libertystreeteconomics.newyorkfed.org/2026/05/do-job-postings-show-early-labor-market-effects-of-ai/">same (2026-05-14)</a>.</span></p></li>
+
+<li><strong>Goldman Sachs AI Adoption Tracker: net AI monthly job losses ~11,000 (revised down, 2026-06-01)</strong>
+<p>Goldman Sachs Research (economists Joseph Briggs, Sarah Dong) cut net AI-attributed monthly job losses from ~16,000 in April to <strong>~11,000</strong> (gross substitution ~25k − augmentation ~9k) — revised down because data-center construction offsets more displacement (~212k jobs added since 2022, ~9k/month, though likely temporary). Against a ~125M-role pool, this is ~0.4%. Goldman separately notes AI's substitution effect "tends to disappear after two years," with 6–7% of the workforce displaceable (range 3–14%). <span class="src">Sources: <a href="https://fortune.com/2026/06/01/how-many-jobs-is-ai-destroying-goldman-sachs-11000-per-month-gen-z-economy/">Fortune reporting Goldman (2026-06-01)</a>, <a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-global-workforce">Goldman Insights</a>.</span></p></li>
+
+<li><strong>PwC 2026 Global AI Jobs Barometer: entry-level market goes "two-track" (~2026-06-15)</strong>
+<p>PwC analyzed 1B+ job ads: <strong>AI-exposed entry-level roles grew ~35% since 2019, while other entry-level roles fell ~10%</strong> — a "two-track" market. This is the strongest counter to the "AI flattens entry-level wholesale" narrative: AI skills are reshaping, not simply destroying, the entry-level market. <span class="src">Source: <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html">PwC 2026 AI Jobs Barometer</a>. Note: press page 403; key figures to be re-verified against the live PDF.</span></p></li>
+
+<li><strong>NACE Spring Update + Strada employer survey: employers lean optimistic (Spring 2026 / early June)</strong>
+<p>The National Association of Colleges and Employers (NACE) Spring update shows employers' Class-of-2026 hiring expectation <strong>revised up to +5.6%</strong> (from +1.6% in the Fall 2025 survey; fielded 2026-02-12 to 03-17). The Strada Institute early-June employer survey found <strong>2.7× as many leaders expect AI to <u>increase</u> entry-level hiring as expect it to decrease</strong>, with 46% reporting entry-level hiring actually rose in 2025. These are an optimistic employer-side hedge, but must be read against the soft primary employment data. <span class="src">Sources: <a href="https://www.naceweb.org/talent-acquisition/trends-and-predictions/employers-expect-to-hire-5-point-6-percent-more-new-college-graduates-this-year">NACE</a>, <a href="https://www.strada.org/news-insights/entry-level-hiring-in-the-ai-era-what-employers-are-thinking-and-doing">Strada Institute</a>.</span></p></li>
+
+<li><strong>"Learning-by-doing" long-term risk: Arrow's 1962 theorem revisited (Fortune 2026-05-21)</strong>
+<p>Fortune's "AI is eliminating entry-level jobs — and a 1962 Nobel economist predicted why" cites an Atlanta Fed working paper applying Kenneth Arrow's "learning-by-doing" — even if replacing entry-level jobs with AI is an efficiency gain short-term, entry-level jobs are the on-ramp for human-capital accumulation; cutting the first rung of the career ladder weakens the entire senior-talent pipeline long-term. This is a "<strong>both-and</strong>" refinement, not a pure counter. <span class="src">Source: <a href="https://fortune.com/2026/05/21/kenneth-arrow-learning-by-doing-entry-level-work-automation/">Fortune (2026-05-21)</a>. Note: the Atlanta Fed paper's title / authors to be verified before citing.</span></p></li>
+
+<li><strong>EU AI Act: recruitment / selection AI classified "high-risk," guidance consultation through 2026-06-23</strong>
+<p>The European Commission's implementation-guidance consultation on AI Act high-risk systems is open through June 23, 2026 — AI used for recruitment, screening, and promotion decisions is classified "high-risk," triggering stricter transparency, human-oversight, and compliance obligations. This is the regulatory side's direct response to "AI reshaping entry-level hiring": not blocking adoption, but requiring algorithmic accountability in hiring. <span class="src">Source: European Commission (AI Act high-risk guidance consultation).</span></p></li>
+</ol>
+
+<h2 class="report-heading">🔮 Watch Next Month</h2>
+<ol class="report-list">
+<li><strong>India IT Big Five Q1 FY27 earnings (from July)</strong>
+<p>TCS has declared "the layoff cycle is over." Q1 FY27 is the first window to test whether the "AI-first services model" delivers "revenue growth + stable headcount" after a full year, and will first reveal the actual cadence of FY27 fresher hiring (Infosys guided 20,000) — whether the entry-level pipeline is truly preserved.</p></li>
+<li><strong>First monthly updates of Stanford's AI Economic Indicators platform</strong>
+<p>The ADP monthly dashboard launched June 10 will provide near-real-time early-career employment curves for the first time. Watch whether relative employment for 22–25-year-olds in AI-exposed occupations keeps falling or stabilizes — the most direct test of whether the "16% relative decline" is still deepening.</p></li>
+<li><strong>Philippines PSA May LFS: is 4.7% a trend or a one-month wobble</strong>
+<p>Whether April's YoY rise to 4.7% persists will decide if it upgrades from "single-month noise" to evidence of "sector-level pressure seeping to the national level." The full informal-employment module results are also worth tracking.</p></li>
+<li><strong>US fall recruiting (grad UR vs the NACE +5.6% expectation)</strong>
+<p>NACE expects +5.6% hiring, but NY Fed / Indeed primary unemployment data are soft. The 2026 fall season will be the key reconciliation of "employer intent" vs "actual hiring" — if actuals land far below +5.6%, the "optimistic hedge" is falsified.</p></li>
+<li><strong>Follow-up evidence in the "remote work vs AI" attribution debate</strong>
+<p>The NY Fed attributing two-thirds of young-grad unemployment to remote work is a major recalibration of the AI narrative. Watch whether other institutions (BLS, academia) corroborate or refute next month — this decides whether the main cause of "early-career collapse" lands on AI, remote work, or macro give-back.</p></li>
+<li><strong>Finalization of EU AI Act recruitment high-risk guidance (after June 23 consultation)</strong>
+<p>After the June 23 consultation closes, the final guidance will define which hiring AI falls under "high-risk." This is the world's first hard regulatory framework targeting "AI reshaping entry-level hiring," and its stringency will shape how US / EU firms deploy fresher-hiring algorithms.</p></li>
+</ol>
+
+<!-- spotlight EN -->
+<div class="spotlight-section">
+<h2>🎓 Spotlight: Entry-Level &amp; Early-Career — Is AI Cutting the First Rung of the Career Ladder?</h2>
+<p class="subtitle">With the US primary and the EU as comparison, this section evaluates the real situation of the 22–25 early-career cohort in 2026 across four dimensions — measured signal, competing explanations, cross-region comparison, two-track and counter-evidence — and how well the "AI-is-the-main-cause" thesis holds up in the most rigorous primary data.</p>
+
+<h3 class="report-heading">§9.1 Measured signal: early-career employment is genuinely contracting</h3>
+
+<p><strong>Core finding:</strong> "Entry-level / early-career jobs are contracting" is a <strong>robust descriptive fact</strong>, corroborated by multiple independent primary sources — but one must strictly separate "relative decline" from "absolute decline," and "measured" from "projected."</p>
+
+<h4 class="report-heading">The two hardest measured numbers (both occurred, not projections)</h4>
+<table>
+<thead><tr><th>Indicator</th><th class="num">Value</th><th>Definition &amp; source</th></tr></thead>
+<tbody>
+<tr><td>22–25 <strong>relative</strong> employment change in AI-exposed occupations</td><td class="num"><strong>−16%</strong></td><td>Relative to least-exposed quintile, controlling for firm-level shocks. Stanford / ADP, data through Oct 2025 (Nov 13, 2025 version; original −13%, through July 2025)</td></tr>
+<tr><td>Software developers (22–25) <strong>absolute</strong> employment vs late-2022 peak</td><td class="num"><strong>−20%</strong></td><td>Absolute level decline for that occupation×age cell, through Sep 2025. Stanford / ADP</td></tr>
+<tr><td>Recent graduates (22–27) unemployment rate</td><td class="num"><strong>5.6%</strong></td><td>Mar 2026, above ~4.2% overall; underemployment 41.5%. NY Fed</td></tr>
+<tr><td>Junior postings YoY (vs senior +4%)</td><td class="num"><strong>−7%</strong></td><td>Aug 2024 → Sep 2025. Indeed Hiring Lab</td></tr>
+<tr><td>Tech junior postings vs Feb 2020 (vs senior −19%)</td><td class="num"><strong>−34%</strong></td><td>Share requiring 5+ yrs rose 37%→42%. Indeed Hiring Lab</td></tr>
+<tr><td>New-grad hiring at 15 largest tech firms vs 2019</td><td class="num"><strong>&gt;−50%</strong></td><td>New grads ~7% of hires (vs ~15% pre-pandemic). SignalFire (2025-05-20)</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">Citation discipline</div>
+<p>Stanford's <strong>16%</strong> is a <strong>relative</strong> decline (vs the least-exposed quintile, firm-time-controlled), not "22–25-year-olds simply lost 16%"; the software-developer <strong>20%</strong> is the absolute level decline for that cell — the two cannot be conflated. Likewise, 13% and 16% are two versions of the same paper at different data cutoffs (July vs Oct 2025) — always state the cut. This kind of "multiple true values of one indicator at different times / specs" is exactly where this spotlight is most easily misread as "self-contradictory."</p>
+</div>
+
+<h3 class="report-heading">§9.2 Competing explanations: putting "AI as main cause" back into uncertainty</h3>
+
+<p><strong>Core finding:</strong> the descriptive "entry-level squeeze" is robust, but the <strong>causal</strong> claim that "the main cause is AI" remains contested in the most rigorous primary data. The strongest recalibration comes precisely from the most authoritative institutions. F3 / F5 rules: separate "occurred" from "hypothetical," avoid a zero-sum replacement narrative.</p>
+
+<table>
+<thead><tr><th>Competing explanation</th><th>Evidence</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><strong>Remote work (not AI)</strong></td><td>~<strong>2/3</strong> of the rise in young-grad unemployment attributed to remote work — remote jobs make managers reluctant to hire / train juniors; "remotable" jobs' UR rose ~1pp post-pandemic</td><td>NY Fed Liberty Street (2026-06-01)</td></tr>
+<tr><td><strong>No distinct AI break in postings</strong></td><td>"Postings data show little indication of a distinct AI-driven decline"; high/low-exposure divergence "began before 2022, no clear additional break after 2022"</td><td>NY Fed Liberty Street (2026-05-14)</td></tr>
+<tr><td><strong>Give-back of pandemic over-hiring</strong></td><td>Meta 45k→86k, Alphabet 119k→190k over three years (ZIRP-era over-hiring), plus the fastest Fed tightening in 40 years + the 2022 R&amp;D-expensing tax change</td><td>Stanford Review (2026-04-09)</td></tr>
+<tr><td><strong>Primary sources decline to blame AI</strong></td><td>Indeed calls it "stagnation rather than crisis"; SignalFire says "the real story is more nuanced" (funding, smaller teams, cut new-grad programs)</td><td>Indeed Hiring Lab / SignalFire</td></tr>
+<tr><td><strong>AI labs themselves walk back the apocalypse</strong></td><td>Altman "pretty wrong"; Amodei recasts as "productivity multiplier"; Yale Budget Lab finds no significant change in high-exposure occupational mix</td><td>Fortune / TIME (2026-05-26)</td></tr>
+<tr><td><strong>Goldman: substitution fades after two years</strong></td><td>Net AI monthly losses revised down to ~11k (~0.4% of pool); substitution effect "tends to disappear after two years"</td><td>Goldman Sachs (2026-06)</td></tr>
+</tbody>
+</table>
+
+<p>None of this means "AI is irrelevant to early careers." The more accurate statement is — <strong>AI, remote work, and macro give-back overlap in the same window and are highly collinear</strong> (all hit remotable, standardizable, low-experience white-collar entry jobs). Attributing everything to any single factor over-simplifies. The strongest claim current primary evidence supports is: "AI is one of several parallel forces, acting more by <strong>suppressing hiring entry</strong> than by mass-destroying incumbent jobs."</p>
+
+<h3 class="report-heading">§9.3 Cross-region comparison: US vs EU vs UK</h3>
+
+<table>
+<thead><tr><th>Region / indicator</th><th class="num">Value</th><th>Definition &amp; source</th></tr></thead>
+<tbody>
+<tr><td>US recent-grad UR (22–27)</td><td class="num">5.6%</td><td>Mar 2026, overall ~4.2%. NY Fed</td></tr>
+<tr><td>EU-27 youth UR (&lt;25)</td><td class="num">15.1%</td><td>Apr 2026, YoY "stable." Eurostat</td></tr>
+<tr><td>Euro area youth UR (&lt;25)</td><td class="num">14.7%</td><td>Apr 2026, 2.337M unemployed youth (EU-27: 2.913M). Eurostat</td></tr>
+<tr><td>EU NEET rate (15–29)</td><td class="num">11.0%</td><td>2025 (11.1% in 2024; 2030 target 9%). Eurostat</td></tr>
+<tr><td>Germany / France youth UR</td><td class="num">~7.1% / ~21.2%</td><td>Early 2026. Eurostat / Trading Economics</td></tr>
+<tr><td>UK graduate hiring YoY</td><td class="num">−8%</td><td>2024/25, weakest since 2021. ISE survey</td></tr>
+<tr><td>UK entry-level vacancies vs Nov 2022 (ChatGPT launch)</td><td class="num">−31.9%</td><td>Adzuna (2025-06); confounded by min wage / NICs</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<div class="label">Key comparison</div>
+<p>The <strong>distinctiveness</strong> of the US early-career predicament is not the absolute unemployment level (EU youth UR 15.1% far exceeds US grads' 5.6%), but the <strong>direction reversal</strong> — US recent grads historically had lower UR than overall, and now, for the first time, systematically exceed it, reaching the widest "graduate disadvantage" on record. European youth unemployment is a <strong>long-run structural</strong> problem (labor-market rigidity in southern Europe, apprenticeship differences), where AI has not yet shown an identifiable break. The UK is the strongest AI-timeline-correlation signal outside the US (entry-level vacancies −31.9% since ChatGPT launched), but is likewise heavily confounded by minimum-wage and employer-tax increases. <strong>Conclusion — this is a phenomenon markedly characteristic of the US (and UK), not yet evident in continental Europe, inconsistent with a simple "AI hits entry jobs globally in sync" narrative.</strong></p>
+</div>
+
+<h3 class="report-heading">§9.4 Two-track and counter-evidence: AI isn't flattening entry-level, it's splitting it in two</h3>
+
+<p><strong>Core finding:</strong> revising "AI destroys entry jobs" to "<strong>AI makes the entry-level market two-track</strong>" is the most precise statement this month's primary data supports. AI-fluent entry roles are expanding, AI-illiterate entry roles shrinking — alongside an underrated optimistic employer-side signal.</p>
+
+<table>
+<thead><tr><th>Signal</th><th class="num">Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>PwC: AI-exposed entry roles vs 2019</td><td class="num"><strong>+35%</strong></td><td>AI-fluent entry roles <strong>expanding</strong></td></tr>
+<tr><td>PwC: other entry roles vs 2019</td><td class="num"><strong>−10%</strong></td><td>AI-illiterate entry roles shrinking — "two-track"</td></tr>
+<tr><td>NACE: Class-2026 hiring expectation (spring, revised up)</td><td class="num"><strong>+5.6%</strong></td><td>Up from +1.6% in Fall 2025</td></tr>
+<tr><td>Strada: ratio of leaders expecting AI to raise vs cut entry hiring</td><td class="num"><strong>2.7×</strong></td><td>46% report entry hiring actually rose in 2025</td></tr>
+</tbody>
+</table>
+
+<h4 class="report-heading">Long-term risk: Arrow's "learning-by-doing" and the first rung</h4>
+<p>Even if the short-term "two-track" story holds, one cannot ignore a <strong>long-term</strong> concern. Fortune, citing an Atlanta Fed working paper, revisits Kenneth Arrow's 1962 "learning-by-doing" — entry-level jobs are not merely "low-value labor" but the <strong>on-ramp</strong> for human-capital accumulation and the senior-talent pipeline. Even if replacing entry jobs with AI is an efficiency gain now, cutting the first rung will weaken the entire senior-talent supply 5–10 years out. This is a "both-and" refinement: <strong>AI may indeed not cause mass unemployment short-term (Altman / Goldman / NY Fed all point this way), but the erosion of long-term human capital from "suppressed hiring entry" is a slow-moving variable more worrying than the short-term unemployment rate.</strong></p>
+
+<div class="callout">
+<div class="label">Spotlight conclusion</div>
+<p>As of June 2026, on "AI and early careers," primary evidence supports four graded judgments: <strong>(1)</strong> early-career employment is contracting — <strong>robust fact</strong> (Stanford 16% relative / software-dev 20% absolute / grad UR 5.6%); <strong>(2)</strong> whether AI is the main cause — <strong>contested</strong> (NY Fed attributes ~2/3 to remote work, Indeed / SignalFire decline to blame AI, macro give-back is collinear); <strong>(3)</strong> distribution of the phenomenon — <strong>marked in the US / UK, not evident in continental Europe</strong>, inconsistent with a "global sync" narrative; <strong>(4)</strong> the most precise shape — <strong>not flattening but two-tracking</strong> (AI entry roles +35% vs others −10%), plus the "learning-by-doing" long-term pipeline risk. Recommend continued reconciliation next month — Stanford's ADP monthly dashboard, Philippines PSA May LFS, and US fall hiring actuals vs the NACE +5.6% expectation.</p>
+</div>
+
+</div>
+<!-- end spotlight EN -->
+
+<h2 class="report-heading">🔬 Three-Layer Methodology Analysis</h2>
+
+<p>This section applies the Dashboard's three-layer methodology (Anthropic Economic Index + Adoption Gap + Coface×OEM stage model) to interpret this month's events — especially the early-career spotlight.</p>
+
+<p><strong>Layer 1: Anthropic Economic Index Perspective</strong></p>
+<p>Computer programmers (observed_raw=0.7451, highest in the sample) and customer service representatives (0.7011, second-highest) remain the most-exposed occupations. The novelty this month is that these occupations' <strong>age-structure sensitivity</strong> has been quantified for the first time. Stanford / ADP shows that <strong>junior (22–25) software-developer</strong> employment fell ~20% from its late-2022 peak, while senior-developer employment held stable. This implies the Anthropic Index's "occupation-level" exposure needs an added "<strong>experience-level</strong>" dimension — within the same high-exposure occupation, AI preferentially replaces quickly-learnable, codified junior tasks, not the senior tasks reliant on tacit knowledge. GitLab's "one engineer + N agents" rebuild is the organizational landing of exactly this mechanism.</p>
+
+<p><strong>Layer 2: Adoption Gap Analysis</strong></p>
+<p>Adoption Gap = Karpathy Score − Anthropic Score. This month we observe a counterintuitive pattern — <strong>the gap narrows fastest on "junior tasks," but its transmission into "hiring behavior" is noised by multiple factors</strong>. PwC's "two-track" data is direct evidence: AI-exposed entry roles +35% shows <strong>the adoption gap narrowing fast where AI is used (human + AI co-expansion)</strong>, while other entry roles −10% shows <strong>non-adopting roles being competitively eliminated</strong>. This is closer to the truth than "AI replaces humans" — the real watershed is not "humans vs AI" but "<strong>humans who use AI vs humans who don't</strong>." This aligns with Amodei's revised logic of "automate 90%, everyone does the remaining 10%, then scale up."</p>
+
+<p><strong>Layer 3: Coface × OEM Task-Level Stage Analysis</strong></p>
+<p>Five-stage model (Copilot → Special Agent → Conductor → Prometheus Bound → Superhuman). Signals this month —</p>
+<ul class="report-list">
+<li><strong>Junior programming has entered the Conductor stage, but manifests as "hiring suppression" rather than "incumbent replacement"</strong>: GitLab's agentic rebuild + junior software-developer employment −20% indicate that programming's junior tasks have crossed the 30% automation threshold. But the key observation is — the <strong>first phenomenology</strong> of stage progression is "<u>no longer hiring in</u>," not "<u>firing the incumbent</u>." This is the actual surface on which the Conductor stage acts on the labor market.</li>
+<li><strong>The NY Fed's "remote-work attribution" suggests the stage model needs an added "organizational-constraint dimension"</strong>: 30% of tasks may be technically automatable, but "whether to hire juniors" also depends on organizational form like remote work. Last issue's Klarna flagged "business constraints"; this issue's NY Fed flags "<strong>organizational constraints</strong>" — both show that between "task automatable" and "job actually disappears" lie multiple layers of non-technical transmission valves.</li>
+<li>In the 3×3 matrix, this month's impact remains concentrated in "data → data" (programming), and for the first time clearly shows the <strong>experience gradient</strong> within that quadrant (junior ≫ senior). The "material → material" (blue-collar trades) quadrant showed <strong>reverse resilience</strong> this month (AT&amp;T's $38B technician hiring, ~30% trade pay raises), matching theoretical expectation.</li>
+</ul>
+
+<p><strong>Integrated judgment:</strong></p>
+<p>The three layers converge on a judgment more precise than "AI replacement is accelerating" — <strong>AI's first-order effect on the labor market is to "suppress hiring entry," highly concentrated at the junior / early-career end of high-exposure occupations</strong>. But the month's most important methodological lesson is the <strong>causal restraint</strong> from the most authoritative primary sources (NY Fed, Indeed, SignalFire, even the AI labs themselves) — the descriptive "entry-level squeeze" is robust, but "the main cause is AI" must be returned to the uncertainty of "AI / remote work / macro give-back being collinear." Next month, watch whether Stanford's ADP monthly dashboard shows junior employment continuing to fall, and whether US fall hiring actuals can reconcile the optimistic NACE +5.6% expectation. These two signals will independently verify the real health of the early-career rung from the "supply-side measurement" and "demand-side intent" sides respectively. Short-term unemployment may stay moderate (the apocalypse retreat is correct), but the long-term slow variable of an eroded "learning-by-doing" pipeline is the true KEY FINDING of this spotlight.</p>
+
+    </div>
+    <!-- ============== End English version ============== -->
+  </div>
+
+  <div class="report-footer">
+    <p>
+      <span class="cn">本期月报由 AI 研究助手自动生成 · 数据截至 2026-06-22</span>
+      <span class="en lang-inactive">Auto-generated by AI Research Assistant · Data through 2026-06-22</span>
+    </p>
+    <p style="margin-top:8px">
+      <a href="../index.html"><span class="cn">← 返回 Dashboard</span><span class="en lang-inactive">← Back to Dashboard</span></a>
+      <span style="margin:0 12px;color:var(--fg2)">|</span>
+      <a href="index.html"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

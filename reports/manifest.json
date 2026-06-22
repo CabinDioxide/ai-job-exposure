@@ -2,6 +2,14 @@
   {
     "module": "ai_employment",
     "type": "monthly",
+    "month": "2026-06",
+    "lang": "zh/en",
+    "filename": "ai_employment_2026-06.html",
+    "title": "AI就业冲击月报 / AI Employment Impact — 2026-06（应届生专题）"
+  },
+  {
+    "module": "ai_employment",
+    "type": "monthly",
     "month": "2026-05",
     "lang": "zh/en",
     "filename": "ai_employment_2026-05.html",
