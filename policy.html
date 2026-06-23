@@ -178,7 +178,8 @@ function render(){
   let shown=0;
   DATA.jurisdictions.forEach(j=>{
     if(activeJur!=='all' && j.code!==activeJur) return;
-    const pols=j.policies.filter(p=>activeStatus==='all'||p.status===activeStatus);
+    const pols=j.policies.filter(p=>activeStatus==='all'||p.status===activeStatus)
+      .sort((a,b)=>(b.date||'').localeCompare(a.date||''));
     if(!pols.length) return;
     shown+=pols.length;
     const sec=document.createElement('div'); sec.className='jur-section';
