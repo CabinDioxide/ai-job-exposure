@@ -1,0 +1,568 @@
+{
+  "module": "ai_policy",
+  "updated": "2026-06-23",
+  "note_cn": "覆盖 dashboard 追踪的 12 个司法辖区的「AI × 就业」相关监管政策。仅收录与就业/劳动相关的条目（AI 招聘、算法管理、裁员披露、工人保护、再培训、外包），不含纯 AI 安全立法。状态与日期截至更新日，由独立核查。",
+  "note_en": "AI-and-employment regulation across the 12 jurisdictions this dashboard tracks. Only labor/employment-relevant items (AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing) — not general AI-safety law. Status and dates current as of the update date, independently verified.",
+  "jurisdictions": [
+    {
+      "code": "US", "name_cn": "美国", "name_en": "United States", "flag": "🇺🇸",
+      "policies": [
+        {
+          "title_cn": "HIRE 法案（阻止就业国际转移法，S.2976）", "title_en": "HIRE Act (S.2976)",
+          "authority": "美国参议院 / 财政委员会（Sen. Bernie Moreno）",
+          "type": "bill", "status": "stalled", "date": "2025-10",
+          "relevance_cn": "拟对向境外劳动力的外包付款征 25% 消费税，直接打击岗位离岸化。",
+          "relevance_en": "Would impose a 25% excise tax on outsourcing payments, directly targeting offshoring.",
+          "summary_cn": "2025 年 10 月提出，加征 25% 消费税并取消相关税前抵扣。截至 2026 年初仍滞留财政委员会，无联署人、无听证，GovTrack 给约 0% 通过率，被 IT/BPO 外包业密切关注。",
+          "summary_en": "Introduced Oct 2025; 25% excise tax plus loss of deductibility. Stuck in Senate Finance Committee with no co-sponsors or hearings; GovTrack ~0% odds. Watched closely by the IT/BPO outsourcing industry.",
+          "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/2976/all-info"
+        },
+        {
+          "title_cn": "Great American AI Act（WARN 裁员 AI 披露修正，讨论稿）+ S.3108", "title_en": "Great American AI Act (WARN AI-layoff disclosure draft) + S.3108",
+          "authority": "美国众议院（Obernolte & Trahan）/ 参议院",
+          "type": "bill", "status": "proposed", "date": "2026-06",
+          "relevance_cn": "拟修订 WARN 法案：AI 为大规模裁员「实质性因素」时须披露，并估算 AI 归因失业比例、说明再培训。",
+          "relevance_en": "Would amend the WARN Act to require disclosure when AI is a 'substantial factor' in mass layoffs, plus an AI-attributable job-loss estimate.",
+          "summary_cn": "2026 年 6 月 4 日两党讨论稿，意在建首个综合联邦 AI 框架；核心雇主义务是 AI 裁员的 WARN 修正。配套 S.3108 要求劳工部按季发布 AI 就业影响报告。均处早期，未通过。",
+          "summary_en": "June 4 2026 bipartisan discussion draft for a first federal AI framework; core obligation is the WARN-Act AI-layoff amendment. Companion S.3108 would have DOL publish quarterly AI job-impact reports. Early-stage, not enacted.",
+          "source_url": "https://www.fisherphillips.com/en/insights/insights/congress-proposes-first-comprehensive-federal-ai-framework"
+        },
+        {
+          "title_cn": "EEOC AI 招聘指南撤回 + 差别影响责任回退", "title_en": "EEOC AI-hiring guidance rescinded + disparate-impact rollback",
+          "authority": "美国平等就业机会委员会（EEOC）/ 白宫（EO 14179）",
+          "type": "guidance", "status": "in_force", "date": "2025-01",
+          "relevance_cn": "联邦关于雇主如何避免 AI 招聘歧视（Title VII）的技术指南被删，留下由各州填补的真空。",
+          "relevance_en": "Federal guidance on avoiding AI-driven hiring discrimination under Title VII was removed, leaving a state-filled void.",
+          "summary_cn": "2025 年 1 月 27 日 EEOC 删除其 2023 年评估 AI 用工差别影响的技术指南，随后行政令否弃差别影响责任、6 月撤销 2024–2028 执法计划。注意：Title VII 法律本身仍完全有效，被删的只是指南。",
+          "summary_en": "On Jan 27 2025 the EEOC removed its 2023 technical guidance on AI adverse impact; subsequent EOs disavowed disparate-impact liability and the 2024–2028 enforcement plan was rescinded. Title VII itself remains fully in force — only the guidance was removed.",
+          "source_url": "https://www.huschblackwell.com/newsandinsights/ai-and-workplace-discrimination-what-employers-need-to-know-after-the-eeoc-and-dol-rollbacks"
+        },
+        {
+          "title_cn": "第 14365 号行政令——挑战各州 AI 法的国家框架", "title_en": "EO 14365 — national framework challenging state AI laws",
+          "authority": "白宫 / DOJ AI 诉讼工作组",
+          "type": "regulation", "status": "in_force", "date": "2025-12",
+          "relevance_cn": "联邦通过 DOJ 诉讼工作组与有条件拨款，挑战/优先于各州 AI 招聘与自动决策法，给州级 AI 用工规则带来不确定性。",
+          "relevance_en": "Federal push (DOJ task force + conditional funding) to preempt/challenge state AI-hiring and ADS laws, clouding the state-led patchwork.",
+          "summary_cn": "2025 年 12 月 11 日签署，设 DOJ AI 诉讼工作组（2026 年 1 月起运作），以「妨碍州际商业」挑战各州 AI 法；最终文本排除对儿童安全、采购等合法州法的优先适用。尚未推翻任何州法。",
+          "summary_en": "Signed Dec 11 2025; establishes a DOJ AI Litigation Task Force (active Jan 2026) to challenge state AI laws as burdening interstate commerce, while exempting certain lawful state laws (child safety, procurement). Has not yet struck any down.",
+          "source_url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/"
+        },
+        {
+          "title_cn": "纽约市第 144 号地方法——AEDT 偏见审计", "title_en": "NYC Local Law 144 — AEDT bias audit",
+          "authority": "纽约市消费者与劳动者保护局（DCWP）",
+          "type": "law", "status": "in_force", "date": "2023-07",
+          "relevance_cn": "要求使用 AI 招聘/晋升工具的雇主每年做独立偏见审计、公开结果并通知求职者。",
+          "relevance_en": "Requires employers using AI hiring/promotion tools to obtain an annual independent bias audit, publish results, and notify candidates.",
+          "summary_cn": "2023 年 7 月 5 日起执法，违规每天每项罚 500–1500 美元。纽约州审计长 2025 年 12 月审计发现 DCWP 监管薄弱，促使其 2026 年对数百家雇主启动定向调查。",
+          "summary_en": "Enforced since July 5 2023; penalties $500–1,500 per violation per day. A NY State Comptroller audit (Dec 2025) found weak DCWP oversight, prompting targeted investigations of hundreds of employers in 2026.",
+          "source_url": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page"
+        },
+        {
+          "title_cn": "科罗拉多 AI 法案（SB24-205，经 SB26-189 修订）", "title_en": "Colorado AI Act (SB24-205, amended by SB26-189)",
+          "authority": "科罗拉多州议会 / Polis 州长",
+          "type": "law", "status": "in_progress", "date": "2027-01",
+          "relevance_cn": "里程碑州法，规制就业等重大决策中的「高风险」AI；现已被收窄并推迟。",
+          "relevance_en": "Landmark state law on 'high-risk' AI in consequential decisions including employment; now narrowed and delayed.",
+          "summary_cn": "原 2024 年 5 月签署，几经推迟，2026 年 4 月被联邦法院暂停执法；5 月 14 日 Polis 签 SB26-189，废除高风险分类、强制影响评估与注意义务，生效日推迟至 2027 年 1 月 1 日，重构为自动决策的告知与人工复核。",
+          "summary_en": "Originally signed May 2024; repeatedly delayed, court-paused Apr 2026; on May 14 2026 SB26-189 repealed the high-risk classification, impact assessments and duty of care, delaying the effective date to Jan 1 2027 and reframing around ADMT notice and human review.",
+          "source_url": "https://leg.colorado.gov/bills/sb24-205"
+        },
+        {
+          "title_cn": "加州 FEHA 自动决策系统（ADS）用工法规", "title_en": "California FEHA Automated-Decision-System employment regs",
+          "authority": "加州民权委员会（Civil Rights Council / CRD）",
+          "type": "regulation", "status": "in_force", "date": "2025-10",
+          "relevance_cn": "雇主在招聘、晋升、培训选拔中用 AI/ADS 若对受保护群体造成差别影响即属违法，鼓励反偏见测试。",
+          "relevance_en": "Employer use of AI/ADS in hiring, promotion, training selection is unlawful if it causes disparate impact; anti-bias testing encouraged.",
+          "summary_cn": "2025 年 6 月 27 日批准，10 月 1 日生效。适用 5 人以上雇主，宽泛定义 ADS，责任延伸至供应商，记录保留 4 年，缺乏反偏见测试可作不利证据。",
+          "summary_en": "Approved June 27 2025, effective Oct 1 2025. Applies to employers with 5+ staff, defines ADS broadly, extends liability to vendor 'agents', requires 4-year record retention, and treats absence of anti-bias testing as evidence against the employer.",
+          "source_url": "https://calcivilrights.ca.gov/2025/06/30/civil-rights-council-secures-approval-for-regulations-to-protect-against-employment-discrimination-related-to-artificial-intelligence/"
+        },
+        {
+          "title_cn": "加州 CCPA 自动决策技术（ADMT）法规", "title_en": "California CCPA Automated Decisionmaking Technology regs",
+          "authority": "加州隐私保护局（CPPA）",
+          "type": "regulation", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "ADMT 在缺乏实质人工参与下作出招聘、薪酬、晋升、解雇等重大就业决策时，赋予工人事前告知、查阅、退出权及风险评估。",
+          "relevance_en": "Gives workers pre-use notice, access and opt-out rights plus risk assessments when ADMT makes significant employment decisions without meaningful human involvement.",
+          "summary_cn": "2025 年 9 月定稿，2026 年 1 月 1 日生效，但针对重大决策的核心 ADMT 义务自 2027 年 4 月 1 日分阶段实施。与 FEHA ADS 规则独立叠加。",
+          "summary_en": "Finalized Sept 2025, effective Jan 1 2026, but core ADMT obligations for significant decisions phase in from Apr 1 2027. Separate from and additional to the FEHA ADS rules.",
+          "source_url": "https://cppa.ca.gov/regulations/ccpa_updates.html"
+        },
+        {
+          "title_cn": "伊利诺伊 HB 3773（用工 AI）+ AI 视频面试法", "title_en": "Illinois HB 3773 + AI Video Interview Act",
+          "authority": "伊利诺伊州议会 / 人权局（IDHR）",
+          "type": "law", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "修订州人权法，禁止在招聘/晋升/纪律/解雇中用对受保护群体有歧视影响的 AI，并要求向员工告知。",
+          "relevance_en": "Amends the Human Rights Act to bar discriminatory AI across hiring/promotion/discipline/discharge and requires employee notice of AI use.",
+          "summary_cn": "HB 3773 于 2026 年 1 月 1 日生效，禁止就业决策中的歧视性 AI（含生成式）并要求事先告知；违规雇主担实际赔偿、民事罚款及律师费。IDHR 正定实施细则。",
+          "summary_en": "HB 3773 took effect Jan 1 2026, prohibiting discriminatory AI (incl. generative AI) in employment decisions and requiring prior notice; violations expose employers to damages, penalties and fees. IDHR is finalizing rules.",
+          "source_url": "https://www.hinshawlaw.com/en/insights/blogs/employment-law-observer/illinois-adopts-new-ai-in-employment-regulations-what-employers-need-to-know-for-2026"
+        }
+      ]
+    },
+    {
+      "code": "EU", "name_cn": "欧盟", "name_en": "European Union", "flag": "🇪🇺",
+      "policies": [
+        {
+          "title_cn": "《AI 法案》附件三高风险分类（就业/招聘/劳动者管理）", "title_en": "EU AI Act — Annex III high-risk (employment / recruitment / worker management)",
+          "authority": "欧洲议会与理事会 / 欧盟委员会 AI 办公室",
+          "type": "regulation", "status": "in_force", "date": "2024-08",
+          "relevance_cn": "将用于招聘、筛选、晋升/解雇、任务分配、绩效监控的 AI 列为「高风险」，触发合规、透明度与人工监督义务。",
+          "relevance_en": "Classifies AI for recruitment, selection, promotion/termination, task allocation and performance monitoring as 'high-risk', triggering conformity, transparency and human-oversight duties.",
+          "summary_cn": "《条例》(EU) 2024/1689 于 2024 年 8 月生效。附件三第 4 点涵盖就业/劳动者管理（含自由职业者与平台工作者）。但实质高风险义务的适用日期已被「数字综合法案」从 2026-08 推迟至 2027-12。",
+          "summary_en": "Regulation (EU) 2024/1689 in force Aug 2024. Annex III point 4 covers employment/worker management (incl. freelancers and platform workers), but the substantive high-risk obligations were pushed from Aug 2026 to Dec 2027 by the Digital Omnibus.",
+          "source_url": "https://artificialintelligenceact.eu/annex/3/"
+        },
+        {
+          "title_cn": "AI 数字综合法案——高风险适用推迟至 2027-12", "title_en": "Digital Omnibus — high-risk application delayed to Dec 2027",
+          "authority": "欧盟委员会 / 理事会 / 欧洲议会",
+          "type": "regulation", "status": "in_progress", "date": "2026-05",
+          "relevance_cn": "把雇主/HR-AI 部署者须遵守高风险义务的日期从 2026-08 推迟至 2027-12，为劳动力市场多留约 16 个月。",
+          "relevance_en": "Defers employers'/HR-AI deployers' high-risk compliance from Aug 2026 to Dec 2027, giving the labor market ~16 extra months.",
+          "summary_cn": "委员会 2025-11-19 提出，议会与理事会 2026 年 5 月 6–7 日达成临时政治协议。截至 2026-06-23 仍待正式通过并刊登《官方公报》，目标 6/7 月，赶在原 8 月 2 日截止日前。",
+          "summary_en": "Tabled Nov 19 2025; Parliament and Council reached provisional agreement May 6–7 2026. As of June 23 2026 it still awaited formal adoption and Official Journal publication, targeted for June/July before the original Aug 2 2026 deadline.",
+          "source_url": "https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/"
+        },
+        {
+          "title_cn": "高风险 AI 分类指南草案（第 6 条/附件三）——公众咨询", "title_en": "Draft guidelines on high-risk classification — consultation",
+          "authority": "欧盟委员会 AI 办公室",
+          "type": "guidance", "status": "consultation", "date": "2026-05",
+          "relevance_cn": "厘清哪些就业/招聘 AI 属高风险，明确将范围扩展至自由职业者、平台工作者与自雇者，细化简历筛选、定向招聘广告与绩效监控。",
+          "relevance_en": "Clarifies which employment/recruitment AI counts as high-risk, extending scope to freelancers, platform and self-employed workers and detailing CV-screening, targeted job ads and performance monitoring.",
+          "summary_cn": "委员会 2026-05-19 发布草案并开启为期五周、于 2026-06-23 结束的公众咨询，确认「与工作相关的合同关系」超出正式雇佣。最终指南预计 2026 年晚些出台。",
+          "summary_en": "Draft published May 19 2026 with a five-week consultation closing June 23 2026, confirming that 'work-related contractual relationships' extend beyond formal employment. Final guidelines expected later in 2026.",
+          "source_url": "https://www.hoganlovells.com/en/publications/european-commission-publishes-long-awaited-guidelines-on-high-risk-ai-systems"
+        },
+        {
+          "title_cn": "《平台工作指令》(EU) 2024/2831——算法管理规则", "title_en": "Platform Work Directive (EU) 2024/2831 — algorithmic management",
+          "authority": "欧洲议会与理事会",
+          "type": "directive", "status": "in_progress", "date": "2024-12",
+          "relevance_cn": "规制平台工作者的算法管理：禁处理某些个人数据，要求对解雇、停用、薪酬等重大自动决定进行人工监督，并赋透明度/知情权。",
+          "relevance_en": "Regulates algorithmic management of platform workers: bans certain data processing, mandates human oversight of consequential automated decisions (dismissal, suspension, pay) and grants transparency rights.",
+          "summary_cn": "2024-10-23 通过、12-01 生效，成员国须在 2026-12-02 前转化。截至 2026 年 4 月仅比利时、西班牙、葡萄牙对接了雇佣推定规则，德法意等多数仍在起草。",
+          "summary_en": "Adopted Oct 23 2024, in force Dec 1 2024; transposition deadline Dec 2 2026. As of April 2026 only Belgium, Spain and Portugal had aligned employment-presumption rules; Germany, France, Italy and most others were still drafting.",
+          "source_url": "https://iuslaboris.com/insights/eu-platform-work-directive-which-countries-have-implemented/"
+        },
+        {
+          "title_cn": "GDPR 第 22 条 + EDPB AI 模型指南——就业中的自动决定", "title_en": "GDPR Art. 22 + EDPB guidance — automated decisions in employment",
+          "authority": "欧洲数据保护委员会（EDPB）/ 各国 DPA",
+          "type": "regulation", "status": "in_force", "date": "2024-12",
+          "relevance_cn": "赋候选人/工人不受具重大影响的纯自动决定（如 AI 简历筛选、排名）约束的权利，要求实质人工参与与异议权。",
+          "relevance_en": "Gives candidates/workers the right not to be subject to solely automated decisions with significant effects (AI CV-screening, ranking), requiring meaningful human involvement and the right to contest.",
+          "summary_cn": "第 22 条自 2018 年生效；EDPB 第 28/2024 号意见（2024-12）厘清其对 AI 模型的适用，强调「橡皮图章」式人工参与不满足要求——审核者须有偏离权与判断力。与 HR-AI 直接相关。",
+          "summary_en": "Article 22 in force since 2018; EDPB Opinion 28/2024 (Dec 2024) clarifies AI-model application, stressing that 'rubber-stamp' human involvement is insufficient — the reviewer must have authority to deviate and competence to judge.",
+          "source_url": "https://commission.europa.eu/law/law-topic/data-protection/rules-business-and-organisations/dealing-citizens/are-there-restrictions-use-automated-decision-making_en"
+        },
+        {
+          "title_cn": "技能联盟与技能契约——AI 升技/再培训与技能保障", "title_en": "Union of Skills & Pact for Skills — AI up/reskilling",
+          "authority": "欧盟委员会（DG EMPL）",
+          "type": "program", "status": "in_force", "date": "2026-03",
+          "relevance_cn": "针对 AI 驱动岗位流失的劳动力转型框架：为重组/高风险行业工人设技能保障、AI 技能学院，承诺再培训。",
+          "relevance_en": "Workforce-transition framework against AI-driven displacement: a Skills Guarantee for at-risk workers, AI Skills Academies, and reskilling commitments.",
+          "summary_cn": "技能联盟旗舰计划 2026-03-05 启动，建立在技能契约（2030 年前培训 2500 万人；截至 2026-04 已培训逾 1000 万）之上，设技能保障与涵盖 AI 的技能学院。属软法/拨款。",
+          "summary_en": "The Union of Skills flagship launched March 5 2026, building on the Pact for Skills (train 25M by 2030; 10M+ trained as of April 2026), with a Skills Guarantee and AI-covering Skills Academies. Soft-law/funding, not binding law.",
+          "source_url": "https://commission.europa.eu/topics/competitiveness/union-skills_en"
+        }
+      ]
+    },
+    {
+      "code": "UK", "name_cn": "英国", "name_en": "United Kingdom", "flag": "🇬🇧",
+      "policies": [
+        {
+          "title_cn": "「促创新」AI 监管路径（无 AI 法案）+ DSIT 蓝图", "title_en": "'Pro-innovation' AI approach (no AI Act) + DSIT Blueprint",
+          "authority": "DSIT / 现有监管机构（ICO、EHRC 等）",
+          "type": "guidance", "status": "in_force", "date": "2023-03",
+          "relevance_cn": "英国无 AI 立法、无专门 AI 招聘法；就业 AI 由现有监管机构依《2010 平等法》和英国 GDPR/DUAA 治理。",
+          "relevance_en": "No AI statute and no AI-hiring-specific law; employment AI is governed by existing regulators applying the Equality Act 2010 and UK GDPR/DUAA.",
+          "summary_cn": "2023 年《促创新白皮书》路径（工党延续）依赖现有法律而非横向 AI 法。2025-10-21 DSIT 发布以 AI 增长实验室（监管沙盒）为核心的「AI 监管蓝图」。截至 2026 年中议会无 AI 法案待审；工会大会(TUC)已发布非官方草案。",
+          "summary_en": "The 2023 pro-innovation approach (continued by Labour) relies on existing law rather than a horizontal AI act. On Oct 21 2025 DSIT published an 'AI regulation Blueprint' centred on an AI Growth Lab (sandboxes). As of mid-2026 no AI Bill is before Parliament; the TUC has published a non-government draft bill.",
+          "source_url": "https://researchbriefings.files.parliament.uk/documents/CBP-10003/CBP-10003.pdf"
+        },
+        {
+          "title_cn": "ICO 自动决策/画像指南草案 + 招聘报告（第 22A 条 / DUAA 2025）", "title_en": "ICO draft ADM/profiling guidance + recruitment report",
+          "authority": "信息专员办公室（ICO）",
+          "type": "guidance", "status": "consultation", "date": "2026-03",
+          "relevance_cn": "将 AI 简历筛选/打分视为需透明度、偏见监控、人工审查与数据主体权利的自动决策；发现多数英国雇主未合规。",
+          "relevance_en": "Treats AI CV-screening/scoring as automated decision-making requiring transparency, bias monitoring, human review and data-subject rights; found most UK employers non-compliant.",
+          "summary_cn": "ICO 于 2026-03-31 就 ADM/画像指南草案启动咨询并发布招聘自动决策报告（审查 30+ 雇主，多缺保障）。《2025 数据（使用与获取）法》2026-02-05 生效，新增第 22A 条赋候选人知情与人工审查权。咨询 5-29 结束，终稿预计 2026 夏。",
+          "summary_en": "On Mar 31 2026 the ICO opened a consultation on draft ADM/profiling guidance and published a recruitment ADM report (30+ employers, most lacking safeguards). The DUAA 2025 (in force Feb 5 2026) added Art. 22A giving candidates information and human-review rights. Consultation closed May 29; final guidance expected Summer 2026.",
+          "source_url": "https://ico.org.uk/about-the-ico/what-we-do/recruitment-rewired/"
+        },
+        {
+          "title_cn": "《2010 平等法》适用于 AI 招聘 + EHRC 监管", "title_en": "Equality Act 2010 applied to AI hiring + EHRC oversight",
+          "authority": "平等与人权委员会（EHRC）/ 就业法庭",
+          "type": "law", "status": "in_force", "date": "2010-10",
+          "relevance_cn": "现有反歧视法直接适用于 AI 招聘工具：直接/间接歧视违法，雇主对其采购的有偏见 AI 担责（「是算法干的」不构成抗辩）。",
+          "relevance_en": "Existing anti-discrimination law applies directly to AI hiring tools; employers remain liable for biased AI they procure ('the algorithm did it' is no defence).",
+          "summary_cn": "《2010 平等法》是英国挑战歧视性 AI 招聘的主要途径；无 AI 专门立法。EHRC 已将招聘 AI 列为重点，强调由雇主（非供应商）担责，2026 年与 ICO 一道加强审查。",
+          "summary_en": "The Equality Act 2010 is the UK's primary route against discriminatory AI hiring; there is no AI-specific statute. The EHRC has named recruitment AI a priority, stresses employer (not vendor) liability, and has intensified 2026 scrutiny alongside the ICO.",
+          "source_url": "https://www.equalityhumanrights.com/media-centre/news/update-our-approach-regulating-artificial-intelligence"
+        }
+      ]
+    },
+    {
+      "code": "DE", "name_cn": "德国", "name_en": "Germany", "flag": "🇩🇪",
+      "policies": [
+        {
+          "title_cn": "《企业组织法》(BetrVG)——职工委员会对职场 AI 的共同决定权", "title_en": "Works Constitution Act (BetrVG) — works-council co-determination on AI",
+          "authority": "联邦议会 / 经由职工委员会与劳动法院执行",
+          "type": "law", "status": "in_force", "date": "2021-06",
+          "relevance_cn": "雇主引入影响工人的 AI 时，职工委员会有共同决定与协商权——含对 AI 监控系统的否决性权利，及由雇主出资聘外部 AI 专家。",
+          "relevance_en": "When employers introduce AI affecting workers, works councils have co-determination and consultation rights — including a veto-type right over AI monitoring and an employer-funded external AI expert.",
+          "summary_cn": "2021 年《职工委员会现代化法》修订 BetrVG：§80(3) 推定评估 AI 需外部专家、§90 要求协商、§87(1) 第 6 项对技术监控系统（含 AI 监控）有共同决定/否决权。已生效且被积极援引；2026 职工委员会选举使 AI 议题上日程。",
+          "summary_en": "The 2021 Works Council Modernisation Act embedded AI in BetrVG: §80(3) presumes external-expert support for AI assessment, §90 requires consultation, and §87(1) No. 6 gives a co-determination/veto right over technical monitoring (incl. AI). In force and actively invoked; 2026 works-council elections put AI on the agenda.",
+          "source_url": "https://www.gesetze-im-internet.de/englisch_betrvg/englisch_betrvg.html"
+        },
+        {
+          "title_cn": "BetrVG 改革 / 职场 AI 法律框架（默茨联合政府，拟议）", "title_en": "BetrVG reform / workplace-AI framework (proposed)",
+          "authority": "联邦政府（联合政府）/ 联邦参议院 2025-07 决议",
+          "type": "bill", "status": "proposed", "date": "2025-07",
+          "relevance_cn": "拟扩大职工委员会对 AI 使用的共同决定权，把「雇员」扩展至平台单人自雇者，并为职场 AI 建专门法律框架。",
+          "relevance_en": "Would expand works-council co-determination over AI, extend 'employee' to solo self-employed platform workers, and create a dedicated workplace-AI framework.",
+          "summary_cn": "联邦参议院 2025-07-11 通过决议支持改革。CDU/CSU-SPD 联合协议（2025）承诺「职场 AI 法律框架」，但措辞含糊无约束力，截至 2026 年 6 月尚无正式草案。",
+          "summary_en": "The Bundesrat passed a backing resolution July 11 2025. The CDU/CSU-SPD coalition agreement (2025) commits to a 'legal framework for AI at the workplace', but the language is vague and non-binding; no formal draft bill existed as of June 2026.",
+          "source_url": "https://www.employmentlawworldview.com/germany-bureaucracy-out-digital-in-the-new-governments-plans-for-labour-and-employment/"
+        },
+        {
+          "title_cn": "德国国家 AI 战略——劳动力技能与继续职业培训", "title_en": "German National AI Strategy — workforce skills & vocational training",
+          "authority": "联邦政府（BMBF/BMFTR、BMWE）",
+          "type": "program", "status": "in_force", "date": "2023-11",
+          "relevance_cn": "含劳动力支柱：AI 相关职业培训、再培训/升技、终身学习，及研究 AI 环境下劳动组织的区域「劳动研究卓越中心」。",
+          "relevance_en": "Has a workforce pillar: AI vocational training, reskilling/upskilling, lifelong learning, and regional labour-research centres on work organisation in AI environments.",
+          "summary_cn": "德国国家 AI 战略（2020 更新）与 BMBF AI 行动计划（2023-11-07，11 个行动领域）含数字/AI 职业培训国家技能战略、终身学习与再培训。持续推进；与欧盟 AI 法案对接是 2026 重点。",
+          "summary_en": "Germany's National AI Strategy (updated 2020) and the BMBF AI Action Plan (Nov 7 2023, 11 action fields) include a national skills strategy for digital/AI vocational training, lifelong learning and reskilling. Ongoing; alignment with EU AI Act implementation is a 2026 priority.",
+          "source_url": "https://www.ki-strategie-deutschland.de/"
+        }
+      ]
+    },
+    {
+      "code": "IN", "name_cn": "印度", "name_en": "India", "flag": "🇮🇳",
+      "policies": [
+        {
+          "title_cn": "IndiaAI 使命（未来技能支柱）", "title_en": "IndiaAI Mission (FutureSkills pillar)",
+          "authority": "电子与信息技术部（MeitY）",
+          "type": "mission", "status": "in_force", "date": "2024-03",
+          "relevance_cn": "七大支柱之一「未来技能」——扩 AI 学位名额、在二三线城市建数据与 AI 实验室，对冲 IT/ITeS 岗位流失。",
+          "relevance_en": "One of seven pillars is FutureSkills — expanding AI degree seats and Data/AI labs in Tier-2/3 cities to offset IT/ITeS displacement.",
+          "summary_cn": "2024-03 批准，五年预算 ₹10,371.92 crore（约 $1.24B）。截至 2025 年底支持 500 博士、5,000 硕士、8,000 本科 AI 学者。2026-27 当年拨 ₹1,000 crore（较上年下调）。",
+          "summary_en": "Approved March 2024, ₹10,371.92 cr (~$1.24B) over five years. As of late 2025 it backs 500 PhD, 5,000 PG and 8,000 UG AI scholars. The 2026-27 budget allocated ₹1,000 cr (down from the prior year).",
+          "source_url": "https://indiaai.gov.in/hub/indiaai-futureskills"
+        },
+        {
+          "title_cn": "《AI 经济中的就业创造路线图》", "title_en": "Roadmap for Job Creation in the AI Economy",
+          "authority": "NITI Aayog（联合 NASSCOM、BCG）",
+          "type": "guidance", "status": "in_force", "date": "2025-10",
+          "relevance_cn": "政府旗舰分析：警告 2031 年前的岗位替代，同时预测五年内最多 400 万新岗位，建议设「国家 AI 人才使命」。",
+          "relevance_en": "Flagship analysis: warns of displacement by 2031 while projecting up to 4M new jobs in five years, and recommends a National AI Talent Mission.",
+          "summary_cn": "2025-10 发布，以「工作—工人—劳动力」框架规划印度到 2035 年成为全球可信 AI 劳动力伙伴。核心建议「国家 AI 人才使命」正多部委协调，截至 2026-06 尚未启动。",
+          "summary_en": "Released Oct 2025; frames AI via 'work, worker, workforce' toward making India a trusted global AI workforce partner by 2035. Its headline National AI Talent Mission is being coordinated across ministries but had not launched as of June 2026.",
+          "source_url": "https://niti.gov.in/sites/default/files/2025-10/Roadmap_for_Job_Creation_in_the_AI_Economy.pdf"
+        },
+        {
+          "title_cn": "四部劳动法典（2026 实施）", "title_en": "Four Labour Codes (2026 implementation)",
+          "authority": "劳动与就业部",
+          "type": "law", "status": "in_progress", "date": "2025-11",
+          "relevance_cn": "非 AI 专项，但「基本工资须占 CTC 50%」规则在企业围绕 AI 重组人力之际重塑 IT 业薪酬成本，并把社保扩展到零工/平台工人。",
+          "relevance_en": "Not AI-specific, but the 50%-basic-pay rule reshapes IT payroll costs just as firms restructure around AI, and extends social security to gig/platform workers.",
+          "summary_cn": "四部法典（工资、劳资关系、社保、职业安全卫生）2025-11-21 颁布，2026-04-01 起推行；完全生效取决于各邦出台细则。",
+          "summary_en": "The four codes (Wages; Industrial Relations; Social Security; OSH) were notified Nov 21 2025, with rollout from Apr 1 2026; full enforcement depends on states notifying rules.",
+          "source_url": "https://www.india.gov.in/spotlight/details/new-labour-code-for-new-india-biggest-labour-reforms-in-independent-india"
+        },
+        {
+          "title_cn": "FutureSkills Prime", "title_en": "FutureSkills Prime",
+          "authority": "MeitY × NASSCOM",
+          "type": "program", "status": "in_force", "date": "2020-01",
+          "relevance_cn": "国家再培训平台，目标五年为约 200 万 IT 从业者再培训，AI/ML 是最大且最受欢迎方向。",
+          "relevance_en": "National reskilling platform targeting ~2M IT professionals over five years, with AI/ML the largest and most popular track.",
+          "summary_cn": "MeitY-NASSCOM 平台，免费政府认可课程（155+ 技能、70+ 岗位、10 项新兴技术），获 3,000+ IT 企业认可，含认证返费激励。",
+          "summary_en": "MeitY-NASSCOM platform offering free, government-recognised courses (155+ skills, 70+ roles, 10 emerging techs), recognised by 3,000+ IT firms, with a completion-reimbursement incentive.",
+          "source_url": "https://www.futureskillsprime.in/"
+        },
+        {
+          "title_cn": "印度 AI 治理指南 + DPDP 法案细则（AI 招聘角度）", "title_en": "India AI Governance Guidelines + DPDP Act Rules",
+          "authority": "MeitY",
+          "type": "guidance", "status": "in_force", "date": "2025-11",
+          "relevance_cn": "印度不急于专门立 AI 法；AI 招聘依赖 DPDP——招聘机构须就 AI 处理候选人数据明确告知并取得同意。",
+          "relevance_en": "India is not rushing a dedicated AI law; AI-in-hiring relies on the DPDP Act — staffing agencies must give clear notice and obtain consent for AI processing of candidate data.",
+          "summary_cn": "AI 治理指南 2025-11-05 发布，采轻量创新优先立场，依托现有法律。DPDP 细则 2025-11-13 颁布（分阶段），规范 AI/自动化招聘的同意与告知。尚无 AI 专项反偏见招聘规则。",
+          "summary_en": "The AI Governance Guidelines (Nov 5 2025) take a lightweight, innovation-first stance using existing law. The DPDP Rules (notified Nov 13 2025, staggered) govern consent and notice for personal data in AI/automated hiring. No standalone AI anti-bias hiring rule yet.",
+          "source_url": "https://www.storyboard18.com/digital/india-unlikely-to-rush-new-ai-regulations-will-use-dpdp-act-and-existing-laws-meity-85988.htm"
+        }
+      ]
+    },
+    {
+      "code": "PH", "name_cn": "菲律宾", "name_en": "Philippines", "flag": "🇵🇭",
+      "policies": [
+        {
+          "title_cn": "UNLAD 项目（₱740M BPO 再培训）", "title_en": "Project UNLAD (₱740M BPO reskilling)",
+          "authority": "DICT × IBPAP × TESDA",
+          "type": "program", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "旗舰 ₱7.4 亿公私合营再培训，把传统 BPO/语音岗位工人转向更高复杂度的 AI 熟练岗位（约 3% BPO 劳动力面临高替代风险）。",
+          "relevance_en": "Flagship ₱740M public-private reskilling moving BPO/voice workers into higher-complexity AI-fluent roles (~3% of the BPO workforce at high displacement risk).",
+          "summary_cn": "DICT、IBPAP、TESDA 三方 ₱740M 合作，与 TESDA 2026 年 ₱20 亿数字经济技能预算（目标 15 万工人）及 RA 12063 企业培训并行。",
+          "summary_en": "A ₱740M DICT-IBPAP-TESDA partnership, alongside TESDA's 2026 ₱2B digital-economy upskilling budget (target 150,000 workers) and enterprise-based training under RA 12063.",
+          "source_url": "https://thebusinessmanual.ph/features/2026-bpo-outlook-is-ai-replacing-or-assisting-filipinos/"
+        },
+        {
+          "title_cn": "AI 技术学院（宿务）", "title_en": "AI Tech Academy (Cebu)",
+          "authority": "PEZA × TESDA × StackTrek（联合 IBPAP）",
+          "type": "program", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "菲律宾首个政府主导/TESDA 认证 AI 培训机构，免费为出口园区（PEZA）工人发证，在 AI 增强 BPO 工作时保其就业能力。",
+          "relevance_en": "The Philippines' first government-led / TESDA-accredited AI training facility, certifying PEZA export-zone workers free to keep them employable as AI augments BPO work.",
+          "summary_cn": "2026-01-16 在宿务启动，向 PEZA 注册工人免费提供 AI、数据科学、金融科技、区块链课程；出口园区内据报已发约 5,000 份 AI 培训证书。",
+          "summary_en": "Launched Jan 16 2026 in Cebu, offering AI, data science, fintech and blockchain programs free to PEZA-registered workers; ~5,000 AI training certificates reportedly issued within export zones.",
+          "source_url": "https://manilastandard.net/business/314694125/peza-tesda-launch-first-government-led-ai-academy-to-boost-tech-workforce.html"
+        },
+        {
+          "title_cn": "第 20 届国会 AI 法案（AIRA / AI 发展与监管法 / AI 权利法案）", "title_en": "AI bills in the 20th Congress (AIRA / AI Bill of Rights)",
+          "authority": "菲律宾国会（参众两院）",
+          "type": "bill", "status": "proposed", "date": "2025-07",
+          "relevance_cn": "多项待审法案拟设 AI 监管机构和「AI 权利法案」，应对就业等领域算法歧视；截至 2026 年 6 月均未通过。",
+          "relevance_en": "Multiple pending bills would create AI oversight bodies and an 'AI Bill of Rights' against algorithmic discrimination (incl. employment); none passed as of June 2026.",
+          "summary_cn": "约 40 项众议院法案及多项参议院法案（如 SB25/AIRA 拟设国家 AI 委员会），均处委员会阶段——菲律宾仍无生效国家 AI 法或法定劳动力转型授权。",
+          "summary_en": "~40 House bills and several Senate bills (e.g. SB25/AIRA creating a National AI Commission) remain in committee — the Philippines still has no enacted national AI law or statutory workforce-transition mandate.",
+          "source_url": "https://senate.gov.ph/legislative-documents/bills/594456"
+        },
+        {
+          "title_cn": "DOLE 应对 AI/自动化失业计划 + 公正转型承诺", "title_en": "DOLE programs for AI-displaced workers + Just Transition",
+          "authority": "劳工与就业部（DOLE）",
+          "type": "program", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "DOLE 将 AI 认知与数字技能模块纳入现有生计/失业计划（DILP、Kabuhayan、海外劳工再融入），承诺实施 ILO 式公正转型方案。",
+          "relevance_en": "DOLE folded AI-awareness and digital-skills modules into existing livelihood/displacement programs and committed to an ILO-style Just Transition Work Programme.",
+          "summary_cn": "DOLE 承认小规模但真实的 AI 失业，2026 年在 DILP、Kabuhayan 及海外劳工方案中增 AI/数字技能模块。评论指菲律宾仍缺专门的国家 AI 劳动力转型框架。",
+          "summary_en": "DOLE acknowledges minimal-but-real AI displacement and in 2026 added AI/digital-skills components to its DILP, Kabuhayan and OFW programs. Observers note the Philippines still lacks a dedicated national AI workforce-transition framework.",
+          "source_url": "https://ils.dole.gov.ph/policy-advocacies/media-resources/news/ph-commits-to-implementing-just-transition-work-programme-dole-ils"
+        }
+      ]
+    },
+    {
+      "code": "JP", "name_cn": "日本", "name_en": "Japan", "flag": "🇯🇵",
+      "policies": [
+        {
+          "title_cn": "AI 推进法（AI 相关技术研发与应用促进法）", "title_en": "AI Promotion Act",
+          "authority": "国会 / 内阁府（AI 战略本部）",
+          "type": "law", "status": "in_force", "date": "2025-05",
+          "relevance_cn": "日本首部 AI 法；创新优先、无罚则。劳动关联在于国家促进 AI 教育与人力资源开发的责任，为 METI/MIC 再培训奠定法律依据。",
+          "relevance_en": "Japan's first AI law; innovation-first with no penalties. Its labor hook is the state's duty to promote AI education and human-resource development.",
+          "summary_cn": "国会 2025-05-28 通过；多数条款 2025-06-04 生效，第 III–IV 章 2025-09-01 全面生效。规定原则而非细则，无罚款（仅建议、信息索取、点名）。",
+          "summary_en": "Passed May 28 2025; most provisions effective June 4 2025, Chapters III–IV from Sept 1 2025. Sets principles rather than detailed rules, with no fines (only advice, information requests, and naming).",
+          "source_url": "https://www.gov-online.go.jp/hlj/en/november_2025/november_2025-08.html"
+        },
+        {
+          "title_cn": "企业 AI 指南（1.1 版）", "title_en": "AI Guidelines for Business (Ver. 1.1)",
+          "authority": "METI × MIC",
+          "type": "guidance", "status": "in_force", "date": "2025-03",
+          "relevance_cn": "软法指南涉 HR 中的 AI：指出不当 AI 分析导致歧视性待遇可引发法律/伦理问题，并赋 HR 部门 AI 教育职责。",
+          "relevance_en": "Soft-law guidance on AI in HR: flags that inappropriate AI analysis causing discriminatory treatment raises legal/ethical issues, and tasks HR with AI education.",
+          "summary_cn": "初版 2024-04，2025-03-28 更新至 1.1 版（截至 2026-06 为最新）。三层结构（基础价值、10 项原则、清单/案例），面向开发者、提供者与使用者。",
+          "summary_en": "Originally April 2024, updated to Ver. 1.1 on March 28 2025 (latest as of June 2026). A three-tier structure (foundational values, 10 principles, checklists/cases) for developers, providers and users.",
+          "source_url": "https://www.amt-law.com/en/insights/trending-news/trending-news_20250522001_en_001/"
+        },
+        {
+          "title_cn": "通过再培训实现职业晋升支援事业（リスキリング支援）", "title_en": "Reskilling-through-Career-Advancement Support Program",
+          "authority": "经济产业省（METI）",
+          "type": "program", "status": "in_force", "date": "2023-01",
+          "relevance_cn": "核心国家再培训计划（约 1 万亿日元/5 年方案的一部分），整合职业咨询、培训与就业安置，应对 AI/自动化改变技能需求。",
+          "relevance_en": "Core national reskilling scheme (part of a ~¥1 trillion / 5-year package) bundling career consultation, training and job placement as AI/automation shift skill demand.",
+          "summary_cn": "METI 旗舰再培训计划，由约 5 年 1 万亿日元方案支持。2026 年对中小及中型企业的更广泛支持达 1.13 万亿日元，应对劳动力短缺。",
+          "summary_en": "METI's flagship reskilling program, backed by the ~¥1 trillion/5-year envelope. METI's broader 2026 SME/mid-cap support totals ¥1.13 trillion amid labor shortages.",
+          "source_url": "https://careerup.reskilling.go.jp/"
+        }
+      ]
+    },
+    {
+      "code": "CN", "name_cn": "中国", "name_en": "China", "flag": "🇨🇳",
+      "policies": [
+        {
+          "title_cn": "生成式人工智能服务管理暂行办法", "title_en": "Interim Measures for Generative AI Services",
+          "authority": "国家网信办 + 6 部门",
+          "type": "regulation", "status": "in_force", "date": "2023-08",
+          "relevance_cn": "规范正在重塑白领与内容创作岗位的生成式 AI 服务，为自动化这些工作的工具设定备案、标识等合规底线。",
+          "relevance_en": "Governs the generative-AI services reshaping white-collar and creative jobs, setting filing/labeling compliance for the tools automating such work.",
+          "summary_cn": "中国首部 AIGC 专门规章，2023-08-15 施行，要求提供者向网信办备案、对 AI 生成内容加标识。截至 2025-11 已有 611 款生成式 AI 服务完成备案。就业关联是间接的。",
+          "summary_en": "China's first dedicated generative-AI rule, in force since Aug 15 2023; providers must file with the CAC and label AI-generated content. As of Nov 2025, 611 generative-AI services had completed filing. The employment link is indirect.",
+          "source_url": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm"
+        },
+        {
+          "title_cn": "互联网信息服务算法推荐管理规定", "title_en": "Algorithm Recommendation Provisions",
+          "authority": "网信办、工信部、公安部、市场监管总局",
+          "type": "regulation", "status": "in_force", "date": "2022-03",
+          "relevance_cn": "第 20 条直接规制平台/零工劳动者（如外卖骑手）的算法管理，要求公平派单、报酬、工时与休息算法。",
+          "relevance_en": "Article 20 directly regulates algorithmic management of platform/gig workers (e.g. delivery riders), requiring fair order-dispatch, pay, working-time and rest algorithms.",
+          "summary_cn": "2022-03-01 施行。第 20 条要求向劳动者提供工作调度服务的算法提供者保障报酬、休息休假等权益。是后续骑手/零工算法治理文件普遍援引的基础条款。",
+          "summary_en": "In force since March 1 2022. Article 20 obliges providers of algorithmic work-scheduling to protect workers' remuneration and rest rights — the foundational rule cited across China's later rider/gig algorithm-governance documents.",
+          "source_url": "https://www.gov.cn/zhengce/zhengceku/2022-01/04/content_5666429.htm"
+        },
+        {
+          "title_cn": "国务院关于深入实施「人工智能+」行动的意见", "title_en": "State Council Opinion on the 'AI Plus' Action",
+          "authority": "国务院（国发〔2025〕11 号）",
+          "type": "plan", "status": "in_force", "date": "2025-08",
+          "relevance_cn": "含明确就业支柱：引导 AI 创造新岗位、赋能传统岗位，要求 AI 技能培训，并对 AI 应用开展就业影响风险评估。",
+          "relevance_en": "Has an explicit employment pillar: directs AI to create new jobs and empower existing ones, mandates AI-skills training, and orders employment-impact risk assessments.",
+          "summary_cn": "2025-08-26 印发，设六大重点领域及 2027/2030/2035 目标。「人工智能+民生福祉」支柱明确涉及就业——以 AI 创造和赋能岗位、支持技能培训、强化就业影响风险评估。属政策意见。",
+          "summary_en": "Issued Aug 26 2025 with six priority sectors and 2027/2030/2035 targets. Its 'AI+ welfare' pillar explicitly addresses employment — using AI to create and empower jobs, supporting skills training, and strengthening labor-impact risk assessment. A policy directive, not law.",
+          "source_url": "https://www.gov.cn/gongbao/2025/issue_12266/202509/content_7039598.html"
+        },
+        {
+          "title_cn": "人社部新职业发布与 AI 技能培训行动", "title_en": "MOHRSS new-occupations recognition & AI-skills reskilling",
+          "authority": "人力资源和社会保障部（人社部）",
+          "type": "program", "status": "in_force", "date": "2025-05",
+          "relevance_cn": "认定 AI 催生的新职业（如生成式 AI 系统测试员、人工智能训练师）并开展全国 AI 技能培训，把 AI 劳动冲击转化为获认可岗位与培训通道。",
+          "relevance_en": "Recognizes AI-born occupations (e.g. generative-AI system tester, AI trainer) and runs national AI-skills reskilling, converting AI disruption into recognized jobs and training paths.",
+          "summary_cn": "2025-05 发布 17 个新职业、42 个新工种（含生成式 AI 系统测试）。2026 年宣布五项培训行动，含「人工智能技术技能提升」，并面向专技人才广泛开展 AI 通识继续教育。",
+          "summary_en": "In May 2025 MOHRSS announced 17 new occupations and 42 new job-types (incl. a generative-AI system test role). For 2026 it announced five training drives including an 'AI technical-skills upgrading' action plus broad AI-literacy continuing education.",
+          "source_url": "https://www.gov.cn/lianbo/bumen/202505/content_7023031.htm"
+        },
+        {
+          "title_cn": "新就业形态劳动者权益与平台算法治理系列指导意见（含骑手保护）", "title_en": "Platform/gig-worker rights & algorithmic-management guidance",
+          "authority": "人社部等 7/8 部门；中办、国办",
+          "type": "guidance", "status": "in_force", "date": "2021-07",
+          "relevance_cn": "保护零工/平台劳动者免受算法过度管理——禁以「最严算法」考核、要求公平派单与休息，并通过 2025–2026 职业伤害扩面持续升级。",
+          "relevance_en": "Protects gig/platform workers from algorithmic over-management — bars 'strictest algorithm' KPIs, mandates fair dispatch and rest, upgraded via the 2025–2026 occupational-injury rollout.",
+          "summary_cn": "以八部门 2021 指导意见与七部门骑手意见为核心。职业伤害保障由 7 省（2024）扩至 +10 省（2025-07），2026 拟覆盖全部 31 省+兵团。人社部 2026-01-27 宣布将制定基本权益保障办法及 AI 影响促就业专项文件（均待出台）。",
+          "summary_en": "Anchored by the 2021 eight-department and rider opinions. Occupational-injury insurance widened from 7 provinces (2024) to +10 (July 2025), slated for all 31 provinces in 2026. On Jan 27 2026 MOHRSS announced forthcoming basic-rights Measures and a dedicated AI-employment document.",
+          "source_url": "https://www.gov.cn/zhengce/zhengceku/202507/content_7031656.htm"
+        }
+      ]
+    },
+    {
+      "code": "CA", "name_cn": "加拿大", "name_en": "Canada", "flag": "🇨🇦",
+      "policies": [
+        {
+          "title_cn": "安大略《为劳动者工作法》——招聘 AI 披露要求", "title_en": "Ontario Working for Workers — job-posting AI disclosure",
+          "authority": "安大略省政府（就业标准法修订）",
+          "type": "law", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "要求 25 人以上雇主在公开招聘广告中披露是否使用 AI 筛选、评估或选择申请人。",
+          "relevance_en": "Requires employers with 25+ staff to disclose in public job postings whether AI is used to screen, assess or select applicants.",
+          "summary_cn": "依就业标准法修订，自 2026-01-01 起生效，AI 定义沿用 OECD 表述。法律要求披露但未规定形式/详细程度，并捆绑薪酬透明与岗位空缺披露规则。",
+          "summary_en": "Under ESA amendments, effective Jan 1 2026, with an OECD-aligned AI definition. It mandates disclosure but not its form/detail, and bundles pay-transparency and vacancy-disclosure rules.",
+          "source_url": "https://www.littler.com/news-analysis/asap/canada-new-ontario-job-posting-requirements-force-january-1-2026"
+        },
+        {
+          "title_cn": "《人工智能与数据法》(AIDA) / C-27 法案", "title_en": "AI and Data Act (AIDA) / Bill C-27",
+          "authority": "加拿大议会（ISED）",
+          "type": "bill", "status": "stalled", "date": "2025-01",
+          "relevance_cn": "本将是加拿大首部联邦 AI 法，规制「高影响」AI（含就业/HR 决策），但在通过前夭折。",
+          "relevance_en": "Would have been Canada's first federal AI law regulating 'high-impact' AI (incl. employment/HR), but died before enactment.",
+          "summary_cn": "AIDA（属 C-27）在 2025-01-06 议会休会时失效。2025-06 AI 部长确认 AIDA「按原稿已搁置」，不会以旧形式回归。截至 2026 年中无替代立法。",
+          "summary_en": "AIDA (within Bill C-27) died at prorogation Jan 6 2025. In June 2025 the AI Minister confirmed AIDA is 'off the table as drafted' and will not return in its old form. No replacement statute existed as of mid-2026.",
+          "source_url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-27"
+        },
+        {
+          "title_cn": "加拿大「AI for All」国家 AI 战略", "title_en": "Canada 'AI for All' National AI Strategy",
+          "authority": "加拿大政府（AI 部长 Solomon，ISED）",
+          "type": "program", "status": "in_force", "date": "2026-06",
+          "relevance_cn": "国家战略含劳动者 AI 培训，并明确承诺追踪 AI 对劳动力市场的影响，及为企业提供算力（关乎保留科技岗位）。",
+          "relevance_en": "National strategy with worker AI-training, an explicit commitment to track AI's labour-market impact, and compute access for firms (relevant to retaining tech jobs).",
+          "summary_cn": "2026-06-04 发布，基于 1.1 万余份公众意见，承诺及近期投资超 35 亿加元（含 7 亿算力获取基金扩容）。六大支柱含「推动 AI 普及实现共享繁荣」；属政策/拨款，非约束性劳工法规。",
+          "summary_en": "Launched June 4 2026 on 11,000+ submissions, with $3.5B+ committed (incl. a $700M Compute Access Fund expansion). Its six pillars include 'powering AI adoption for shared prosperity'; it is policy/funding, not binding labour law.",
+          "source_url": "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
+        }
+      ]
+    },
+    {
+      "code": "AU", "name_cn": "澳大利亚", "name_en": "Australia", "flag": "🇦🇺",
+      "policies": [
+        {
+          "title_cn": "《公平工作（堵塞漏洞第二号）法》2024——「类雇员」平台工作者", "title_en": "Closing Loopholes No. 2 Act 2024 — 'employee-like' platform workers",
+          "authority": "澳大利亚议会 / 公平工作委员会（FWC）",
+          "type": "law", "status": "in_force", "date": "2025-02",
+          "relevance_cn": "授权 FWC 为零工/平台「类雇员」制定最低标准，并要求算法停用账户前须经公平程序，直接涉及平台算法管理。",
+          "relevance_en": "Empowers the FWC to set minimum standards for gig/platform 'employee-like' workers and mandates a fair process before algorithmic deactivation, directly touching platform algorithmic management.",
+          "summary_cn": "2024-02 通过。自 2025-02-26 起平台停用劳动者前须依新《数字劳动平台停用守则》履行公平程序。批评者指其侧重账户停用，未触及算法管理不透明。",
+          "summary_en": "Passed Feb 2024. From Feb 26 2025 platforms must follow a fair process before deactivating workers under a new Digital Labour Platform Deactivation Code. Critics note it focuses on deactivation rather than broader algorithmic-management opacity.",
+          "source_url": "https://www.fwc.gov.au/about-us/new-laws/closing-loopholes-acts-whats-changing"
+        },
+        {
+          "title_cn": "《国家 AI 计划》——为 100 万澳人提供免费 AI 技能培训", "title_en": "National AI Plan — free AI skills training for 1 million",
+          "authority": "工业科学资源部 / 国家 AI 中心（NAIC）/ 就业与技能局",
+          "type": "program", "status": "in_force", "date": "2025-12",
+          "relevance_cn": "劳动力转型支柱：补贴式 AI 微技能培训，并对高失业风险群体给予针对性支持，围绕 AI 重塑岗位展开。",
+          "relevance_en": "A workforce-transition pillar: subsidised AI micro-skilling with targeted support for groups at higher displacement risk, framed around AI reshaping jobs.",
+          "summary_cn": "随《国家 AI 计划》（2025-12）公布，资助 100 万个全额补贴名额，由 NAIC 联合新州 TAFE 开设线上 AI 微技能课程。「惠及全民」支柱优先女性、原住民、大龄、残障及偏远地区劳动者。",
+          "summary_en": "Announced with the National AI Plan (Dec 2025), funding 1 million fully-subsidised scholarships for an online AI micro-skill course via the NAIC and TAFE NSW. Its 'spread the benefits' pillar prioritises women, First Nations, mature-aged, disabled and regional workers.",
+          "source_url": "https://www.minister.industry.gov.au/ministers/timayres/media-releases/future-ready-workforce-one-million-aussies-get-free-ai-skills-training"
+        },
+        {
+          "title_cn": "高风险 AI 强制护栏（提案）——已搁置，被《国家 AI 计划》取代", "title_en": "Mandatory guardrails for high-risk AI (proposal) — shelved",
+          "authority": "工业科学资源部（DISR）",
+          "type": "guidance", "status": "stalled", "date": "2025-12",
+          "relevance_cn": "被搁置的提案原会对高风险 AI（含招聘、职场决策）施加人工监督、透明度、测试等强制义务。",
+          "relevance_en": "The shelved proposal would have imposed binding obligations (human oversight, transparency, testing) on high-risk AI including hiring and workplace decisions.",
+          "summary_cn": "2024-09 DISR 发布提案文件，咨询收 300+ 意见。因业界担忧创新，政府决定不推进独立 AI 法或强制护栏；《国家 AI 计划》（2025-12-02）改为依靠现有技术中立法律、行业监管与自愿指南。",
+          "summary_en": "In Sept 2024 DISR released a proposals paper (300+ submissions). Amid innovation concerns the government chose not to proceed with a standalone AI Act or mandatory guardrails; the National AI Plan (Dec 2 2025) relies instead on existing technology-neutral laws, sector regulators and voluntary guidance.",
+          "source_url": "https://www.industry.gov.au/publications/national-ai-plan"
+        }
+      ]
+    },
+    {
+      "code": "BR", "name_cn": "巴西", "name_en": "Brazil", "flag": "🇧🇷",
+      "policies": [
+        {
+          "title_cn": "PL 2338/2023——人工智能法律框架（IA 法律里程碑）", "title_en": "PL 2338/2023 — Legal Framework for AI",
+          "authority": "国会（参议院已过，现众议院审议）",
+          "type": "bill", "status": "in_progress", "date": "2026-02",
+          "relevance_cn": "将用于招聘、绩效评估、晋升与解雇劳动者的 AI 列为「高风险」，要求人工监督、透明、可审计与劳工代表参与。",
+          "relevance_en": "Classifies AI used in recruitment, performance evaluation, promotion and dismissal as 'high-risk', requiring human oversight, transparency, auditability and worker representation.",
+          "summary_cn": "巴西主要 AI 法案，2024-12-10 参议院全票通过，2026 年仍滞留众议院（审议推迟至 2026-02），待报告人意见书与全体表决。若众议院修改须退回参议院，最终通过最早等到 2026 年底之后。",
+          "summary_en": "Brazil's main AI bill, unanimously approved by the Senate Dec 10 2024, still pending in the Chamber of Deputies through 2026 (pushed to Feb 2026), awaiting the rapporteur's report and a floor vote. Chamber amendments would send it back to the Senate, so enactment is not expected before late 2026.",
+          "source_url": "https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487262"
+        },
+        {
+          "title_cn": "PBIA——巴西人工智能计划 2024-2028（「AI 造福所有人」）", "title_en": "PBIA — Brazilian AI Plan 2024-2028",
+          "authority": "科学技术与创新部（MCTI）",
+          "type": "plan", "status": "in_force", "date": "2024-07",
+          "relevance_cn": "第二支柱（AI 普及、培训与能力建设）以包容性为重点资助 AI 劳动力培训/再培训，计划目标含创造就业。",
+          "relevance_en": "Axis 2 (Diffusion, Training and Capacity Building) funds inclusive AI workforce training/reskilling; the plan's goals include job creation.",
+          "summary_cn": "2024-07 发布的国家 AI 计划，四年（2024-2028）计划投资 230 亿雷亚尔，分五大支柱。第二支柱专注 AI 培训、能力建设与职业再培训。属执行中的政府计划。",
+          "summary_en": "A national AI plan launched July 2024, with R$23 billion planned over 2024-2028 across five axes. Axis 2 is dedicated to AI training, capacity building and professional reskilling. An active government program.",
+          "source_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/transformacaodigital/plano-brasileiro-de-inteligencia-artificial"
+        },
+        {
+          "title_cn": "平台/零工监管——PLP 12/2024、后续 PLP 152/2025（司机+配送员）", "title_en": "Platform/gig regulation — PLP 12/2024 & PLP 152/2025",
+          "authority": "国会众议院（平台运输/配送特别委员会）",
+          "type": "bill", "status": "stalled", "date": "2026-04",
+          "relevance_cn": "规制算法管理的平台工作，定义为「平台化自雇劳动者」（无 CLT 劳动关系），并设服务费上限与社保纳入。",
+          "relevance_en": "Regulates algorithmically-managed platform work, defining workers as 'platformized autonomous workers' (no CLT bond), with service-fee caps and social-security inclusion.",
+          "summary_cn": "行政部门 PLP 12/2024（仅载客司机）屡被撤出议程而搁置；众议院特别委员会现审议后续 PLP 152/2025（含配送员），服务费上限约周均 30%。截至 2026-04 表决屡次推迟，无全体通过。",
+          "summary_en": "The Executive's PLP 12/2024 (passenger drivers only) stalled after repeated agenda removals; a Chamber committee now works on successor PLP 152/2025 (incl. couriers), capping the service fee at ~30% weekly average. As of April 2026 the vote was repeatedly postponed with no floor approval.",
+          "source_url": "https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2419243"
+        }
+      ]
+    },
+    {
+      "code": "MX", "name_cn": "墨西哥", "name_en": "Mexico", "flag": "🇲🇽",
+      "policies": [
+        {
+          "title_cn": "《联邦劳动法》数字平台用工改革（第九章之二）", "title_en": "Federal Labor Law digital-platform reform (Chapter IX Bis)",
+          "authority": "联邦议会 / 劳动与社会保障部（STPS）",
+          "type": "law", "status": "in_force", "date": "2025-06",
+          "relevance_cn": "直接规制平台零工的算法管理——平台须披露算法如何派单、评分、奖惩，并由人工（非算法）复核封号/限流决定。",
+          "relevance_en": "Directly regulates algorithmic management of app-based gig workers — platforms must disclose how algorithms assign, rate, sanction and reward, with human (non-algorithmic) review of access decisions.",
+          "summary_cn": "2024-12-24 刊于官方公报，2025-06-22 生效，细则 2025-07-01 强制适用。将收入达墨西哥城最低工资的司机认定为从属雇员，纳入 IMSS 社保；要求书面「算法管理政策」并赋数字断连权。",
+          "summary_en": "Published in the DOF Dec 24 2024, in force June 22 2025, with operating rules mandatory from July 1 2025. Reclassifies drivers earning at/above Mexico City's minimum wage as subordinate employees with IMSS social security, and mandates a written 'algorithmic management policy' plus a right to digital disconnection.",
+          "source_url": "https://mexico.justia.com/federales/leyes/ley-federal-del-trabajo/titulo-sexto/capitulo-ix-bis/"
+        },
+        {
+          "title_cn": "《规范人工智能使用国家法》（参议院提案）", "title_en": "National Law to Regulate AI (Senate initiative)",
+          "authority": "参议院 AI 委员会",
+          "type": "bill", "status": "in_progress", "date": "2026-04",
+          "relevance_cn": "综合 AI 框架含劳动条款：拟将用于就业及劳动者画像决策的 AI 列为高风险（须强制登记），并授权国家 AI 主管机构监督其对劳动力的影响。",
+          "relevance_en": "A comprehensive AI framework with a labor hook: would classify employment/worker-profiling AI as high-risk (mandatory registry) and task a national AI authority with workforce-impact oversight.",
+          "summary_cn": "经约 10 个月专家听证，参议院 AI 委员会 2026-04 前后推出框架草案；仍在委员会审议，截至 2026-06 未通过。拟设国家 AI 主管机构、高风险登记、认证及分级处罚。存在多项并行提案。",
+          "summary_en": "After ~10 months of hearings the Senate's AI Commission advanced a draft framework around April 2026; still under committee discussion and not enacted as of June 2026. It proposes a National AI Authority, a high-risk registry, certification and tiered sanctions. Several parallel initiatives exist.",
+          "source_url": "https://www.infobae.com/mexico/2026/04/25/mexico-perfila-su-primera-ley-de-inteligencia-artificial-entre-ambicion-regulatoria-y-dudas-sobre-su-viabilidad/"
+        },
+        {
+          "title_cn": "公共 AI 培训中心（「墨西哥·创新之国」国家战略）", "title_en": "Public Center for AI Training (national strategy)",
+          "authority": "总统府（Sheinbaum 政府）/ ATDT / TecNM",
+          "type": "program", "status": "in_force", "date": "2025-10",
+          "relevance_cn": "国家 AI 议程的劳动力再培训支柱——以提升 AI 素养与就业能力、缓解 AI 引致劳动冲击为目标的公共培训计划。",
+          "relevance_en": "The workforce/reskilling pillar of Mexico's national AI agenda — public training aimed at AI-readiness and employability to mitigate AI-driven disruption.",
+          "summary_cn": "2025-10 启动，目标成为拉美最大公共 AI 学校：首批 1 万名学生在 TecNM 面授，并经 SaberesMx 免费远程学习，目标每年约 2.5 万名毕业生，含谷歌、亚马逊、微软认证。",
+          "summary_en": "Launched Oct 2025, aiming to be Latin America's largest public AI school: a first cohort of 10,000 students at TecNM campuses plus free remote study via SaberesMx, targeting ~25,000 graduates/year with Google, Amazon and Microsoft certifications.",
+          "source_url": "https://www.gob.mx/presidencia/prensa/presidenta-claudia-sheinbaum-encabeza-presentacion-del-nuevo-centro-publico-de-formacion-en-inteligencia-artificial"
+        }
+      ]
+    }
+  ]
+}

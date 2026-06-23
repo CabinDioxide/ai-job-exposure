@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球 AI 就业监管政策追踪 / Global AI-Employment Policy Tracker</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);
+--in_force:#34d3a6;--in_progress:#6c8cff;--consultation:#a06cff;--proposed:#ffaa55;--stalled:#ff6b6b}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:960px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .sep{color:var(--fg2);font-size:12px}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.language-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px;transition:all 0.2s}
+.lang-btn.active{background:var(--accent);color:white}
+.lang-btn:hover{color:var(--fg)}
+.lang-inactive{display:none}
+.page-header{padding:44px 0 24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.page-header .emoji{font-size:44px;margin-bottom:14px}
+.page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.page-header .lede{color:var(--fg2);margin-top:10px;font-size:14px;max-width:760px}
+.page-header .updated{margin-top:12px;font-size:12px;color:var(--fg2)}
+.controls{position:sticky;top:49px;background:rgba(10,10,15,0.92);backdrop-filter:blur(8px);z-index:90;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:8px}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.filter-row:last-child{margin-bottom:0}
+.filter-label{font-size:11px;color:var(--fg2);text-transform:uppercase;letter-spacing:0.06em;margin-right:4px}
+.chip{background:var(--bg3);border:1px solid var(--border);color:var(--fg2);padding:5px 12px;font-size:12.5px;border-radius:16px;cursor:pointer;transition:all 0.15s;white-space:nowrap;font-weight:500}
+.chip:hover{color:var(--fg);border-color:var(--accent)}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.chip .cnt{opacity:0.6;margin-left:5px;font-variant-numeric:tabular-nums}
+.jur-section{margin:28px 0}
+.jur-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.jur-head .flag{font-size:26px}
+.jur-head h2{font-size:19px;font-weight:600}
+.jur-head .jcount{font-size:12px;color:var(--fg2);margin-left:auto}
+.policy-grid{display:grid;gap:14px}
+.policy-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;transition:border-color 0.2s}
+.policy-card:hover{border-color:rgba(255,255,255,0.16)}
+.policy-card .pc-top{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.policy-card h3{font-size:15.5px;font-weight:600;flex:1;min-width:60%;line-height:1.4}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:12px;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap}
+.badge.type{background:var(--bg3);color:var(--fg2);border:1px solid var(--border)}
+.badge.status{color:#0a0a0f}
+.pc-meta{font-size:12px;color:var(--fg2);margin-bottom:10px;display:flex;gap:14px;flex-wrap:wrap}
+.pc-meta .date{font-variant-numeric:tabular-nums}
+.pc-rel{font-size:13.5px;color:var(--fg);margin-bottom:8px;font-weight:500}
+.pc-sum{font-size:13.5px;color:var(--fg2);margin-bottom:10px;line-height:1.6}
+.pc-src{font-size:12px}
+.pc-src a{color:var(--accent);text-decoration:none}
+.pc-src a:hover{text-decoration:underline}
+.empty{display:none;text-align:center;color:var(--fg2);padding:60px 0;font-size:14px}
+.report-footer{border-top:1px solid var(--border);padding:24px 0 48px;text-align:center;color:var(--fg2);font-size:13px;margin-top:40px}
+.report-footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="index.html">&larr; Dashboard</a>
+  <span class="sep">|</span>
+  <a href="reports/index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Reports</span></a>
+  <a href="methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn active" data-lang="cn">中文</button>
+  </div>
+</div></nav>
+
+<div class="wrapper">
+  <div class="page-header">
+    <div class="emoji">🏛️</div>
+    <h1><span class="cn">全球 AI 就业监管政策追踪</span><span class="en lang-inactive">Global AI-Employment Policy Tracker</span></h1>
+    <p class="lede"><span class="cn">覆盖 dashboard 追踪的 12 个司法辖区，收录与「AI × 就业」直接相关的监管政策——AI 招聘、算法管理、裁员披露、工人保护、再培训、外包。不含纯 AI 安全立法。状态与日期经独立核查。</span><span class="en lang-inactive">Covering the 12 jurisdictions this dashboard tracks, with regulation directly tied to AI &amp; employment — AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing. Excludes general AI-safety law. Status and dates independently verified.</span></p>
+    <p class="updated"><span class="cn">数据更新：<span id="updated"></span> · 共 <span id="total"></span> 条政策 · 12 个辖区</span><span class="en lang-inactive">Updated: <span id="updatedEn"></span> · <span id="totalEn"></span> policies · 12 jurisdictions</span></p>
+  </div>
+
+  <div class="controls">
+    <div class="filter-row" id="statusFilters">
+      <span class="filter-label"><span class="cn">状态</span><span class="en lang-inactive">Status</span></span>
+    </div>
+    <div class="filter-row" id="jurFilters">
+      <span class="filter-label"><span class="cn">辖区</span><span class="en lang-inactive">Region</span></span>
+    </div>
+  </div>
+
+  <div id="content"></div>
+  <div class="empty" id="empty"><span class="cn">没有匹配的政策。</span><span class="en lang-inactive">No matching policies.</span></div>
+</div>
+
+<div class="report-footer">
+  <p><span class="cn">数据源 <code>data/ai_policy.json</code> · 由 AI 研究助手按月自动收集与核查</span><span class="en lang-inactive">Source <code>data/ai_policy.json</code> · auto-collected and verified monthly by the AI Research Assistant</span></p>
+  <p style="margin-top:8px"><a href="index.html"><span class="cn">← 返回 Dashboard</span><span class="en lang-inactive">← Back to Dashboard</span></a></p>
+</div>
+
+<script>
+const STATUS = {
+  in_force:    {cn:'已生效', en:'In force',     color:'var(--in_force)'},
+  in_progress: {cn:'推进中', en:'In progress',  color:'var(--in_progress)'},
+  consultation:{cn:'咨询中', en:'Consultation', color:'var(--consultation)'},
+  proposed:    {cn:'已提案', en:'Proposed',      color:'var(--proposed)'},
+  stalled:     {cn:'已搁置', en:'Stalled',       color:'var(--stalled)'}
+};
+const STATUS_ORDER = ['in_force','in_progress','consultation','proposed','stalled'];
+const TYPE = {
+  law:{cn:'法律',en:'Law'}, bill:{cn:'法案',en:'Bill'}, regulation:{cn:'法规',en:'Regulation'},
+  directive:{cn:'指令',en:'Directive'}, guidance:{cn:'指南',en:'Guidance'}, program:{cn:'计划',en:'Program'},
+  plan:{cn:'规划',en:'Plan'}, mission:{cn:'使命',en:'Mission'}
+};
+let DATA=null, activeStatus='all', activeJur='all', lang='cn';
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function bi(cn,en){return `<span class="cn">${cn}</span><span class="en lang-inactive">${en}</span>`;}
+
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.cn,.en').forEach(el=>{
+    if(el.classList.contains(l)) el.classList.remove('lang-inactive');
+    else if(el.classList.contains(l==='cn'?'en':'cn')) el.classList.add('lang-inactive');
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+}
+
+function buildFilters(){
+  // status counts
+  const counts={}; let total=0;
+  DATA.jurisdictions.forEach(j=>j.policies.forEach(p=>{counts[p.status]=(counts[p.status]||0)+1; total++;}));
+  const sf=document.getElementById('statusFilters');
+  const mkStatus=(key,label,color,cnt)=>{
+    const c=document.createElement('button'); c.className='chip'+(activeStatus===key?' active':'');
+    c.dataset.status=key;
+    c.innerHTML=(color?`<span class="dot" style="background:${color}"></span>`:'')+label+`<span class="cnt">${cnt}</span>`;
+    c.onclick=()=>{activeStatus=key; render();};
+    sf.appendChild(c);
+  };
+  mkStatus('all', bi('全部','All'), '', total);
+  STATUS_ORDER.forEach(s=>{ if(counts[s]) mkStatus(s, bi(STATUS[s].cn,STATUS[s].en), STATUS[s].color, counts[s]); });
+
+  const jf=document.getElementById('jurFilters');
+  const mkJur=(key,label,cnt)=>{
+    const c=document.createElement('button'); c.className='chip'+(activeJur===key?' active':'');
+    c.dataset.jur=key;
+    c.innerHTML=label+(cnt!=null?`<span class="cnt">${cnt}</span>`:'');
+    c.onclick=()=>{activeJur=key; render();};
+    jf.appendChild(c);
+  };
+  mkJur('all', bi('全部','All'), total);
+  DATA.jurisdictions.forEach(j=>mkJur(j.code, `${j.flag} `+bi(j.name_cn,j.name_en), j.policies.length));
+}
+
+function policyCard(p){
+  const st=STATUS[p.status]||{cn:p.status,en:p.status,color:'var(--fg2)'};
+  const ty=TYPE[p.type]||{cn:p.type,en:p.type};
+  return `<div class="policy-card" data-status="${p.status}">
+    <div class="pc-top">
+      <h3>${bi(esc(p.title_cn),esc(p.title_en))}</h3>
+      <div class="badges">
+        <span class="badge type">${bi(ty.cn,ty.en)}</span>
+        <span class="badge status" style="background:${st.color}">${bi(st.cn,st.en)}</span>
+      </div>
+    </div>
+    <div class="pc-meta">
+      <span class="authority">${bi(esc(p.authority),esc(p.authority))}</span>
+      <span class="date">📅 ${esc(p.date)}</span>
+    </div>
+    <div class="pc-rel">${bi(esc(p.relevance_cn),esc(p.relevance_en))}</div>
+    <div class="pc-sum">${bi(esc(p.summary_cn),esc(p.summary_en))}</div>
+    <div class="pc-src"><a href="${esc(p.source_url)}" target="_blank" rel="noopener">${bi('来源 ↗','Source ↗')}</a></div>
+  </div>`;
+}
+
+function render(){
+  const root=document.getElementById('content'); root.innerHTML='';
+  let shown=0;
+  DATA.jurisdictions.forEach(j=>{
+    if(activeJur!=='all' && j.code!==activeJur) return;
+    const pols=j.policies.filter(p=>activeStatus==='all'||p.status===activeStatus);
+    if(!pols.length) return;
+    shown+=pols.length;
+    const sec=document.createElement('div'); sec.className='jur-section';
+    sec.innerHTML=`<div class="jur-head"><span class="flag">${j.flag}</span><h2>${bi(esc(j.name_cn),esc(j.name_en))}</h2>
+      <span class="jcount">${pols.length} ${lang==='cn'?'条':''}</span></div>
+      <div class="policy-grid">${pols.map(policyCard).join('')}</div>`;
+    root.appendChild(sec);
+  });
+  document.getElementById('empty').style.display = shown? 'none':'block';
+  // refresh chip active states
+  document.querySelectorAll('#statusFilters .chip').forEach(c=>c.classList.toggle('active', c.dataset.status===activeStatus));
+  document.querySelectorAll('#jurFilters .chip').forEach(c=>c.classList.toggle('active', c.dataset.jur===activeJur));
+  setLang(lang); // re-apply language to freshly rendered nodes
+}
+
+fetch('data/ai_policy.json').then(r=>r.json()).then(d=>{
+  DATA=d;
+  let total=0; d.jurisdictions.forEach(j=>total+=j.policies.length);
+  document.getElementById('updated').textContent=d.updated;
+  document.getElementById('updatedEn').textContent=d.updated;
+  document.getElementById('total').textContent=total;
+  document.getElementById('totalEn').textContent=total;
+  buildFilters();
+  render();
+}).catch(e=>{
+  document.getElementById('content').innerHTML='<p style="color:var(--fg2);padding:40px 0">'+bi('加载政策数据失败。','Failed to load policy data.')+'</p>';
+});
+
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+</script>
+</body>
+</html>
