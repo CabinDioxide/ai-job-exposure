@@ -1,8 +1,8 @@
 {
   "module": "ai_policy",
   "updated": "2026-06-23",
-  "note_cn": "覆盖 dashboard 追踪的 12 个司法辖区的「AI × 就业」相关监管政策。仅收录与就业/劳动相关的条目（AI 招聘、算法管理、裁员披露、工人保护、再培训、外包），不含纯 AI 安全立法。状态与日期截至更新日，由独立核查。",
-  "note_en": "AI-and-employment regulation across the 12 jurisdictions this dashboard tracks. Only labor/employment-relevant items (AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing) — not general AI-safety law. Status and dates current as of the update date, independently verified.",
+  "note_cn": "覆盖 13 个主要司法辖区（dashboard 追踪的 12 国 + 韩国）的「AI × 就业」相关监管政策。仅收录与就业/劳动相关的条目（AI 招聘、算法管理、裁员披露、工人保护、再培训、外包），不含纯 AI 安全立法。状态与日期截至更新日，由独立核查。",
+  "note_en": "AI-and-employment regulation across 13 major jurisdictions (the 12 this dashboard tracks, plus South Korea). Only labor/employment-relevant items (AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing) — not general AI-safety law. Status and dates current as of the update date, independently verified.",
   "jurisdictions": [
     {
       "code": "US", "name_cn": "美国", "name_en": "United States", "flag": "🇺🇸",
@@ -96,6 +96,16 @@
           "summary_cn": "HB 3773 于 2026 年 1 月 1 日生效，禁止就业决策中的歧视性 AI（含生成式）并要求事先告知；违规雇主担实际赔偿、民事罚款及律师费。IDHR 正定实施细则。",
           "summary_en": "HB 3773 took effect Jan 1 2026, prohibiting discriminatory AI (incl. generative AI) in employment decisions and requiring prior notice; violations expose employers to damages, penalties and fees. IDHR is finalizing rules.",
           "source_url": "https://www.hinshawlaw.com/en/insights/blogs/employment-law-observer/illinois-adopts-new-ai-in-employment-regulations-what-employers-need-to-know-for-2026"
+        },
+        {
+          "title_cn": "德州 TRAIGA（负责任 AI 治理法，HB 149）", "title_en": "Texas TRAIGA (Responsible AI Governance Act, HB 149)",
+          "authority": "德州议会 / 检察长执法",
+          "type": "law", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "禁止以「故意歧视受保护群体」为目的开发/部署 AI（含就业场景）；但仅差别影响、无意图不构成违法。",
+          "relevance_en": "Bars developing/deploying AI with intent to discriminate against a protected class (incl. employment); disparate impact without intent is not a violation.",
+          "summary_cn": "2025-06-22 签署，2026-01-01 生效。仅检察长可执法（无私人诉权），先给 60 天补救期；罚款 $1 万–$20 万/项。对雇主相对友好——须证明「故意」，差别影响不足以构成违法。",
+          "summary_en": "Signed June 22 2025, effective Jan 1 2026. Only the Attorney General enforces (no private right of action), with a 60-day cure period; penalties $10K–$200K per violation. Relatively employer-friendly — it requires intent, with disparate impact alone insufficient.",
+          "source_url": "https://www.klgates.com/Pared-Back-Version-of-the-Texas-Responsible-Artificial-Intelligence-Governance-Act-Signed-Into-Law-6-24-2025"
         }
       ]
     },
@@ -366,6 +376,41 @@
           "summary_cn": "METI 旗舰再培训计划，由约 5 年 1 万亿日元方案支持。2026 年对中小及中型企业的更广泛支持达 1.13 万亿日元，应对劳动力短缺。",
           "summary_en": "METI's flagship reskilling program, backed by the ~¥1 trillion/5-year envelope. METI's broader 2026 SME/mid-cap support totals ¥1.13 trillion amid labor shortages.",
           "source_url": "https://careerup.reskilling.go.jp/"
+        }
+      ]
+    },
+    {
+      "code": "KR", "name_cn": "韩国", "name_en": "South Korea", "flag": "🇰🇷",
+      "policies": [
+        {
+          "title_cn": "《AI 基本法》（AI 发展与信任框架法）", "title_en": "AI Basic Act (Framework Act on AI Development and Trust)",
+          "authority": "国会 / 科学技术信息通信部（MSIT）",
+          "type": "law", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "把「就业」明确列为高影响 AI 领域——简历筛选、候选人排名、绩效评估等须满足透明度、风险管理与事前告知义务。",
+          "relevance_en": "Explicitly lists 'employment' as a high-impact AI domain — resume screening, candidate ranking and performance evaluation must meet transparency, risk-management and prior-notice duties.",
+          "summary_cn": "2025-01 制定、2026-01-22 连同施行令生效，亚洲首部综合性 AI 框架法。就业列入高影响 AI（与医疗、信贷、公共行政并列）；高影响/生成式 AI 须事前告知用户使用了 AI。MSIT 设至少 1 年宽限期，2026 年一般暂缓调查与罚款（严重危害除外）。",
+          "summary_en": "Enacted Jan 2025, effective with its Enforcement Decree on Jan 22 2026 — Asia's first comprehensive AI framework law. Employment is a high-impact domain (alongside healthcare, credit, public administration); high-impact/generative AI must give users prior notice. MSIT runs a grace period of at least one year, generally deferring investigations and fines in 2026 except for serious harm.",
+          "source_url": "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"
+        },
+        {
+          "title_cn": "《公平招聘程序法》修正（AI 招聘告知，拟议）", "title_en": "Fair Hiring Procedure Act amendment (AI-hiring notice, proposed)",
+          "authority": "雇佣劳动部 / 国会",
+          "type": "bill", "status": "proposed", "date": "2026-01",
+          "relevance_cn": "拟要求企业在招聘中使用 AI 时向求职者事前告知——直接针对 AI 招聘透明度。",
+          "relevance_en": "Would require companies to notify candidates in advance when AI is used in hiring — directly targeting AI-recruitment transparency.",
+          "summary_cn": "为补足《AI 基本法》在招聘环节的告知义务，已提出对《公平招聘程序法》的修正，要求 AI 用于招聘时向求职者告知。截至 2026 年中仍处提案阶段。韩国另有已生效的《盲招法》限制招聘中收集与岗位无关的个人信息。",
+          "summary_en": "To complement the AI Basic Act's notice duty at the hiring stage, an amendment to the Fair Hiring Procedure Act has been proposed requiring candidate notice when AI is used in recruitment. As of mid-2026 it remains a proposal. Korea also has an in-force 'Blind Hiring Act' limiting collection of job-irrelevant personal data in hiring.",
+          "source_url": "https://www.littler.com/news-analysis/asap/understanding-south-koreas-new-ai-law-key-considerations-multinational-employers"
+        },
+        {
+          "title_cn": "国家 AI 人才培养计划 + 「AI+ 力提升」项目", "title_en": "National AI Talent Plan + 'AI+ Competency-Up' Project",
+          "authority": "科学技术信息通信部（MSIT）/ 雇佣劳动部",
+          "type": "program", "status": "in_force", "date": "2026-01",
+          "relevance_cn": "大规模劳动力再培训与 AI 人才培养，对冲 AI 对岗位的冲击、支撑「全球 AI 三强」目标。",
+          "relevance_en": "Large-scale reskilling and AI-talent cultivation to offset AI's job impact and back the 'top-3 global AI power' goal.",
+          "summary_cn": "政府 2026 年投入约 ₩1.4 万亿（约 $10 亿）培养高端 AI 人才（含培训 1.1 万名高级专家）。雇佣劳动部「AI+ 力提升项目」目标到 2030 年为逾 100 万人提供 AI 职业培训，并把 K-Digital Training 升级为「KDT AI Campus」培养 1 万名产业级人才。",
+          "summary_en": "The government is investing ~₩1.4 trillion (~$1B) in 2026 to develop advanced AI talent (incl. training 11,000 senior specialists). The Ministry of Employment and Labor's 'AI+ Competency-Up Project' targets AI job-training for 1M+ people by 2030, upgrading K-Digital Training into a 'KDT AI Campus' producing 10,000 industry-ready specialists.",
+          "source_url": "https://www.koreaherald.com/article/10612847"
         }
       ]
     },
