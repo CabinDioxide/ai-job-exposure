@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新加坡 K 型双臂分析 / Singapore K-Shape Dual-Arm Analysis</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);
+--cap:#34d3a6;--cap2:#7ef0c8;--lab:#ff7a6b;--lab2:#ffb27a;--warn:#ffd166}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:980px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.lang-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px}
+.lang-btn.active{background:var(--accent);color:#fff}
+.en-lab{color:var(--fg2);font-weight:400;font-size:0.82em}
+.page-header{padding:44px 0 20px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.page-header .emoji{font-size:42px;margin-bottom:12px}
+.page-header h1{font-size:27px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.page-header .lede{color:var(--fg2);margin-top:12px;font-size:14.5px;max-width:820px}
+.page-header .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:11.5px;padding:4px 11px;border-radius:14px;border:1px solid var(--border);background:var(--bg3);color:var(--fg2)}
+.tag.cap{color:var(--cap);border-color:rgba(52,211,166,.3)}
+.tag.lab{color:var(--lab);border-color:rgba(255,122,107,.3)}
+h2.sec{font-size:21px;font-weight:700;margin:40px 0 6px;display:flex;align-items:baseline;gap:10px}
+h2.sec .n{font-size:14px;color:var(--fg2);font-weight:600}
+h2.sec.cap{color:var(--cap)} h2.sec.lab{color:var(--lab)}
+.sec-sub{color:var(--fg2);font-size:13.5px;margin-bottom:18px;max-width:820px}
+h3{font-size:16px;font-weight:600;margin:24px 0 10px;color:var(--accent)}
+p{margin-bottom:13px;font-size:14.5px}
+strong{color:#fff;font-weight:600}
+.diagram-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;margin:22px 0}
+.kfig{width:100%;height:auto;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.card.cap{border-left:3px solid var(--cap)} .card.lab{border-left:3px solid var(--lab)}
+.card .big{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1;margin-bottom:4px}
+.card.cap .big{color:var(--cap2)} .card.lab .big{color:var(--lab2)}
+.card .cap-t{font-size:13px;color:var(--fg);font-weight:600;margin-bottom:4px}
+.card .desc{font-size:12.5px;color:var(--fg2);line-height:1.55}
+.bar-row{display:flex;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+.bar-row .lbl{width:148px;flex-shrink:0;color:var(--fg2)}
+.bar-track{flex:1;background:var(--bg3);border-radius:6px;height:22px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11.5px;font-weight:600;color:#0a0a0f;white-space:nowrap}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--bg3);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;padding:13px 17px;margin:18px 0;font-size:13.5px;background:var(--bg2)}
+.callout.warn{border-left-color:var(--warn)} .callout.lab{border-left-color:var(--lab)} .callout.cap{border-left-color:var(--cap)}
+.callout .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin-bottom:5px}
+.callout.warn .l{color:var(--warn)} .callout.lab .l{color:var(--lab)} .callout.cap .l{color:var(--cap)}
+.cf{background:rgba(255,209,102,.05);border:1px dashed rgba(255,209,102,.3);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:13px}
+.cf .l{font-size:11px;font-weight:700;color:var(--warn);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;vertical-align:middle}
+.pill.meas{background:rgba(52,211,166,.18);color:var(--cap2)}
+.pill.scen{background:rgba(255,209,102,.16);color:var(--warn)}
+.pill.proj{background:rgba(108,140,255,.18);color:var(--accent)}
+.watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:16px 0}
+.watch .w{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:15px 17px}
+.watch .w .wt{font-weight:600;font-size:14px;margin-bottom:6px}
+.watch .w .wd{font-size:12.5px;color:var(--fg2);line-height:1.55}
+.src{font-size:12px;color:var(--fg2);font-style:italic}
+footer{border-top:1px solid var(--border);padding:22px 0 60px;color:var(--fg2);font-size:12.5px;margin-top:46px}
+footer a{color:var(--accent);text-decoration:none}
+footer .srcs{font-size:11.5px;line-height:1.8;margin-top:8px}
+.en{display:none}
+body.lang-en .cn{display:none} body.lang-en .en{display:inline}
+body.lang-en .en.blk{display:block}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="index.html">&larr; Dashboard</a>
+  <a href="policy.html" class="nav-link">🏛️ <span class="cn">政策追踪</span><span class="en">Policy</span></a>
+  <a href="reports/index.html" class="nav-link"><span class="cn">月报存档</span><span class="en">Reports</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn" data-l="en">EN</button>
+    <button class="lang-btn active" data-l="cn">中文</button>
+  </div>
+</div></nav>
+
+<div class="wrapper">
+  <div class="page-header">
+    <div class="emoji">🇸🇬</div>
+    <h1><span class="cn">新加坡 K 型双臂分析</span><span class="en">Singapore K-Shape Dual-Arm Analysis</span> <span class="en-lab">— AI &amp; 就业 / labour &amp; capital</span></h1>
+    <p class="lede"><span class="cn">把「K 型分化」拆成两条独立的臂分别检验：<strong>劳动·暴露臂（下臂）</strong>由新加坡的就业结构决定，<strong>资本·受益臂（上臂）</strong>由它的资本与资产捕获能力决定。新加坡的特殊性在于——它同时站在两条臂的最尖端。每个数字标注证据等级：<span class="pill meas">实测</span>已被直接测到 / <span class="pill proj">预测</span>机制推断 / <span class="pill scen">情景</span>官方情景假设。</span><span class="en blk">The "K-shape" is split into two arms tested separately: the <strong>labour / exposure arm (lower)</strong> set by Singapore's employment structure, and the <strong>capital / benefit arm (upper)</strong> set by its capital-and-asset capture. Singapore is unusual in sitting at the extreme tip of <em>both</em>. Each figure is tagged: <span class="pill meas">measured</span> / <span class="pill proj">projected</span> / <span class="pill scen">scenario</span>.</span></p>
+    <div class="badges">
+      <span class="tag lab"><span class="cn">下臂：暴露度发达世界最高</span><span class="en">Lower: highest exposure in the developed world</span></span>
+      <span class="tag cap"><span class="cn">上臂：AI 资本收益捕获最强</span><span class="en">Upper: strongest AI-capital capture</span></span>
+      <span class="tag"><span class="cn">数据截至 2026-06</span><span class="en">Data through 2026-06</span></span>
+    </div>
+  </div>
+
+  <!-- ===== K DIAGRAM ===== -->
+  <div class="diagram-wrap">
+  <svg class="kfig" viewBox="0 0 820 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,system-ui,sans-serif">
+    <defs>
+      <linearGradient id="gcap" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#34d3a6" stop-opacity="0.35"/><stop offset="1" stop-color="#7ef0c8"/>
+      </linearGradient>
+      <linearGradient id="glab" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#ff7a6b" stop-opacity="0.35"/><stop offset="1" stop-color="#ffb27a"/>
+      </linearGradient>
+    </defs>
+    <!-- origin -->
+    <circle cx="120" cy="220" r="5" fill="#e0e0e8"/>
+    <text x="120" y="252" fill="#888894" font-size="12" text-anchor="middle">2022 · 共同起点 / origin</text>
+    <line x1="120" y1="40" x2="120" y2="400" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 4"/>
+    <!-- upper arm (capital) -->
+    <line x1="120" y1="220" x2="720" y2="74" stroke="url(#gcap)" stroke-width="4"/>
+    <text x="150" y="128" fill="#34d3a6" font-size="14" font-weight="700">▲ 资本·受益臂  Capital / benefit</text>
+    <circle cx="350" cy="160" r="4" fill="#34d3a6"/><text x="362" y="164" fill="#9fb4ad" font-size="11.5">数据中心 ~$270 亿涌入</text>
+    <circle cx="520" cy="118" r="4" fill="#34d3a6"/><text x="532" y="122" fill="#9fb4ad" font-size="11.5">主权基金两头压注（GIC / 淡马锡）</text>
+    <circle cx="690" cy="84" r="7" fill="#7ef0c8"/><text x="700" y="70" fill="#7ef0c8" font-size="12.5" font-weight="700" text-anchor="end">🇸🇬 收益捕获最强</text>
+    <!-- lower arm (labour) -->
+    <line x1="120" y1="220" x2="720" y2="350" stroke="url(#glab)" stroke-width="4"/>
+    <text x="150" y="322" fill="#ff7a6b" font-size="14" font-weight="700">▼ 劳动·暴露臂  Labour / exposure</text>
+    <circle cx="350" cy="270" r="4" fill="#ff7a6b"/><text x="362" y="274" fill="#c8a79b" font-size="11.5">77% 就业高暴露（发达国 60%）</text>
+    <circle cx="520" cy="304" r="4" fill="#ff7a6b"/><text x="532" y="308" fill="#c8a79b" font-size="11.5">应届全职岗位 87.5%→74.4%</text>
+    <circle cx="690" cy="342" r="7" fill="#ffb27a"/><text x="700" y="364" fill="#ffb27a" font-size="12.5" font-weight="700" text-anchor="end">🇸🇬 暴露度最高</text>
+    <!-- divergence note -->
+    <text x="120" y="28" fill="#e0e0e8" font-size="13.5" font-weight="700">新加坡 = 两条臂尖端的浓缩样本 · the concentrated tip of both arms</text>
+  </svg>
+  </div>
+
+  <!-- ===== ARM A: EXPOSURE ===== -->
+  <h2 class="sec lab"><span class="n">A</span><span class="cn">劳动·暴露臂 — 从就业结构推出暴露度</span><span class="en">Labour / Exposure Arm — exposure derived from employment structure</span></h2>
+  <p class="sec-sub"><span class="cn">先看结构，再看暴露：新加坡的就业结构本身就是一个「暴露放大器」。</span><span class="en">Structure first, then exposure: Singapore's employment structure is itself an "exposure amplifier."</span></p>
+
+  <h3><span class="cn">A.1 就业结构 → 为什么暴露度是发达世界最高</span><span class="en">A.1 Employment structure → why exposure is the developed world's highest</span></h3>
+  <p><span class="cn">新加坡是一个 <strong>PMET（专业人员、经理、行政、技术人员）为主</strong>的服务-枢纽经济：法律、金融、咨询、ICT 是它的核心。这恰好是生成式 AI 暴露度最高的职业段。IMF 2024 年对新加坡的国别评估直接测出：<strong>约 77% 的新加坡就业者高度暴露于 AI</strong>，远高于发达经济体平均的 60%、新兴市场的 40% —— 原因正是新加坡<strong>只有约 23% 的劳动力在低技能（低暴露）岗位</strong>。换言之，前面全球讨论里那个「入门任务可自动化 + 内生采纳」的机制，落到新加坡是<strong>最高浓度</strong>。</span><span class="en blk">Singapore is a <strong>PMET-dominated</strong> services hub — legal, finance, consulting, ICT — exactly the band most exposed to generative AI. The IMF's 2024 assessment measured <strong>~77% of Singapore workers as highly exposed</strong> vs 60% for advanced economies and 40% for emerging markets, because <strong>only ~23% sit in low-skill (low-exposure) jobs</strong>. The global "automatable entry tasks + endogenous adoption" mechanism lands here at maximum concentration.</span></p>
+
+  <div class="bar-row"><span class="lbl"><span class="cn">新加坡</span><span class="en">Singapore</span></span><div class="bar-track"><div class="bar-fill" style="width:77%;background:var(--lab)">77% <span style="opacity:.8">&nbsp;高暴露 / highly exposed</span></div></div></div>
+  <div class="bar-row"><span class="lbl"><span class="cn">发达经济体均值</span><span class="en">Advanced econ. avg</span></span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#b06a5e">60%</div></div></div>
+  <div class="bar-row"><span class="lbl"><span class="cn">新兴市场均值</span><span class="en">Emerging mkt avg</span></span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#7a544c">40%</div></div></div>
+  <p class="src"><span class="cn">来源：IMF 2024 Article IV / Selected Issues（Singapore）。<span class="pill meas">实测</span>暴露度是测量值；其对就业的影响则未被直接测到。</span><span class="en">Source: IMF 2024 Article IV (Singapore). <span class="pill meas">measured</span> exposure is a measurement; its employment effect is not directly observed.</span></p>
+
+  <h3><span class="cn">A.2 暴露 ≠ 替代：互补性把暴露段劈成两半（公民内部的 K）</span><span class="en">A.2 Exposure ≠ replacement: complementarity splits the exposed band (an intra-citizen K)</span></h3>
+  <p><span class="cn">关键不是「暴露率高」，而是 IMF 进一步把高暴露段按<strong>互补性</strong>劈开 —— 这才是 K 的源头：</span><span class="en blk">What matters is not the headline exposure but the IMF's split of the exposed band by <strong>complementarity</strong> — this is where the K originates:</span></p>
+  <table>
+    <thead><tr><th><span class="cn">就业结构分段</span><span class="en">Structural segment</span></th><th class="num"><span class="cn">占就业</span><span class="en">Share</span></th><th><span class="cn">K 含义</span><span class="en">K meaning</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="cn">高暴露 · <strong>高互补性</strong></span><span class="en">High-exposure · <strong>high complementarity</strong></span></td><td class="num">38.9%</td><td style="color:var(--cap2)"><span class="cn">有望增益（上臂的人）</span><span class="en">likely to gain (upper-arm people)</span></td></tr>
+      <tr><td><span class="cn">高暴露 · <strong>低互补性</strong></span><span class="en">High-exposure · <strong>low complementarity</strong></span></td><td class="num">38.6%</td><td style="color:var(--lab2)"><span class="cn">替代风险（下臂的人）</span><span class="en">displacement risk (lower-arm people)</span></td></tr>
+      <tr><td><span class="cn">低暴露（低技能）</span><span class="en">Low-exposure (low-skill)</span></td><td class="num">~23%</td><td><span class="cn">受 AI 第一波影响小</span><span class="en">little first-wave AI impact</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout lab"><div class="l"><span class="cn">结构含义</span><span class="en">Structural read</span></div><p style="margin:0"><span class="cn">高暴露段几乎对半分（38.9% 增益 vs 38.6% 风险）。这意味着收益和损失<strong>落在不同的人身上</strong> —— 这是一条<strong>公民内部</strong>的 K，而不是「新加坡 vs 别国」。IMF 自己点名：女性与年轻工人暴露更高，<strong>在缺乏适当政策时会恶化收入不平等</strong>。</span><span class="en">The exposed band splits almost evenly (38.9% gain vs 38.6% risk) — gains and losses fall on <strong>different people</strong>: an <strong>intra-citizen</strong> K, not "Singapore vs others." The IMF flags that women and young workers are more exposed and that, absent policy, this <strong>worsens income inequality</strong>.</span></p></div>
+
+  <h3><span class="cn">A.3 入门端：已经在软化（传导口），但归因要守纪律</span><span class="en">A.3 The entry rung: already softening (the transmission point) — but attribution needs discipline</span></h3>
+  <p><span class="cn">最直接的传导口是应届生进入职场，<strong>已经在软化</strong>，与「输入端开始传导」一致：</span><span class="en blk">The most direct transmission point — graduates entering the workforce — is <strong>already softening</strong>, consistent with the input-side mechanism beginning to transmit:</span></p>
+  <div class="cards">
+    <div class="card lab"><div class="big">87.5%→74.4%</div><div class="cap-t"><span class="cn">应届全职长期岗位占比</span><span class="en">Grad full-time permanent share</span></div><div class="desc"><span class="cn">2022 → 2024（79.4%）→ 2025。入门端确在收缩。<span class="pill meas">实测</span></span><span class="en">2022 → 2024 (79.4%) → 2025. <span class="pill meas">measured</span></span></div></div>
+    <div class="card lab"><div class="big">≈ 腰斩</div><div class="cap-t"><span class="cn">ICT 占招聘广告份额（12 年）</span><span class="en">ICT share of job ads (12y)</span></div><div class="desc"><span class="cn">尽管 ICT 绝对岗位仍增长，入门需求份额几近腰斩。<span class="pill meas">实测</span></span><span class="en">Halved even as absolute ICT jobs grew. <span class="pill meas">measured</span></span></div></div>
+    <div class="card"><div class="big">~90%</div><div class="cap-t"><span class="cn">25–29 岁学位持有者就业率</span><span class="en">25–29 degree-holder emp. rate</span></div><div class="desc"><span class="cn">十年稳定，<strong>没有崩</strong>。总失业率 2.1%、空缺/失业 1.58。<span class="pill meas">实测</span></span><span class="en">Stable for a decade; overall U 2.1%, V/U 1.58. <span class="pill meas">measured</span></span></div></div>
+  </div>
+  <div class="cf"><div class="l"><span class="cn">反事实纪律（同样适用，不能替数据说话）</span><span class="en">Counterfactual discipline</span></div><p style="margin:0"><span class="cn">三个早于/独立于 AI 的解释压着归因：①<strong>基数效应</strong> —— 2022 高点本身是疫情后抢人清积压的人为峰值；②<strong>官方归因</strong> —— 企业招聘转谨慎（未来三月招人意愿 54.6%→44.6%）被 MOM 归因于<strong>全球不确定性与地缘紧张，而非 AI</strong>；③<strong>区域人才竞争</strong>。诚实定性：<strong>入门门槛在可测地抬高，方向与机制吻合，但归因高度过度决定</strong>，总体仍紧。</span><span class="en">Three pre-/non-AI explanations constrain attribution: (1) <strong>base effect</strong> — the 2022 peak was a post-pandemic backlog-clearing high; (2) <strong>official attribution</strong> — cautious hiring (54.6%→44.6%) is attributed by MOM to <strong>global uncertainty and geopolitics, not AI</strong>; (3) regional talent competition. Honest read: the entry bar is measurably rising in a direction consistent with the mechanism, but attribution is heavily over-determined and the overall market stays tight.</span></p></div>
+
+  <h3><span class="cn">A.4 新加坡独有的缓冲：改变影响的「形态」而非「有无」</span><span class="en">A.4 Singapore-specific buffers: they change the shape of the impact, not whether there is one</span></h3>
+  <div class="cards">
+    <div class="card"><div class="cap-t"><span class="cn">① 外籍白领调节阀</span><span class="en">① Foreign white-collar valve</span></div><div class="desc"><span class="cn">EP/S Pass 持有者占白领相当比例。AI 压缩白领需求时，政策的调整边际首先是收紧外籍准证保公民就业 —— 痛苦被部分「外包」出去，公民失业率会<strong>低估</strong>真实传导。（CSIS）<span class="pill proj">预测</span></span><span class="en">EP/S Pass holders are a large share of white-collar jobs; the first margin of adjustment is tightening passes, so pain is partly "exported" and citizen U <strong>understates</strong> transmission (CSIS). <span class="pill proj">projected</span></span></div></div>
+    <div class="card"><div class="cap-t"><span class="cn">② SkillsFuture 再培训</span><span class="en">② SkillsFuture reskilling</span></div><div class="desc"><span class="cn">体系已铺开（2015 起过半合资格者用过补贴），但 <strong>PMET 与非 PMET 参与有差距</strong>，更脆弱的反而更少培训。「采纳速度而非最终规模」是首要风险变量。<span class="pill meas">实测</span></span><span class="en">Broad system (over half of eligible used credits since 2015) but a <strong>PMET/non-PMET gap</strong>; the more vulnerable train less. "Speed of adoption, not final scale" is the key risk variable. <span class="pill meas">measured</span></span></div></div>
+    <div class="card lab"><div class="cap-t"><span class="cn">③「减薪而非失业」渠道</span><span class="en">③ "Pay-cut not layoff" channel</span></div><div class="desc"><span class="cn">公共服务学院（PS21/CSC）情景：律师、券商、咨询知识工人面临减薪或「岗位重设计」（减薪的委婉说法）→ 消费收缩 + 按揭压力。失业率测不到，但进家庭收入与高杠杆房产。<span class="pill scen">情景</span></span><span class="en">PS21/CSC scenario: lawyers, brokers, consultants face pay cuts / "job redesign" → consumption + mortgage stress. Invisible to U, but hits household income and high-leverage property. <span class="pill scen">scenario</span></span></div></div>
+  </div>
+
+  <!-- ===== ARM B: BENEFIT ===== -->
+  <h2 class="sec cap"><span class="n">B</span><span class="cn">资本·受益臂 — 新加坡的 AI 资本收益捕获</span><span class="en">Capital / Benefit Arm — Singapore's AI-capital capture</span></h2>
+  <p class="sec-sub"><span class="cn">这条臂的逻辑不是「AI 替代工人」，而是「资本深化 + 资产集中」—— 新加坡在这条臂上是发达世界少有的<strong>主动捕获方</strong>。</span><span class="en">This arm's logic is not "AI replaces workers" but "capital deepening + asset concentration" — and Singapore is an unusually <strong>active capturer</strong>.</span></p>
+
+  <h3><span class="cn">B.1 实体层：数据中心资本涌入</span><span class="en">B.1 Physical layer: data-center capital influx</span></h3>
+  <div class="cards">
+    <div class="card cap"><div class="big">~$270 亿</div><div class="cap-t"><span class="cn">涌入 AI 基础设施</span><span class="en">into AI infrastructure</span></div><div class="desc"><span class="cn">2025-12 结束 4 年数据中心暂停令，批给 Equinix / 微软 / GDS / AirTrunk-字节联合体。<span class="pill meas">实测</span></span><span class="en">Dec 2025 ended the 4-yr DC moratorium; rights to Equinix / Microsoft / GDS / AirTrunk-ByteDance. <span class="pill meas">measured</span></span></div></div>
+    <div class="card cap"><div class="big">$120 亿</div><div class="cap-t"><span class="cn">AWS 追加（2024–2028）</span><span class="en">AWS top-up (2024–2028)</span></div><div class="desc"><span class="cn">微软把新加坡设为其 $800 亿全球布局的关键节点。<span class="pill meas">实测</span></span><span class="en">Microsoft names Singapore a key node of its $80B global plan. <span class="pill meas">measured</span></span></div></div>
+    <div class="card cap"><div class="big">1.4GW · 1.4%</div><div class="cap-t"><span class="cn">现有容量 · 空置率（亚太最低）</span><span class="en">capacity · vacancy (lowest APAC)</span></div><div class="desc"><span class="cn">供不应求，资产价值与地租被抬升。<span class="pill meas">实测</span></span><span class="en">Supply-constrained; asset values and ground rent bid up. <span class="pill meas">measured</span></span></div></div>
+  </div>
+
+  <h3><span class="cn">B.2 金融层：主动捕获 AI 资本市场活动</span><span class="en">B.2 Financial layer: actively capturing AI capital-market activity</span></h3>
+  <ul style="margin:6px 0 14px 20px;font-size:14px">
+    <li style="margin-bottom:8px"><span class="cn"><strong>2026 预算</strong>：追加 <strong>S$15 亿 Anchor Fund</strong>（与淡马锡共同投资）、金融业发展基金注资、MAS 股市发展计划、SGX–Nasdaq 双重上市桥。<span class="pill meas">实测</span></span><span class="en"><strong>2026 Budget</strong>: +S$1.5B Anchor Fund (co-invest with Temasek), FSDF top-up, MAS equity-market plan, SGX–Nasdaq dual-listing bridge. <span class="pill meas">measured</span></span></li>
+    <li><span class="cn"><strong>主权基金两头压注</strong>：淡马锡加配 AI 数据中心需求相关的核心增益型基础设施；GIC 是 NTT DC REIT 基石投资者，领投 Vantage $16 亿、与 Equinix $10 亿合资。<span class="pill meas">实测</span></span><span class="en"><strong>Sovereign funds on both sides</strong>: Temasek tilts to AI-DC-linked core infra; GIC is a cornerstone of NTT DC REIT, led Vantage's $1.6B, has a $1B Equinix JV. <span class="pill meas">measured</span></span></li>
+  </ul>
+
+  <div class="callout cap"><div class="l"><span class="cn">但这条上臂有三个必须并列的限定</span><span class="en">Three limits that must travel with the upper arm</span></div>
+  <p style="margin:6px 0"><span class="cn"><strong>① 用人极少。</strong>数据中心建成后用工极少，这笔增长主要进<strong>资本而非劳动</strong>，缺乏工资驱动消费的乘数。</span><span class="en"><strong>① Few jobs.</strong> Built DCs employ very few; the growth accrues to <strong>capital, not labour</strong>, lacking a wage-to-consumption multiplier.</span></p>
+  <p style="margin:6px 0"><span class="cn"><strong>② 实体外溢。</strong>土地与电力密集的产能正外溢到柔佛（JS-SEZ），新加坡保留高价值的「指挥中心」功能 —— 落到本地的岗位<strong>既少又高技能</strong>（进一步喂下臂的暴露段）。</span><span class="en"><strong>② Physical spillover.</strong> Land/power-heavy capacity flows to Johor (JS-SEZ); Singapore keeps the high-value "command centre" — local jobs are <strong>few and high-skill</strong> (feeding the lower arm's exposed band).</span></p>
+  <p style="margin:6px 0 0"><span class="cn"><strong>③ 这正是最大尾部风险（见 B.3）。</strong></span><span class="en"><strong>③ This is also the biggest tail risk (see B.3).</strong></span></p></div>
+
+  <h3><span class="cn">B.3 尾部风险：缓冲资金本身建立在「集中」之上</span><span class="en">B.3 Tail risk: the buffer money itself rests on "concentration"</span></h3>
+  <p><span class="cn">给国家提供财政缓冲（去回收劳动端损失）的那笔钱，本身越来越暴露于美联储已列为系统性风险的<strong>同一个 AI / Mag-7 集中度</strong>：</span><span class="en blk">The money that gives the state fiscal room to recycle labour-side losses is itself increasingly exposed to the <strong>same AI / Mag-7 concentration</strong> the Fed has flagged as systemic:</span></p>
+  <div class="cards">
+    <div class="card"><div class="big" style="color:var(--warn)">3.8%</div><div class="cap-t"><span class="cn">GIC 20 年年化实际回报</span><span class="en">GIC 20-yr annualized real return</span></div><div class="desc"><span class="cn">截至 2025-03，<strong>2020 年以来最弱</strong>。<span class="pill meas">实测</span></span><span class="en">As of Mar 2025, <strong>weakest since 2020</strong>. <span class="pill meas">measured</span></span></div></div>
+    <div class="card"><div class="big" style="color:var(--warn)">5%</div><div class="cap-t"><span class="cn">淡马锡 10 年股东总回报</span><span class="en">Temasek 10-yr TSR</span></div><div class="desc"><span class="cn">落后主要股指，被 FT 称相对同业「表现不佳」。<span class="pill meas">实测</span></span><span class="en">Lagging major indices; "underperforming" peers per FT. <span class="pill meas">measured</span></span></div></div>
+    <div class="card"><div class="cap-t"><span class="cn">系统性耦合</span><span class="en">Systemic coupling</span></div><div class="desc"><span class="cn">主权基金与金融业越来越压在 AI/Mag-7 集中度上 —— 把 6 月那次小裂缝放大想：缓冲与风险同源。<span class="pill proj">预测</span></span><span class="en">Sovereign funds and finance increasingly ride the AI/Mag-7 concentration — buffer and risk share one source. <span class="pill proj">projected</span></span></div></div>
+  </div>
+
+  <!-- ===== SYNTHESIS ===== -->
+  <h2 class="sec"><span class="n">C</span><span class="cn">合成判断 — 双臂尖端的新加坡</span><span class="en">Synthesis — Singapore at the tip of both arms</span></h2>
+  <p><span class="cn">把两条臂合起来：新加坡是 K 型<strong>两条臂的一个浓缩样本</strong> —— 劳动暴露度发达世界最高，资本端收益捕获也最强。这个双重性决定了：对新加坡而言，<strong>真正的问题不是「AI 会不会造成失业」</strong>（外籍劳工缓冲 + 紧的总体市场，使美国式入门端断崖不太会直接体现在公民失业率上），<strong>而是分配与回收</strong> —— 资本端的收益（主权基金财政能力、地租、金融业、高互补性专业人士）会不会被回收给输家（低互补性白领、年轻入场者、面临「重设计」的中年专业人士）。这是一条<strong>公民内部</strong>的 K。</span><span class="en blk">Putting both arms together, Singapore is a <strong>concentrated sample of both K arms</strong> — the developed world's highest labour exposure and its strongest capital capture. So the real question is <strong>not "will AI cause unemployment"</strong> (the foreign-worker buffer plus a tight market keep a US-style entry-cliff out of the citizen jobless rate) but <strong>distribution and recycling</strong>: will capital-side gains (sovereign-fund fiscal room, ground rent, finance, high-complementarity professionals) be recycled to the losers (low-complementarity white-collar, young entrants, mid-career "redesigned" professionals)? This is an <strong>intra-citizen</strong> K.</span></p>
+
+  <div class="callout warn"><div class="l"><span class="cn">最该盯的不是失业率（滞后且被缓冲遮蔽），而是三个领先信号</span><span class="en">Watch not the jobless rate (lagging, buffer-masked) but three leading signals</span></div>
+  <div class="watch">
+    <div class="w"><div class="wt"><span class="cn">① 应届全职长期岗位占比</span><span class="en">① Grad full-time-permanent share</span></div><div class="wd"><span class="cn">MOM 毕业生就业调查。已从 87.5%→74.4%。再持续走弱 = 入门端机制穿透。</span><span class="en">MOM GES. Already 87.5%→74.4%. Further decline = the entry mechanism breaking through.</span></div></div>
+    <div class="w"><div class="wt"><span class="cn">② 中位白领实际薪资中位数</span><span class="en">② Median white-collar real wage</span></div><div class="wd"><span class="cn">「减薪而非失业」渠道的唯一可观测口。薪资压缩不进失业率，但进家庭收入与按揭。</span><span class="en">The only observable window on the "pay-cut not layoff" channel — invisible to U, visible in income and mortgages.</span></div></div>
+    <div class="w"><div class="wt"><span class="cn">③ EP/S Pass 净流入</span><span class="en">③ EP/S Pass net inflow</span></div><div class="wd"><span class="cn">外籍白领调节阀。若净流入持续转弱，说明痛苦正在被「外包」—— 比公民失业率更早动。</span><span class="en">The foreign white-collar valve. A persistent slowdown means pain is being "exported" — it moves earlier than citizen U.</span></div></div>
+  </div>
+  <p style="margin:10px 0 0"><span class="cn"><strong>判据：</strong>这三个里任何一个持续走弱，才是机制真正穿透到产出端的证据；在那之前，劳动端的 K 对新加坡仍是一个<strong>建立在已测输入端机制之上的预测</strong>，而非已确证的事实。资本端的 K 则已经在发生。</span><span class="en blk"><strong>Test:</strong> a sustained decline in any of these three is the evidence that the mechanism has reached the output side. Until then, the labour-side K remains, for Singapore, a <strong>projection resting on a measured input-side mechanism</strong> — not an established fact. The capital-side K is already underway.</span></p></div>
+
+  <footer>
+    <p><span class="cn">独立分析页 · 仅用一手来源，剥离咨询/媒体二手叙事 · 数据截至 2026-06-23</span><span class="en">Standalone analysis · primary sources only, media/consultancy narrative stripped out · data through 2026-06-23</span></p>
+    <div class="srcs"><span class="cn">主要来源：</span><span class="en">Primary sources: </span>IMF 2024 Article IV (Singapore) · Singapore MOM Graduate Employment Survey &amp; labour-market reports · MAS / Budget 2026 · GIC &amp; Temasek annual reports · CSIS · Singapore PS21 / Civil Service College scenario analysis. <span class="cn">证据等级标签：</span><span class="pill meas">实测/measured</span> <span class="pill proj">预测/projected</span> <span class="pill scen">情景/scenario</span>.</div>
+    <p style="margin-top:12px"><a href="index.html"><span class="cn">← 返回 Dashboard</span><span class="en">← Back to Dashboard</span></a></p>
+  </footer>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('lang-en', l==='en');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.l===l));
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+</script>
+</body>
+</html>
