@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Employment Impact Report / AI就业冲击月报 — 2026-09</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);--accent2:#ffaa55;--early:#34d3a6;--early2:#a06cff}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:900px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .sep{color:var(--fg2);font-size:12px}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.language-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px;transition:all 0.2s}
+.lang-btn.active{background:var(--accent);color:white}
+.lang-btn:hover{color:var(--fg)}
+.lang-inactive{display:none}
+.report-header{padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.report-header .emoji{font-size:48px;margin-bottom:16px}
+.report-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.3}
+.report-header .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--fg2)}
+.report-header .badge{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px}
+.report-body{padding-bottom:80px}
+.report-body h2.report-heading{font-size:20px;font-weight:600;margin:36px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.report-body h3.report-heading{font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--accent)}
+.report-body h4.report-heading{font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.04em}
+.report-body p{margin-bottom:14px;font-size:15px}
+.report-body strong{color:#fff;font-weight:600}
+.report-body a{color:var(--accent);text-decoration:none}
+.report-body a:hover{text-decoration:underline}
+.report-body .report-list{margin:12px 0 18px 22px}
+.report-body .report-list li{margin-bottom:10px;font-size:15px;line-height:1.6}
+.report-body code{background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:13px}
+.report-body table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.report-body th,.report-body td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.report-body th{background:var(--bg3);font-weight:600;color:var(--fg)}
+.report-body td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:6px;padding:14px 18px;margin:20px 0;font-size:14px}
+.callout .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent2);margin-bottom:6px}
+.spotlight-section{background:linear-gradient(180deg,rgba(52,211,166,0.05),rgba(160,108,255,0.04));border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:32px 0}
+.spotlight-section h2{font-size:22px;font-weight:700;margin-bottom:8px;padding-bottom:0;border:none;color:var(--fg)}
+.spotlight-section .subtitle{font-size:13px;color:var(--fg2);margin-bottom:20px}
+.report-footer{border-top:1px solid var(--border);padding:24px 0 48px;text-align:center;color:var(--fg2);font-size:13px}
+.report-footer a{color:var(--accent);text-decoration:none}
+.src{font-size:12px;color:var(--fg2);font-style:italic}
+</style>
+<script>
+function setLang(lang){
+  document.querySelectorAll('.cn, .en').forEach(el=>{
+    if(el.classList.contains(lang)){el.classList.remove('lang-inactive');}
+    else if(el.classList.contains(lang==='cn'?'en':'cn')){el.classList.add('lang-inactive');}
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+});
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="../index.html">&larr; Dashboard</a>
+  <span class="sep">|</span>
+  <a href="index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+  <a href="../methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <a href="../policy.html" class="nav-link"><span class="cn">政策追踪</span><span class="en lang-inactive">Policy Tracker</span></a>
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn active" data-lang="cn">中文</button>
+  </div>
+</div></nav>
+<div class="wrapper">
+  <div class="report-header">
+    <div class="emoji">🧮</div>
+    <h1 class="cn">AI就业冲击月报 — 2026年9月</h1>
+    <h1 class="en lang-inactive">AI Employment Impact Report — September 2026</h1>
+    <div class="meta">
+      <span class="badge"><span class="cn">月报</span><span class="en lang-inactive">Monthly</span></span>
+      <span><span class="cn">报告期：2026-06-23 至 2026-09-27</span><span class="en lang-inactive">Period: 2026-06-23 to 2026-09-27</span></span>
+      <span><span class="cn">本期专题：AI 到底造成了多少裁员</span><span class="en lang-inactive">Spotlight: How Many Layoffs Has AI Caused?</span></span>
+    </div>
+  </div>
+
+  <div class="report-body">
+    <!-- ============== 中文版 ============== -->
+    <div class="cn">
+
+<h2 class="report-heading">📋 本月概要</h2>
+<p>本期覆盖 2026 年 6 月 23 日至 9 月 27 日。上一期月报截至 6 月 22 日，7 月和 8 月没有单独出刊，因此本期把这三个月的变化合并在一起报告。</p>
+
+<p>这三个月最明显的变化，是企业在裁员公告中提到 AI 的次数先高后低。美国咨询公司 Challenger, Gray &amp; Christmas 按企业自己公布的裁员原因做统计。6 月和 7 月，“人工智能”仍是被提及最多的裁员原因，分别对应 14,029 个和 10,970 个岗位；到了 8 月，这一数字降到 3,462 个，AI 退居第四，是 2025 年 12 月以来的最低值。从全年看，2026 年 1–8 月因 AI 被裁的岗位累计 116,175 个，约占全部公告裁员的 22%，已经是 2025 年全年（54,836 个）的两倍多。8 月的回落只有一个月的数据，还不能说明趋势已经改变；它也可能只是说明企业在公告里提 AI 时变得更谨慎。同一时期，微软、Etsy 等公司在宣布裁员时都特意说明，被裁岗位并不是由 AI 取代的。</p>
+
+<p>另一方面，年轻人在 AI 高暴露职业中的就业处境继续变差。斯坦福数字经济实验室 8 月 12 日更新了其研究：在受 AI 影响最大的一批职业里，22–25 岁员工的就业人数比“假如与低暴露职业同龄人同步增长”应有的水平低约 19%，一年前这一差距约为 15%。作者认为，这种差距主要来自企业少招年轻人，而不是更多地辞退在职员工。与此同时，耶鲁大学预算实验室的跟踪研究仍然认为，从整个经济看，还找不到 AI 造成就业变化的清晰证据。这两个结论并不矛盾：影响目前集中在少数职业的入职环节，还没有大到能在全国总量数据里显现。</p>
+
+<p>美国整体就业增长明显放缓。经修正后，6 月和 7 月非农就业分别只增加 3.1 万和 2.1 万人（7 月初值一度为负），8 月增加 16.2 万人，失业率为 4.1%。纽约联储的数据显示，近期大学毕业生失业率仍在 5.6% 左右，就业不足率升至 42%。</p>
+
+<p>亚洲方面，菲律宾 7 月失业率升至 6.0%，是四年多来的最高水平，行业协会 IBPAP 也在 7 月下调了外包行业 2028 年的就业目标，并把 AI 列为原因之一。印度五大 IT 服务公司第一财季（4–6 月）有三家员工人数减少，其中 HCLTech 的管理层明确表示，AI 让公司可以用稍少的人完成同样的工作。政策方面，欧盟正式把 AI 法案中招聘等“高风险”义务的适用时间推迟到 2027 年 12 月；美国多个州开始要求企业在裁员通知中说明 AI 的作用。本期专题就讨论这个问题：AI 到底造成了多少裁员，我们靠什么知道。</p>
+
+<h2 class="report-heading">📉 新增事件</h2>
+
+<ol class="report-list">
+<li><strong>Challenger 统计：AI 连续五个月居裁员原因首位后，8 月降至第四（7 月 1 日、8 月 6 日、9 月 2 日发布）</strong>
+<p>6 月公告裁员共 45,849 个，其中以 AI 为原因的 14,029 个（31%）；7 月共 33,429 个，其中 AI 10,970 个（33%），AI 已连续五个月是被提及最多的原因；8 月公告裁员回升至 52,881 个，但以 AI 为原因的只有 3,462 个，排在第四。1–8 月累计，AI 相关裁员 116,175 个，仍是全年排名第一的原因。需要说明的是，Challenger 统计的是企业“宣布”的裁员计划和企业自己给出的理由，不是实际发生的离职人数。<span class="src">来源：<a href="https://www.challengergray.com/blog/challenger-report-june-layoffs-cool-to-45849-down-53-from-may-ai-leads-reasons-for-fourth-consecutive-month/">Challenger 6 月报告</a>、<a href="https://www.challengergray.com/wp-content/uploads/2026/08/Challenger-Report-July-2026.pdf">7 月报告</a>、<a href="https://www.challengergray.com/wp-content/uploads/2026/09/Challenger-Report-August-2026.pdf">8 月报告</a>。</span></p></li>
+
+<li><strong>微软裁员 4,800 人，并说明被裁岗位不会由 AI 取代（7 月 6 日）</strong>
+<p>微软宣布裁减约 4,800 个岗位，约占全球员工的 2%，主要集中在 Xbox 游戏部门和商业销售部门。首席人力官 Amy Coleman 在内部信中说，AI 正在改变工作方式，但被裁的岗位并不是直接由 AI 取代。这是本期几家大公司的共同做法：一边大规模投资 AI，一边在裁员时刻意与 AI 撇清关系。<span class="src">来源：<a href="https://www.geekwire.com/2026/microsoft-cuts-4800-jobs-about-2-globally-revamps-salesforce-and-launches-massive-xbox-overhaul/">GeekWire（2026-07-06）</a>、<a href="https://www.axios.com/2026/08/20/ceos-shift-messaging-around-ai-and-layoffs">Axios（2026-08-20）</a>。</span></p></li>
+
+<li><strong>美国大银行第二季度合计减员超过 1 万人（7 月中旬）</strong>
+<p>据彭博社统计，美国银行、富国银行、花旗、高盛、摩根士丹利五家大行在交易业务创纪录的第二季度里合计减少了 1 万多个岗位，是至少六年来最大的单季降幅，管理层把部分原因归于 AI 带来的效率提升。摩根大通 CEO 戴蒙在 7 月 14 日的业绩会上据报道表示，在某些特定业务环节，公司已经因 AI 把人手减少了 30%–40%，其中多数人被调往其他岗位。戴蒙的原话本期只见于二手报道，尚未核对会议记录。<span class="src">来源：<a href="https://www.bloomberg.com/news/articles/2026-07-16/wall-street-banks-record-quarter-didn-t-slow-their-job-cuts">Bloomberg（2026-07-16）</a>、<a href="https://www.fool.com/investing/2026/07/21/jamie-dimon-says-ai-has-already-cut-30-to-40-of-jo/">Motley Fool（2026-07-21）</a>。</span></p></li>
+
+<li><strong>Uber 先裁减一成客服人员，后又宣布裁员 3,300 人（7 月 22 日、9 月 2 日）</strong>
+<p>7 月，Uber 裁减约 10% 的客户服务人员，公司给出的理由包括“继续采用 AI”。9 月初，Uber 又宣布裁员约 3,300 人（约占员工 10%），把管理层级削减约两成。这一次公司没有把 AI 作为理由，而是称要精简组织，并把资金投向自动驾驶出租车业务。前一次是明确的 AI 替代客服，后一次则属于更常规的组织调整，两者应分开看待。<span class="src">来源：<a href="https://www.customerexperiencedive.com/news/uber-cuts-10-of-customer-service-team-as-it-embraces-ai/826087/">CX Dive（2026-07-23）</a>、<a href="https://fortune.com/2026/09/03/uber-job-cut-robotaxi-future/">Fortune（2026-09-03）</a>。</span></p></li>
+
+<li><strong>印度五大 IT 公司第一财季：三家员工减少（7 月 9–23 日陆续发布）</strong>
+<p>2027 财年第一季度（2026 年 4–6 月），TCS 净增 9,279 人，是近四年来最多的一次季度增长；Wipro 净增 888 人；Infosys 净减 532 人，但重申全年招聘约 2 万名应届生的目标；HCLTech 净减 3,292 人，是一年来最大降幅，管理层称 AI 和自动化让公司能“用稍少的员工完成同样的工作”；Tech Mahindra 净减约 863 人（另有报道为 688 人）。五家合计净增约 5,500 人，但几乎全部来自 TCS。另据二手报道，Wipro 本季度没有新招应届生，这一点尚未得到公司确认。<span class="src">来源：<a href="https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q1-fy-2027">TCS 业绩公告</a>、<a href="https://www.peoplematters.in/news/strategic-hr/hcltech-sees-biggest-workforce-reduction-in-a-year-cuts-3292-jobs-in-q1-50816">People Matters（HCLTech）</a>、<a href="https://www.storyboard18.com/brand-marketing/infosys-q1-fy27-attrition-rises-to-13-headcount-declines-by-532-employees-105310.htm">Storyboard18（Infosys）</a>、<a href="https://india.entrepreneur.com/business-news/from-tcs-to-techm-headcount-declines-echo-vembus-it-hiring-concerns">Entrepreneur India（2026-08-04）</a>。</span></p></li>
+
+<li><strong>菲律宾失业率 7 月升至 6.0%，外包行业下调就业目标（7 月 15 日、9 月 8 日）</strong>
+<p>菲律宾统计署数据显示，失业率 5 月为 4.8%，6 月为 4.9%，7 月升至 6.0%，失业人数 314 万，是四年多来的最高水平（2025 年 7 月为 5.3%）。7 月 15 日，菲律宾 IT 与业务流程外包协会（IBPAP）把 2028 年的行业就业目标从 250 万人下调到 185 万–214 万人，原因包括 AI、来自越南和哥伦比亚等地的竞争以及地缘政治。按低方案，行业就业人数到 2028 年会比现在少。协会负责人同时表示，AI 的影响是真实的，但还没有看到大规模铺开。<span class="src">来源：<a href="https://psa.gov.ph/content/number-employed-persons-rose-4921-million-underemployment-declined-july-2026">菲律宾统计署（2026-09-08）</a>、<a href="https://bworldonline.com/top-stories/2026/07/15/763409/ai-global-competition-force-philippines-it-bpm-industry-to-cut-targets/">BusinessWorld（2026-07-15）</a>。</span></p></li>
+
+<li><strong>暴雪约 1,900 名员工的首份工会合同要求就 AI 使用进行谈判（9 月 9 日）</strong>
+<p>美国通讯工人工会（CWA）宣布，微软旗下暴雪娱乐约 1,900 名员工批准了首批集体合同。合同要求公司就工作场所中 AI 的使用与工会进行讨论、评估和谈判，并包含裁员保护条款。这是游戏行业目前覆盖人数较多的一份含 AI 条款的合同。<span class="src">来源：<a href="https://cwa-union.org/news/releases/blizzard-entertainment-workers-ratify-historic-video-game-contracts-cwa">CWA 新闻稿（2026-09-09）</a>。</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 行业趋势</h2>
+
+<h3 class="report-heading">企业在裁员时越来越少主动提 AI</h3>
+<p>上半年，许多公司在宣布裁员时会主动提到 AI，因为这对投资者来说是一个容易接受的理由。本期出现了相反的动向：微软、Etsy、Patreon 等公司的负责人在宣布裁员时都特意说明与 AI 无关（Axios，8 月 20 日）。Challenger 的首席营收官 Andy Challenger 在 7 月报告中说，在公告中点名 AI 可以赢得投资者，却会让在职和潜在员工疏远；随着监管规定逐步成形，企业在公告中会更加小心，这会让追踪 AI 对就业的影响变得更困难。8 月 AI 相关裁员数字的骤降，可能有一部分就来自这种措辞上的变化，但目前没有直接证据。</p>
+
+<h3 class="report-heading">客服是受影响最清楚的领域</h3>
+<p>在各类岗位中，客服岗位受 AI 影响的证据最为一致。高盛 8 月 19 日发表的跨国研究估计，美国呼叫中心的就业人数比按过去趋势推算的水平低 39%，加拿大低 33%，德国低 27%。Uber 7 月裁减一成客服人员也明确提到 AI。咨询公司 Forrester 在 6 月初预测，到 2030 年客服岗位可能减少一半，不过这是预测，不是已经发生的变化。</p>
+
+<h3 class="report-heading">软件开发招聘有所回升，但新增岗位主要是资深职位</h3>
+<p>Indeed 招聘研究所 7 月 8 日的报告显示，美国软件开发岗位的招聘广告自 2025 年 2 月以来增长了约 15%，而同期全部岗位的招聘广告下降了约 7%。但这一回升有两个限定：一是软件开发招聘量仍比疫情前低 27.5%；二是从 2025 年 5 月到 2026 年 5 月的增量中，71% 来自资深职位。也就是说，企业在增加招聘，但并没有同样增加初级岗位，这与斯坦福关于年轻员工的发现是一致的。</p>
+
+<h3 class="report-heading">工会开始把 AI 条款写进合同</h3>
+<p>除暴雪合同外，据 Axios 7 月 26 日报道，美国新闻业工会（NewsGuild-CWA）已有 85–90 份合同包含明确的 AI 条款；华盛顿特区一家书店的工会合同（8 月 28 日批准）规定，不得因使用 AI 而解雇员工、降职或减少排班。这些合同规模大多不大，但提供了可供其他行业参考的具体条款写法。</p>
+
+<h2 class="report-heading">🌍 地域分布</h2>
+
+<h3 class="report-heading">美国：就业增长放缓，年轻毕业生处境没有改善</h3>
+<p>美国劳工统计局数据显示，6 月非农就业初值增加 5.7 万，后修正为 3.1 万；7 月初值为减少 2.3 万，后修正为增加 2.1 万；8 月增加 16.2 万。失业率 6 月为 4.2%，7 月和 8 月均为 4.1%。纽约联储第二季度的数据显示，近期大学毕业生（22–27 岁）失业率仍在 5.6% 左右，就业不足率（即从事不需要大学学历的工作的比例）升至 42%。斯坦福的研究则显示，22–25 岁员工在高暴露职业中的就业缺口从一年前的 15% 扩大到 19%。总体就业放缓有多方面原因，目前没有证据表明主要来自 AI；但年轻人在高暴露职业中的困难是一个持续了一年多、并且还在加深的现象。</p>
+
+<h3 class="report-heading">欧盟与英国：青年失业率大体稳定，英国毕业生岗位数据相互矛盾</h3>
+<p>欧盟统计局数据显示，欧盟 25 岁以下青年失业率 6 月为 15.5%（后修正为 15.6%），7 月回落到 15.1%；欧元区 7 月为 14.9%。这一水平与上一期报告的 4 月数据（15.1%）基本相同，没有出现明显变化。英国的情况不太清楚：招聘网站 Adzuna 的数据显示，7 月毕业生岗位空缺只有 8,383 个，比去年同期少 45.6%，是 2016 年有记录以来最低；而 Indeed 的数据显示，毕业生岗位招聘同比只下降了约 7%。两家的统计范围不同，差距很大，目前无法判断哪一个更接近实际。德勤的英国财务总监调查显示，企业减少招聘的首要原因是控制成本，AI 排在其后。</p>
+
+<h3 class="report-heading">印度：总体失业率下降，城市失业率上升</h3>
+<p>印度统计部的月度劳动力调查显示，15 岁以上人口失业率 6 月为 5.5%，7 月降至 5.1%，8 月降至 5.0%，劳动参与率从 54.4% 升至 55.6%。但总体失业率的下降主要来自农村，与季风季节的农业用工有关；城市失业率反而从 5 月的 6.4% 逐月上升到 8 月的 6.8%。对 IT 和服务业从业者来说，城市数据更有参考意义。结合 IT 公司第一财季的人员变化，印度 IT 行业的招聘在放慢，但目前还看不到对全国就业的明显影响。</p>
+
+<h3 class="report-heading">菲律宾：失业率明显上升，与 AI 的关系尚不清楚</h3>
+<p>菲律宾 7 月失业率 6.0%，比去年同期高 0.7 个百分点，但同期就业不足率从 14.8% 降至 12.9%，就业人数升至 4,921 万。菲律宾统计署没有把失业上升与 AI 联系起来。外包行业目前仍有约 190 万从业者，协会预计 2026 年小幅增至 196 万，因此 7 月失业率的上升不太可能主要来自外包行业裁员。可以确定的是，行业自身已经下调了中期就业预期；至于这会在多大程度上反映到全国数据中，还需要继续观察。</p>
+
+<h2 class="report-heading">📑 重要研究 / 政策</h2>
+
+<ol class="report-list">
+<li><strong>斯坦福“煤矿中的金丝雀”研究更新：年轻员工就业缺口扩大到 19%（8 月 12 日）</strong>
+<p>Brynjolfsson、Chandar、Chen 使用美国薪资服务商 ADP 的工资数据更新了研究。在 AI 暴露程度最高的职业中，22–25 岁员工的就业比“与低暴露职业同龄人同步增长”的水平低约 19%；按同一方法，2025 年 7 月的数据对应的缺口约为 15%。从绝对数看，2022 年 11 月至 2026 年 6 月，最高暴露两档职业中 22–25 岁员工的就业人数减少约 11%，而最低暴露三档职业中同龄人增加约 10%。有经验的员工没有类似缺口。作者强调，这是描述性结果，不是因果估计；在控制教育程度后，缺口会缩小。实验室的月度数据页面最近一次更新是 9 月 23 日。<em>更正说明：上一期月报引用的“相对下降 16%”，与论文自身公布的时间序列（15% → 19%）不一致，本期起以论文公布的数字为准。</em><span class="src">来源：<a href="https://digitaleconomy.stanford.edu/news/canariesaug26/">Stanford Digital Economy Lab（2026-08-12）</a>、<a href="https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/">Canaries 数据页面</a>。</span></p></li>
+
+<li><strong>里士满联储：高暴露职业的求职成功率下降最多（8 月）</strong>
+<p>里士满联储的一份经济简报发现，自 2023 年以来，失业者重新找到工作的比例出现分化，AI 暴露程度高的职业下降最多。这与斯坦福“少招人而非多裁人”的发现相互印证：受影响的主要是想进入这些职业的人，而不是已经在职的人。<span class="src">来源：<a href="https://www.richmondfed.org/publications/research/economic_brief/2026/eb_26-26">Richmond Fed Economic Brief 26-26</a>。</span></p></li>
+
+<li><strong>纽约联储企业调查：61% 的服务业企业使用 AI，只有 4% 因此裁员（9 月 1 日）</strong>
+<p>纽约联储 8 月对纽约州和新泽西北部企业的调查显示，使用 AI 的服务业企业比例从 2025 年的 40% 升到 61%，制造业从 26% 升到 51%。但在使用 AI 的企业中，员工实际使用 AI 的比例中位数只有 17%（服务业）和 7%（制造业），多数企业的投入也不大。过去六个月因 AI 而裁员的服务业企业占 4%（去年为 1%），制造业为零；因 AI 而少招人的服务业企业约占 15%，因 AI 而多招人的约占 13%。<span class="src">来源：<a href="https://libertystreeteconomics.newyorkfed.org/2026/09/businesses-are-using-ai-to-transform-work-not-cut-jobs/">Liberty Street Economics（2026-09-01）</a>。</span></p></li>
+
+<li><strong>耶鲁预算实验室：全国层面仍看不到清晰的 AI 影响（7 月 16 日发布，9 月 15 日更新）</strong>
+<p>该研究从三个角度检验 AI 的影响：职业结构的变化速度、AI 使用程度与失业的关系，以及一种合成对照的统计方法。结论是，职业结构的变化尚未与 AI 的引入明显对应，AI 使用程度与就业或失业变化之间看不到联系。<span class="src">来源：<a href="https://budgetlab.yale.edu/research/tracking-impact-ai-labor-market">Yale Budget Lab</a>。</span></p></li>
+
+<li><strong>高盛：企业 AI 使用率 22.4%，呼叫中心就业明显低于趋势（8 月 19 日、9 月 1 日）</strong>
+<p>高盛引用美国人口普查局的企业调查，8 月使用 AI 的企业比例为 22.4%，预计半年后升至 25.9%；信息行业接近一半。高盛认为，AI 对就业的影响“看得见，但范围仍窄”，主要集中在营销、平面设计、客服和部分科技岗位；同时，数据中心相关的建筑业岗位自 2022 年以来比趋势多出约 20.9 万个。高盛 6 月估计 AI 每月净减少约 1.1 万个美国岗位，本期没有找到更新后的数字。<span class="src">来源：<a href="https://advisoranalyst.com/2026/09/18/the-485-billion-question.html/">高盛 AI 采用追踪报告（经 AdvisorAnalyst 转引）</a>、<a href="https://www.cnbc.com/2026/08/19/goldman-ai-impact-employment-jobs.html">CNBC（2026-08-19）</a>。</span></p></li>
+
+<li><strong>Anthropic 经济指数调查与再培训研究综述（6 月 26 日、8 月 12 日）</strong>
+<p>Anthropic 6 月发布的用户调查显示，10% 的受访者认为自己很可能失业，其中 38% 认为原因是 AI；超过三分之一的受访者认为，身边的初级同事一年内失业的概率超过 60%。8 月，Anthropic 研究人员对 56 项美国随机对照试验做了综述：每向一人提供再培训，平均使就业率提高 2–3 个百分点、年收入增加约 1,000 美元，而成本约 1.3 万美元。作者的结论是，如果 AI 大规模取代工人，现有的再培训项目可能远远不够。<span class="src">来源：<a href="https://www.anthropic.com/research/economic-index-june-2026-report">Anthropic Economic Index（2026-06-26）</a>、<a href="https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs">Anthropic（2026-08-12）</a>。</span></p></li>
+
+<li><strong>世界银行《2026 年世界发展报告》：发展中国家受生成式 AI 自动化威胁的岗位比例较低（8 月 4 日）</strong>
+<p>报告估计，在中低收入国家，面临生成式 AI 自动化风险的岗位约占 4.5%，高收入国家约占 14.2%；可能因 AI 提高生产率的岗位分别约占 16.2% 和 18.7%。这一结论与本仪表盘各国暴露程度的差异方向一致，但菲律宾和印度这类以外包服务为主的经济体，受影响的程度可能高于其收入水平所对应的平均值。<span class="src">来源：<a href="https://www.worldbank.org/en/news/press-release/2026/08/04/ai-offers-lifeline-to-developing-economies-in-an-era-of-weak-growth">World Bank（2026-08-04）</a>。</span></p></li>
+
+<li><strong>政策：欧盟推迟高风险义务，中国和韩国建立 AI 就业影响评估制度，美国各州推进 AI 裁员披露</strong>
+<p>欧盟 AI 数字综合法案（(EU) 2026/1744）于 7 月 27 日生效，招聘、绩效评估等就业领域的高风险义务推迟到 2027 年 12 月 2 日适用；欧盟委员会就《优质就业法》（其中包括工作场所算法管理）进行的第二阶段劳资双方咨询于 9 月 28 日结束。中国人社部等四部门的《关于加快推进“人工智能＋人社”应用发展的实施意见》（人社部发〔2026〕40号，7 月 8 日公开）提出建立人工智能就业影响评估体系和调查制度；此前 6 月 17 日印发的《实施就业优先战略“十五五”规划》也对 AI 与就业作了部署。韩国 7 月 9 日发布《产业转型雇佣稳定基本计划》，计划建立按职业和行业衡量 AI 影响的指标和监测系统。美国方面，康涅狄格州要求裁员通知说明是否与 AI 有关的规定将于 10 月 1 日生效，加州 SB 947、SB 951 已送交州长。详见本站<a href="../policy.html">政策追踪</a>页面和本期专题。</p></li>
+</ol>
+
+<h2 class="report-heading">🔮 下月关注</h2>
+<ol class="report-list">
+<li><strong>加州州长对 SB 947、SB 951 和 AB 1883 的决定（截止 9 月 30 日）</strong>
+<p>SB 947 禁止雇主只凭自动化系统作出处分或解雇决定；SB 951 要求因 AI 引起的大规模裁员在通知中说明被自动化的工作内容；AB 1883 限制用 AI 识别员工情绪。纽森州长 2025 年曾否决过类似法案，今年的结果将决定美国人口最多的州是否在这方面立法。</p></li>
+<li><strong>Challenger 9 月裁员报告（10 月初）</strong>
+<p>观察 8 月 AI 相关裁员数字的大幅回落是一次性的，还是会持续。</p></li>
+<li><strong>菲律宾 8 月劳动力调查（10 月初）</strong>
+<p>看 7 月 6.0% 的失业率是否延续，以及年轻人失业的情况。</p></li>
+<li><strong>印度 IT 公司第二财季业绩（10 月中旬起）</strong>
+<p>关注员工人数、应届生招聘进度（Infosys 全年 2 万人的目标）以及管理层对 AI 影响人手的说法。</p></li>
+<li><strong>康涅狄格州 AI 裁员披露规定生效（10 月 1 日）和纽约州《AI 劳动信息法》</strong>
+<p>康涅狄格州的新规定生效后，第一批按要求说明 AI 作用的裁员通知会是什么样；纽约州已通过的年度报告法案仍在等待州长签署。</p></li>
+<li><strong>斯坦福月度数据与美国秋季校招</strong>
+<p>斯坦福的月度数据会显示年轻员工的就业缺口是否继续扩大；美国大学与雇主协会（NACE）的秋季招聘调查预计 11 月发布，届时可以与春季“增长 5.6%”的预期对照。</p></li>
+</ol>
+
+<!-- ============== 专题 ============== -->
+<div class="spotlight-section">
+<h2>🧮 本期专题：AI 到底造成了多少裁员？——三种统计办法与新的披露规定</h2>
+<p class="subtitle">关于“AI 让多少人失去工作”，不同机构给出的数字相差很大。本专题解释这些数字是怎么得出来的、为什么会不同，以及各地正在出台的披露规定能在多大程度上解决这个问题。</p>
+
+<h3 class="report-heading">一、为什么这个问题难以回答</h3>
+<p>第一，AI 很少完整地取代一个岗位。更常见的情况是，AI 承担了某个岗位的一部分工作，企业因此少招几个人，或者在有人离职后不再补缺。这类变化不会出现在任何裁员名单里。第二，一次裁员通常有多个原因，比如利润压力、前几年招聘过多、业务调整和 AI 投资同时存在，很难说其中哪一部分“由 AI 造成”。第三，裁员的理由由企业自己说明，而企业是否提到 AI，取决于这样说对它是否有利。</p>
+
+<h3 class="report-heading">二、三种统计办法，得出的数字差别很大</h3>
+<table>
+<thead><tr><th>统计办法</th><th>代表数据</th><th>主要局限</th></tr></thead>
+<tbody>
+<tr><td><strong>按企业自述理由计数</strong></td><td>Challenger：2026 年 1–8 月因 AI 被裁 116,175 个岗位，约占全部公告裁员的 22%。Layoffs.fyi：2026 年约 33% 的科技公司裁员事件提到 AI（创始人 Roger Lee 语，另有报道称 54%，两者不一致）。纽约州裁员通知：勾选“技术创新或自动化”选项的企业为零（160 多家申报企业中）</td><td>完全取决于企业说什么；统计的是宣布的计划，不是实际离职；看不到“少招人”</td></tr>
+<tr><td><strong>企业调查</strong></td><td>纽约联储：过去六个月因 AI 裁员的服务业企业占 4%，制造业为零。美国国家经济研究局（NBER）对约 6,000 名高管的调查（2025 年 11 月至 2026 年 1 月）：九成以上表示过去三年 AI 对本企业就业没有影响</td><td>依赖企业自我报告；样本多为特定地区或时间段</td></tr>
+<tr><td><strong>按职业暴露程度做统计比较</strong></td><td>斯坦福：22–25 岁员工在高暴露职业中的就业缺口约 19%。耶鲁：全国层面看不到清晰影响。高盛：6 月估计每月净减少约 1.1 万个岗位（4 月估计为 1.6 万）</td><td>结果对 AI 暴露程度的衡量方法很敏感；难以排除同时期的其他因素</td></tr>
+</tbody>
+</table>
+<p>这三类数字不能直接比较，因为它们衡量的是不同的东西。Challenger 数的是企业宣布的裁员计划；企业调查问的是企业自己认为发生了什么；斯坦福和耶鲁的研究则比较不同职业就业人数的变化，其中包括“没有被招进来的人”。如果 AI 的主要作用是让企业少招人，那么前两种办法基本上看不到这种影响，只有第三种能部分反映出来。这也是为什么企业层面的裁员数字不大，而年轻人的就业缺口却在扩大。</p>
+
+<h3 class="report-heading">三、两个方向的偏差</h3>
+<p><strong>夸大。</strong>一些研究者和分析师认为，企业把原本就要做的裁员说成是 AI 带来的，因为这对股东来说更像好消息。牛津经济研究院在 1 月指出，从生产率数据看，企业并没有在大规模用 AI 取代员工；麻省理工学院的 Paul Osterman 说，AI 是为大规模裁员辩护的“完美借口”。招聘网站 Resume.org 对 1,000 名招聘经理的调查中，59% 表示在解释裁员时会强调 AI，因为这比说财务压力更容易被接受（这项商业调查的方法较为粗糙，只能作为参考）。</p>
+<p><strong>隐瞒。</strong>另一方面，纽约州从 2025 年 3 月起在裁员通知表中增加了“技术创新或自动化”选项，但一年里 160 多家申报企业没有一家勾选，其中包括公开谈论过 AI 提效的大公司。Andy Challenger 也提醒，监管规定出台后，企业在公告中会更加谨慎。8 月 AI 相关裁员数字的下降，是否部分出于这种顾虑，目前无法判断。</p>
+
+<h3 class="report-heading">四、各地正在出台的披露规定</h3>
+<table>
+<thead><tr><th>地区 / 文件</th><th>要求</th><th>状态（截至 9 月 27 日）</th></tr></thead>
+<tbody>
+<tr><td>美国康涅狄格州 SB 5</td><td>裁员通知须说明裁员是否与雇主使用 AI 或其他技术变化有关</td><td>已签署，裁员披露条款 2026-10-01 生效</td></tr>
+<tr><td>美国加州 SB 951</td><td>全部或主要由 AI 引起的裁员，通知中须写明涉及人数、被自动化的工作内容和 AI 系统类型；州就业发展局按季度公布汇总</td><td>已送交州长，9 月 30 日前决定</td></tr>
+<tr><td>美国加州第 N-6-26 号行政令</td><td>要求州劳动机构在 180 天内提出修改加州裁员通知法的建议</td><td>2026-05-21 签署，建议约于 11 月中旬提出</td></tr>
+<tr><td>美国纽约州《AI 劳动信息法》（S8706B / A9581B）</td><td>50 人以上雇主和上市公司每年报告因 AI 而被替代的员工、减少的工时、招聘和未填补的职位</td><td>两院已通过，等待州长签署</td></tr>
+<tr><td>美国新泽西州 S1840、A5316</td><td>AI 导致裁员须向州劳动部门报告；A5316 要求提前 90 天通知</td><td>提案阶段</td></tr>
+<tr><td>美国联邦 S.3108、《伟大美国 AI 法》讨论稿、《AI 数据法》（S.4742）</td><td>大公司按季度报告 AI 相关就业影响；裁员通知中估计 AI 所占比例；要求劳工统计局和人口普查局增加 AI 调查问题</td><td>分别为：已提出、未正式提出、已提出</td></tr>
+<tr><td>中国 人社部发〔2026〕40号</td><td>建立人工智能就业影响评估体系和调查制度</td><td>已印发（7 月 8 日公开）</td></tr>
+<tr><td>韩国 产业转型雇佣稳定基本计划</td><td>建立按职业、行业衡量 AI 影响的指标和实时监测系统</td><td>已发布，监测系统最早 2027 年下半年建成</td></tr>
+<tr><td>欧盟</td><td>尚无专门针对 AI 裁员的披露规定；《优质就业法》咨询涉及算法管理，但不涉及裁员披露</td><td>提案预计 2026 年底</td></tr>
+</tbody>
+</table>
+
+<h3 class="report-heading">五、这些规定能解决什么，不能解决什么</h3>
+<p>美国各州的规定大多要求企业自己判断 AI 是否是裁员的“实质性原因”或与裁员“有关”，这仍然是企业自我认定。纽约州裁员通知的经验说明，如果企业不愿意勾选，这类要求能收集到的信息可能很少。此外，裁员通知只在大规模裁员时才需要提交，它看不到“少招人”和“离职不补”，而这恰恰是目前证据最多的影响方式。</p>
+<p>在这些规定中，纽约州的年度报告法案是唯一明确要求报告“因 AI 而未填补的职位”和招聘变化的，如果签署生效，将最接近衡量 AI 对招聘的影响。中国、韩国和美国联邦《AI 数据法》走的是另一条路：由政府通过统计调查来衡量，而不是依赖企业逐一申报。两种办法各有局限，前者取决于企业是否如实填写，后者需要几年时间才能积累起可用的数据。</p>
+
+<div class="callout">
+<div class="label">专题结论</div>
+<p>目前还没有一个可靠的数字能回答“AI 造成了多少裁员”。企业宣布的数字（今年约 11.6 万个岗位）受企业说法影响很大，可能同时存在夸大和隐瞒；企业调查显示直接因 AI 裁员的企业很少；而统计研究显示，AI 的影响更多体现在年轻人进不了某些职业，而不是在职者被辞退。正在出台的披露规定大多只针对裁员，难以反映招聘减少，而且仍然依赖企业自我认定。读者在看到“AI 导致 X 万人失业”这类说法时，应先弄清这个数字统计的是宣布的计划、实际的离职，还是没有发生的招聘。</p>
+</div>
+
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 三层方法论分析</h2>
+
+<p>本节用本仪表盘的三种衡量方法来解读本期的变化。三种方法分别是：Anthropic 经济指数（衡量 AI 目前在各职业任务中的实际使用程度）、采用缺口（理论上 AI 能做的与实际已经在做的之间的差距）、Coface×OEM 任务分析（按 AI 发展阶段推算各类任务可被自动化的程度）。</p>
+
+<p><strong>第一层：实际使用程度</strong></p>
+<p>在本仪表盘的美国数据中，AI 实际使用程度最高的两个职业是计算机程序员（0.7451）和客服代表（0.7011）。本期的证据集中在这两类职业上：斯坦福显示软件开发和客服两类职业中年轻员工的就业明显下降，高盛估计美国呼叫中心就业比趋势低 39%。斯坦福的数据页面还使用了 Anthropic 指数中“自动化”与“辅助”的区分：在 AI 使用更偏向直接替人完成任务的职业里，年轻员工的就业下降更多；在 AI 主要起辅助作用的职业里，看不到明显关系。这说明，区分 AI 是“替人做”还是“帮人做”，比单看使用程度更能预测就业变化。需要指出的是，在本仪表盘的数据中，客服代表的对话里只有约 28% 属于自动化类型，但客服岗位的就业下降却最明显。一个可能的解释是，企业替代客服主要通过部署专门的客服系统完成，这类使用不一定反映在面向个人用户的对话数据里。这是本期的推测，尚需更多数据验证。</p>
+
+<p><strong>第二层：采用缺口</strong></p>
+<p>企业使用 AI 的比例在上升：美国人口普查局的调查显示 8 月为 22.4%，纽约联储调查的服务业企业为 61%。但使用得并不深：在已经使用 AI 的服务业企业里，员工实际使用 AI 的比例中位数只有 17%，大多数企业的投入不大。这意味着理论上 AI 能承担的工作与实际已经承担的工作之间仍有很大差距。在这种情况下，企业更可能先减少招聘，而不是马上大规模裁员，这与本期观察到的情况一致。随着使用范围扩大，这一差距会缩小，受影响的岗位也可能从新招聘扩展到现有员工。</p>
+
+<p><strong>第三层：按任务类型和发展阶段分析</strong></p>
+<p>Coface×OEM 模型把 AI 发展分为五个阶段，目前处于第二阶段，即 AI 能够较独立地完成特定任务的阶段；在这一阶段，约 13% 的职业有 30% 以上的任务可被自动化，模型把 30% 视为职业发生深刻变化的门槛。该模型还按任务处理的对象（数据、人、物）来区分：处理数据、产出数据的任务最容易被自动化，处理实物的任务最难。本期的证据符合这一划分：受影响最明显的是客服（与人打交道，但内容主要是信息）、软件开发和银行后台处理（数据到数据）；而数据中心建设带动的建筑岗位比趋势多出约 20.9 万个，斯坦福也发现年轻的家庭护理员就业增长较快，这些都是以体力或面对面照护为主的工作。</p>
+
+<p><strong>综合判断：</strong></p>
+<p>三种方法得出的结论基本一致：到 2026 年 9 月，AI 对就业的影响仍集中在少数高暴露职业，主要表现为这些职业少招年轻人，而不是普遍裁员。企业宣布的 AI 裁员数字在 8 月大幅下降，但由于企业措辞在变，这个下降不能直接解读为 AI 影响在减弱。接下来值得关注的是两个方向：一是企业内部使用 AI 的深度提高后，影响是否会从招聘扩展到在职员工；二是菲律宾、印度等以外包服务为主的经济体，行业层面的收缩是否会反映到全国就业数据中。</p>
+
+    </div>
+    <!-- ============== End 中文版 ============== -->
+
+    <!-- ============== English version ============== -->
+    <div class="en lang-inactive">
+
+<h2 class="report-heading">📋 Executive Summary</h2>
+<p>This issue covers 23 June to 27 September 2026. The previous report ended on 22 June, and no separate July or August issues were published, so this issue reports on all three months together.</p>
+
+<p>The clearest change over these three months is in how often companies named AI when announcing layoffs. The US firm Challenger, Gray &amp; Christmas counts announced job cuts by the reason employers give. In June and July, "artificial intelligence" was still the most-cited reason, accounting for 14,029 and 10,970 cuts respectively. In August the figure fell to 3,462, AI dropped to fourth place, and the monthly total was the lowest since December 2025. For January to August 2026, AI-attributed cuts total 116,175, about 22% of all announced cuts and more than twice the full-year 2025 figure (54,836). One month of lower numbers is not enough to show a change in trend, and it may partly reflect companies becoming more careful about mentioning AI. Over the same period, Microsoft, Etsy and others stated explicitly that the roles they were cutting had not been replaced by AI.</p>
+
+<p>Meanwhile, the position of young workers in AI-exposed occupations continued to weaken. On 12 August the Stanford Digital Economy Lab updated its study: in the occupations most exposed to AI, employment of 22–25-year-olds is about 19% below where it would be if it had grown in line with same-age workers in less-exposed occupations. A year earlier the gap was about 15%. The authors attribute the gap mainly to firms hiring fewer young people rather than dismissing more existing staff. At the same time, the Yale Budget Lab's tracking study still finds no clear sign of AI in economy-wide employment data. The two findings are compatible: the effect is concentrated at the point of entry into a small number of occupations and is not yet large enough to show up in national totals.</p>
+
+<p>Overall US job growth slowed markedly. After revisions, payrolls rose by only 31,000 in June and 21,000 in July (the first July estimate was negative), then by 162,000 in August, with unemployment at 4.1%. New York Fed data show recent college graduates' unemployment still at about 5.6%, with underemployment up to 42%.</p>
+
+<p>In Asia, the Philippine unemployment rate rose to 6.0% in July, its highest in more than four years, and the industry association IBPAP lowered its 2028 employment target for the outsourcing sector in July, citing AI among other reasons. Three of India's five largest IT services firms reported lower headcount for April–June; HCLTech's management said directly that AI lets the company do the same work with slightly fewer people. On policy, the EU formally postponed the AI Act's "high-risk" obligations for hiring and other employment uses to December 2027, and several US states began requiring employers to state AI's role in layoff notices. This issue's spotlight takes up that question: how many layoffs AI has actually caused, and how we could know.</p>
+
+<h2 class="report-heading">📉 New Events</h2>
+
+<ol class="report-list">
+<li><strong>Challenger: after five months as the top reason for job cuts, AI fell to fourth in August (released 1 July, 6 August, 2 September)</strong>
+<p>Announced job cuts totalled 45,849 in June, of which 14,029 (31%) were attributed to AI; 33,429 in July, of which 10,970 (33%) were attributed to AI, making it the most-cited reason for the fifth month in a row. In August announced cuts rose to 52,881, but only 3,462 were attributed to AI, placing it fourth. For January to August, AI-related cuts total 116,175 and AI remains the top reason for the year. Challenger counts announced job-cut plans and the reasons employers give for them, not the number of people who actually leave their jobs. <span class="src">Sources: <a href="https://www.challengergray.com/blog/challenger-report-june-layoffs-cool-to-45849-down-53-from-may-ai-leads-reasons-for-fourth-consecutive-month/">Challenger June report</a>, <a href="https://www.challengergray.com/wp-content/uploads/2026/08/Challenger-Report-July-2026.pdf">July report</a>, <a href="https://www.challengergray.com/wp-content/uploads/2026/09/Challenger-Report-August-2026.pdf">August report</a>.</span></p></li>
+
+<li><strong>Microsoft cut 4,800 jobs and said the roles would not be replaced by AI (6 July)</strong>
+<p>Microsoft announced about 4,800 job cuts, around 2% of its global workforce, mainly in its Xbox gaming division and commercial sales. In an internal memo, Chief People Officer Amy Coleman wrote that AI is changing how work is done but that the eliminated roles were not being directly replaced by AI. Several large companies followed the same pattern this period: investing heavily in AI while taking care to separate their layoffs from it. <span class="src">Sources: <a href="https://www.geekwire.com/2026/microsoft-cuts-4800-jobs-about-2-globally-revamps-salesforce-and-launches-massive-xbox-overhaul/">GeekWire (2026-07-06)</a>, <a href="https://www.axios.com/2026/08/20/ceos-shift-messaging-around-ai-and-layoffs">Axios (2026-08-20)</a>.</span></p></li>
+
+<li><strong>Large US banks cut more than 10,000 jobs in the second quarter (mid-July)</strong>
+<p>According to Bloomberg, Bank of America, Wells Fargo, Citigroup, Goldman Sachs and Morgan Stanley together cut more than 10,000 jobs in a quarter of record trading revenue, the largest quarterly reduction in at least six years. Executives attributed part of this to efficiency gains from AI. On JPMorgan's 14 July earnings call, Jamie Dimon reportedly said the bank had already reduced headcount by 30–40% in certain specific areas because of AI, with most affected staff moved to other roles. This quote is taken from secondary reports; we have not checked the transcript. <span class="src">Sources: <a href="https://www.bloomberg.com/news/articles/2026-07-16/wall-street-banks-record-quarter-didn-t-slow-their-job-cuts">Bloomberg (2026-07-16)</a>, <a href="https://www.fool.com/investing/2026/07/21/jamie-dimon-says-ai-has-already-cut-30-to-40-of-jo/">Motley Fool (2026-07-21)</a>.</span></p></li>
+
+<li><strong>Uber cut a tenth of its customer-service staff, then announced 3,300 further job cuts (22 July, 2 September)</strong>
+<p>In July Uber cut about 10% of its customer-service staff, giving "continuing to embrace AI" as one of its reasons. In early September it announced about 3,300 job cuts (roughly 10% of employees) and a reduction of about a fifth in management layers. This time the company did not cite AI; it described the move as simplifying the organisation and directing money towards its robotaxi business. The first was a clear case of AI replacing customer-service work; the second was a more ordinary reorganisation, and the two should be read separately. <span class="src">Sources: <a href="https://www.customerexperiencedive.com/news/uber-cuts-10-of-customer-service-team-as-it-embraces-ai/826087/">CX Dive (2026-07-23)</a>, <a href="https://fortune.com/2026/09/03/uber-job-cut-robotaxi-future/">Fortune (2026-09-03)</a>.</span></p></li>
+
+<li><strong>India's five largest IT firms, April–June quarter: three reduced headcount (results released 9–23 July)</strong>
+<p>In the first quarter of fiscal 2027 (April–June 2026), TCS added 9,279 employees, its largest quarterly increase in nearly four years, and Wipro added 888. Infosys's headcount fell by 532, although it reaffirmed its target of hiring about 20,000 graduates this year. HCLTech's fell by 3,292, its largest drop in a year, and management said AI and automation allow the company to "deliver the same work with slightly fewer employees". Tech Mahindra's fell by about 863 (another report gives 688). Together the five added about 5,500 people, almost all of them at TCS. Secondary reports also say Wipro onboarded no new graduates this quarter; the company has not confirmed this. <span class="src">Sources: <a href="https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q1-fy-2027">TCS results</a>, <a href="https://www.peoplematters.in/news/strategic-hr/hcltech-sees-biggest-workforce-reduction-in-a-year-cuts-3292-jobs-in-q1-50816">People Matters (HCLTech)</a>, <a href="https://www.storyboard18.com/brand-marketing/infosys-q1-fy27-attrition-rises-to-13-headcount-declines-by-532-employees-105310.htm">Storyboard18 (Infosys)</a>, <a href="https://india.entrepreneur.com/business-news/from-tcs-to-techm-headcount-declines-echo-vembus-it-hiring-concerns">Entrepreneur India (2026-08-04)</a>.</span></p></li>
+
+<li><strong>Philippine unemployment rose to 6.0% in July; the outsourcing industry lowered its jobs target (15 July, 8 September)</strong>
+<p>The Philippine Statistics Authority reported unemployment of 4.8% in May, 4.9% in June and 6.0% in July, with 3.14 million people unemployed, the highest rate in more than four years (July 2025: 5.3%). On 15 July the IT and Business Process Association of the Philippines (IBPAP) lowered its 2028 employment target for the sector from 2.5 million to 1.85–2.14 million, citing AI, competition from countries such as Vietnam and Colombia, and geopolitics. Under the low scenario, employment in the sector would be lower in 2028 than it is now. IBPAP's head also said the effect of AI is real but has not yet been seen at scale. <span class="src">Sources: <a href="https://psa.gov.ph/content/number-employed-persons-rose-4921-million-underemployment-declined-july-2026">PSA (2026-09-08)</a>, <a href="https://bworldonline.com/top-stories/2026/07/15/763409/ai-global-competition-force-philippines-it-bpm-industry-to-cut-targets/">BusinessWorld (2026-07-15)</a>.</span></p></li>
+
+<li><strong>First union contracts for about 1,900 Blizzard workers require bargaining over AI (9 September)</strong>
+<p>The Communications Workers of America (CWA) announced that about 1,900 employees of Microsoft-owned Blizzard Entertainment had ratified their first collective agreements. The contracts require the company to discuss, evaluate and bargain with the union over the use of AI in the workplace, and include protections in case of layoffs. This is one of the larger contracts with AI provisions in the games industry so far. <span class="src">Source: <a href="https://cwa-union.org/news/releases/blizzard-entertainment-workers-ratify-historic-video-game-contracts-cwa">CWA press release (2026-09-09)</a>.</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 Industry Trends</h2>
+
+<h3 class="report-heading">Companies are less willing to name AI when announcing layoffs</h3>
+<p>In the first half of the year, many companies mentioned AI when announcing job cuts, because investors tend to receive it well. This period brought the opposite: executives at Microsoft, Etsy, Patreon and others took care to say their layoffs were not about AI (Axios, 20 August). In Challenger's July report, Andy Challenger noted that naming AI in a layoff announcement can win over investors while putting off current and prospective employees, and that as regulation takes shape, companies will be even more careful in their announcements, making AI's effect on jobs harder to track. Part of the sharp fall in AI-attributed cuts in August may come from this change in wording, but there is no direct evidence of it yet.</p>
+
+<h3 class="report-heading">Customer service is where the effect is clearest</h3>
+<p>Across job types, the evidence of AI's effect is most consistent for customer service. A cross-country Goldman Sachs study published on 19 August estimates that US call-centre employment is 39% below where past trends would put it, with Canada 33% and Germany 27% below. Uber's July cut of a tenth of its customer-service staff also explicitly mentioned AI. In early June the consultancy Forrester forecast that customer-service jobs could halve by 2030; this is a forecast, not a change that has already happened.</p>
+
+<h3 class="report-heading">Software hiring has picked up, but mostly for senior roles</h3>
+<p>An Indeed Hiring Lab report on 8 July found that US job postings for software developers have risen by about 15% since February 2025, while all postings fell by about 7% over the same period. There are two qualifications. Software postings are still 27.5% below their pre-pandemic level, and 71% of the increase between May 2025 and May 2026 came from senior positions. In other words, companies are hiring more but are not adding junior roles at the same rate, which is consistent with Stanford's findings on young workers.</p>
+
+<h3 class="report-heading">Unions are writing AI clauses into contracts</h3>
+<p>Besides the Blizzard agreement, Axios reported on 26 July that the NewsGuild-CWA has 85–90 contracts with explicit AI provisions. A union contract at a Washington, DC bookshop, ratified on 28 August, states that no employee may be dismissed, demoted or have their scheduled hours reduced as a result of AI. Most of these contracts are small, but they provide concrete wording that other sectors can draw on.</p>
+
+<h2 class="report-heading">🌍 Geographic Distribution</h2>
+
+<h3 class="report-heading">United States: slower job growth, no improvement for recent graduates</h3>
+<p>According to the Bureau of Labor Statistics, June payrolls were first reported at +57,000 and later revised to +31,000; July was first reported at −23,000 and later revised to +21,000; August came in at +162,000. Unemployment was 4.2% in June and 4.1% in July and August. New York Fed data for the second quarter show recent college graduates (aged 22–27) still at about 5.6% unemployment, with the underemployment rate, meaning the share working in jobs that do not require a degree, up to 42%. Stanford's research shows the employment gap for 22–25-year-olds in highly exposed occupations widening from 15% a year earlier to 19%. The general slowdown has many causes and there is no evidence that AI is the main one, but the difficulty young people face in highly exposed occupations has now lasted more than a year and is still getting worse.</p>
+
+<h3 class="report-heading">EU and UK: youth unemployment broadly stable; UK graduate-vacancy data conflict</h3>
+<p>Eurostat reports EU youth unemployment (under 25) of 15.5% in June (later revised to 15.6%), easing to 15.1% in July; the euro-area rate was 14.9% in July. This is essentially the same as the April figure in the previous report (15.1%). The UK picture is less clear. Data from the job site Adzuna show only 8,383 graduate vacancies in July, 45.6% fewer than a year earlier and the lowest since its records began in 2016, while Indeed data show graduate postings down only about 7% year on year. The two sources cover different sets of jobs, the gap between them is large, and it is not yet possible to say which is closer to reality. Deloitte's UK CFO survey found that cost control is the main reason firms are hiring less, with AI ranked below it.</p>
+
+<h3 class="report-heading">India: headline unemployment down, urban unemployment up</h3>
+<p>India's monthly Periodic Labour Force Survey shows unemployment for people aged 15 and over at 5.5% in June, 5.1% in July and 5.0% in August, with labour-force participation rising from 54.4% to 55.6%. The fall in the headline rate came mainly from rural areas and is linked to monsoon-season farm work. Urban unemployment rose each month, from 6.4% in May to 6.8% in August. For IT and service workers, the urban figures are the more relevant ones. Taken together with IT companies' first-quarter headcount changes, hiring in Indian IT is slowing, but there is no clear effect on national employment yet.</p>
+
+<h3 class="report-heading">Philippines: a marked rise in unemployment, with an unclear link to AI</h3>
+<p>Philippine unemployment was 6.0% in July, 0.7 percentage points higher than a year earlier, but underemployment fell from 14.8% to 12.9% over the same period and employment rose to 49.21 million. The Philippine Statistics Authority has not linked the rise in unemployment to AI. The outsourcing sector still employs about 1.9 million people, and IBPAP expects a small increase to 1.96 million in 2026, so the July rise in unemployment is unlikely to come mainly from outsourcing layoffs. What is clear is that the industry itself has lowered its medium-term employment expectations; how far this will show up in national data remains to be seen.</p>
+
+<h2 class="report-heading">📑 Important Research / Policy</h2>
+
+<ol class="report-list">
+<li><strong>Stanford "Canaries in the Coal Mine" update: the employment gap for young workers widens to 19% (12 August)</strong>
+<p>Brynjolfsson, Chandar and Chen updated their study using payroll data from ADP. In the most AI-exposed occupations, employment of 22–25-year-olds is about 19% below where it would be had it grown in line with same-age workers in less-exposed occupations; the same method gave a gap of about 15% with data to July 2025. In absolute terms, between November 2022 and June 2026, employment of 22–25-year-olds in the two most exposed quintiles fell by about 11%, while same-age employment in the three least exposed quintiles rose by about 10%. Experienced workers show no comparable gap. The authors stress that these are descriptive results, not causal estimates, and that the gap narrows once education is taken into account. The lab's monthly data page was last updated on 23 September. <em>Correction: the previous report cited a "16% relative decline", which does not match the series the paper itself reports (15% → 19%). From this issue on we use the paper's published figures.</em> <span class="src">Sources: <a href="https://digitaleconomy.stanford.edu/news/canariesaug26/">Stanford Digital Economy Lab (2026-08-12)</a>, <a href="https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/">Canaries data page</a>.</span></p></li>
+
+<li><strong>Richmond Fed: job-finding rates fell most in highly exposed occupations (August)</strong>
+<p>A Richmond Fed economic brief finds that since 2023 the rate at which unemployed people find new jobs has diverged across occupations, falling most in those highly exposed to AI. This supports Stanford's finding that the effect works through less hiring rather than more dismissals: those most affected are people trying to enter these occupations, not people already in them. <span class="src">Source: <a href="https://www.richmondfed.org/publications/research/economic_brief/2026/eb_26-26">Richmond Fed Economic Brief 26-26</a>.</span></p></li>
+
+<li><strong>New York Fed business survey: 61% of service firms use AI, only 4% cut jobs because of it (1 September)</strong>
+<p>The New York Fed's August survey of firms in New York State and northern New Jersey found that the share of service firms using AI rose from 40% in 2025 to 61%, and manufacturers from 26% to 51%. Among firms using AI, however, the median share of employees actually using it is only 17% in services and 7% in manufacturing, and most firms describe their investment as modest. Over the past six months, 4% of service firms laid off workers because of AI (1% a year earlier) and no manufacturers did; about 15% of service firms hired fewer people because of AI, and about 13% hired more. <span class="src">Source: <a href="https://libertystreeteconomics.newyorkfed.org/2026/09/businesses-are-using-ai-to-transform-work-not-cut-jobs/">Liberty Street Economics (2026-09-01)</a>.</span></p></li>
+
+<li><strong>Yale Budget Lab: still no clear AI effect at the national level (published 16 July, updated 15 September)</strong>
+<p>The study tests for AI's effect in three ways: the speed of change in the occupational mix, the relationship between AI use and unemployment, and a synthetic-control statistical method. It concludes that changes in the occupational mix do not yet clearly line up with the arrival of AI, and that AI usage shows no link to changes in employment or unemployment. <span class="src">Source: <a href="https://budgetlab.yale.edu/research/tracking-impact-ai-labor-market">Yale Budget Lab</a>.</span></p></li>
+
+<li><strong>Goldman Sachs: 22.4% of firms use AI; call-centre employment well below trend (19 August, 1 September)</strong>
+<p>Citing the US Census Bureau's business survey, Goldman Sachs reports that 22.4% of firms used AI in August, expected to rise to 25.9% within six months, with the information sector close to half. Goldman describes AI's labour-market effect as "visible but narrow", concentrated in marketing, graphic design, customer service and parts of tech, while data-centre-related construction employment is about 209,000 jobs above trend since 2022. In June Goldman estimated that AI was reducing US employment by a net 11,000 jobs a month; we found no updated figure this period. <span class="src">Sources: <a href="https://advisoranalyst.com/2026/09/18/the-485-billion-question.html/">Goldman Sachs AI adoption tracker (via AdvisorAnalyst)</a>, <a href="https://www.cnbc.com/2026/08/19/goldman-ai-impact-employment-jobs.html">CNBC (2026-08-19)</a>.</span></p></li>
+
+<li><strong>Anthropic Economic Index survey and a review of retraining research (26 June, 12 August)</strong>
+<p>Anthropic's June user survey found that 10% of respondents thought it likely they would lose their job, and 38% of those put this down to AI; more than a third thought the chance that a junior colleague would lose their job within a year was above 60%. In August, Anthropic researchers reviewed 56 US randomised trials of retraining programmes: on average, each person offered training gained 2–3 percentage points in employment and about $1,000 a year in earnings, at a cost of around $13,000. The authors conclude that if AI displaces workers at scale, existing retraining programmes would probably fall well short. <span class="src">Sources: <a href="https://www.anthropic.com/research/economic-index-june-2026-report">Anthropic Economic Index (2026-06-26)</a>, <a href="https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs">Anthropic (2026-08-12)</a>.</span></p></li>
+
+<li><strong>World Bank World Development Report 2026: a smaller share of jobs at risk in developing countries (4 August)</strong>
+<p>The report estimates that about 4.5% of jobs in low- and middle-income countries are at risk of automation by generative AI, against about 14.2% in high-income countries; the shares of jobs that could see productivity gains are about 16.2% and 18.7%. This matches the direction of the cross-country differences in this dashboard, though economies built on outsourced services, such as the Philippines and India, may be more affected than their income level alone would suggest. <span class="src">Source: <a href="https://www.worldbank.org/en/news/press-release/2026/08/04/ai-offers-lifeline-to-developing-economies-in-an-era-of-weak-growth">World Bank (2026-08-04)</a>.</span></p></li>
+
+<li><strong>Policy: the EU delays high-risk obligations; China and Korea set up AI employment-impact assessment; US states move on AI layoff disclosure</strong>
+<p>The EU's Digital Omnibus on AI (Regulation (EU) 2026/1744) entered into force on 27 July, pushing the high-risk obligations for employment uses such as hiring and performance evaluation back to 2 December 2027. The Commission's second-stage consultation of employers and unions on a Quality Jobs Act, which covers algorithmic management at work, closed on 28 September. In China, the Ministry of Human Resources and Social Security and three other bodies issued guidance on applying AI in human-resources and social-security work (Document No. 40 of 2026, made public on 8 July), which calls for a system to assess and survey AI's effects on employment; the Employment-First Strategy plan for 2026–2030, issued on 17 June, also addresses AI and jobs. On 9 July South Korea published a Basic Plan for Employment Stability in Industrial Transition, which plans an index and monitoring system measuring AI's effect by occupation and industry. In the US, Connecticut's requirement that layoff notices state whether cuts are related to AI takes effect on 1 October, and California's SB 947 and SB 951 are on the governor's desk. See this site's <a href="../policy.html">policy tracker</a> and this issue's spotlight.</p></li>
+</ol>
+
+<h2 class="report-heading">🔮 Watch Next Month</h2>
+<ol class="report-list">
+<li><strong>California governor's decision on SB 947, SB 951 and AB 1883 (deadline 30 September)</strong>
+<p>SB 947 would bar employers from relying solely on automated systems to discipline or dismiss workers; SB 951 would require notices for AI-driven mass layoffs to state which work is being automated; AB 1883 would restrict the use of AI to recognise employees' emotions. Governor Newsom vetoed a similar bill in 2025, so this year's decision will show whether the most populous US state legislates in this area.</p></li>
+<li><strong>Challenger's September job-cuts report (early October)</strong>
+<p>Whether August's sharp fall in AI-attributed cuts was a one-off or continues.</p></li>
+<li><strong>Philippine August Labour Force Survey (early October)</strong>
+<p>Whether July's 6.0% unemployment rate persists, and what happens to youth unemployment.</p></li>
+<li><strong>Indian IT firms' July–September results (from mid-October)</strong>
+<p>Headcount, progress on graduate hiring (including Infosys's 20,000 target), and what management says about AI and staffing.</p></li>
+<li><strong>Connecticut's AI layoff-disclosure rule (from 1 October) and New York's AI Labor Information Act</strong>
+<p>What the first layoff notices under Connecticut's new rule look like; New York's annual-reporting bill, already passed by the legislature, is still awaiting the governor's signature.</p></li>
+<li><strong>Stanford's monthly data and the US autumn graduate-recruitment season</strong>
+<p>Stanford's monthly data will show whether the employment gap for young workers keeps widening. NACE's autumn hiring survey, due in November, can then be compared with the spring projection of a 5.6% increase.</p></li>
+</ol>
+
+<!-- ============== Spotlight ============== -->
+<div class="spotlight-section">
+<h2>🧮 Spotlight: How Many Layoffs Has AI Actually Caused? Three Ways of Counting, and the New Disclosure Rules</h2>
+<p class="subtitle">Estimates of how many people have lost their jobs to AI vary widely. This section explains where the numbers come from, why they differ, and how far the disclosure rules now being introduced can help.</p>
+
+<h3 class="report-heading">1. Why the question is hard to answer</h3>
+<p>First, AI rarely replaces a whole job. More often it takes over part of a job, so a firm hires a few fewer people or does not replace someone who leaves. Changes of this kind never appear on a layoff list. Second, a round of layoffs usually has several causes at once, such as pressure on profits, over-hiring in earlier years, restructuring and investment in AI, and it is hard to say which part was "caused by AI". Third, the reasons for layoffs are given by the companies themselves, and whether a company mentions AI depends on whether it suits the company to do so.</p>
+
+<h3 class="report-heading">2. Three ways of counting, with very different results</h3>
+<table>
+<thead><tr><th>Method</th><th>Examples</th><th>Main limitations</th></tr></thead>
+<tbody>
+<tr><td><strong>Counting employers' stated reasons</strong></td><td>Challenger: 116,175 job cuts attributed to AI in January–August 2026, about 22% of all announced cuts. Layoffs.fyi: about 33% of tech layoff events in 2026 mentioned AI (according to founder Roger Lee; another report gives 54%, and the two do not agree). New York State layoff notices: none of more than 160 filers ticked the "technological innovation or automation" box</td><td>Depends entirely on what companies say; counts announced plans, not actual departures; cannot see reduced hiring</td></tr>
+<tr><td><strong>Business surveys</strong></td><td>New York Fed: 4% of service firms and no manufacturers laid off workers because of AI in the past six months. NBER survey of about 6,000 executives (November 2025 to January 2026): more than 90% said AI had had no effect on their employment over the past three years</td><td>Relies on firms' own reports; samples limited to particular regions or periods</td></tr>
+<tr><td><strong>Statistical comparisons by occupational exposure</strong></td><td>Stanford: a 19% employment gap for 22–25-year-olds in highly exposed occupations. Yale: no clear effect at the national level. Goldman Sachs: a net loss of about 11,000 jobs a month estimated in June (16,000 in April)</td><td>Results are sensitive to how AI exposure is measured; other factors in the same period are hard to rule out</td></tr>
+</tbody>
+</table>
+<p>These numbers cannot be compared directly because they measure different things. Challenger counts announced layoff plans; business surveys ask firms what they think happened; the Stanford and Yale studies compare employment changes across occupations, which includes people who were never hired. If AI's main effect is to make firms hire fewer people, the first two methods will largely miss it and only the third can partly capture it. This is why firm-level layoff numbers are modest while the employment gap for young people keeps widening.</p>
+
+<h3 class="report-heading">3. Errors in both directions</h3>
+<p><strong>Overstatement.</strong> Some researchers and analysts argue that companies present layoffs they would have made anyway as the result of AI, because shareholders see this as good news. Oxford Economics said in January that productivity data give no sign that firms are replacing workers with AI on a large scale; MIT's Paul Osterman called AI "a perfect excuse" to justify large layoffs. In a Resume.org survey of 1,000 hiring managers, 59% said they emphasise AI when explaining layoffs because it is received better than citing financial constraints (this commercial survey is methodologically weak and should be treated only as an indication).</p>
+<p><strong>Understatement.</strong> On the other hand, New York State added a "technological innovation or automation" box to its layoff-notice form in March 2025, yet in the following year none of more than 160 filers ticked it, including large companies that had spoken publicly about efficiency gains from AI. Andy Challenger has also warned that companies will become more cautious in their announcements as regulation arrives. Whether August's fall in AI-attributed cuts partly reflects this caution cannot yet be determined.</p>
+
+<h3 class="report-heading">4. Disclosure rules now being introduced</h3>
+<table>
+<thead><tr><th>Jurisdiction / measure</th><th>Requirement</th><th>Status (as of 27 September)</th></tr></thead>
+<tbody>
+<tr><td>Connecticut SB 5 (US)</td><td>Layoff notices must state whether cuts are related to the employer's use of AI or other technological change</td><td>Signed; layoff-disclosure provision in force from 1 October 2026</td></tr>
+<tr><td>California SB 951 (US)</td><td>For layoffs caused wholly or substantially by AI, notices must state the number of workers, the work being automated and the type of AI system; the state employment agency publishes quarterly summaries</td><td>On the governor's desk; decision due by 30 September</td></tr>
+<tr><td>California Executive Order N-6-26 (US)</td><td>State labour agencies to recommend changes to California's layoff-notice law within 180 days</td><td>Signed 21 May 2026; recommendations due around mid-November</td></tr>
+<tr><td>New York AI Labor Information Act (S8706B / A9581B, US)</td><td>Employers with 50+ staff and listed companies report annually on employees displaced by AI, hours reduced, hires and unfilled positions</td><td>Passed both chambers; awaiting the governor's signature</td></tr>
+<tr><td>New Jersey S1840, A5316 (US)</td><td>AI-driven layoffs to be reported to the state labour department; A5316 requires 90 days' notice</td><td>Bills</td></tr>
+<tr><td>US federal: S.3108, Great American AI Act draft, AI DATA Act (S.4742)</td><td>Large firms to report AI-related job effects quarterly; layoff notices to estimate AI's share; BLS and Census to add AI survey questions</td><td>Introduced; not formally introduced; introduced</td></tr>
+<tr><td>China: MOHRSS Document No. 40 (2026)</td><td>Establish a system to assess and survey AI's effects on employment</td><td>Issued (made public 8 July)</td></tr>
+<tr><td>South Korea: Basic Plan for Employment Stability in Industrial Transition</td><td>Build an index and real-time monitoring system for AI's effects by occupation and industry</td><td>Published; monitoring system due no earlier than the second half of 2027</td></tr>
+<tr><td>EU</td><td>No disclosure rule specific to AI layoffs; the Quality Jobs Act consultation covers algorithmic management but not layoff disclosure</td><td>Proposal expected by end-2026</td></tr>
+</tbody>
+</table>
+
+<h3 class="report-heading">5. What these rules can and cannot achieve</h3>
+<p>Most of the US state rules ask employers to judge for themselves whether AI was a "substantial factor" in, or "related to", a layoff, so they still rest on self-assessment. New York's experience with its layoff-notice box suggests that if employers are unwilling to tick it, such requirements may yield very little information. In addition, layoff notices are only required for large layoffs, so they cannot capture reduced hiring or unfilled vacancies, which is where the evidence of AI's effect is currently strongest.</p>
+<p>Among these measures, New York's annual-reporting bill is the only one that explicitly asks for positions left unfilled because of AI and for changes in hiring; if signed, it would come closest to measuring AI's effect on hiring. China, South Korea and the US federal AI DATA Act take a different route: measuring through government statistical surveys rather than relying on disclosures by individual firms. Each approach has limits. The first depends on firms answering honestly; the second will take several years to produce usable data.</p>
+
+<div class="callout">
+<div class="label">Spotlight conclusion</div>
+<p>There is not yet a reliable number that answers the question "how many layoffs has AI caused?". Announced figures (about 116,000 jobs so far this year) depend heavily on what companies choose to say and may be both overstated and understated. Business surveys show that few firms have cut jobs directly because of AI. Statistical studies suggest AI's effect shows up more in young people failing to get into certain occupations than in existing workers being dismissed. Most of the disclosure rules now being introduced cover only layoffs, cannot capture reduced hiring, and still rely on employers' own judgement. When readers see a claim that "AI has cost X jobs", the first question should be whether the number counts announced plans, actual departures, or hiring that never happened.</p>
+</div>
+
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 Three-Layer Methodology Analysis</h2>
+
+<p>This section reads the period's developments through the dashboard's three measures: the Anthropic Economic Index (how much AI is actually used in each occupation's tasks today), the adoption gap (the difference between what AI could do in principle and what it is actually doing), and the Coface×OEM task analysis (how far different kinds of tasks could be automated at each stage of AI development).</p>
+
+<p><strong>Layer 1: actual use</strong></p>
+<p>In this dashboard's US data, the two occupations with the highest actual AI use are computer programmers (0.7451) and customer service representatives (0.7011). This period's evidence centres on exactly these two groups: Stanford shows clear declines in young workers' employment in software development and customer service, and Goldman estimates US call-centre employment at 39% below trend. Stanford's data page also uses the Anthropic Index's distinction between "automation" and "augmentation": in occupations where AI is used more to complete tasks on people's behalf, young workers' employment has fallen more, while in occupations where AI mainly assists, there is no clear relationship. This suggests that whether AI does the work or helps with it predicts employment changes better than the level of use alone. One caveat: in this dashboard's data only about 28% of customer-service conversations are of the automation type, yet customer service shows the clearest employment decline. One possible explanation is that firms replace customer-service staff mainly by deploying dedicated customer-service systems, which may not appear in conversation data from individual users. This is a tentative explanation that needs more data to test.</p>
+
+<p><strong>Layer 2: the adoption gap</strong></p>
+<p>The share of firms using AI is rising: 22.4% in August according to the Census Bureau survey, and 61% of service firms in the New York Fed survey. But use is shallow: among service firms already using AI, the median share of employees who actually use it is only 17%, and most firms' investment is modest. There is therefore still a large gap between the work AI could take on in principle and the work it is taking on in practice. In that situation firms are more likely to hire fewer people first than to lay off large numbers straight away, which is what this period's evidence shows. As use widens, the gap will narrow, and the effect may extend from new hiring to existing staff.</p>
+
+<p><strong>Layer 3: task types and stages of development</strong></p>
+<p>The Coface×OEM model divides AI development into five stages. We are currently in the second, in which AI can complete specific tasks with some independence; at this stage about 13% of occupations have more than 30% of their tasks open to automation, the level the model treats as the threshold for profound change in an occupation. The model also classifies tasks by what they work on (data, people or physical things): tasks that take in and produce data are the easiest to automate, and tasks involving physical objects the hardest. This period's evidence fits that classification. The clearest effects are in customer service (dealing with people, but mostly exchanging information), software development and bank back-office processing (data to data). By contrast, construction jobs linked to data-centre building are about 209,000 above trend, and Stanford finds faster employment growth among young home health aides, both kinds of work centred on physical labour or in-person care.</p>
+
+<p><strong>Overall assessment:</strong></p>
+<p>The three measures point to broadly the same conclusion: as of September 2026, AI's effect on employment remains concentrated in a small number of highly exposed occupations and shows up mainly as reduced hiring of young people in those occupations, not as widespread layoffs. Announced AI-related layoffs fell sharply in August, but because companies' wording is changing, the fall cannot be read directly as a weakening of AI's effect. Two developments deserve attention from here: whether, as firms use AI more deeply, the effect spreads from hiring to existing employees; and whether the contraction in outsourcing industries in economies such as the Philippines and India starts to show up in national employment data.</p>
+
+    </div>
+    <!-- ============== End English version ============== -->
+
+  </div>
+
+  <div class="report-footer">
+    <p>
+      <span class="cn">本期月报由 AI 研究助手生成 · 数据截至 2026-09-27</span>
+      <span class="en lang-inactive">Generated by AI Research Assistant · Data through 2026-09-27</span>
+    </p>
+    <p style="margin-top:8px">
+      <a href="../index.html"><span class="cn">← 返回 Dashboard</span><span class="en lang-inactive">← Back to Dashboard</span></a>
+      <span style="margin:0 12px;color:var(--fg2)">|</span>
+      <a href="index.html"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
