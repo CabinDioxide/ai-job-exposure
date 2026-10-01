@@ -1,6 +1,6 @@
 {
   "module": "ai_policy",
-  "updated": "2026-09-28",
+  "updated": "2026-10-01",
   "note_cn": "覆盖 13 个主要司法辖区（dashboard 追踪的 12 国 + 韩国）的「AI × 就业」相关监管政策。仅收录与就业/劳动相关的条目（AI 招聘、算法管理、裁员披露、工人保护、再培训、外包），不含纯 AI 安全立法。状态与日期截至更新日，由独立核查。",
   "note_en": "AI-and-employment regulation across 13 major jurisdictions (the 12 this dashboard tracks, plus South Korea). Only labor/employment-relevant items (AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing) — not general AI-safety law. Status and dates current as of the update date, independently verified.",
   "jurisdictions": [
@@ -23,8 +23,8 @@
           "type": "bill", "status": "proposed", "date": "2026-07",
           "relevance_cn": "拟修订 WARN 法案：AI 为大规模裁员「实质性因素」时须披露，并估算 AI 归因失业比例、说明再培训。",
           "relevance_en": "Would amend the WARN Act to require disclosure when AI is a 'substantial factor' in mass layoffs, plus an AI-attributable job-loss estimate.",
-          "summary_cn": "2026 年 6 月 4 日两党讨论稿，意在建首个综合联邦 AI 框架；核心雇主义务是 AI 裁员的 WARN 修正。7 月 23 日其前沿模型部分被单独提出为 FRONTIER Act，但含 WARN 条款的整体法案截至 2026 年 9 月仍为讨论稿、未正式提出；7 月 200 余名州议员及工会反对其优先适用条款。配套 S.3108（Hawley）仍停留在提出阶段。",
-          "summary_en": "June 4 2026 bipartisan discussion draft for a first federal AI framework; core employer obligation is the WARN-Act AI-layoff amendment. On July 23 its frontier-model title was introduced separately as the FRONTIER Act, but the full draft with the WARN provision remained un-introduced as of Sept 2026; in July 200+ state lawmakers and labor groups opposed its preemption clause. Companion S.3108 (Hawley) remains at introduction.",
+          "summary_cn": "2026 年 6 月 4 日两党讨论稿，意在建首个综合联邦 AI 框架；核心雇主义务是 AI 裁员的 WARN 修正。7 月 23 日其前沿模型部分被单独提出为 FRONTIER Act，但含 WARN 条款的整体法案截至 2026 年 9 月仍为讨论稿、未正式提出；7 月 200 余名州议员及工会反对其优先适用条款。配套 S.3108（Hawley）仍停留在提出阶段。据 Roll Call 2026-09-15 报道，两党尚未就 AI 立法方案达成一致，中期选举前通过的可能性很小。",
+          "summary_en": "June 4 2026 bipartisan discussion draft for a first federal AI framework; core employer obligation is the WARN-Act AI-layoff amendment. On July 23 its frontier-model title was introduced separately as the FRONTIER Act, but the full draft with the WARN provision remained un-introduced as of Sept 2026; in July 200+ state lawmakers and labor groups opposed its preemption clause. Companion S.3108 (Hawley) remains at introduction. Roll Call reported on Sept 15 2026 that neither party had settled on a plan and action before the midterms looked unlikely.",
           "source_url": "https://obernolte.house.gov/media/press-releases/obernolte-trahan-introduce-bipartisan-frontier-act-strengthen-oversight"
         },
         {
@@ -43,8 +43,8 @@
           "type": "regulation", "status": "in_force", "date": "2025-12",
           "relevance_cn": "联邦通过 DOJ 诉讼工作组与有条件拨款，挑战/优先于各州 AI 招聘与自动决策法，给州级 AI 用工规则带来不确定性。",
           "relevance_en": "Federal push (DOJ task force + conditional funding) to preempt/challenge state AI-hiring and ADS laws, clouding the state-led patchwork.",
-          "summary_cn": "2025 年 12 月 11 日签署，设 DOJ AI 诉讼工作组（2026 年 1 月起运作），以「妨碍州际商业」挑战各州 AI 法；最终文本排除对儿童安全、采购等合法州法的优先适用。迄今主要行动是 2026 年 4 月 24 日介入 xAI 诉科罗拉多 AI 法案（以平等保护为由）；截至 2026 年 9 月未见独立起诉，也未推翻任何州法。",
-          "summary_en": "Signed Dec 11 2025; establishes a DOJ AI Litigation Task Force (active Jan 2026) to challenge state AI laws as burdening interstate commerce, while exempting certain lawful state laws (child safety, procurement). Its main move so far was intervening on Apr 24 2026 in xAI's suit against the Colorado AI Act (on equal-protection grounds); as of Sept 2026 it had filed no standalone suit and struck down no state law.",
+          "summary_cn": "2025 年 12 月 11 日签署，设 DOJ AI 诉讼工作组（2026 年 1 月起运作），以「妨碍州际商业」挑战各州 AI 法；最终文本排除对儿童安全、采购等合法州法的优先适用。迄今主要行动是 2026 年 4 月 24 日介入 xAI 诉科罗拉多 AI 法案（以平等保护为由）；截至 2026 年 9 月底仍未见独立起诉，也未推翻任何州法。",
+          "summary_en": "Signed Dec 11 2025; establishes a DOJ AI Litigation Task Force (active Jan 2026) to challenge state AI laws as burdening interstate commerce, while exempting certain lawful state laws (child safety, procurement). Its main move so far was intervening on Apr 24 2026 in xAI's suit against the Colorado AI Act (on equal-protection grounds); as of end-Sept 2026 it still had filed no standalone suit and struck down no state law.",
           "source_url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/"
         },
         {
@@ -108,24 +108,34 @@
           "source_url": "https://www.texasattorneygeneral.gov/consumer-protection/file-consumer-complaint/consumer-ai-rights"
         },
         {
-          "title_cn": "加州 SB 947「禁止机器人老板法」+ SB 951（AI 裁员 WARN 通知）", "title_en": "California SB 947 'No Robo Bosses Act' + SB 951 (AI-layoff WARN notice)",
+          "title_cn": "加州 SB 947「禁止机器人老板法」+ AB 1883（禁止 AI 识别员工情绪/采集神经数据）", "title_en": "California SB 947 'No Robo Bosses Act' + AB 1883 (ban on AI emotion recognition / neural data at work)",
           "authority": "加州议会 / Newsom 州长",
-          "type": "bill", "status": "in_progress", "date": "2026-09",
-          "relevance_cn": "禁止雇主仅凭自动决策系统作出纪律处分或解雇，须人工复核并书面告知；SB 951 要求 AI 引发的大规模裁员在 Cal/WARN 通知中列明被自动化的岗位职能。",
-          "relevance_en": "Bars employers from relying solely on automated decision systems to discipline or fire workers, requiring human review and written notice; SB 951 requires Cal/WARN notices to list job functions automated by AI.",
-          "summary_cn": "SB 947 为 2025 年被否决的 SB 7 的收窄版，与 SB 951 均于 2026 年 9 月 9 日送达州长，须在 9 月 30 日前签署或否决。SB 947 若签署自 2027-07-01 生效，每项违规罚 500 美元，禁止预测性行为分析；SB 951 保留 60 天通知期并要求 EDD 按季公布技术性失业汇总。配套 Newsom 第 N-6-26 号行政令（2026-05）要求研究修订 WARN 法。同批送达州长的还有 AB 1883（禁止雇主以 AI 监控采集神经数据或识别员工情绪）。",
-          "summary_en": "SB 947, a narrowed successor to the vetoed 2025 SB 7, and SB 951 were both presented to the Governor on Sept 9 2026, with a Sept 30 sign/veto deadline. If signed, SB 947 takes effect July 1 2027 with $500-per-violation penalties and a ban on predictive behaviour analysis; SB 951 keeps the 60-day notice but has EDD publish quarterly tech-displacement summaries. Newsom's EO N-6-26 (May 2026) separately ordered a review of WARN-law updates. AB 1883 (barring AI workplace surveillance that collects neural data or recognises emotions) awaits the same decision.",
-          "source_url": "https://calmatters.digitaldemocracy.org/bills/ca_202520260sb947"
+          "type": "law", "status": "in_progress", "date": "2026-09",
+          "relevance_cn": "禁止雇主仅凭自动决策系统处分或解雇员工，须人工复核并书面告知；AB 1883 禁止雇主用 AI 监控工具识别、推断员工情绪或采集神经数据。",
+          "relevance_en": "Bars employers from relying solely on automated decision systems to discipline or fire workers, requiring human review and written notice; AB 1883 bars AI workplace surveillance that recognises or infers workers' emotions or collects neural data.",
+          "summary_cn": "Newsom 州长于 2026-09-30 签署 SB 947 与 AB 1883（同日签署的还有 SB 951 和限制工作场所监控、禁止在卫生间监控的 AB 1331）。SB 947 是 2025 年被否决的 SB 7 的收窄版：自 2027-07-01 起，雇主不得仅凭自动决策系统处分或解雇员工，AI 参与时须有人工核实并告知员工，并禁止用系统预测员工行为或推断受保护特征；每项违规罚 500 美元，由劳工专员、州检察长或地方检察官执法。立法过程中删去了申诉程序、员工起诉权和承包商覆盖。AB 1883 自 2027-01-01 起禁止 AI 情绪识别与神经数据采集，每项违规最高罚 500 美元。同日 Newsom 否决了 AB 2575（医护人员可拒绝 AI 建议而不受报复）、SB 903（限制以 AI 替代心理健康从业者）和 AB 2656（AI 承担公务员职责须通知）。",
+          "summary_en": "Gov. Newsom signed SB 947 and AB 1883 on Sept 30 2026 (along with SB 951 and AB 1331, which limits workplace surveillance including in bathrooms). SB 947, a narrowed successor to the vetoed 2025 SB 7, provides that from July 1 2027 employers may not rely solely on an automated decision system to discipline or fire workers; AI-assisted decisions need human verification and notice to the worker, and systems that predict worker behaviour or infer protected traits are banned. Penalties are $500 per violation, enforced by the Labor Commissioner, the Attorney General or local prosecutors; an appeals process, worker lawsuits and contractor coverage were dropped during passage. AB 1883 bans AI emotion recognition and neural-data collection at work from Jan 1 2027, with penalties up to $500 per violation. The same day Newsom vetoed AB 2575 (protecting health workers who override AI recommendations), SB 903 (limits on replacing mental-health workers with AI) and AB 2656 (notice when AI performs public employees' work).",
+          "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/"
+        },
+        {
+          "title_cn": "加州 SB 951——AI 裁员须在 Cal/WARN 通知中披露", "title_en": "California SB 951 — AI-layoff disclosure in Cal/WARN notices",
+          "authority": "加州议会 / Newsom 州长 / 就业发展局（EDD）",
+          "type": "law", "status": "in_progress", "date": "2026-09",
+          "relevance_cn": "大规模裁员主要因 AI 或自动化取代岗位时，雇主须在裁员通知中写明被自动化的岗位职能和所用技术类型，州政府定期公布技术性失业数据。",
+          "relevance_en": "When mass layoffs are caused substantially by AI or automation, employers must say so in the layoff notice, naming the job functions automated and the type of technology, and the state publishes regular tech-displacement data.",
+          "summary_cn": "2026-09-30 由 Newsom 签署。最终版本沿用 Cal/WARN 现有的 60 天提前通知（最初提案为 90 天）。通知须写明受影响岗位与人数、被自动化的职能、AI 或自动化技术类别、使用理由、再培训安排及与地方劳动力机构的衔接。EDD 须在官网公布通知，按季度汇总全州因 AI/自动化导致的失业情况并向议会报告。具体生效日期在已查来源中未写明（加州新法通常自次年 1 月 1 日起生效）。",
+          "summary_en": "Signed by Gov. Newsom on Sept 30 2026. The final version keeps Cal/WARN's existing 60-day advance notice (the original bill proposed 90 days). Notices must state the affected roles and headcount, the job functions being automated, the category of AI or automation technology, the reason for using it, retraining options, and coordination with local workforce boards. The EDD must post the notices online, publish quarterly statewide summaries of AI/automation displacement, and report to the Legislature. The sources checked do not state a specific effective date (new California laws usually take effect the following Jan 1).",
+          "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/"
         },
         {
           "title_cn": "康涅狄格 SB 5（第 26-15 号公法）——AI 责任与透明法", "title_en": "Connecticut SB 5 (Public Act 26-15) — AI Responsibility and Transparency Act",
           "authority": "康涅狄格州议会 / Lamont 州长 / 州检察长执法",
-          "type": "law", "status": "in_progress", "date": "2026-10",
+          "type": "law", "status": "in_force", "date": "2026-10",
           "relevance_cn": "首个在州 WARN 通知中要求披露 AI 相关裁员的州法，并要求雇主在用自动决策技术作招聘、晋升、解雇等决定前告知员工/求职者。",
           "relevance_en": "First state law requiring AI-related layoffs to be flagged in state WARN notices, plus pre-use notice to workers/applicants when automated decision tech drives hiring, promotion or discharge decisions.",
-          "summary_cn": "2026-05-29 签署。AI 相关裁员的 WARN 透明要求自 2026-10-01 生效；自动决策技术的告知义务（部署事实、用途、产品名、数据类别与来源等）自 2027-10-01 生效。仅州检察长执法，按不公平贸易行为处理，2027 年底前违规有 60 天补救期，无私人诉权。",
-          "summary_en": "Signed May 29 2026. The WARN transparency rule for AI-related layoffs takes effect Oct 1 2026; ADMT notice duties (deployment, purpose, trade name, data categories and sources) follow on Oct 1 2027. Enforced solely by the AG as an unfair trade practice, with a 60-day cure period for violations before end-2027 and no private right of action.",
-          "source_url": "https://ogletree.com/insights-resources/blog-posts/new-connecticut-law-restricts-employer-ai-use-mandates-notice-for-ai-caused-rifs/"
+          "summary_cn": "2026-05-29 签署。AI 相关裁员的透明要求已于 2026-10-01 生效：雇主向州劳工部提交联邦 WARN 通知时，须说明裁员是否与使用 AI 或其他技术变化有关。自动决策技术的书面告知义务（部署事实、用途、产品名、数据类别与来源等）自 2027-10-01 生效。由州检察长独家执法，按不公平贸易行为处理，2027 年底前的违规有 60 天补救期，无私人诉权。",
+          "summary_en": "Signed May 29 2026. The AI-layoff transparency rule took effect Oct 1 2026: employers filing federal WARN notices with the state Labor Department must say whether the layoffs relate to their use of AI or other technological change. Written notice duties for automated decision tech (deployment, purpose, trade name, data categories and sources) follow on Oct 1 2027. Enforced solely by the AG as an unfair trade practice, with a 60-day cure period for violations before end-2027 and no private right of action.",
+          "source_url": "https://www.nixonpeabody.com/insights/alerts/2026/05/18/connecticut-new-ai-legislation"
         }
       ]
     },
@@ -158,19 +168,19 @@
           "type": "guidance", "status": "in_progress", "date": "2026-07",
           "relevance_cn": "厘清哪些就业/招聘 AI 属高风险，明确将范围扩展至自由职业者、平台工作者与自雇者，细化简历筛选、定向招聘广告与绩效监控。",
           "relevance_en": "Clarifies which employment/recruitment AI counts as high-risk, extending scope to freelancers, platform and self-employed workers and detailing CV-screening, targeted job ads and performance monitoring.",
-          "summary_cn": "委员会 2026-05-19 发布草案并开启定向咨询，应利益相关方要求截止日从 06-23 延长至 2026-07-23；草案确认「与工作相关的合同关系」超出正式雇佣。截至 2026 年 9 月仍为草案，委员会表示将于 2026 年底前通过最终指南。",
-          "summary_en": "Draft published May 19 2026 with a targeted consultation whose deadline was extended from June 23 to July 23 2026 at stakeholders' request; it confirms that 'work-related contractual relationships' extend beyond formal employment. Still a draft as of Sept 2026; the Commission says final guidelines will be adopted by end-2026.",
+          "summary_cn": "委员会 2026-05-19 发布草案并开启定向咨询，应利益相关方要求截止日从 06-23 延长至 2026-07-23；草案确认「与工作相关的合同关系」超出正式雇佣。截至 2026-09 底仍为草案，未见最终版；委员会表示将于 2026 年底前通过最终指南。",
+          "summary_en": "Draft published May 19 2026 with a targeted consultation whose deadline was extended from June 23 to July 23 2026 at stakeholders' request; it confirms that 'work-related contractual relationships' extend beyond formal employment. Still a draft at end-Sept 2026 with no final version found; the Commission says final guidelines will be adopted by end-2026.",
           "source_url": "https://digital-strategy.ec.europa.eu/en/consultations/targeted-consultation-draft-guidelines-classification-high-risk-artificial-intelligence-systems"
         },
         {
           "title_cn": "《平台工作指令》(EU) 2024/2831——算法管理规则", "title_en": "Platform Work Directive (EU) 2024/2831 — algorithmic management",
           "authority": "欧洲议会与理事会",
-          "type": "directive", "status": "in_progress", "date": "2026-07",
+          "type": "directive", "status": "in_progress", "date": "2026-09",
           "relevance_cn": "规制平台工作者的算法管理：禁处理某些个人数据，要求对解雇、停用、薪酬等重大自动决定进行人工监督，并赋透明度/知情权。",
           "relevance_en": "Regulates algorithmic management of platform workers: bans certain data processing, mandates human oversight of consequential automated decisions (dismissal, suspension, pay) and grants transparency rights.",
-          "summary_cn": "2024-10-23 通过、12-01 生效，成员国须在 2026-12-02 前转化。意大利政府 2026-07-24 批准转化立法法令草案（雇佣推定 + 算法透明）；法国截至 2026 年 8 月尚未公布转化文本，德国劳动部仍在起草。多国可能错过截止日。",
-          "summary_en": "Adopted Oct 23 2024, in force Dec 1 2024; transposition deadline Dec 2 2026. Italy's government approved a draft transposing decree on July 24 2026 (employment presumption plus algorithmic-transparency duties); France had published no transposition text as of Aug 2026 and Germany's labour ministry is still drafting. Several states look set to miss the deadline.",
-          "source_url": "https://remoteworkeurope.eu/news/2026/italy-platform-work-directive-transposition-draft/"
+          "summary_cn": "2024-10-23 通过、12-01 生效，成员国须在 2026-12-02 前转化。意大利政府 2026-07-23 初步批准转化立法法令草案（雇佣推定 + 算法透明，算法不得作出解雇决定）；荷兰 2026-06-29 公布草案并咨询至 08-24。法国劳动部长法朗杜 2026-09-11 表示无法在 12 月截止日前完成转化。德国劳动部仍未公布部门草案；联邦参议院 2026-09-25 通过决议，敦促联邦政府尽快提交转化法案，并要求禁止外卖平台通过分包商用工。多国将错过截止日。",
+          "summary_en": "Adopted Oct 23 2024, in force Dec 1 2024; transposition deadline Dec 2 2026. Italy's government gave preliminary approval to a transposing decree on July 23 2026 (employment presumption, algorithmic-transparency duties, no dismissal by algorithm); the Netherlands published a draft bill on June 29 2026 (consultation to Aug 24). French labour minister Jean-Pierre Farandou said on Sept 11 2026 that France cannot transpose by the December deadline. Germany's labour ministry has still published no draft; on Sept 25 2026 the Bundesrat passed a resolution urging the federal government to table a transposing bill promptly and to bar delivery platforms from using subcontractors. Several states will miss the deadline.",
+          "source_url": "https://www.bundesrat.de/DE/plenum/bundesrat-kompakt/26/1068/1068-pk.html"
         },
         {
           "title_cn": "GDPR 第 22 条 + EDPB AI 模型指南——就业中的自动决定", "title_en": "GDPR Art. 22 + EDPB guidance — automated decisions in employment",
@@ -193,14 +203,14 @@
           "source_url": "https://commission.europa.eu/topics/competitiveness/union-skills_en"
         },
         {
-          "title_cn": "《优质就业法》——职场算法管理与 AI（社会伙伴第二阶段咨询）", "title_en": "Quality Jobs Act — algorithmic management & AI at work (second-stage social-partner consultation)",
+          "title_cn": "《优质就业法》——职场算法管理与 AI（社会伙伴咨询已结束，待提案）", "title_en": "Quality Jobs Act — algorithmic management & AI at work (social-partner consultation closed, proposal pending)",
           "authority": "欧盟委员会（DG EMPL）/ 欧洲议会",
-          "type": "directive", "status": "consultation", "date": "2026-07",
+          "type": "directive", "status": "in_progress", "date": "2026-09",
           "relevance_cn": "首个面向所有劳动者（不限平台工作）的欧盟算法管理立法倡议：拟令自动化管理决定更透明、以人为本，并防止过度监控。",
           "relevance_en": "First EU legislative initiative on algorithmic management covering all workers (not just platform work): aims to make automated management decisions transparent and human-centred and curb excessive monitoring.",
-          "summary_cn": "欧洲议会 2025-12-17 以 451 票通过立法倡议报告，要求委员会提出职场 AI/算法管理指令。委员会 2025-12 发布优质就业路线图，2026-07-20 启动社会伙伴第二阶段咨询（至 09-28），算法管理为五大优先领域之一；正式立法提案预计 2026 年底前提出，形式（单一指令或多项工具）未定。",
-          "summary_en": "The European Parliament adopted a legislative-initiative report (451 votes, Dec 17 2025) asking for a directive on AI/algorithmic management at work. After the Dec 2025 Quality Jobs Roadmap, the Commission opened the second-stage social-partner consultation on July 20 2026 (closing Sept 28), with algorithmic management one of five priorities; a legislative proposal is expected by end-2026, form (single directive or several instruments) still open.",
-          "source_url": "https://employment-social-affairs.ec.europa.eu/news/commission-opens-second-phase-consultation-quality-jobs-act-2026-07-20_en"
+          "summary_cn": "欧洲议会 2025-12-17 以 451 票通过立法倡议报告，要求委员会提出职场 AI/算法管理指令。委员会 2025-12 发布优质就业路线图，2026-07-20 启动社会伙伴第二阶段咨询，算法管理为五大优先领域之一；咨询已于 2026-09-28 结束。据 Agence Europe 报道，劳资双方分歧明显：欧洲工会联合会（ETUC）要求具约束力的「人类掌控」原则，欧洲商业联合会（BusinessEurope）认为只宜出台非立法指导。正式提案预计 2026 年底前提出，形式未定。",
+          "summary_en": "The European Parliament adopted a legislative-initiative report (451 votes, Dec 17 2025) asking for a directive on AI/algorithmic management at work. After the Dec 2025 Quality Jobs Roadmap, the Commission opened the second-stage social-partner consultation on July 20 2026, with algorithmic management one of five priorities; it closed on Sept 28 2026. According to Agence Europe, the social partners are split: the ETUC wants a binding 'human-in-control' principle, while BusinessEurope says only non-legislative guidance is appropriate. A legislative proposal is expected by end-2026; its form is still open.",
+          "source_url": "https://agenceurope.eu/en/bulletin/article/13948/31/quality-jobs-act-unsurprisingly-european-social-partners-divided-on-use-of-legislative-tools"
         }
       ]
     },
@@ -213,8 +223,8 @@
           "type": "guidance", "status": "in_force", "date": "2023-03",
           "relevance_cn": "英国无 AI 立法、无专门 AI 招聘法；就业 AI 由现有监管机构依《2010 平等法》和英国 GDPR/DUAA 治理。",
           "relevance_en": "No AI statute and no AI-hiring-specific law; employment AI is governed by existing regulators applying the Equality Act 2010 and UK GDPR/DUAA.",
-          "summary_cn": "2023 年《促创新白皮书》路径（工党延续）依赖现有法律而非横向 AI 法。2025-10-21 DSIT 发布以 AI 增长实验室（监管沙盒）为核心的「AI 监管蓝图」。2026-05 国王演讲无 AI 法案，仅宣布赋予监管机构沙盒权力的《为增长而监管法案》，截至 2026-09 尚未提交议会；TUC 已发布非官方草案。",
-          "summary_en": "The 2023 pro-innovation approach (continued by Labour) relies on existing law rather than a horizontal AI act. On Oct 21 2025 DSIT published an 'AI regulation Blueprint' centred on an AI Growth Lab (sandboxes). The May 2026 King's Speech contained no AI Bill, only a Regulating for Growth Bill giving regulators sandbox powers, not yet introduced as of Sept 2026; the TUC has published a non-government draft bill.",
+          "summary_cn": "2023 年《促创新白皮书》路径（工党延续）依赖现有法律而非横向 AI 法。2025-10-21 DSIT 发布以 AI 增长实验室（监管沙盒）为核心的「AI 监管蓝图」。2026-05 国王演讲无 AI 法案，仅宣布赋予监管机构沙盒权力的《为增长而监管法案》，截至 2026-09 底未见提交议会；TUC 已发布非官方草案。2026-09-29 AI 部长纳拉扬在工党大会边会表示，政府正为 AI 可能造成的大规模失业制定应急预案，但目前未见负面影响证据；尚无正式计划公布。",
+          "summary_en": "The 2023 pro-innovation approach (continued by Labour) relies on existing law rather than a horizontal AI act. On Oct 21 2025 DSIT published an 'AI regulation Blueprint' centred on an AI Growth Lab (sandboxes). The May 2026 King's Speech contained no AI Bill, only a Regulating for Growth Bill giving regulators sandbox powers, with no sign of introduction by end-Sept 2026; the TUC has published a non-government draft bill. On Sept 29 2026 AI minister Kanishka Narayan told a Labour conference fringe event that the government is preparing contingency plans for possible large-scale AI job losses, while saying there is no evidence yet of harm to the labour market; no formal plan has been published.",
           "source_url": "https://researchbriefings.files.parliament.uk/documents/CBP-10003/CBP-10003.pdf"
         },
         {
@@ -223,8 +233,8 @@
           "type": "guidance", "status": "in_progress", "date": "2026-03",
           "relevance_cn": "将 AI 简历筛选/打分视为需透明度、偏见监控、人工审查与数据主体权利的自动决策；发现多数英国雇主未合规。",
           "relevance_en": "Treats AI CV-screening/scoring as automated decision-making requiring transparency, bias monitoring, human review and data-subject rights; found most UK employers non-compliant.",
-          "summary_cn": "ICO 于 2026-03-31 就 ADM/画像指南草案启动咨询并发布招聘自动决策报告（审查 30+ 雇主，多缺保障）。DUAA 2026-02-05 生效，新增第 22A 条赋候选人知情与人工审查权。咨询已于 5-29 结束；ICO 2026-08 更新的计划显示终稿推迟至 2026 年冬季，另须依 SI 2026/425 制定法定 AI/ADM 实务守则。",
-          "summary_en": "On Mar 31 2026 the ICO opened a consultation on draft ADM/profiling guidance and published a recruitment ADM report (30+ employers, most lacking safeguards). The DUAA (in force Feb 5 2026) added Art. 22A giving candidates information and human-review rights. The consultation closed May 29; the ICO's Aug 2026 guidance pipeline now expects final guidance in Winter 2026 (slipped from Summer), alongside a statutory AI/ADM code required by SI 2026/425.",
+          "summary_cn": "ICO 于 2026-03-31 就 ADM/画像指南草案启动咨询并发布招聘自动决策报告（审查 30+ 雇主，多缺保障）。DUAA 2026-02-05 生效，新增第 22A 条赋候选人知情与人工审查权。咨询已于 5-29 结束；ICO 指南计划页（2026-09-28 更新）显示仍在起草，终稿预计 2026 年冬季，另须依 SI 2026/425 制定法定 AI/ADM 实务守则。",
+          "summary_en": "On Mar 31 2026 the ICO opened a consultation on draft ADM/profiling guidance and published a recruitment ADM report (30+ employers, most lacking safeguards). The DUAA (in force Feb 5 2026) added Art. 22A giving candidates information and human-review rights. The consultation closed May 29; the ICO's guidance-plans page (updated Sept 28 2026) still lists it as in drafting, with final guidance expected in Winter 2026, alongside a statutory AI/ADM code required by SI 2026/425.",
           "source_url": "https://ico.org.uk/about-the-ico/what-we-do/recruitment-rewired/"
         },
         {
@@ -236,6 +246,16 @@
           "summary_cn": "《2010 平等法》是英国挑战歧视性 AI 招聘的主要途径；无 AI 专门立法。EHRC 已将招聘 AI 列为重点，强调由雇主（非供应商）担责，2026 年与 ICO 一道加强审查。",
           "summary_en": "The Equality Act 2010 is the UK's primary route against discriminatory AI hiring; there is no AI-specific statute. The EHRC has named recruitment AI a priority, stresses employer (not vendor) liability, and has intensified 2026 scrutiny alongside the ICO.",
           "source_url": "https://www.equalityhumanrights.com/media-centre/news/update-our-approach-regulating-artificial-intelligence"
+        },
+        {
+          "title_cn": "「让工作有回报」：职场监控技术咨询（含算法管理与自动决策）", "title_en": "Make Work Pay: workplace monitoring technologies consultation (incl. algorithmic management and ADM)",
+          "authority": "商业与贸易部（就业权利司）",
+          "type": "regulation", "status": "consultation", "date": "2026-09",
+          "relevance_cn": "英国政府首次就职场监控与算法管理专门征求意见，可能要求雇主在引入监控/算法管理技术前与工会或工人代表协商，或出台法定实务守则。",
+          "relevance_en": "The UK government's first dedicated consultation on workplace monitoring and algorithmic management; it could require employers to consult unions or worker representatives before introducing such tools, or create a statutory code of practice.",
+          "summary_cn": "依「让工作有回报」计划，政府于 2026-07-08 启动咨询，2026-09-30 截止。范围涵盖位置追踪、通讯与绩效监控，以及基于 AI 的算法管理和纯自动决策。比较三种方案：法定实务守则、引入前须与工会/工人代表协商的法定义务、非法定指引。政府将据反馈形成最终政策方案，尚无时间表。",
+          "summary_en": "Under the Plan to Make Work Pay, the government opened the consultation on July 8 2026; it closed on Sept 30 2026. It covers location tracking, communications and performance monitoring, and AI-driven algorithmic management and solely automated decisions. Three options are compared: a statutory code of practice, a legal duty to consult unions or worker representatives before deployment, and non-statutory guidance. The government will develop a final policy proposal from the responses; no timetable yet.",
+          "source_url": "https://www.gov.uk/government/consultations/make-work-pay-workplace-monitoring-technologies"
         }
       ]
     },
@@ -258,8 +278,8 @@
           "type": "bill", "status": "proposed", "date": "2026-07",
           "relevance_cn": "围绕职场 AI 的共同决定权规则存在两种方向：联邦参议院/工会主张扩大职工委员会权利，联合政府 2026-07 改革包则着眼于加快软件/AI 引入的共同决定程序。",
           "relevance_en": "Co-determination over workplace AI is contested in two directions: the Bundesrat/unions seek broader works-council rights, while the coalition's July 2026 package aims to speed up co-determination procedures for introducing software/AI.",
-          "summary_cn": "联邦参议院 2025-07-11 通过决议支持扩权改革；联合协议承诺「职场 AI 法律框架」但无草案。2026-07 初联合委员会通过 34 项改革包，要求软件更新与技术设施（含 AI）在尊重 §87(1) 第 6 项的前提下「更简便、更快」引入，并请社会伙伴于 2026-10 中旬前提出方案。截至 2026-09 仍无正式法案。",
-          "summary_en": "The Bundesrat backed an expansion-oriented reform on July 11 2025; the coalition agreement promised a 'legal framework for AI at the workplace' but no draft followed. In early July 2026 the coalition committee's 34-measure reform package called for software updates and technical systems (incl. AI) to be introduced 'more simply and quickly' consistent with §87(1) No. 6 rights, asking social partners for proposals by mid-October 2026. No formal bill as of Sept 2026.",
+          "summary_cn": "联邦参议院 2025-07-11 通过决议支持扩权改革；联合协议承诺「职场 AI 法律框架」但无草案。2026-07-02 联合委员会通过 34 项改革包，要求软件更新与技术设施（含 AI）在尊重 §87(1) 第 6 项的前提下「更简便、更快」引入，并请社会伙伴于 2026-10 中旬前提出方案。雇主协会已开始提交建议：如南德纺织业协会 2026-09-18 提议仅在技术实际用于监控时才触发共同决定，并设两周答复期限。截至 2026-09 底仍无正式法案。",
+          "summary_en": "The Bundesrat backed an expansion-oriented reform on July 11 2025; the coalition agreement promised a 'legal framework for AI at the workplace' but no draft followed. On July 2 2026 the coalition committee's 34-measure package called for software updates and technical systems (incl. AI) to be introduced 'more simply and quickly' consistent with §87(1) No. 6 rights, asking social partners for proposals by mid-October 2026. Employer groups have begun submitting ideas; for example, Südwesttextil proposed on Sept 18 2026 that co-determination apply only when technology is actually used for monitoring, with a two-week deadline for the works council's first response. No formal bill as of end-Sept 2026.",
           "source_url": "https://www.luther-lawfirm.com/newsroom/pressemitteilungen/detail/koalitionsausschuss-beschliesst-reformprogramm-mit-weitreichenden-arbeitsrechtlichen-vorhaben"
         },
         {
@@ -283,8 +303,8 @@
           "type": "mission", "status": "in_force", "date": "2024-03",
           "relevance_cn": "七大支柱之一「未来技能」——扩 AI 学位名额、在二三线城市建数据与 AI 实验室，对冲 IT/ITeS 岗位流失。",
           "relevance_en": "One of seven pillars is FutureSkills — expanding AI degree seats and Data/AI labs in Tier-2/3 cities to offset IT/ITeS displacement.",
-          "summary_cn": "2024-03 批准，五年预算 ₹10,371.92 crore（约 $1.24B）。截至 2025 年底支持 500 博士、5,000 硕士、8,000 本科 AI 学者。2026-27 当年拨 ₹1,000 crore（较上年下调）。",
-          "summary_en": "Approved March 2024, ₹10,371.92 cr (~$1.24B) over five years. As of late 2025 it backs 500 PhD, 5,000 PG and 8,000 UG AI scholars. The 2026-27 budget allocated ₹1,000 cr (down from the prior year).",
+          "summary_cn": "2024-03 批准，五年预算 ₹10,371.92 crore（约 $1.24B）。截至 2025 年底支持 500 博士、5,000 硕士、8,000 本科 AI 学者。2026-27 当年拨 ₹1,000 crore（较上年下调）。2026-08-15 莫迪在独立日讲话中宣布未来一年为 1,000 万（1 crore）青年提供 AI 技能培训；2026-09-03 MeitY 下属 NIELIT 与英特尔启动智能体 AI 培训项目，并开始筹备统一的全国青年 AI 培训计划。",
+          "summary_en": "Approved March 2024, ₹10,371.92 cr (~$1.24B) over five years. As of late 2025 it backs 500 PhD, 5,000 PG and 8,000 UG AI scholars. The 2026-27 budget allocated ₹1,000 cr (down from the prior year). On Aug 15 2026 PM Modi pledged AI skills training for 10 million (1 crore) youth within a year; on Sept 3 2026 MeitY's NIELIT and Intel launched agentic-AI skilling courses and began work on a common national youth AI-training programme.",
           "source_url": "https://indiaai.gov.in/hub/indiaai-futureskills"
         },
         {
@@ -300,12 +320,12 @@
         {
           "title_cn": "四部劳动法典（2026 实施）", "title_en": "Four Labour Codes (2026 implementation)",
           "authority": "劳动与就业部",
-          "type": "law", "status": "in_progress", "date": "2026-05",
+          "type": "law", "status": "in_progress", "date": "2026-09",
           "relevance_cn": "非 AI 专项，但「基本工资须占 CTC 50%」规则在企业围绕 AI 重组人力之际重塑 IT 业薪酬成本，并把社保扩展到零工/平台工人。",
           "relevance_en": "Not AI-specific, but the 50%-basic-pay rule reshapes IT payroll costs just as firms restructure around AI, and extends social security to gig/platform workers.",
-          "summary_cn": "四部法典（工资、劳资关系、社保、职业安全卫生）2025-11-21 生效。中央最终细则于 2026-05-08 公布，含零工/平台工人经 Aadhaar 在中央门户注册、平台 45 天内报送工人信息等规定。各邦细则进度不一（西孟加拉等仍在起草），全面执行仍待各邦完成。",
-          "summary_en": "The four codes (Wages; Industrial Relations; Social Security; OSH) took effect Nov 21 2025. Final Central Rules were notified May 8 2026, including Aadhaar-based registration of gig/platform workers on a central portal and aggregator reporting within 45 days. State rules remain uneven (West Bengal among those still drafting), so full enforcement awaits the states.",
-          "source_url": "https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-127.html"
+          "summary_cn": "四部法典（工资、劳资关系、社保、职业安全卫生）2025-11-21 生效。中央最终细则于 2026-05-08 公布，含零工/平台工人经 Aadhaar 在中央门户注册、平台 45 天内报送工人信息等规定。劳动部秘书 2026-09-24 表示已有 10 个邦公布细则、其余邦和中央直辖区已发布征求意见稿，目标 2026-10-31 前各地全部公布。喀拉拉曾要求延期，西孟加拉截至 2026-07 尚未发布草案。",
+          "summary_en": "The four codes (Wages; Industrial Relations; Social Security; OSH) took effect Nov 21 2025. Final Central Rules were notified May 8 2026, including Aadhaar-based registration of gig/platform workers on a central portal and aggregator reporting within 45 days. On Sept 24 2026 the Labour Secretary said 10 states had published their rules and the remaining states and UTs had issued drafts, with a target of all state rules by Oct 31 2026. Kerala had sought more time, and West Bengal had not published draft rules as of July 2026.",
+          "source_url": "https://www.business-standard.com/amp/india-news/all-states-uts-may-notify-labour-code-rules-by-oct-31-labour-secretary-126092401119_1.html"
         },
         {
           "title_cn": "FutureSkills Prime", "title_en": "FutureSkills Prime",
@@ -383,8 +403,8 @@
           "type": "law", "status": "in_force", "date": "2026-07",
           "relevance_cn": "日本首部 AI 法；创新优先、无罚则。劳动关联在于国家促进 AI 教育与人力资源开发的责任，为 METI/MIC 再培训奠定法律依据。",
           "relevance_en": "Japan's first AI law; innovation-first with no penalties. Its labor hook is the state's duty to promote AI education and human-resource development.",
-          "summary_cn": "国会 2025-05-28 通过，2025-09-01 全面生效；规定原则、无罚款。据此制定的首部《人工智能基本计划》2025-12-23 经内阁决定，2026-07-14 修订：新增智能体 AI 重点，要求从替代性与互补性两方面调查分析 AI 对就业的影响，并支持劳动者 AI 再培训。",
-          "summary_en": "Passed May 28 2025 and fully effective Sept 1 2025; sets principles with no fines. The first AI Basic Plan under the Act was adopted by Cabinet on Dec 23 2025 and revised on July 14 2026, adding a focus on agentic AI, mandating analysis of AI's substitution and complementarity effects on employment, and backing worker AI reskilling.",
+          "summary_cn": "国会 2025-05-28 通过，2025-09-01 全面生效；规定原则、无罚款。据此制定的首部《人工智能基本计划》2025-12-23 经内阁决定，2026-07-14 修订：新增智能体 AI 重点，要求从替代性与互补性两方面调查分析 AI 对就业的影响，并支持劳动者 AI 再培训。2026-09-29 厚生劳动省发布《令和 8 年版劳动经济白皮书》，以「AI 等技术革新下劳动市场的现状与课题」为主题，认为 AI 对就业有创造和替代两方面影响、因职业而异，强调支持劳动力流动与再培训，以及逻辑思维等「元技能」的重要性。",
+          "summary_en": "Passed May 28 2025 and fully effective Sept 1 2025; sets principles with no fines. The first AI Basic Plan under the Act was adopted by Cabinet on Dec 23 2025 and revised on July 14 2026, adding a focus on agentic AI, mandating analysis of AI's substitution and complementarity effects on employment, and backing worker AI reskilling. On Sept 29 2026 MHLW published its 2026 Labour Economy White Paper themed on the labour market amid AI and other technological change. It finds AI both creates and displaces jobs, with effects varying by occupation, and stresses support for labour mobility and reskilling and the growing value of 'meta-skills' such as logical thinking.",
           "source_url": "https://www8.cao.go.jp/cstp/ai/ai_plan/aiplan_20260714.pdf"
         },
         {
@@ -425,12 +445,12 @@
         {
           "title_cn": "《公平招聘程序法》修正（AI 招聘告知，拟议）", "title_en": "Fair Hiring Procedure Act amendment (AI-hiring notice, proposed)",
           "authority": "雇佣劳动部 / 国会",
-          "type": "bill", "status": "proposed", "date": "2026-01",
+          "type": "bill", "status": "proposed", "date": "2026-06",
           "relevance_cn": "拟要求企业在招聘中使用 AI 时向求职者事前告知——直接针对 AI 招聘透明度。",
           "relevance_en": "Would require companies to notify candidates in advance when AI is used in hiring — directly targeting AI-recruitment transparency.",
-          "summary_cn": "为补足《AI 基本法》在招聘环节的告知义务，已提出对《公平招聘程序法》的修正，要求 AI 用于招聘时向求职者告知。截至 2026 年中仍处提案阶段。韩国另有已生效的《盲招法》限制招聘中收集与岗位无关的个人信息。",
-          "summary_en": "To complement the AI Basic Act's notice duty at the hiring stage, an amendment to the Fair Hiring Procedure Act has been proposed requiring candidate notice when AI is used in recruitment. As of mid-2026 it remains a proposal. Korea also has an in-force 'Blind Hiring Act' limiting collection of job-irrelevant personal data in hiring.",
-          "source_url": "https://www.littler.com/news-analysis/asap/understanding-south-koreas-new-ai-law-key-considerations-multinational-employers"
+          "summary_cn": "第 22 届国会有多项待审法案：金位相议员的《公平招聘程序法》修正案要求事前告知求职者使用 AI，并定期接受专业机构偏见检查；林以子议员提出含 AI 告知与禁止歧视的全面修正案；李钟培议员 2026-06 提出《劳动基准法》修正案，界定「劳动 AI 系统」（覆盖招聘、评估、薪酬、晋升、惩戒），赋予说明请求权并禁止仅凭 AI 作出解雇、惩戒等不利处分。雇佣劳动部 2025-11 表示将制定 AI 招聘指南并推动修法。截至 2026-09 均未通过。韩国另有已生效的《盲招法》。",
+          "summary_en": "Several bills are pending in the 22nd National Assembly. Rep. Kim Wi-sang's Fair Hiring Procedure Act amendment would require advance notice to candidates of AI use plus periodic bias audits by specialised bodies; Rep. Lim Yi-ja filed a broader revision with AI disclosure and anti-discrimination rules; and in June 2026 Rep. Lee Jong-bae filed a Labor Standards Act amendment defining 'labor AI systems' (hiring, evaluation, pay, promotion, discipline), granting a right to an explanation and barring dismissal or discipline based solely on AI. MOEL said in Nov 2025 it would issue AI-hiring guidelines and pursue amendments. None had passed as of Sept 2026. Korea also has an in-force 'Blind Hiring Act'.",
+          "source_url": "https://www.ddaily.co.kr/page/view/2026080714402218919"
         },
         {
           "title_cn": "国家 AI 人才培养计划 + 「AI+ 力提升」项目", "title_en": "National AI Talent Plan + 'AI+ Competency-Up' Project",
@@ -538,8 +558,8 @@
           "type": "bill", "status": "stalled", "date": "2025-01",
           "relevance_cn": "本将是加拿大首部联邦 AI 法，规制「高影响」AI（含就业/HR 决策），但在通过前夭折。",
           "relevance_en": "Would have been Canada's first federal AI law regulating 'high-impact' AI (incl. employment/HR), but died before enactment.",
-          "summary_cn": "AIDA（属 C-27）在 2025-01-06 议会休会时失效，AI 部长确认其「按原稿已搁置」。2026-06-15 政府提出 C-36 法案（《保护隐私与消费者数据法》），仅要求对重大决策的自动决策保持透明，并非 AIDA 式 AI 监管；截至 2026-09 仍在一读后阶段。9 月 27 日 Solomon 称 AI 部署需要监管，但未给出细节。",
-          "summary_en": "AIDA (within Bill C-27) died at prorogation Jan 6 2025, and the AI Minister confirmed it is 'off the table as drafted'. On June 15 2026 the government tabled Bill C-36 (Protecting Privacy and Consumer Data Act), which only requires transparency about automated decision-making for significant decisions and is not an AIDA-style AI regime; it had passed only first reading as of Sept 2026. On Sept 27 Solomon said AI deployment needs regulation but gave no details.",
+          "summary_cn": "AIDA（属 C-27）在 2025-01-06 议会休会时失效，AI 部长确认其「按原稿已搁置」。2026-06-15 政府提出 C-36 法案（《保护隐私与消费者数据法》），仅要求对重大决策的自动决策保持透明，并非 AIDA 式 AI 监管；截至 2026-09 仍在一读后阶段。ISED 于 2026-07-23 至 09-23 就 AI 透明度公开征求意见（已截止）。9 月 27 日 Solomon 称 AI 部署需要监管，但未给出细节。",
+          "summary_en": "AIDA (within Bill C-27) died at prorogation Jan 6 2025, and the AI Minister confirmed it is 'off the table as drafted'. On June 15 2026 the government tabled Bill C-36 (Protecting Privacy and Consumer Data Act), which only requires transparency about automated decision-making for significant decisions and is not an AIDA-style AI regime; it had passed only first reading as of Sept 2026. ISED ran a public consultation on AI transparency from July 23 to Sept 23 2026 (now closed). On Sept 27 Solomon said AI deployment needs regulation but gave no details.",
           "source_url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-27"
         },
         {
@@ -548,8 +568,8 @@
           "type": "program", "status": "in_force", "date": "2026-06",
           "relevance_cn": "国家战略含劳动者 AI 培训，并明确承诺追踪 AI 对劳动力市场的影响，及为企业提供算力（关乎保留科技岗位）。",
           "relevance_en": "National strategy with worker AI-training, an explicit commitment to track AI's labour-market impact, and compute access for firms (relevant to retaining tech jobs).",
-          "summary_cn": "2026-06-04 发布，基于 1.1 万余份公众意见，承诺及近期投资超 35 亿加元（含 7 亿算力获取基金扩容）。六大支柱含「推动 AI 普及实现共享繁荣」；属政策/拨款，非约束性劳工法规。",
-          "summary_en": "Launched June 4 2026 on 11,000+ submissions, with $3.5B+ committed (incl. a $700M Compute Access Fund expansion). Its six pillars include 'powering AI adoption for shared prosperity'; it is policy/funding, not binding labour law.",
+          "summary_cn": "2026-06-04 发布，基于 1.1 万余份公众意见，承诺及近期投资超 35 亿加元（含 7 亿算力获取基金扩容）。六大支柱含「推动 AI 普及实现共享繁荣」；属政策/拨款，非约束性劳工法规。2026-09-25 政府宣布五年内最多投入 1.62 亿加元，通过 Mitacs「AI Advantage」计划为学生、应届生和博士后提供 1 万个与企业合作的 AI 实习岗位。",
+          "summary_en": "Launched June 4 2026 on 11,000+ submissions, with $3.5B+ committed (incl. a $700M Compute Access Fund expansion). Its six pillars include 'powering AI adoption for shared prosperity'; it is policy/funding, not binding labour law. On Sept 25 2026 the government committed up to $162M over five years to Mitacs 'AI Advantage', funding 10,000 AI work placements with businesses for students, recent graduates and postdocs.",
           "source_url": "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
         }
       ]
@@ -580,12 +600,12 @@
         {
           "title_cn": "高风险 AI 强制护栏（提案）——已搁置，被《国家 AI 计划》取代", "title_en": "Mandatory guardrails for high-risk AI (proposal) — shelved",
           "authority": "工业科学资源部（DISR）",
-          "type": "guidance", "status": "stalled", "date": "2025-12",
+          "type": "guidance", "status": "stalled", "date": "2026-08",
           "relevance_cn": "被搁置的提案原会对高风险 AI（含招聘、职场决策）施加人工监督、透明度、测试等强制义务。",
           "relevance_en": "The shelved proposal would have imposed binding obligations (human oversight, transparency, testing) on high-risk AI including hiring and workplace decisions.",
-          "summary_cn": "2024-09 DISR 发布提案文件，咨询收 300+ 意见。因业界担忧创新，政府决定不推进独立 AI 法或强制护栏；《国家 AI 计划》（2025-12-02）改为依靠现有技术中立法律、行业监管与自愿指南。",
-          "summary_en": "In Sept 2024 DISR released a proposals paper (300+ submissions). Amid innovation concerns the government chose not to proceed with a standalone AI Act or mandatory guardrails; the National AI Plan (Dec 2 2025) relies instead on existing technology-neutral laws, sector regulators and voluntary guidance.",
-          "source_url": "https://www.industry.gov.au/publications/national-ai-plan"
+          "summary_cn": "2024-09 DISR 发布提案文件，咨询收 300+ 意见。政府决定不推进独立 AI 法或强制护栏，《国家 AI 计划》（2025-12-02）改为依靠现有法律、行业监管与自愿指南。2026-07 总理宣布在总理内阁部设「AI 办公室」并制定国家 AI 标准框架，据报相关立法预计 2027 年初，重点是数据中心与版权，政府称将就职场 AI 采用与技能培训征询雇主、工人与工会意见。议会 AI 联合特别委员会 2026-08-20 设立，2026-11-30 前报告。针对招聘等高风险 AI 的强制护栏仍未恢复。",
+          "summary_en": "In Sept 2024 DISR released a proposals paper (300+ submissions). The government chose not to proceed with a standalone AI Act or mandatory guardrails; the National AI Plan (Dec 2 2025) relies on existing laws, sector regulators and voluntary guidance. In July 2026 the PM announced an Office of AI in PM&C and a national AI standards framework, with legislation reportedly expected in early 2027, focused on data centres and copyright; the government says it will consult employers, workers and unions on workplace AI adoption and skills. A Joint Select Committee on AI was appointed on Aug 20 2026 and reports by Nov 30 2026. Mandatory guardrails for high-risk uses such as hiring have not been revived.",
+          "source_url": "https://www.bakermckenzie.com/en/insight/publications/2026/08/australia-charts-a-new-course-on-ai-regulation-and-policy"
         },
         {
           "title_cn": "新州《工作健康与安全修正（数字工作系统）法》2026", "title_en": "NSW Work Health and Safety Amendment (Digital Work Systems) Act 2026",
@@ -593,9 +613,9 @@
           "type": "law", "status": "in_progress", "date": "2026-02",
           "relevance_cn": "澳大利亚首部把算法、AI、自动化与在线平台明确纳入职业安全法的法律：雇主须评估其导致的过度工作量、过度绩效指标、过度监控与歧视风险。",
           "relevance_en": "Australia's first law expressly bringing algorithms, AI, automation and online platforms under workplace safety law: employers must assess risks of excessive workloads, metrics, surveillance and discrimination they create.",
-          "summary_cn": "2026-02-12/13 获新州议会通过、2026-02 获御准（2026 年第 5 号法）。新增数字工作系统义务待公告生效；工会 WHS 许可证持有人检查数字工作系统的权利（须提前 48 小时通知）须待 SafeWork NSW 发布指南满一个月后生效。指南第一阶段定向咨询于 2026-08 结束，截至 2026-09 尚未发布。",
-          "summary_en": "Passed by the NSW Parliament in mid-Feb 2026 and assented that month (Act No 5 of 2026). The new digital-work-system duties commence on proclamation; union WHS permit-holders' right to inspect digital work systems (on 48 hours' notice) starts one month after SafeWork NSW publishes guidelines. The guidelines' first targeted-consultation stage ended in Aug 2026; they were unpublished as of Sept 2026.",
-          "source_url": "https://www.safework.nsw.gov.au/resource-library/consultation/development-of-the-digital-work-systems-guidelines"
+          "summary_cn": "2026-02-12 获新州议会通过、2026-02-18 获御准（2026 年第 5 号法）。目前仅与准入许可指南编制相关的条款（附表 1 第 7、9、11 项）生效；数字工作系统义务等其余条款须待 SafeWork NSW 发布指南后经公告生效。工会 WHS 许可证持有人检查数字工作系统的权利（须提前 48 小时通知）不早于首份指南发布满一个月。指南第一阶段定向咨询于 2026-08 结束，截至 2026-09 底尚未发布。",
+          "summary_en": "Passed by the NSW Parliament on Feb 12 2026 and assented on Feb 18 2026 (Act No 5 of 2026). Only the provisions on developing the guidelines (Sch 1 [7], [9], [11]) have commenced; the digital-work-system duties and other amendments commence on proclamation after SafeWork NSW publishes the guidelines. Union WHS permit-holders' right to inspect digital work systems (on 48 hours' notice) cannot start until one month after the first guidelines are published. The first targeted-consultation stage ended in Aug 2026; the guidelines were still unpublished at the end of Sept 2026.",
+          "source_url": "https://www.safework.nsw.gov.au/legal-obligations/legislation"
         }
       ]
     },
@@ -653,8 +673,8 @@
           "type": "bill", "status": "in_progress", "date": "2026-04",
           "relevance_cn": "综合 AI 框架含劳动条款：拟将用于就业及劳动者画像决策的 AI 列为高风险（须强制登记），并授权国家 AI 主管机构监督其对劳动力的影响。",
           "relevance_en": "A comprehensive AI framework with a labor hook: would classify employment/worker-profiling AI as high-risk (mandatory registry) and task a national AI authority with workforce-impact oversight.",
-          "summary_cn": "经约 10 个月专家听证，参议院 AI 委员会 2026-04 前后推出框架草案；仍在委员会审议，截至 2026-06 未通过。拟设国家 AI 主管机构、高风险登记、认证及分级处罚。存在多项并行提案。",
-          "summary_en": "After ~10 months of hearings the Senate's AI Commission advanced a draft framework around April 2026; still under committee discussion and not enacted as of June 2026. It proposes a National AI Authority, a high-risk registry, certification and tiered sanctions. Several parallel initiatives exist.",
+          "summary_cn": "经约 10 个月专家听证，参议院 AI 委员会 2026-04 前后推出框架草案，拟设国家 AI 主管机构、高风险登记、认证及分级处罚。春季常会结束时未提交全体表决；据 Infobae 2026-09-23 报道，目标是在 2026 年底前完成。存在多项并行提案。",
+          "summary_en": "After ~10 months of hearings the Senate's AI Commission advanced a draft framework around April 2026, proposing a National AI Authority, a high-risk registry, certification and tiered sanctions. It was not brought to a floor vote before the spring session ended; Infobae reported on Sept 23 2026 that the aim is to finish it by end-2026. Several parallel initiatives exist.",
           "source_url": "https://www.infobae.com/mexico/2026/04/25/mexico-perfila-su-primera-ley-de-inteligencia-artificial-entre-ambicion-regulatoria-y-dudas-sobre-su-viabilidad/"
         },
         {
