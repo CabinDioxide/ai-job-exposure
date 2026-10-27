@@ -352,9 +352,10 @@
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic Economic Index (Primary — "Theoretical Exposure")</h3>
                 <ul>
-                    <li><strong>Method:</strong> Bottom-up task-level analysis. Each of 17,998 O*NET task statements was evaluated for whether Claude can meaningfully assist. The <code>task_penetration.csv</code> file records the penetration rate per task. Each occupation's exposure is the weighted sum of its constituent tasks' penetration rates.</li>
-                    <li><strong>Scale:</strong> Raw values 0–0.75 (continuous), normalized to 0–10 for display. The maximum raw observed_exposure in <code>job_exposure.csv</code> is 0.7451 (Telemarketers).</li>
-                    <li><strong>Coverage:</strong> 756 SOC 2018 occupations. Mapped to 417/436 ISCO-08 codes (96% coverage) via crosswalk + 28 manual mappings for critical occupations that changed between SOC versions.</li>
+                    <li><strong>Method (updated October 2026):</strong> Computed separately for each country using the method in the appendix to Anthropic's "Labor market impacts of AI" (March 2026). Each O*NET task is first assessed: it counts as covered if it appears in that country's Claude.ai usage data, at least one tenth of its global usage is work-related, and Eloundou et al. (2023) rate it as theoretically doable by a large language model. A covered task takes the value 0.5 plus 0.5 times its share of automated use, so a task used only for augmentation counts 0.5 and a fully automated one counts 1. Task values are then averaged within each occupation, weighted by working time. Data: Anthropic Economic Index release of 26 June 2026, covering April and May.</li>
+<li><strong>Differences from Anthropic's original:</strong> Anthropic's per-task time shares are estimated by Claude and unpublished; O*NET frequency ratings are used instead. Country data list only tasks above a sample threshold and round values to two decimals, so "sufficient usage" becomes "the task appears in that country's data". Work-use and automation shares use each task's global values for the same period. Calibrated on US data from November 2025: with a work-use cutoff of 0.1, the rank correlation with Anthropic's published US occupation scores is 0.761; replacing the time weights alone caps the attainable value at 0.876.</li>
+<li><strong>Scale:</strong> Raw values are divided by the highest US raw value (0.6431, computer programmers) and multiplied by 10. All 12 countries use the same divisor.</li>
+<li><strong>Coverage:</strong> Based on O*NET 30.0 occupations. US values are taken directly by SOC 2018 code; aggregated codes on the dashboard (such as 43-6000 secretaries and administrative assistants) take the average of their detailed occupations. Other countries go through two crosswalks, SOC 2018 to SOC 2010 to ISCO-08, averaging where several codes map to one. The scripts are in the repository's <code>pipeline/</code> folder and can be rerun on the next data release.</li>
                     <li><strong>Strengths:</strong> Grounded in actual task analysis rather than subjective rating. High granularity (task-level, not occupation-level). Consistent methodology across all occupations.</li>
                     <li><strong>Weaknesses:</strong> Based on Claude's current capabilities, which may not represent all AI systems. Task penetration is binary (can/cannot assist) rather than measuring degree of assistance.</li>
                 </ul>
@@ -456,9 +457,10 @@
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">Anthropic经济指数（主要方法——"理论暴露度"）</h3>
                 <ul>
-                    <li><strong>方法：</strong>自下而上的任务级分析。对17,998条O*NET任务描述逐一评估Claude是否能有效辅助。<code>task_penetration.csv</code>记录了每项任务的渗透率。每个职业的暴露度是其组成任务渗透率的加权总和。</li>
-                    <li><strong>量表：</strong>原始值0–0.75（连续值），显示时归一化到0–10。<code>job_exposure.csv</code>中最高原始observed_exposure为0.7451（电话推销员）。</li>
-                    <li><strong>覆盖范围：</strong>756个SOC 2018职业。通过交叉映射表+28个手动映射（针对SOC版本变更中的关键职业）映射到417/436个ISCO-08代码（96%覆盖率）。</li>
+                    <li><strong>方法（2026 年 10 月更新）：</strong>按 Anthropic《Labor market impacts of AI》（2026 年 3 月）附录的算法，分别计算每个国家。先逐项任务判断：一项 O*NET 任务如果出现在该国的 Claude.ai 使用数据里，全球使用中工作类用途至少占一成，并且按 Eloundou 等人（2023）的评分，理论上可以由大模型完成，就计为已覆盖。已覆盖任务的取值为 0.5 加上 0.5 乘以该任务的自动化使用比例；只有辅助型使用的任务计 0.5，完全自动化的计 1。再按工作时间对一个职业内各项任务的取值加权平均，得到职业分数。使用的是 Anthropic 经济指数 2026 年 6 月 26 日发布的 4 月、5 月两个月数据。</li>
+<li><strong>与 Anthropic 原算法的差别：</strong>Anthropic 所用的各任务工作时间占比由 Claude 估计，未公开；这里改用 O*NET 任务评分中的频率折算。国家数据只公布达到样本门槛的任务，数值四舍五入到两位小数，因此不再以“使用量足够”为标准，而以“该任务出现在该国数据里”为标准。工作类比例和自动化比例使用全球同期每项任务的数值。用 2025 年 11 月的美国数据校准：工作类比例下限取 0.1 时，与 Anthropic 公布的美国职业分数的排序相关系数为 0.761；仅替换时间权重这一项，就把可能达到的最高值限制在 0.876。</li>
+<li><strong>量表：</strong>原始值除以美国职业的最高原始值（0.6431，计算机程序员），再乘以 10。12 个国家使用同一个除数。</li>
+<li><strong>覆盖范围：</strong>以 O*NET 30.0 的职业为基础。美国按 SOC 2018 代码直接取值，仪表盘里的合并代码（如 43-6000 秘书与行政助理）取其下各细分职业的平均。其他国家经 SOC 2018、SOC 2010 到 ISCO-08 两次对应；多个代码对应同一个代码时取平均。计算脚本在仓库的 <code>pipeline/</code> 目录，下次数据发布后可以原样重跑。</li>
                     <li><strong>优势：</strong>基于实际任务分析而非主观评分。高粒度（任务级而非职业级）。所有职业采用一致的方法论。</li>
                     <li><strong>劣势：</strong>基于Claude当前能力，可能无法代表所有AI系统。任务渗透是二元的（能/不能辅助），而非衡量辅助程度。</li>
                 </ul>
@@ -599,11 +601,16 @@
                 <p>India and the Philippines present unique data quality challenges that go beyond sparse coverage:</p>
                 <ul>
                     <li><strong>India:</strong> ILO estimates 89% of India's workforce is in informal employment — street vendors, agricultural day laborers, domestic workers, construction workers. ILOSTAT employment statistics primarily capture the formal sector. India's 482 million "jobs" in our dataset are a mix of formal counts and modeled estimates. The 5.6 million in "Professionals" largely reflects IT and engineering — not because India lacks other professionals, but because those are the occupations ILOSTAT can count. Meanwhile, Claude usage data (58,098 conversations) comes almost entirely from the IT sector in Bangalore, Hyderabad, and Pune. The result: India's data tells a coherent story about its tech sector, but is essentially silent on 90% of its economy.</li>
-                    <li><strong>Philippines:</strong> Similar issues at smaller scale. 55 ISCO codes with non-zero observed exposure (vs 144 for the UK). The BPO (Business Process Outsourcing) sector — call centers, data entry — dominates Claude usage, creating a lopsided view. The Philippines' 46.9 million jobs include large agricultural and informal service sectors invisible to both ILOSTAT granular data and Claude usage patterns.</li>
+                    <li><strong>Philippines:</strong> Similar issues at smaller scale. 118 ISCO codes have non-zero observed exposure (vs 222 for the UK). The BPO (Business Process Outsourcing) sector — call centers, data entry — dominates Claude usage, skewing the data toward those industries. The Philippines' 46.9 million jobs include large agricultural and informal service sectors invisible to both ILOSTAT granular data and Claude usage patterns.</li>
                 </ul>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">7. Temporal Snapshot</h3>
-                <p>V4 data covers a single week (Nov 13–20, 2025). AI adoption patterns evolve rapidly. A company rolling out Claude enterprise during the sampling week could significantly skew a small country's data. The theoretical exposure (Anthropic task analysis) is also a point-in-time snapshot of Claude's capabilities as of early 2026.</p>
+<p>Observed data cover two months, April and May 2026; the previous version used a single week, 13–20 November 2025. AI usage patterns change quickly, and two months of data are still a snapshot. The theoretical exposure (Anthropic task analysis) is also a point-in-time snapshot of Claude's capabilities as of early 2026.</p>
+<h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">8. Country Levels Mainly Reflect Sample Size</h3>
+<p>Country data list only tasks above a sample threshold. For April–May 2026, 1,684 tasks were published for the US, 720 for the UK, 973 for India and 282 for the Philippines. The smaller the sample, the fewer tasks can count as covered and the lower a whole country's scores. A comparison shows this: with full data, the employment-weighted average score is 1.46 for the US and 0.19 for the Philippines; if every country keeps only its 282 highest-share tasks, the US falls to 0.37, the Philippines is 0.28 and the UK 0.46, and most of the gap disappears. Countries' overall levels therefore mainly reflect how much usage each has in the data and should not be compared directly; occupations within one country can be compared.</p>
+<h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">9. Automation via the API Is Not Counted</h3>
+<p>Anthropic's original method counts companies' API usage toward both coverage and the automation share, but API data are published only globally, not by country. Crediting every country with the tasks covered by global API usage improves the US calibration (rank correlation 0.817) but makes all 12 countries' occupation rankings identical, so the dashboard could no longer compare countries; it was therefore not used. As a result, occupations automated mainly through the API are understated: US customer service representatives fall from 9.41 in the previous version to 1.44, and medical records specialists from 8.96 to 0.</p>
+<p>Each occupation's automation/augmentation ratio and each country's overall automation/augmentation split still use the previous (November 2025) data and were not updated this time.</p>
             </div>
 
             <div class="cn">
@@ -642,11 +649,16 @@
                 <p>印度和菲律宾面临超越数据稀疏性的独特数据质量挑战：</p>
                 <ul>
                     <li><strong>印度：</strong>ILO估计印度89%的劳动力从事非正规就业——街头摊贩、农业日工、家政工人、建筑工人。ILOSTAT就业统计主要捕获正规部门。我们数据集中印度的4.82亿"岗位"是正规统计和模型估算的混合体。"专业人员"类别中的560万人主要反映IT和工程领域——不是因为印度缺少其他专业人员，而是因为那些是ILOSTAT能统计到的职业。与此同时，Claude使用数据（58,098次对话）几乎全部来自班加罗尔、海得拉巴和浦那的IT行业。结果是：印度的数据讲述了一个关于其科技行业的连贯故事，但对其90%的经济体本质上是沉默的。</li>
-                    <li><strong>菲律宾：</strong>类似问题但规模较小。55个ISCO代码有非零实测暴露度（英国为144个）。BPO（业务流程外包）行业——呼叫中心、数据录入——主导了Claude使用，造成了偏颇的视角。菲律宾的4690万个岗位包括大量农业和非正规服务业部门，这些部门对ILOSTAT的细粒度数据和Claude使用模式都是不可见的。</li>
+                    <li><strong>菲律宾：</strong>同样有这个问题，但规模较小。118 个 ISCO 代码有非零实测暴露度（英国为 222 个）。BPO（业务流程外包）行业——呼叫中心、数据录入——主导了 Claude 使用，使数据偏向这些行业。菲律宾的 4690 万个岗位包括大量农业和非正规服务业部门，这些部门在 ILOSTAT 的细粒度数据和 Claude 使用模式中都看不到。</li>
                 </ul>
 
                 <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">7. 时间快照</h3>
-                <p>V4数据覆盖单一周（2025年11月13-20日）。AI采用模式在快速演变。一家公司在采样周内部署Claude企业版可能显著扭曲小国的数据。理论暴露度（Anthropic任务分析）也是2026年初Claude能力的时间点快照。</p>
+<p>实测数据覆盖 2026 年 4 月、5 月两个月；上一版用的是 2025 年 11 月 13 日至 20 日一周。AI 的使用模式变化很快，两个月的数据仍然只是一个时点。理论暴露度（Anthropic 任务分析）也是 2026 年初 Claude 能力的时点快照。</p>
+<h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">8. 各国整体水平主要反映样本量</h3>
+<p>国家数据只公布达到样本门槛的任务。2026 年 4 月、5 月，美国公布了 1,684 项任务，英国 720 项，印度 973 项，菲律宾 282 项。样本越小，能计为已覆盖的任务越少，整个国家的分数也越低。对照计算显示了这一点：按完整数据，美国按就业加权的平均分为 1.46，菲律宾为 0.19；如果每个国家都只保留份额最高的 282 项任务，美国降到 0.37，菲律宾为 0.28，英国为 0.46，差距大部分消失。因此，各国整体水平主要反映该国在数据中的使用量，不宜直接比较；同一国家内部各职业的高低可以比较。</p>
+<h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 15px 0;">9. 通过 API 实现的自动化没有计入</h3>
+<p>Anthropic 的原算法把企业通过 API 接入的使用也计入覆盖和自动化比例，但 API 数据只按全球公布，没有分国家的数据。如果把全球 API 覆盖的任务计给每个国家，美国的校准结果会更好（排序相关系数 0.817），但 12 个国家的职业排序会完全相同，这个仪表盘也就无法比较国家，所以没有采用。因此，主要经由 API 实现自动化的职业分数偏低：美国客服代表从上一版的 9.41 降到 1.44，医疗记录专员从 8.96 降到 0。</p>
+<p>每个职业的自动化与增强比例、各国总体的自动化与增强比例，仍沿用上一版（2025 年 11 月）的数据，这一次没有更新。</p>
             </div>
         </div>
 
@@ -1816,10 +1828,10 @@ Sorted by AI exposure (descending), then by number of jobs (descending).
         <!-- Footer -->
         <div class="footer">
             <div class="en lang-inactive">
-                <p>Last updated: April 2026. Data: Anthropic Economic Index V4 (Nov 2025) + Coface×OEM (Apr 2026). Contact: zhxyfisher@gmail.com</p>
+                <p>Last updated: October 2026. Data: Anthropic Economic Index (June 2026 release, April–May data) + Coface×OEM (Apr 2026). Contact: zhxyfisher@gmail.com</p>
             </div>
             <div class="cn">
-                <p>最后更新：2026年4月。数据：Anthropic经济指数V4（2025年11月）+ Coface×OEM（2026年4月）。联系方式：zhxyfisher@gmail.com</p>
+                <p>最后更新：2026 年 10 月。数据：Anthropic 经济指数（2026 年 6 月发布，4 月至 5 月数据）+ Coface×OEM（2026 年 4 月）。联系方式：zhxyfisher@gmail.com</p>
             </div>
         </div>
     </div>

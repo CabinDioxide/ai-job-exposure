@@ -1,0 +1,201 @@
+{
+ "ceiling_published_task_values_with_proxy_weights": {
+  "spearman": 0.876,
+  "pearson": 0.859,
+  "mae": 0.0333
+ },
+ "grid": [
+  {
+   "work_cut": 0.0,
+   "with_api": false,
+   "tasks_covered": 1063,
+   "mae_rescaled": 0.0848,
+   "task_overlap_with_published": 837,
+   "published_covered": 1347,
+   "spearman": 0.762,
+   "pearson": 0.662,
+   "mae": 0.0497,
+   "max_score": 0.5051
+  },
+  {
+   "work_cut": 0.0,
+   "with_api": true,
+   "tasks_covered": 1895,
+   "mae_rescaled": 0.0714,
+   "task_overlap_with_published": 1185,
+   "published_covered": 1347,
+   "spearman": 0.822,
+   "pearson": 0.786,
+   "mae": 0.0466,
+   "max_score": 0.6607
+  },
+  {
+   "work_cut": 0.1,
+   "with_api": false,
+   "tasks_covered": 830,
+   "mae_rescaled": 0.0698,
+   "task_overlap_with_published": 734,
+   "published_covered": 1347,
+   "spearman": 0.761,
+   "pearson": 0.698,
+   "mae": 0.0479,
+   "max_score": 0.5051
+  },
+  {
+   "work_cut": 0.1,
+   "with_api": true,
+   "tasks_covered": 1482,
+   "mae_rescaled": 0.0573,
+   "task_overlap_with_published": 1018,
+   "published_covered": 1347,
+   "spearman": 0.817,
+   "pearson": 0.803,
+   "mae": 0.0404,
+   "max_score": 0.6607
+  },
+  {
+   "work_cut": 0.2,
+   "with_api": false,
+   "tasks_covered": 759,
+   "mae_rescaled": 0.0683,
+   "task_overlap_with_published": 671,
+   "published_covered": 1347,
+   "spearman": 0.742,
+   "pearson": 0.697,
+   "mae": 0.0494,
+   "max_score": 0.5051
+  },
+  {
+   "work_cut": 0.2,
+   "with_api": true,
+   "tasks_covered": 1411,
+   "mae_rescaled": 0.0569,
+   "task_overlap_with_published": 955,
+   "published_covered": 1347,
+   "spearman": 0.803,
+   "pearson": 0.801,
+   "mae": 0.041,
+   "max_score": 0.6607
+  },
+  {
+   "work_cut": 0.3,
+   "with_api": false,
+   "tasks_covered": 660,
+   "mae_rescaled": 0.0699,
+   "task_overlap_with_published": 589,
+   "published_covered": 1347,
+   "spearman": 0.701,
+   "pearson": 0.671,
+   "mae": 0.0528,
+   "max_score": 0.5051
+  },
+  {
+   "work_cut": 0.3,
+   "with_api": true,
+   "tasks_covered": 988,
+   "mae_rescaled": 0.0599,
+   "task_overlap_with_published": 798,
+   "published_covered": 1347,
+   "spearman": 0.766,
+   "pearson": 0.75,
+   "mae": 0.0451,
+   "max_score": 0.6454
+  },
+  {
+   "work_cut": 0.4,
+   "with_api": false,
+   "tasks_covered": 576,
+   "mae_rescaled": 0.0732,
+   "task_overlap_with_published": 518,
+   "published_covered": 1347,
+   "spearman": 0.668,
+   "pearson": 0.648,
+   "mae": 0.0561,
+   "max_score": 0.4664
+  },
+  {
+   "work_cut": 0.4,
+   "with_api": true,
+   "tasks_covered": 896,
+   "mae_rescaled": 0.0632,
+   "task_overlap_with_published": 720,
+   "published_covered": 1347,
+   "spearman": 0.752,
+   "pearson": 0.734,
+   "mae": 0.0481,
+   "max_score": 0.6454
+  },
+  {
+   "work_cut": 0.5,
+   "with_api": false,
+   "tasks_covered": 485,
+   "mae_rescaled": 0.078,
+   "task_overlap_with_published": 437,
+   "published_covered": 1347,
+   "spearman": 0.622,
+   "pearson": 0.589,
+   "mae": 0.0595,
+   "max_score": 0.4664
+  },
+  {
+   "work_cut": 0.5,
+   "with_api": true,
+   "tasks_covered": 781,
+   "mae_rescaled": 0.0677,
+   "task_overlap_with_published": 626,
+   "published_covered": 1347,
+   "spearman": 0.71,
+   "pearson": 0.682,
+   "mae": 0.0519,
+   "max_score": 0.6093
+  },
+  {
+   "work_cut": 0.6,
+   "with_api": false,
+   "tasks_covered": 389,
+   "mae_rescaled": 0.0828,
+   "task_overlap_with_published": 353,
+   "published_covered": 1347,
+   "spearman": 0.583,
+   "pearson": 0.527,
+   "mae": 0.0628,
+   "max_score": 0.4524
+  },
+  {
+   "work_cut": 0.6,
+   "with_api": true,
+   "tasks_covered": 663,
+   "mae_rescaled": 0.0723,
+   "task_overlap_with_published": 526,
+   "published_covered": 1347,
+   "spearman": 0.684,
+   "pearson": 0.63,
+   "mae": 0.0557,
+   "max_score": 0.5339
+  },
+  {
+   "work_cut": 0.7,
+   "with_api": false,
+   "tasks_covered": 302,
+   "mae_rescaled": 0.0868,
+   "task_overlap_with_published": 268,
+   "published_covered": 1347,
+   "spearman": 0.541,
+   "pearson": 0.475,
+   "mae": 0.0659,
+   "max_score": 0.4524
+  },
+  {
+   "work_cut": 0.7,
+   "with_api": true,
+   "tasks_covered": 557,
+   "mae_rescaled": 0.076,
+   "task_overlap_with_published": 428,
+   "published_covered": 1347,
+   "spearman": 0.65,
+   "pearson": 0.596,
+   "mae": 0.0588,
+   "max_score": 0.5339
+  }
+ ]
+}

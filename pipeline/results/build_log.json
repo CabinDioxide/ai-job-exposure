@@ -1,0 +1,34 @@
+{
+ "work_cut": 0.1,
+ "equal_n": 0,
+ "global_api_tasks": 0,
+ "tasks_published_per_country": {
+  "US": 1684,
+  "UK": 720,
+  "CA": 655,
+  "AU": 645,
+  "DE": 653,
+  "JP": 694,
+  "KR": 682,
+  "FR": 777,
+  "BR": 713,
+  "MX": 437,
+  "IN": 973,
+  "PH": 282
+ },
+ "tasks_covered_per_country": {
+  "US": 1349,
+  "UK": 569,
+  "CA": 516,
+  "AU": 524,
+  "DE": 512,
+  "JP": 567,
+  "KR": 564,
+  "FR": 613,
+  "BR": 600,
+  "MX": 360,
+  "IN": 787,
+  "PH": 234
+ },
+ "divisor_us_max": 0.6431
+}
