@@ -1,6 +1,6 @@
 {
   "module": "ai_policy",
-  "updated": "2026-10-01",
+  "updated": "2026-11-01",
   "note_cn": "覆盖 13 个主要司法辖区（dashboard 追踪的 12 国 + 韩国）的「AI × 就业」相关监管政策。仅收录与就业/劳动相关的条目（AI 招聘、算法管理、裁员披露、工人保护、再培训、外包），不含纯 AI 安全立法。状态与日期截至更新日，由独立核查。",
   "note_en": "AI-and-employment regulation across 13 major jurisdictions (the 12 this dashboard tracks, plus South Korea). Only labor/employment-relevant items (AI hiring, algorithmic management, layoff disclosure, worker protection, reskilling, outsourcing) — not general AI-safety law. Status and dates current as of the update date, independently verified.",
   "jurisdictions": [
@@ -63,8 +63,8 @@
           "type": "law", "status": "in_progress", "date": "2027-01",
           "relevance_cn": "里程碑州法，规制就业等重大决策中的「高风险」AI；现已被收窄并推迟。",
           "relevance_en": "Landmark state law on 'high-risk' AI in consequential decisions including employment; now narrowed and delayed.",
-          "summary_cn": "原 2024 年 5 月签署，几经推迟，2026 年 4 月被联邦法院暂停执法；5 月 14 日 Polis 签 SB26-189，废除高风险分类、强制影响评估与注意义务，生效日推迟至 2027 年 1 月 1 日，重构为自动决策的告知与人工复核。州司法部 2026-08-11 提交拟议 ADMT 实施细则，公众意见期至 10 月 26 日。",
-          "summary_en": "Originally signed May 2024; repeatedly delayed, court-paused Apr 2026; on May 14 2026 SB26-189 repealed the high-risk classification, impact assessments and duty of care, delaying the effective date to Jan 1 2027 and reframing around ADMT notice and human review. The Colorado Department of Law filed proposed ADMT rules on Aug 11 2026, with comments open until Oct 26.",
+          "summary_cn": "原 2024 年 5 月签署，几经推迟，2026 年 4 月被联邦法院暂停执法；5 月 14 日 Polis 签 SB26-189，废除高风险分类、强制影响评估与注意义务，生效日推迟至 2027 年 1 月 1 日，重构为自动决策的告知与人工复核。州司法部 2026-08-11 提交拟议 ADMT 实施细则，10 月 6 日发布修订后的中期稿，10 月 26 日举行公开听证，书面意见同日截止。据律所 Orrick 对中期稿的摘要（经云安全联盟 10 月 20 日简报转引），修订稿新增一项可反驳的推定：人工复核者采用系统给出的评分或排序、最终结果与之一致时，视为系统「实质影响」了决定；只做摘要的工具不在规制范围内。xAI 诉州政府案仍按 4 月的约定暂停，待最终规则出台后再进行。截至 10 月 27 日，听证结果尚无报道。",
+          "summary_en": "Originally signed May 2024; repeatedly delayed, court-paused Apr 2026; on May 14 2026 SB26-189 repealed the high-risk classification, impact assessments and duty of care, delaying the effective date to Jan 1 2027 and reframing around ADMT notice and human review. The Colorado Department of Law filed proposed ADMT rules on Aug 11 2026, released a revised interim draft on Oct 6 and held a public hearing on Oct 26, which was also the written-comment deadline. According to Orrick's summary of the interim draft (cited in a Cloud Security Alliance note of Oct 20), it adds a rebuttable presumption that a system \"materially influences\" a decision when human reviewers use its scores or rankings and the outcome aligns with them, and it excludes summarisation-only tools. xAI's suit remains stayed under the April stipulation until final rules are adopted. As of Oct 27 no outcome of the hearing had been reported.",
           "source_url": "https://coag.gov/ai/"
         },
         {
@@ -123,9 +123,9 @@
           "type": "law", "status": "in_progress", "date": "2026-09",
           "relevance_cn": "大规模裁员主要因 AI 或自动化取代岗位时，雇主须在裁员通知中写明被自动化的岗位职能和所用技术类型，州政府定期公布技术性失业数据。",
           "relevance_en": "When mass layoffs are caused substantially by AI or automation, employers must say so in the layoff notice, naming the job functions automated and the type of technology, and the state publishes regular tech-displacement data.",
-          "summary_cn": "2026-09-30 由 Newsom 签署。最终版本沿用 Cal/WARN 现有的 60 天提前通知（最初提案为 90 天）。通知须写明受影响岗位与人数、被自动化的职能、AI 或自动化技术类别、使用理由、再培训安排及与地方劳动力机构的衔接。EDD 须在官网公布通知，按季度汇总全州因 AI/自动化导致的失业情况并向议会报告。具体生效日期在已查来源中未写明（加州新法通常自次年 1 月 1 日起生效）。",
-          "summary_en": "Signed by Gov. Newsom on Sept 30 2026. The final version keeps Cal/WARN's existing 60-day advance notice (the original bill proposed 90 days). Notices must state the affected roles and headcount, the job functions being automated, the category of AI or automation technology, the reason for using it, retraining options, and coordination with local workforce boards. The EDD must post the notices online, publish quarterly statewide summaries of AI/automation displacement, and report to the Legislature. The sources checked do not state a specific effective date (new California laws usually take effect the following Jan 1).",
-          "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/"
+          "summary_cn": "2026-09-30 由 Newsom 签署，2027-01-01 生效。最终版本沿用 Cal/WARN 现有的适用门槛、60 天提前通知期和罚则（最初提案为 90 天）。裁员全部或主要由 AI 或其他自动化技术造成时，通知开头须写明「This notice is for a technology displacement」（本通知涉及技术性替代），并列出受影响的岗位与人数、被自动化的工作职能、技术类别、使用理由、再培训安排以及与地方劳动力机构的衔接。EDD 须公布这类通知的摘要和按季度汇总的全州数据，并在 2028-01-01 前向议会报告 AI 对企业招聘的影响（这一报告条款 2029-01-01 失效）。",
+          "summary_en": "Signed by Gov. Newsom on Sept 30 2026; takes effect Jan 1 2027. The final version keeps Cal/WARN's existing coverage thresholds, 60-day notice period and penalties (the original bill proposed 90 days). Where a layoff is caused in whole or in substantial part by AI or other automated technology, the notice must open with the statement \"This notice is for a technology displacement\" and list the affected roles and headcount, the job functions automated, the type of technology, the reason for using it, retraining options and coordination with local workforce boards. The EDD must publish summaries of these notices and a quarterly statewide summary, and report to the Legislature by Jan 1 2028 on AI's effects on business hiring (that reporting section is repealed on Jan 1 2029).",
+          "source_url": "https://www.littler.com/news-analysis/asap/california-amends-its-warn-act-again"
         },
         {
           "title_cn": "康涅狄格 SB 5（第 26-15 号公法）——AI 责任与透明法", "title_en": "Connecticut SB 5 (Public Act 26-15) — AI Responsibility and Transparency Act",
@@ -133,9 +133,22 @@
           "type": "law", "status": "in_force", "date": "2026-10",
           "relevance_cn": "首个在州 WARN 通知中要求披露 AI 相关裁员的州法，并要求雇主在用自动决策技术作招聘、晋升、解雇等决定前告知员工/求职者。",
           "relevance_en": "First state law requiring AI-related layoffs to be flagged in state WARN notices, plus pre-use notice to workers/applicants when automated decision tech drives hiring, promotion or discharge decisions.",
-          "summary_cn": "2026-05-29 签署。AI 相关裁员的透明要求已于 2026-10-01 生效：雇主向州劳工部提交联邦 WARN 通知时，须说明裁员是否与使用 AI 或其他技术变化有关。自动决策技术的书面告知义务（部署事实、用途、产品名、数据类别与来源等）自 2027-10-01 生效。由州检察长独家执法，按不公平贸易行为处理，2027 年底前的违规有 60 天补救期，无私人诉权。",
-          "summary_en": "Signed May 29 2026. The AI-layoff transparency rule took effect Oct 1 2026: employers filing federal WARN notices with the state Labor Department must say whether the layoffs relate to their use of AI or other technological change. Written notice duties for automated decision tech (deployment, purpose, trade name, data categories and sources) follow on Oct 1 2027. Enforced solely by the AG as an unfair trade practice, with a 60-day cure period for violations before end-2027 and no private right of action.",
+          "summary_cn": "2026-05-29 签署。AI 相关裁员的透明要求已于 2026-10-01 生效：雇主向州劳工部提交联邦 WARN 通知时，须说明裁员是否与使用 AI 或其他技术变化有关；同日生效的还有一项规定，即雇主使用了自动化用工决策技术，不能作为歧视指控的抗辩理由。自动决策技术的书面告知义务（部署事实、用途、产品名、数据类别与来源等）自 2027-10-01 生效。由州检察长独家执法，按不公平贸易行为处理，2027 年底前的违规有 60 天补救期，无私人诉权。",
+          "summary_en": "Signed May 29 2026. The AI-layoff transparency rule took effect Oct 1 2026: employers filing federal WARN notices with the state Labor Department must say whether the layoffs relate to their use of AI or other technological change. A provision taking effect the same day bars employers from citing their use of automated employment-decision technology as a defence to discrimination claims. Written notice duties for automated decision tech (deployment, purpose, trade name, data categories and sources) follow on Oct 1 2027. Enforced solely by the AG as an unfair trade practice, with a 60-day cure period for violations before end-2027 and no private right of action.",
           "source_url": "https://www.nixonpeabody.com/insights/alerts/2026/05/18/connecticut-new-ai-legislation"
+        },
+        {
+          "title_cn": "纽约州《AI 劳动信息法》（S8706-B / A9581-B）——企业年度 AI 用工影响报告",
+          "title_en": "New York AI Labor Information Act (S8706-B / A9581-B) — annual AI workforce-impact reporting",
+          "authority": "纽约州议会 / Hochul 州长 / 州劳动部",
+          "type": "bill",
+          "status": "in_progress",
+          "date": "2026-06",
+          "relevance_cn": "如获签署，50 人以上企业和所有上市公司须每年报告因 AI 而被替代、新招、工时变动的员工人数和空缺未补的岗位数，是目前唯一要求报告「因 AI 少招人」的州级制度。",
+          "relevance_en": "If signed, businesses with 50+ employees and all listed companies would report each year how many staff were displaced, hired or had hours changed because of AI, and how many positions went unfilled — the only state measure so far that asks about AI-related reductions in hiring.",
+          "summary_cn": "参议员 Michelle Hinchey 提出，2026 年 6 月经州参众两院通过，拟在《劳动法》增设第 201-j 条。覆盖在纽约营业、雇员超过 50 人的企业，以及所有上市公司。企业须每年报告上一年度全部或部分因 AI 而被替代、新招或工时变动的员工人数和空缺未补的岗位数，并说明使用 AI 的目的、频率、人工监督和风险控制措施；首份报告拟于 2027-03-01 提交。由州劳动部执法，逾期每天最高罚 500 美元，收到违规通知后有 90 天补正期。截至 2026-10-27，没有找到州长签署或否决的消息。本条自 11 月起补录，此前的更新漏收。",
+          "summary_en": "Sponsored by Sen. Michelle Hinchey and passed by both chambers in June 2026, it would add §201-j to the Labor Law. It covers businesses operating in New York with more than 50 employees and all publicly traded companies. They would report each year how many employees were displaced, hired or had hours changed, and how many positions went unfilled, due in full or in part to AI, along with the purpose and frequency of AI use, human oversight and risk controls; the first report would be due March 1 2027. The state Labor Department enforces, with penalties up to $500 per day and a 90-day cure period after notice. As of Oct 27 2026 no signature or veto had been reported. Added in the November update; earlier updates had missed it.",
+          "source_url": "https://www.thompsoncoburn.com/insights/new-york-legislature-passes-ai-workforce-impact-disclosure-bill/"
         }
       ]
     },
@@ -205,12 +218,12 @@
         {
           "title_cn": "《优质就业法》——职场算法管理与 AI（社会伙伴咨询已结束，待提案）", "title_en": "Quality Jobs Act — algorithmic management & AI at work (social-partner consultation closed, proposal pending)",
           "authority": "欧盟委员会（DG EMPL）/ 欧洲议会",
-          "type": "directive", "status": "in_progress", "date": "2026-09",
+          "type": "directive", "status": "in_progress", "date": "2026-10",
           "relevance_cn": "首个面向所有劳动者（不限平台工作）的欧盟算法管理立法倡议：拟令自动化管理决定更透明、以人为本，并防止过度监控。",
           "relevance_en": "First EU legislative initiative on algorithmic management covering all workers (not just platform work): aims to make automated management decisions transparent and human-centred and curb excessive monitoring.",
-          "summary_cn": "欧洲议会 2025-12-17 以 451 票通过立法倡议报告，要求委员会提出职场 AI/算法管理指令。委员会 2025-12 发布优质就业路线图，2026-07-20 启动社会伙伴第二阶段咨询，算法管理为五大优先领域之一；咨询已于 2026-09-28 结束。据 Agence Europe 报道，劳资双方分歧明显：欧洲工会联合会（ETUC）要求具约束力的「人类掌控」原则，欧洲商业联合会（BusinessEurope）认为只宜出台非立法指导。正式提案预计 2026 年底前提出，形式未定。",
-          "summary_en": "The European Parliament adopted a legislative-initiative report (451 votes, Dec 17 2025) asking for a directive on AI/algorithmic management at work. After the Dec 2025 Quality Jobs Roadmap, the Commission opened the second-stage social-partner consultation on July 20 2026, with algorithmic management one of five priorities; it closed on Sept 28 2026. According to Agence Europe, the social partners are split: the ETUC wants a binding 'human-in-control' principle, while BusinessEurope says only non-legislative guidance is appropriate. A legislative proposal is expected by end-2026; its form is still open.",
-          "source_url": "https://agenceurope.eu/en/bulletin/article/13948/31/quality-jobs-act-unsurprisingly-european-social-partners-divided-on-use-of-legislative-tools"
+          "summary_cn": "欧洲议会 2025-12-17 以 451 票通过立法倡议报告，要求委员会提出职场 AI/算法管理指令。委员会 2025-12 发布优质就业路线图，2026-07-20 启动社会伙伴第二阶段咨询，算法管理为五大优先领域之一；咨询已于 2026-09-28 结束。据 Agence Europe 报道，劳资双方分歧明显：欧洲工会联合会（ETUC）要求具约束力的「人类掌控」原则，欧洲商业联合会（BusinessEurope）认为只宜出台非立法指导。据 RemoteWorkEurope 报道，10 月 19 日卢森堡就业与社会事务部长理事会会后，执行副主席 Mînzatu 表示希望委员会在 12 月 3 日提出提案，内容为单一法律文本，含算法管理、分包和职场健康风险等章节；采用何种法律形式，她没有确认。这一日期目前只见于这一家报道，尚无委员会的正式日程。",
+          "summary_en": "The European Parliament adopted a legislative-initiative report (451 votes, Dec 17 2025) asking for a directive on AI/algorithmic management at work. After the Dec 2025 Quality Jobs Roadmap, the Commission opened the second-stage social-partner consultation on July 20 2026, with algorithmic management one of five priorities; it closed on Sept 28 2026. According to Agence Europe, the social partners are split: the ETUC wants a binding 'human-in-control' principle, while BusinessEurope says only non-legislative guidance is appropriate. According to RemoteWorkEurope, after the EPSCO Council in Luxembourg on Oct 19, Executive Vice-President Mînzatu said she hopes the Commission will present the proposal on Dec 3 as a single legal text with chapters on algorithmic management, subcontracting and workplace health risks; she did not confirm its legal form. That date has so far appeared in this one report only, with no official Commission agenda.",
+          "source_url": "https://remoteworkeurope.eu/news/2026/eu-quality-jobs-act-december-adoption-target/"
         }
       ]
     },
@@ -523,9 +536,22 @@
           "type": "guidance", "status": "in_force", "date": "2026-07",
           "relevance_cn": "保护零工/平台劳动者免受算法过度管理——禁以「最严算法」考核、要求公平派单与休息，并通过 2026-07 职业伤害保障全国推开持续升级。",
           "relevance_en": "Protects gig/platform workers from algorithmic over-management — bars 'strictest algorithm' KPIs, mandates fair dispatch and rest, upgraded via the July 2026 nationwide occupational-injury rollout.",
-          "summary_cn": "以八部门 2021 指导意见与七部门骑手意见为核心。九部门通知：2026-07-01 起新就业形态人员职业伤害保障试点向全国 31 省+兵团推开，新增 14 家平台，截至 2026-06-30 累计参保 2990 万人。人社部 2026-01 宣布的《新就业形态劳动者基本权益保障办法》截至 2026-09 尚未出台。",
-          "summary_en": "Anchored by the 2021 eight-department and rider opinions. Under a nine-department notice, occupational-injury insurance for platform workers went nationwide (all 31 provinces + XPCC) from July 1 2026, adding 14 platforms; 29.9M people had enrolled by June 30 2026. The basic-rights Measures MOHRSS announced in Jan 2026 had not been issued as of Sept 2026.",
+          "summary_cn": "以八部门 2021 指导意见与七部门骑手意见为核心。九部门通知：2026-07-01 起新就业形态人员职业伤害保障试点向全国 31 省+兵团推开，新增 14 家平台，截至 2026-06-30 累计参保 2990 万人。2026-10-08 人社部发布《新就业形态劳动者权益保障办法（征求意见稿）》，意见征集至 11 月 8 日（另列一条）。",
+          "summary_en": "Anchored by the 2021 eight-department and rider opinions. Under a nine-department notice, occupational-injury insurance for platform workers went nationwide (all 31 provinces + XPCC) from July 1 2026, adding 14 platforms; 29.9M people had enrolled by June 30 2026. On Oct 8 2026 MOHRSS published draft Measures on the Protection of Rights of Workers in New Forms of Employment for comment until Nov 8 (listed separately).",
           "source_url": "https://www.thepaper.cn/newsDetail_forward_33494345"
+        },
+        {
+          "title_cn": "《新就业形态劳动者权益保障办法（征求意见稿）》——平台算法规则",
+          "title_en": "Draft Measures on the Protection of Rights of Workers in New Forms of Employment — platform algorithm rules",
+          "authority": "人力资源和社会保障部",
+          "type": "regulation",
+          "status": "consultation",
+          "date": "2026-10",
+          "relevance_cn": "中国首次以部门规章的形式规定平台用工中的算法管理：确立「算法取中」原则，不得仅通过算法自动作出减损劳动者重大利益的决定。",
+          "relevance_en": "China's first departmental rule on algorithmic management in platform work: sets a 'median-value' principle for algorithms and bars decisions that harm workers' major interests from being made solely by algorithm.",
+          "summary_cn": "人社部 2026-10-08 发布征求意见稿，共 54 条，意见征集至 11 月 8 日。草案把接受企业劳动管理、但不完全符合确立劳动关系条件的新就业形态劳动者纳入劳动法律保障。算法方面确立「算法取中」原则，即不得把明显异常的数据当作普遍的考核标准；不得仅通过算法自动作出减损劳动者重大利益的决定。参与研讨的学者王天玉解读说，停止派单、封禁账号这类决定必须经人工审核。草案还规定连续工作 4 小时应保障适当休息，扣除劳动者自备生产资料成本后的报酬不得低于当地最低工资标准，报酬结算周期最长不超过 1 个月。现为草案，正式文本可能修改。",
+          "summary_en": "Released by MOHRSS on Oct 8 2026 for comment until Nov 8; 54 articles. The draft extends labour-law protection to workers in new forms of employment who are managed by an enterprise but do not fully meet the test for an employment relationship. On algorithms it sets a 'median-value' principle (clearly abnormal data may not be used as a general performance standard) and bars decisions that harm workers' major interests from being made solely by algorithm; legal scholar Wang Tianyu, commenting on the draft, said decisions such as stopping order dispatch or banning accounts must go through human review. It also requires adequate rest after four hours of continuous work, pay (net of the worker's own equipment costs) no lower than the local minimum wage, and a pay-settlement cycle of no more than one month. Still a draft; the final text may change.",
+          "source_url": "https://www.news.cn/politics/20261008/5f46506a518044ca9fb0d275015f5f2d/c.html"
         },
         {
           "title_cn": "《实施就业优先战略「十五五」规划》（含适应人工智能发展促就业行动）", "title_en": "15th Five-Year Plan for the Employment-First Strategy (incl. AI-adaptation jobs action)",

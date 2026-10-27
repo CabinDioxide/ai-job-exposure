@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Employment Impact Report / AI就业冲击月报 — 2026-10</title>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--fg:#e0e0e8;--fg2:#888894;--accent:#6c8cff;--border:rgba(255,255,255,0.08);--accent2:#ffaa55;--early:#34d3a6;--early2:#a06cff}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.wrapper{max-width:900px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.topnav .wrapper{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topnav a{font-size:14px;color:var(--accent);text-decoration:none}
+.topnav .sep{color:var(--fg2);font-size:12px}
+.topnav .nav-link{font-size:13px;color:var(--fg2)}
+.language-toggle{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px;border:1px solid var(--border);margin-left:auto}
+.lang-btn{background:none;border:none;color:var(--fg2);padding:5px 12px;font-size:13px;font-weight:500;cursor:pointer;border-radius:18px;transition:all 0.2s}
+.lang-btn.active{background:var(--accent);color:white}
+.lang-btn:hover{color:var(--fg)}
+.lang-inactive{display:none}
+.report-header{padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.report-header .emoji{font-size:48px;margin-bottom:16px}
+.report-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.3}
+.report-header .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--fg2)}
+.report-header .badge{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px}
+.report-body{padding-bottom:80px}
+.report-body h2.report-heading{font-size:20px;font-weight:600;margin:36px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.report-body h3.report-heading{font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--accent)}
+.report-body h4.report-heading{font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.04em}
+.report-body p{margin-bottom:14px;font-size:15px}
+.report-body strong{color:#fff;font-weight:600}
+.report-body a{color:var(--accent);text-decoration:none}
+.report-body a:hover{text-decoration:underline}
+.report-body .report-list{margin:12px 0 18px 22px}
+.report-body .report-list li{margin-bottom:10px;font-size:15px;line-height:1.6}
+.report-body code{background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:13px}
+.report-body table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.report-body th,.report-body td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.report-body th{background:var(--bg3);font-weight:600;color:var(--fg)}
+.report-body td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:6px;padding:14px 18px;margin:20px 0;font-size:14px}
+.callout .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent2);margin-bottom:6px}
+.spotlight-section{background:linear-gradient(180deg,rgba(52,211,166,0.05),rgba(160,108,255,0.04));border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:32px 0}
+.spotlight-section h2{font-size:22px;font-weight:700;margin-bottom:8px;padding-bottom:0;border:none;color:var(--fg)}
+.spotlight-section .subtitle{font-size:13px;color:var(--fg2);margin-bottom:20px}
+.report-footer{border-top:1px solid var(--border);padding:24px 0 48px;text-align:center;color:var(--fg2);font-size:13px}
+.report-footer a{color:var(--accent);text-decoration:none}
+.src{font-size:12px;color:var(--fg2);font-style:italic}
+</style>
+<script>
+function setLang(lang){
+  document.querySelectorAll('.cn, .en').forEach(el=>{
+    if(el.classList.contains(lang)){el.classList.remove('lang-inactive');}
+    else if(el.classList.contains(lang==='cn'?'en':'cn')){el.classList.add('lang-inactive');}
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+});
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrapper">
+  <a href="../index.html">&larr; Dashboard</a>
+  <span class="sep">|</span>
+  <a href="index.html" class="nav-link"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+  <a href="../methodology.html" class="nav-link"><span class="cn">方法论</span><span class="en lang-inactive">Methodology</span></a>
+  <a href="../policy.html" class="nav-link"><span class="cn">政策追踪</span><span class="en lang-inactive">Policy Tracker</span></a>
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn active" data-lang="cn">中文</button>
+  </div>
+</div></nav>
+<div class="wrapper">
+  <div class="report-header">
+    <div class="emoji">🌏</div>
+    <h1 class="cn">AI就业冲击月报 — 2026年10月</h1>
+    <h1 class="en lang-inactive">AI Employment Impact Report — October 2026</h1>
+    <div class="meta">
+      <span class="badge"><span class="cn">月报</span><span class="en lang-inactive">Monthly</span></span>
+      <span><span class="cn">报告期：2026-09-28 至 2026-10-27</span><span class="en lang-inactive">Period: 2026-09-28 to 2026-10-27</span></span>
+      <span><span class="cn">本期专题：外包行业恢复招人，AI 的影响先出现在价格上</span><span class="en lang-inactive">Spotlight: Outsourcers Are Hiring Again, but AI Is Showing Up in Prices First</span></span>
+    </div>
+  </div>
+
+  <div class="report-body">
+    <!-- ============== 中文版 ============== -->
+    <div class="cn">
+<!-- SPOT_CN: 外包行业恢复招人，AI 的影响先出现在价格上 -->
+<h2 class="report-heading">📋 本月概要</h2>
+<p>本期覆盖 2026 年 9 月 28 日至 10 月 27 日。</p>
+
+<p>上一期提出的问题是：菲律宾、印度这类以外包服务为主的经济体，行业收缩会不会开始反映在全国就业数据中。从这个月的数据看，答案是没有。印度五大 IT 服务公司在 7 至 9 月这一季有四家增加员工，五家合计净增约 1.39 万人，上一季只有约 5,500 人；HCLTech 一季新增 6,450 人，是 16 个季度以来最多的一次。菲律宾 8 月失业率从 7 月的 6.0% 降至 5.3%。但外包和咨询公司的收入和报价出现了另一种变化：埃森哲说第四财季在许多领域降低了价格，并预计下一年员工增长会放慢，“部分原因是 AI”；客服外包公司 Concentrix 的收入低于预期，财务总监把原因之一归于客户加快部署 AI。AI 对外包行业的影响，目前先反映在价格和收入上，员工人数的变化可能会晚一些出现。</p>
+
+<p>美国企业在裁员公告中提到 AI 的次数仍然较少。Challenger, Gray &amp; Christmas 的统计显示，9 月以 AI 为原因的裁员有 3,961 个，排在第五，与 8 月的 3,462 个接近；1 至 9 月累计 120,136 个，仍是今年被提及最多的原因。连续两个月处于低位，说明 8 月的回落不是一次性的，但还不能据此判断 AI 的影响在减弱。同期仍有公司在裁员时特意说明与 AI 无关（HubSpot），也有公司直接把 AI 写进裁员理由（巴克莱、FICO）。美联储 10 月 14 日发布的褐皮书提到，五个联储辖区的部分企业在用 AI 提高效率后，通过自然减员减少人手、推迟招聘，或预计少创造岗位；但多数辖区的总体就业水平没有变化。</p>
+
+<p>美国整体就业依然疲弱。9 月非农就业只增加 2.9 万人，失业率升至 4.2%；7 月下修为减少 1 万人，8 月下修为增加 13.3 万人。斯坦福人本 AI 研究院 10 月 21 日报道，软件开发、客服等 AI 高暴露职业今年的就业下降超过 4%，其中 22 至 25 岁员工的就业下降约 4.4%。Anthropic 10 月 16 日发表了一项关于本公司人员的研究：技术岗位新招人员中，初级员工所占比例从 27% 降至 9%。这是一家 AI 公司对自身情况的统计，不能推及整个经济，但它是第一份由 AI 开发商公布的、关于本公司减少初级员工招聘的数据。</p>
+
+<p>政策方面，加州 SB 951 的生效日期已经确认为 2027 年 1 月 1 日；中国人社部 10 月 8 日发布《新就业形态劳动者权益保障办法（征求意见稿）》，规定不得仅通过算法自动作出减损劳动者重大利益的决定；据报道，欧盟委员会希望在 12 月 3 日提出《优质就业法》提案。详见本站<a href="../policy.html">政策追踪</a>页面。</p>
+
+<h2 class="report-heading">📉 新增事件</h2>
+
+<ol class="report-list">
+<li><strong>Challenger 统计：9 月以 AI 为原因的裁员 3,961 个，排第五（10 月 1 日发布）</strong>
+<p>9 月公告裁员共 43,281 个，比 8 月少 18%，是 2022 年以来裁员最少的 9 月。其中以 AI 为原因的裁员有 3,961 个，约占 9%，排在市场与经济状况、关闭、需求下降和重组之后。1 至 9 月累计公告裁员 573,195 个，比去年同期少 39%；其中以 AI 为原因的裁员有 120,136 个，约占 21%，仍是今年排名第一的原因。科技行业 9 月公告裁员 10,799 个，比 8 月增加 77%。Challenger 统计的是企业宣布的计划和企业自行说明的理由，不是实际发生的离职人数。<span class="src">来源：<a href="https://www.challengergray.com/blog/job-cuts-fall-in-september-hiring-plans-up-3-over-2025-on-weak-early-seasonal-hiring/">Challenger 9 月报告（2026-10-01）</a>。</span></p></li>
+
+<li><strong>美国 9 月非农就业增加 2.9 万人，7 月下修为负（10 月 2 日）</strong>
+<p>美国劳工统计局公布，9 月非农就业增加 2.9 万人，失业率从 4.1% 升至 4.2%，失业人数 710 万。7 月从增加 2.1 万下修为减少 1 万，8 月从增加 16.2 万下修为增加 13.3 万，两个月合计下修 6 万。信息业 9 月减少 1 万个岗位。<span class="src">来源：<a href="https://www.bls.gov/news.release/archives/empsit_10022026.htm">BLS 就业形势报告（2026-10-02）</a>。</span></p></li>
+
+<li><strong>美联储褐皮书：五个辖区的企业在用 AI 提效后减少人手或推迟招聘（10 月 14 日）</strong>
+<p>褐皮书汇总十二个联储辖区对企业的走访。本期劳动力市场部分写道，五个辖区报告称，部分企业在投资 AI、提高生产率后，通过自然减员减少人手、推迟招聘，或预计会少创造岗位；同时，多数辖区的总体就业水平几乎没有变化。报告提到的是自然减员和推迟招聘，而不是裁员，这与斯坦福等研究发现的“少招人而非多裁人”一致。<span class="src">来源：<a href="https://www.federalreserve.gov/monetarypolicy/beigebook202610-summary.htm">Federal Reserve Beige Book（2026-10-14）</a>。</span></p></li>
+
+<li><strong>巴克莱今年裁员约 5,000 人，其中包括因 AI 而减少的开发人员（10 月 22 日）</strong>
+<p>巴克莱在第三季度业绩中表示，今年将裁减约 5,000 个岗位，约占员工的 5%，其中约 1,000 个已在上半年完成。财务总监 Anna Cross 说，约六成裁员在支持部门，“包括因为 AI 让员工更有效率而减少开发人员”。这是本期少数明确把 AI 列入裁员理由的大公司之一。<span class="src">来源：<a href="https://www.thestar.com.my/business/business-news/2026/10/22/barclays-to-slash-5000-jobs-in-ai-powered-cost-cutting-drive">Reuters（经 The Star 转载，2026-10-22）</a>、<a href="https://www.itweb.co.za/article/barclays-calls-ai-icing-on-the-cake-as-it-culls-jobs/Kjlyr7wBQm6vk6am">ITWeb（2026-10-23）</a>。</span></p></li>
+
+<li><strong>信用评分公司 FICO 裁员约 15%，理由包括“整合 AI 驱动的产品开发”（10 月 6 日）</strong>
+<p>FICO 向美国证监会提交的 8-K 文件显示，公司将裁减约 15% 的岗位，计划内容包括整合 AI 驱动的产品开发，预计税前费用约 2,700 万美元，2027 财年第三季度前基本完成。媒体按公司 2025 年的员工数估算，裁员约为 570 人；这不是公司公布的数字。<span class="src">来源：<a href="https://www.sec.gov/Archives/edgar/data/0000814547/000119312526415732/d127042d8k.htm">FICO 8-K（2026-10-06）</a>。</span></p></li>
+
+<li><strong>HubSpot 裁员约 660 人，并说明不是因为 AI 提效；eBay、Netflix 等裁员未提 AI（10 月）</strong>
+<p>HubSpot 10 月 6 日宣布裁减约 660 个岗位，约占员工 7%。公司把这次重组描述为转向“AI 驱动的客户成果”，但首席执行官 Yamini Rangan 在随监管文件公开的内部信中说，裁员“不是由 AI 带来的效率驱动的”，而是为了减少管理层级。同期 eBay（约 9%）、Netflix（约 6%）、艺电（约 400 人）宣布的裁员，公开说明中都没有提到 AI。<span class="src">来源：<a href="https://finance.yahoo.com/technology/ai/articles/hubspot-layoffs-660-jobs-cut-181029775.html">Quartz（经 Yahoo Finance，2026-10-07）</a>、<a href="https://www.valueaddedresource.net/ebay-layoffs-october-2026/">Value Added Resource（2026-10-21）</a>、<a href="https://www.informationweek.com/it-staffing-careers/2026-tech-company-layoffs">InformationWeek 科技裁员追踪</a>。</span></p></li>
+
+<li><strong>埃森哲预计下一年员工增长放慢，“部分原因是 AI”；Concentrix 收入低于预期（9 月 29 日、10 月 1 日）</strong>
+<p>埃森哲 10 月 1 日公布 2026 财年业绩，员工约 81.4 万人。首席执行官 Julie Sweet 在业绩会上说，2027 财年招聘人数会低于今年，但会招更多初级员工；首席财务官 Angie Park 说，下一年员工增长会放慢，“部分原因是 AI”，并提到第四财季在许多领域降低了价格。客服外包公司 Concentrix 9 月 29 日公布第三财季收入约 24.5 亿美元，低于公司指引，财务总监 Andre Valentine 把原因之一归于“客户加快部署 AI”。<span class="src">来源：<a href="https://www.sec.gov/Archives/edgar/data/0001467373/000146737326000037/q4fy26earnings8-kexhibit.htm">埃森哲业绩公告（2026-10-01）</a>、<a href="https://www.webull.com/news/15673140247086080">埃森哲业绩会纪要（经 Webull）</a>、<a href="https://www.marketbeat.com/instant-alerts/transcript-concentrix-q3-earnings-call-highlights-2026-09-29/">MarketBeat（2026-09-29）</a>。</span></p></li>
+
+<li><strong>印度五大 IT 公司第二财季：四家员工增加，Wipro 减少 6,716 人（10 月 8 日至 23 日陆续发布）</strong>
+<p>2027 财年第二季度（2026 年 7 至 9 月），TCS 净增 4,258 人，HCLTech 净增 6,450 人（其中应届生 6,136 人），Tech Mahindra 净增 5,446 人（管理层说其中一部分是随与 Orange 的合同转入的员工），Infosys 净增 4,480 人（据报道招入应届生 8,000 多人，并重申全年约 2 万人的目标），Wipro 净减 6,716 人，降幅 2.8%。五家合计净增约 1.39 万人。Wipro 首席人力官 Saurabh Govil 说：“我们本季度提高了一些生产率，但仍会根据需求情况招人”，并表示下半年会回到校园招聘。详见本期专题。<span class="src">来源：<a href="https://www.businesstoday.in/markets/stocks/story/tcs-adds-4258-employees-in-q2-marks-third-quarter-of-headcount-addition-560460-2026-10-08">Business Today（TCS，2026-10-08）</a>、<a href="https://www.peoplematters.in/news/recruiting-and-onboarding/hcltech-attrition-rises-to-128percent-as-headcount-grows-by-6450-in-q2-52678">People Matters（HCLTech，2026-10-13）</a>、<a href="https://www.indiaipo.in/news/detail/tech-mahindra-adds-nearly-5500-employees-in-q2-highest-quarterly-addition-in-two-years">IndiaIPO（Tech Mahindra，2026-10-15）</a>、<a href="https://www.thepeoplesboard.com/?p=22798">The People's Board（Wipro，2026-10-16）</a>、<a href="https://lapaasvoice.com/infosys-adds-4480-employees-in-q2fy27-hires-over-8000-freshers/">Lapaas Voice（Infosys，2026-10-23）</a>。</span></p></li>
+
+<li><strong>Anthropic 公布自身数据：技术岗位新招人员中初级员工比例从 27% 降到 9%（10 月 16 日）</strong>
+<p>Anthropic 研究人员 Wilmers、Catipon、Massenkoff、McCrory 分析了公司内部的人员数据。自 2025 年初以来，技术部门初级员工所占比例从 21% 降到 14%，技术岗位新招人员中初级员工的比例从 27% 降到 9%，初级职位的招聘广告在 2025 年 12 月之后下降得尤其快。2026 年 3 月，AI 代理（能自主执行多步任务的 AI 程序）的工作时长首次超过员工的工作时长；到 8 月，员工指挥的 AI 代理工作时长约为员工自身的六倍。作者指出，这家公司的做法有许多无法在整个经济中复制，代码更多也不等于业务效果更好。Anthropic 是 AI 开发商，这份研究是当事方对自身的统计，本月报的仪表盘也使用 Anthropic 的数据，读者应把这两点考虑在内。<span class="src">来源：<a href="https://www.anthropic.com/research/employment-at-anthropic">Anthropic（2026-10-16）</a>。</span></p></li>
+
+<li><strong>两份新的工会合同写入 AI 条款（10 月 2 日、10 月 21 日报道）</strong>
+<p>《费城询问报》约 240 名员工所在的工会批准了新合同，有效期到 2029 年，规定不得用 AI 生成逼真的新闻图片或视频，不得未经同意用 AI 模仿员工，员工参与开发和核验 AI 工具，并设每月一次的劳资 AI 咨询委员会。纽约州立大学教职工工会（4.2 万多名会员）的新合同增设第 44 条，规定由 AI 完成或借助 AI 完成的工作，最终责任仍由人承担，每门课都要有一名人类授课教师。<span class="src">来源：<a href="https://www.inquirer.com/business/philadelphia-inquirer-new-union-contract-ai-20261002.html">Philadelphia Inquirer（2026-10-02）</a>、<a href="https://higheredlaborunited.org/2026/10/21/uups-new-ai-protections-offer-a-model-for-higher-education-labor/">Higher Ed Labor United（2026-10-21，工会一方的网站）</a>。</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 行业趋势</h2>
+
+<h3 class="report-heading">银行：AI 被写进成本削减计划，但多数银行不说它减少了人手</h3>
+<p>巴克莱是本期唯一明确说 AI 让它少用开发人员的大银行。据美国银行第三季度业绩会的纪要摘要，该行员工比一年前减少约 3,500 人，管理层的说法是“我们在把流程自动化、把工作简化”，并预计 AI 带来的收益从今年约 3 亿美元增加到明年约 7 亿美元；这一引语只见于摘要，尚未核对完整纪要。富国银行员工比一年前减少 8%，但首席执行官 Scharf 和财务总监都没有说 AI 会减少人手。摩根大通的业绩公告没有涉及员工人数与 AI 的关系。上一期报道过五家美国大银行第二季度合计减员一万多人，本期的情况也相同：银行仍在减员，但只有少数银行愿意把减员和 AI 直接联系起来。</p>
+
+<h3 class="report-heading">客服与外包：收入先受影响</h3>
+<p>Concentrix 的收入低于指引，公司把原因之一归于客户部署 AI；埃森哲说第四财季在许多领域降低了价格；Infosys 把 2027 财年收入增长指引下调到按固定汇率计算的 1% 至 2%。这些公司的员工人数本季度大多增加，但收入和报价已经发生变化。专题部分将讨论这一变化。</p>
+
+<h3 class="report-heading">初级岗位：来自三个方向的证据</h3>
+<p>本期有三份与初级员工有关的材料，结论不完全一致。Anthropic 的内部数据显示，一家 AI 公司自身大幅减少了初级技术人员的招聘。英国雇主协会 ISE 10 月 14 日发布的调查覆盖 155 家大雇主，2025-26 年度毕业生招聘比上年增加 4%，但除去几家特大雇主后只增加 0.8%；同一调查中，66% 的雇主在面试中发现过求职者未申明地使用 AI。美国国家经济研究局（NBER）Fairlie 与 Wu 的工作论文（2026 年 9 月）用 6 至 8 月的人口调查数据发现，美国应届大学毕业生的失业率与往年夏天相比没有明显上升。这三份材料表明，初级岗位的变化目前集中在 AI 高暴露的少数职业和少数公司，尚未反映在全体应届生的失业率上；这与上一期斯坦福和耶鲁两项研究的结果相同。<span class="src">来源：<a href="https://wonkhe.com/wonk-corner/a-slightly-better-outlook-for-graduate-jobs">Wonkhe（ISE 调查，2026-10-14）</a>、<a href="https://www.nber.org/papers/w35796">NBER 工作论文 35796</a>。</span></p>
+
+<h2 class="report-heading">🌍 地域分布</h2>
+
+<h3 class="report-heading">美国：总体就业继续放缓，AI 高暴露职业中的年轻员工处境没有改善</h3>
+<p>9 月非农就业增加 2.9 万，7 月下修后为负，失业率 4.2%。斯坦福人本 AI 研究院 10 月 21 日介绍了其实时数据页面：软件开发、客服等 AI 高暴露职业今年的就业下降超过 4%；这些职业中 22 至 25 岁员工的就业，自 2022 年 11 月以来每年下降 3% 以上，最近降幅扩大到 4.4%。研究者 Bharat Chandar 提醒，数据页面显示女性年轻员工就业增长慢于男性，但样本的代表性还需要检验。斯坦福的论文本期没有新版本，最近一次仍是 8 月 12 日。<span class="src">来源：<a href="https://hai.stanford.edu/news/tracking-ais-real-time-footprint-on-the-labor-market">Stanford HAI（2026-10-21）</a>。</span></p>
+
+<h3 class="report-heading">欧盟与英国：青年失业率持平，英国就业人数一年减少 11 万</h3>
+<p>欧盟统计局 10 月 1 日公布，8 月欧盟 25 岁以下青年失业率为 15.4%，欧元区为 15.0%。上一期引用的 7 月数据已被修正为欧盟 15.3%、欧元区 15.1%，因此与修正后的数字相比，8 月基本持平；9 月数据将于 10 月 30 日公布。英国统计局 10 月 20 日公布，6 至 8 月失业率为 4.7%，按工资单统计的在职人数比一年前减少 11.1 万人，7 至 9 月职位空缺 69.1 万个，比一年前少 5.1%。德勤 10 月发布的英国财务总监调查（66 位财务总监）中，52% 预计 AI 会在未来 12 个月减少本公司的员工人数。<span class="src">来源：<a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap">Eurostat（2026-10-01）</a>、<a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/october2026">ONS（2026-10-20）</a>、<a href="https://oecd.ai/en/incidents/2026-10-13-5cd9">OECD AI 事件库对德勤调查的记录（2026-10-13）</a>。</span></p>
+
+<h3 class="report-heading">印度：IT 公司恢复招人，城市失业率小幅上升</h3>
+<p>印度统计部 10 月 15 日公布，9 月 15 岁以上人口失业率为 5.0%，与 8 月相同；城市失业率从 8 月的 6.8% 升至 6.9%，其中城市女性为 9.2%。城市失业率自 5 月的 6.4% 起已连续四个月上升。IT 行业方面，五大公司第二财季合计净增约 1.39 万人，招聘明显恢复，但这一季正是应届生集中入职的时候，HCLTech 新增的 6,450 人中有 6,136 人是应届生。在上一期的三家减员公司中，HCLTech 和 Infosys 已转为增员，只有 Wipro 继续减少。<span class="src">来源：<a href="https://www.mospi.gov.in/uploads/latestReleases/latest_release_1792060004197_6c3ba64d-1853-4b3d-98fb-d750d5ec8a5d_Monthly_Press_note_PLFS_Sep_2026.pdf">MoSPI PLFS 9 月月报（2026-10-15）</a>。</span></p>
+
+<h3 class="report-heading">菲律宾：失业率从 6.0% 回落到 5.3%</h3>
+<p>菲律宾统计署 10 月 7 日公布，8 月失业率为 5.3%，失业人数 277 万，比 7 月减少约 37.5 万；就业不足率从 12.9% 降至 11.9%。统计署把下降部分归于 7 月毕业季过后新进入劳动力市场的人减少，以及农忙季节的用工。不过与一年前相比，失业率仍高 1.4 个百分点（2025 年 8 月为 3.9%）。本期没有找到外包行业协会 IBPAP 的新表态，9 月数据预计 11 月初公布。<span class="src">来源：<a href="https://www.gmanetwork.com/news/money/economy/1005019/jobless-pinoys-declined-by-375-000-to-2-77m-in-august-2026/story/">GMA News（2026-10-07）</a>、<a href="https://tribune.net.ph/2026/10/07/277m-filipinos-jobless-as-unemployment-falls-to-53">Daily Tribune（2026-10-07）</a>。统计署原页面本期无法打开，数字依据上述报道。</span></p>
+
+<h3 class="report-heading">其他：中国、韩国、加拿大的青年就业</h3>
+<p>中国国家统计局数据显示，9 月 16 至 24 岁（不含在校生）城镇调查失业率为 18.0%，8 月为 18.9%。韩国 9 月 15 至 29 岁青年就业率为 44.0%，比一年前低 1.1 个百分点；韩国银行 8 月的一份报告曾估计，2022 年 6 月至 2026 年 6 月 15 至 29 岁就业人数的减少，有 94% 发生在 AI 高暴露行业，同时人口减少也是重要原因。加拿大 9 月 15 至 24 岁青年就业减少 4.8 万人。这几个国家的统计部门都没有把这些变化归于 AI。<span class="src">来源：<a href="https://www.caixinglobal.com/2026-10-21/chinas-youth-unemployment-rate-eases-to-18-102495753.html">Caixin Global（2026-10-21）</a>、<a href="https://www.koreatimes.co.kr/economy/20261016/korea-adds-over-100000-jobs-for-3rd-month-in-sept">Korea Times（2026-10-16）</a>、<a href="https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009a-eng.htm">Statistics Canada（2026-10-09）</a>。</span></p>
+
+<h2 class="report-heading">📑 重要研究 / 政策</h2>
+
+<ol class="report-list">
+<li><strong>Anthropic “AI 预期差距”调查：美国劳动者与 AI 公司员工对 2030 年的判断相差很大（10 月 16 日）</strong>
+<p>研究比较了 10,980 名美国成年人和 1,334 名 Anthropic 员工在 8 月的调查回答。对于“到 2030 年，AI 能完成自己多少工作时间”，美国劳动者的平均回答是 28%，Anthropic 员工是 75%；预计 AI 到 2030 年能完成自己八成以上工作的，美国劳动者中约占 5%，Anthropic 员工中超过一半。这份研究衡量的是预期，不是实际发生的变化，但开发 AI 的人和使用 AI 的人对就业变化速度的判断差距很大。<span class="src">来源：<a href="https://www.anthropic.com/research/ai-expectations-gap">Anthropic（2026-10-16）</a>。</span></p></li>
+
+<li><strong>NBER：美国应届大学毕业生失业率没有明显上升（2026 年 9 月）</strong>
+<p>Fairlie 与 Wu 使用 2026 年 6 至 8 月的当期人口调查数据，比较应届毕业生与往年同期、与对照人群的失业率，没有发现明显上升；把想工作但没有在找工作的人也算进去，失业率约高 2 个百分点，但与往年相比仍没有显著变化。这篇论文的发布日期标为 2026 年 9 月，可能早于本报告期开始的日子。<span class="src">来源：<a href="https://www.nber.org/papers/w35796">NBER Working Paper 35796</a>。</span></p></li>
+
+<li><strong>国际货币基金组织 10 月《世界经济展望》没有 AI 与就业专章（10 月 13 日）</strong>
+<p>本期《世界经济展望》的分析章节讨论生活成本危机和公司税的跨国影响，AI 只作为投资动力和风险因素出现。总裁格奥尔基耶娃在年会上重提“AI 将影响全球约 40% 的岗位、发达经济体约 60%”，这是 IMF 2024 年分析中的数字，不是新的估计。<span class="src">来源：<a href="https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026">IMF WEO（2026-10-13）</a>。</span></p></li>
+
+<li><strong>政策：加州 SB 951 定于 2027 年 1 月 1 日生效，中国发布平台算法规则征求意见稿，欧盟《优质就业法》提案或于 12 月提出</strong>
+<p>据律所 Littler 10 月 2 日的分析，加州 SB 951 自 2027 年 1 月 1 日起生效：裁员全部或主要由 AI 造成时，通知开头须写明这是一份“技术性替代”通知，并列出被自动化的工作职能和技术类别；州就业发展局须在 2028 年 1 月 1 日前向议会报告 AI 对企业招聘的影响。中国人社部 10 月 8 日发布《新就业形态劳动者权益保障办法（征求意见稿）》，共 54 条，确立“算法取中”原则，规定不得仅通过算法自动作出减损劳动者重大利益的决定，意见征集到 11 月 8 日。欧盟方面，据 RemoteWorkEurope 报道，就业事务执行副主席 Mînzatu 在 10 月 19 日的部长理事会后表示，希望委员会在 12 月 3 日提出《优质就业法》提案，其中包括算法管理一章；这一日期目前只有这一家报道。科罗拉多州司法部 10 月 6 日发布 AI 法案实施细则的修订稿，10 月 26 日举行听证。纽约州的《AI 劳动信息法》两院 6 月已通过，至今未见州长签署或否决。详见<a href="../policy.html">政策追踪</a>页面。</p></li>
+</ol>
+
+<h2 class="report-heading">🔮 下月关注</h2>
+<ol class="report-list">
+<li><strong>Challenger 10 月裁员报告（11 月初）</strong>
+<p>以 AI 为原因的裁员已经连续两个月低于 4,000 个。如果第三个月仍处于低位，全年 AI 相关裁员的增长将主要来自上半年。</p></li>
+<li><strong>美国 10 月就业报告（11 月 6 日）</strong>
+<p>7 月已下修为负，需继续观察就业增长是否放缓、信息业是否继续减少岗位。</p></li>
+<li><strong>菲律宾 9 月劳动力调查（11 月初）和欧盟 9 月失业率（10 月 30 日）</strong>
+<p>观察菲律宾失业率是否继续回落、青年就业是否恢复，以及欧盟青年失业率是否仍在 15% 上下。</p></li>
+<li><strong>中国平台用工规则征求意见截止（11 月 8 日）和欧盟《优质就业法》提案（预计 12 月 3 日）</strong>
+<p>这两份文件都涉及算法管理，前者针对平台劳动者，后者覆盖所有劳动者，可以比较它们对“人工复核”的要求是否具体。</p></li>
+<li><strong>加州裁员通知法修改建议（11 月中旬）和纽约州《AI 劳动信息法》</strong>
+<p>纽森州长 5 月的行政令要求州劳动机构在 180 天内提出修改裁员通知法的建议；纽约州法案若获签署，将是第一个要求企业报告“因 AI 而未填补的职位”的制度。</p></li>
+</ol>
+
+<!-- ============== 专题 ============== -->
+<div class="spotlight-section">
+<h2>🧮 本期专题：外包行业恢复招人，AI 的影响先出现在价格上</h2>
+<p class="subtitle">上一期月报记录了外包行业收缩的迹象：印度五大 IT 公司第一财季有三家减员，菲律宾 7 月失业率升至四年多来的最高水平，行业协会下调了 2028 年的就业目标。一个月后，这些迹象大多没有延续。员工人数为什么又增加了？这是否意味着 AI 对这个行业的影响变小了？</p>
+
+<h3 class="report-heading">一、员工人数为什么又增加了</h3>
+<p>第一个原因是季节。印度 IT 公司的应届生大多在 7 至 9 月入职，所以第二财季的员工增长通常高于第一财季。HCLTech 本季新增 6,450 人，其中 6,136 人是应届生；Infosys 本季招入应届生 8,000 多人。第二个原因是个别合同。Tech Mahindra 新增的 5,446 人中，一部分是随与法国电信公司 Orange 的合同转入的员工，并不是新招人员。第三个原因是公司为下一阶段的项目储备人手：据报道，TCS 的财务总监说公司在扩大待命人员，并更多地使用分包商。</p>
+<p>因此，第二财季的增员不能直接证明 AI 没有影响这个行业的人力需求。更适合比较的是一年内的变化，这要等第三、第四财季的数据。</p>
+
+<h3 class="report-heading">二、影响先出现在价格和收入上</h3>
+<p>本期有四家公司在不同场合反映了同一件事：客户使用 AI 后，愿意为同样的工作支付的钱变少了。</p>
+<table>
+<tr><th>公司</th><th>本期说法</th><th>体现在哪里</th></tr>
+<tr><td>埃森哲</td><td>第四财季在许多领域降低了价格；下一年员工增长会放慢，“部分原因是 AI”</td><td>价格、未来的招聘</td></tr>
+<tr><td>Concentrix</td><td>第三财季收入低于指引，原因之一是客户加快部署 AI</td><td>收入</td></tr>
+<tr><td>Infosys</td><td>2027 财年收入增长指引下调到 1% 至 2%（固定汇率）；AI 相关收入占 10.5%</td><td>收入预期</td></tr>
+<tr><td>Wipro、Tech Mahindra</td><td>Wipro 本季提高了一些生产率，员工减少 2.8%；Tech Mahindra 管理层说 AI 工具会让固定价格项目用更少的人完成</td><td>每个项目所需的人数</td></tr>
+</table>
+<p>外包公司的收入大多按项目或按人力计算。客户用 AI 承担了一部分原本外包出去的工作后，新合同的报价会降低，续约时的工作范围会缩小，或者公司会在固定价格项目中用更少的人完成同样的交付。这些变化会先反映在收入、价格和收入增长指引中。公司要等到判断收入下降会持续，才会调整员工人数；通常先少招应届生、离职不补，而不是裁员。这与美联储褐皮书本期的描述一致：受 AI 影响的企业主要通过自然减员和推迟招聘来调整。</p>
+
+<h3 class="report-heading">三、菲律宾的数据说明什么，不说明什么</h3>
+<p>菲律宾 8 月失业率回落到 5.3%，统计署给出的原因是毕业季之后新进入劳动力市场的人减少和农忙季节的用工，没有涉及外包行业。全国数据也很难反映外包行业的变化：外包行业约有 190 万从业者，只占约 4,980 万就业人口的 4% 左右。因此，7 月失业率上升和 8 月回落，都不太可能主要由外包行业造成。要判断外包行业本身的变化，行业协会的年度就业数据和主要公司的财报比全国失业率更直接。</p>
+
+<h3 class="report-heading">四、接下来看什么</h3>
+<p>如果上述判断成立，接下来应当出现三种情况：外包公司的收入增长继续低于员工增长，即人均收入下降；2027 年的应届生招聘目标低于今年；行业协会在明年发布年度数据时再次下调就业预期。如果这三种情况都没有出现，本期观察到的价格下降就可能只是周期性的需求疲软，与 AI 关系不大。</p>
+
+<div class="callout">
+<div class="label">专题结论</div>
+<p>外包行业本季员工人数增加，主要由应届生集中入职和个别合同带动，不能说明 AI 的影响变小了。本期更值得注意的证据在价格和收入上：埃森哲降价并预计员工增长放慢，Concentrix 把收入不及预期归于客户部署 AI，Infosys 下调收入指引。AI 对外包行业的影响，目前先表现为同样的工作收到的钱变少。员工人数的调整会晚一些出现，而且很可能先表现为少招人。</p>
+</div>
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 三层方法论分析</h2>
+
+<p>本节用本仪表盘的三种衡量方法解读本期变化。三种方法分别是：Anthropic 经济指数（衡量 AI 目前在各职业任务中的实际使用程度）、采用缺口（理论上 AI 能做的与实际已经在做的之间的差距）、Coface×OEM 任务分析（按 AI 发展阶段推算各类任务可被自动化的程度）。本仪表盘的实际使用数据仍是 2025 年 11 月的一期；Anthropic 在 2026 年 3 月和 6 月又发布了两期数据，仪表盘尚未更新。</p>
+
+<p><strong>第一层：实际使用程度</strong></p>
+<p>在本仪表盘的美国数据中，客服代表的实际使用程度为 0.7011，仅次于计算机程序员（0.7451）。本期客服和外包领域的证据集中在收入上：Concentrix 的收入因客户部署 AI 而低于预期。在客服这类实际使用程度高的职业中，AI 的影响已经反映在提供这项服务的公司收入上。仪表盘的数据还显示，客服代表的对话中只有约 28% 属于“替人完成”的自动化类型，其余属于辅助类型。但企业替代客服时，多半部署专门的客服系统，而不是让员工个人使用聊天助手，因此这个比例可能低估了客服工作被替代的程度。上一期已经提出这一推测，本期的 Concentrix 材料与之相符，但仍不能作为证明。</p>
+
+<p><strong>第二层：采用缺口</strong></p>
+<p>美联储褐皮书显示，五个辖区的部分企业已经因 AI 提效而减少人手或推迟招聘，但多数辖区的总体就业没有变化；德勤调查中，52% 的英国财务总监预计 AI 会在未来一年减少本公司员工，这只是预期，不是已经发生的变化。理论上 AI 能承担的工作与实际已经承担的工作之间仍有很大差距。Anthropic 的内部数据则显示，在采用程度最高的企业中，这个差距已经很小，初级技术人员的招聘也随之大幅减少。两类材料放在一起看，采用缺口缩小的速度在不同企业之间差别很大，就业影响首先出现在采用最快的企业中。</p>
+
+<p><strong>第三层：按任务类型和发展阶段分析</strong></p>
+<p>Coface×OEM 模型把 AI 发展分为五个阶段，目前处于第二阶段，即 AI 能较独立地完成特定任务；在这一阶段，处理数据、产出数据的任务最容易被自动化。本期证据符合这一划分：巴克莱减少的是开发人员，外包公司受影响的是软件维护、客服这类以信息处理为主的服务。Anthropic 本期另一项研究估计，机器人在技术上能完成美国约 74% 的体力任务，但在成本上有竞争力的只占约 0.3%，这与模型认为处理实物的任务最难被自动化的判断一致。</p>
+
+<p><strong>综合判断：</strong></p>
+<p>三种方法得出的结论与上一期一致：到 2026 年 10 月，AI 对就业的影响仍集中在少数高暴露职业和少数采用最快的企业，主要表现为少招人，而不是普遍裁员。本期新增的证据是，在外包和客服行业，影响已经先反映在提供服务的公司的价格和收入上。员工人数是否会随之下降，取决于这种价格下降是否持续，需要用接下来两到三个季度的财报判断。</p>
+    </div>
+    <!-- ============== End 中文版 ============== -->
+
+    <!-- ============== English version ============== -->
+    <div class="en lang-inactive">
+<!-- SPOT_EN: Outsourcers Are Hiring Again, but AI Is Showing Up in Prices First -->
+<h2 class="report-heading">📋 Executive Summary</h2>
+<p>This issue covers 28 September to 27 October 2026.</p>
+
+<p>The previous issue ended with a concern: would the contraction in outsourcing industries in economies such as the Philippines and India start to show up in national employment data? This month's data do not support that concern. In the July–September quarter, four of India's five largest IT services firms increased headcount, adding about 13,900 people between them, against about 5,500 the quarter before; HCLTech added 6,450, its largest quarterly increase in 16 quarters. The Philippine unemployment rate fell from 6.0% in July to 5.3% in August. Over the same period, however, revenue and pricing at outsourcing and consulting firms changed in a different way. Accenture said it had lowered prices in many areas in its fourth fiscal quarter and expects headcount growth to slow next year "in part due to AI"; the customer-service outsourcer Concentrix missed its revenue guidance, and its CFO attributed part of the shortfall to clients deploying AI faster. This issue's spotlight looks at that pattern: in outsourcing, AI's effect is appearing first in prices and revenue, and changes in headcount may come later.</p>
+
+<p>In the US, the number of layoffs that companies attribute to AI stayed low. Challenger, Gray &amp; Christmas counted 3,961 AI-attributed cuts in September, the fifth-ranked reason and close to August's 3,462; the January–September total of 120,136 keeps AI the most-cited reason this year. Two low months in a row show that August's fall was not a one-off, but they still do not show that AI's effect is weakening: in the same period some companies went out of their way to say their cuts were unrelated to AI (HubSpot), while others wrote AI directly into the reasons (Barclays, FICO). The Federal Reserve's Beige Book, published on 14 October, reported that in five Districts some firms had reduced staff through attrition, delayed hiring or expected to create fewer jobs after raising productivity with AI; most Districts, however, saw little or no change in overall employment.</p>
+
+<p>Overall US employment remains weak. Payrolls rose by only 29,000 in September and unemployment rose to 4.2%; July was revised to a loss of 10,000 and August to a gain of 133,000. On young workers, Stanford HAI reported on 21 October that employment in highly AI-exposed occupations such as software development and customer service has fallen by more than 4% this year, and by about 4.4% for workers aged 22–25. On 16 October Anthropic published a study of its own workforce: the junior share of new technical hires fell from 27% to 9%. These are one AI company's figures about itself and cannot be generalised to the economy, but they are the first data published by an AI developer on how it has cut back junior hiring.</p>
+
+<p>On policy, California's SB 951 is now confirmed to take effect on 1 January 2027; China's Ministry of Human Resources and Social Security published draft Measures on 8 October that would bar decisions harming workers' major interests from being made solely by algorithm; and the European Commission reportedly hopes to present its Quality Jobs Act on 3 December. See this site's <a href="../policy.html">policy tracker</a>.</p>
+
+<h2 class="report-heading">📉 New Events</h2>
+
+<ol class="report-list">
+<li><strong>Challenger: 3,961 AI-attributed cuts in September, the fifth-ranked reason (released 1 October)</strong>
+<p>Announced job cuts totalled 43,281 in September, 18% fewer than in August and the lowest September since 2022. Of these, 3,961 (about 9%) were attributed to AI, behind market and economic conditions, closings, demand downturn and restructuring. Announced cuts for January–September total 573,195, down 39% on a year earlier; 120,136 of them (about 21%) were attributed to AI, still the leading reason this year. Technology companies announced 10,799 cuts in September, up 77% on August. Challenger counts announced plans and the reasons employers give, not actual separations.<span class="src">Source: <a href="https://www.challengergray.com/blog/job-cuts-fall-in-september-hiring-plans-up-3-over-2025-on-weak-early-seasonal-hiring/">Challenger September report (2026-10-01)</a>.</span></p></li>
+
+<li><strong>US payrolls rose by 29,000 in September; July revised to a loss (2 October)</strong>
+<p>The Bureau of Labor Statistics reported that nonfarm payrolls rose by 29,000 in September and unemployment rose from 4.1% to 4.2% (7.1 million people). July was revised from +21,000 to −10,000 and August from +162,000 to +133,000, a combined downward revision of 60,000. The information sector lost 10,000 jobs in September.<span class="src">Source: <a href="https://www.bls.gov/news.release/archives/empsit_10022026.htm">BLS Employment Situation (2026-10-02)</a>.</span></p></li>
+
+<li><strong>Fed Beige Book: firms in five Districts reduced staff or delayed hiring after AI productivity gains (14 October)</strong>
+<p>The Beige Book compiles business contacts across the twelve Federal Reserve Districts. Its labour-market section this time says that five Districts reported some firms had reduced staffing through attrition, delayed hiring, or anticipated less job creation after increasing productivity by investing in AI; most Districts described little or no net change in overall employment. The channels mentioned are attrition and delayed hiring rather than layoffs, consistent with the finding of Stanford and others that firms are hiring fewer people rather than dismissing more.<span class="src">Source: <a href="https://www.federalreserve.gov/monetarypolicy/beigebook202610-summary.htm">Federal Reserve Beige Book (2026-10-14)</a>.</span></p></li>
+
+<li><strong>Barclays to cut about 5,000 roles this year, including fewer developers because of AI (22 October)</strong>
+<p>With its third-quarter results, Barclays said it would cut about 5,000 roles this year, about 5% of its workforce, of which about 1,000 went in the first half. CFO Anna Cross said around 60% of the cuts were in support functions, "including fewer developers as AI makes our people more productive." Barclays is one of the few large companies this period to name AI explicitly as a reason for cuts.<span class="src">Sources: <a href="https://www.thestar.com.my/business/business-news/2026/10/22/barclays-to-slash-5000-jobs-in-ai-powered-cost-cutting-drive">Reuters (via The Star, 2026-10-22)</a>, <a href="https://www.itweb.co.za/article/barclays-calls-ai-icing-on-the-cake-as-it-culls-jobs/Kjlyr7wBQm6vk6am">ITWeb (2026-10-23)</a>.</span></p></li>
+
+<li><strong>Credit-scoring firm FICO cuts about 15% of positions, citing "integrating AI-driven product development" (6 October)</strong>
+<p>FICO's Form 8-K filed with the SEC says the company will eliminate about 15% of positions, in a plan that includes integrating AI-driven product development, with pre-tax charges of about $27 million and completion substantially by the third quarter of fiscal 2027. Press estimates of about 570 jobs are based on the company's 2025 headcount and are not a company figure.<span class="src">Source: <a href="https://www.sec.gov/Archives/edgar/data/0000814547/000119312526415732/d127042d8k.htm">FICO 8-K (2026-10-06)</a>.</span></p></li>
+
+<li><strong>HubSpot cuts about 660 roles and says the cuts are not driven by AI efficiencies; eBay, Netflix and others cut without citing AI (October)</strong>
+<p>On 6 October HubSpot announced about 660 job cuts, about 7% of staff. The company described the restructuring as a shift toward "AI-driven customer outcomes," but CEO Yamini Rangan's memo, made public with the regulatory filing, said the cuts were "not driven by AI-related efficiencies" and were meant to remove management layers. Cuts announced in the same period by eBay (about 9%), Netflix (about 6%) and Electronic Arts (about 400) did not mention AI in their public statements.<span class="src">Sources: <a href="https://finance.yahoo.com/technology/ai/articles/hubspot-layoffs-660-jobs-cut-181029775.html">Quartz (via Yahoo Finance, 2026-10-07)</a>, <a href="https://www.valueaddedresource.net/ebay-layoffs-october-2026/">Value Added Resource (2026-10-21)</a>, <a href="https://www.informationweek.com/it-staffing-careers/2026-tech-company-layoffs">InformationWeek layoff tracker</a>.</span></p></li>
+
+<li><strong>Accenture expects slower headcount growth "in part due to AI"; Concentrix misses revenue guidance (29 September, 1 October)</strong>
+<p>Accenture reported fiscal 2026 results on 1 October with about 814,000 people. CEO Julie Sweet said on the call that fiscal 2027 hiring would be below this year's, though with more entry-level hires; CFO Angie Park said headcount would grow at a lower rate next year "in part due to AI" and mentioned lower pricing in many areas in the fourth quarter. On 29 September the customer-service outsourcer Concentrix reported third-quarter revenue of about $2.45 billion, below its guidance; CFO Andre Valentine attributed part of the shortfall to "accelerated deployment of AI for clients."<span class="src">Sources: <a href="https://www.sec.gov/Archives/edgar/data/0001467373/000146737326000037/q4fy26earnings8-kexhibit.htm">Accenture earnings release (2026-10-01)</a>, <a href="https://www.webull.com/news/15673140247086080">Accenture call transcript (via Webull)</a>, <a href="https://www.marketbeat.com/instant-alerts/transcript-concentrix-q3-earnings-call-highlights-2026-09-29/">MarketBeat (2026-09-29)</a>.</span></p></li>
+
+<li><strong>India's top five IT firms, second fiscal quarter: four grew headcount, Wipro shed 6,716 (results from 8 to 23 October)</strong>
+<p>In the second quarter of fiscal 2027 (July–September 2026), TCS added 4,258 people, HCLTech 6,450 (including 6,136 freshers), Tech Mahindra 5,446 (management said part of this was staff transferred under its contract with Orange), and Infosys 4,480 (reportedly with more than 8,000 graduate hires and its full-year target of about 20,000 reaffirmed); Wipro shed 6,716, a fall of 2.8%. Together the five added about 13,900. Wipro's CHRO Saurabh Govil said, "We have driven some productivity in the quarter, but we continue to hire depending on the demand environment," and that the company would return to campus hiring in the second half. See this issue's spotlight.<span class="src">Sources: <a href="https://www.businesstoday.in/markets/stocks/story/tcs-adds-4258-employees-in-q2-marks-third-quarter-of-headcount-addition-560460-2026-10-08">Business Today (TCS, 2026-10-08)</a>, <a href="https://www.peoplematters.in/news/recruiting-and-onboarding/hcltech-attrition-rises-to-128percent-as-headcount-grows-by-6450-in-q2-52678">People Matters (HCLTech, 2026-10-13)</a>, <a href="https://www.indiaipo.in/news/detail/tech-mahindra-adds-nearly-5500-employees-in-q2-highest-quarterly-addition-in-two-years">IndiaIPO (Tech Mahindra, 2026-10-15)</a>, <a href="https://www.thepeoplesboard.com/?p=22798">The People's Board (Wipro, 2026-10-16)</a>, <a href="https://lapaasvoice.com/infosys-adds-4480-employees-in-q2fy27-hires-over-8000-freshers/">Lapaas Voice (Infosys, 2026-10-23)</a>.</span></p></li>
+
+<li><strong>Anthropic publishes its own data: junior share of new technical hires fell from 27% to 9% (16 October)</strong>
+<p>Anthropic researchers Wilmers, Catipon, Massenkoff and McCrory analysed the company's own staffing data. Since early 2025 the junior share of technical staff has fallen from 21% to 14%, and the junior share of technical hires from 27% to 9%; junior job postings have fallen particularly sharply since December 2025. In March 2026 the hours worked by AI agents (AI programs that carry out multi-step tasks on their own) first exceeded employees' hours; by August, employee-directed agents were logging about six times as many hours as the employees themselves. The authors note that much of the company's practice cannot be replicated across the economy, and that more code does not necessarily mean better business results. Anthropic is an AI developer, so this is an interested party reporting on itself; this report's dashboard also uses Anthropic data, and readers should keep both points in mind.<span class="src">Source: <a href="https://www.anthropic.com/research/employment-at-anthropic">Anthropic (2026-10-16)</a>.</span></p></li>
+
+<li><strong>Two new union contracts include AI clauses (reported 2 and 21 October)</strong>
+<p>The union representing about 240 staff at the Philadelphia Inquirer ratified a contract running to 2029. It bars realistic AI-generated news images or video and AI imitation of employees without consent, involves staff in developing and checking AI tools, and sets up a monthly joint AI advisory committee. The new contract of United University Professions, the SUNY faculty union with more than 42,000 members, adds an Article 44 providing that people remain ultimately accountable for work done by or with AI and that every course has a human instructor of record.<span class="src">Sources: <a href="https://www.inquirer.com/business/philadelphia-inquirer-new-union-contract-ai-20261002.html">Philadelphia Inquirer (2026-10-02)</a>, <a href="https://higheredlaborunited.org/2026/10/21/uups-new-ai-protections-offer-a-model-for-higher-education-labor/">Higher Ed Labor United (2026-10-21, a union-aligned site)</a>.</span></p></li>
+</ol>
+
+<h2 class="report-heading">📊 Industry Trends</h2>
+
+<h3 class="report-heading">Banking: AI is written into cost-cutting plans, but most banks do not say it reduced headcount</h3>
+<p>Barclays is the only large bank this period to say AI has let it use fewer developers. According to a summary of Bank of America's third-quarter call, the bank has about 3,500 fewer employees than a year ago, which management described as the result of automating processes and simplifying work, and it expects AI benefits to rise from about $300 million this year to about $700 million next year; the quote appears only in the summary and has not been checked against a full transcript. Wells Fargo's headcount is 8% lower than a year ago, but neither CEO Charlie Scharf nor the CFO said AI would reduce staffing. JPMorgan's earnings release says nothing about headcount and AI. The previous issue reported that five large US banks cut more than 10,000 jobs between them in the second quarter; this period fits the same pattern of banks continuing to shrink, with only a few willing to link the cuts directly to AI.</p>
+
+<h3 class="report-heading">Customer service and outsourcing: revenue is affected first</h3>
+<p>Concentrix missed its revenue guidance and attributed part of the shortfall to clients deploying AI; Accenture said it had lowered prices in many areas in its fourth quarter; Infosys cut its fiscal 2027 revenue growth guidance to 1–2% in constant currency. Most of these firms added staff this quarter, but their revenue and pricing are already changing. The spotlight takes this up.</p>
+
+<h3 class="report-heading">Entry-level jobs: evidence from three directions</h3>
+<p>This period brought three pieces of evidence on junior workers, and they do not fully agree. Anthropic's internal data show one AI company sharply reducing its hiring of junior technical staff. The UK Institute of Student Employers survey of 155 large employers, published on 14 October, found graduate hiring up 4% in 2025–26, but only 0.8% excluding a few very large employers; in the same survey 66% of employers had detected undeclared AI use in interviews. An NBER working paper by Fairlie and Wu (September 2026), using Current Population Survey data for June–August, found no clear rise in recent US college graduates' unemployment compared with earlier summers. Taken together, the three suggest that the change in junior hiring is so far concentrated in a few highly exposed occupations and a few companies and has not yet shown up in the unemployment rate of graduates as a whole; this is the same relationship as between the Stanford and Yale studies discussed last issue.<span class="src">Sources: <a href="https://wonkhe.com/wonk-corner/a-slightly-better-outlook-for-graduate-jobs">Wonkhe (ISE survey, 2026-10-14)</a>, <a href="https://www.nber.org/papers/w35796">NBER Working Paper 35796</a>.</span></p>
+
+<h2 class="report-heading">🌍 Regional Breakdown</h2>
+
+<h3 class="report-heading">United States: overall job growth keeps slowing, and young workers in highly exposed occupations are no better off</h3>
+<p>Payrolls rose by 29,000 in September, July is now negative after revision, and unemployment is 4.2%. Stanford HAI's report of 21 October describes its real-time data page: employment in highly AI-exposed occupations such as software development and customer service has fallen by more than 4% this year; for workers aged 22–25 in those occupations, employment has fallen by more than 3% a year since November 2022, with the decline recently widening to 4.4%. Researcher Bharat Chandar cautions that the page's finding of slower job growth for young women than young men needs further checks on representativeness. There is no new version of the Stanford paper this period; the latest remains 12 August.<span class="src">Source: <a href="https://hai.stanford.edu/news/tracking-ais-real-time-footprint-on-the-labor-market">Stanford HAI (2026-10-21)</a>.</span></p>
+
+<h3 class="report-heading">EU and UK: youth unemployment flat; UK payrolled employees down 111,000 in a year</h3>
+<p>Eurostat reported on 1 October that EU youth unemployment (under 25) was 15.4% in August and 15.0% in the euro area. The July figures cited last issue have been revised to 15.3% for the EU and 15.1% for the euro area, so August is essentially unchanged against the revised numbers; September data are due on 30 October. The UK Office for National Statistics reported on 20 October that unemployment was 4.7% in June–August, payrolled employees were 111,000 fewer than a year earlier, and vacancies for July–September were 691,000, 5.1% lower than a year before. In Deloitte's UK CFO survey published in October (66 CFOs), 52% expect AI to reduce their company's headcount over the next 12 months.<span class="src">Sources: <a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap">Eurostat (2026-10-01)</a>, <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/october2026">ONS (2026-10-20)</a>, <a href="https://oecd.ai/en/incidents/2026-10-13-5cd9">OECD AI incidents record of the Deloitte survey (2026-10-13)</a>.</span></p>
+
+<h3 class="report-heading">India: IT firms resume hiring, urban unemployment edges up</h3>
+<p>India's statistics ministry reported on 15 October that unemployment for people aged 15 and over was 5.0% in September, unchanged from August; urban unemployment rose from 6.8% to 6.9%, and was 9.2% for urban women. Urban unemployment has risen for four consecutive months from 6.4% in May. In IT, the five largest firms added about 13,900 people in the second fiscal quarter, a clear recovery in hiring, but this is the quarter in which graduates join in large numbers: 6,136 of HCLTech's 6,450 additions were freshers. Of the three firms that cut headcount last quarter, HCLTech and Infosys have returned to growth; only Wipro is still shrinking.<span class="src">Source: <a href="https://www.mospi.gov.in/uploads/latestReleases/latest_release_1792060004197_6c3ba64d-1853-4b3d-98fb-d750d5ec8a5d_Monthly_Press_note_PLFS_Sep_2026.pdf">MoSPI PLFS monthly bulletin for September (2026-10-15)</a>.</span></p>
+
+<h3 class="report-heading">Philippines: unemployment falls from 6.0% to 5.3%</h3>
+<p>The Philippine Statistics Authority reported on 7 October that unemployment was 5.3% in August, with 2.77 million unemployed, about 375,000 fewer than in July; underemployment fell from 12.9% to 11.9%. The PSA attributed part of the fall to fewer new entrants after the July graduation season and to planting-season farm work. Unemployment is still 1.4 percentage points higher than a year earlier (3.9% in August 2025). No new statement from the outsourcing association IBPAP was found this period; September data are expected in early November.<span class="src">Sources: <a href="https://www.gmanetwork.com/news/money/economy/1005019/jobless-pinoys-declined-by-375-000-to-2-77m-in-august-2026/story/">GMA News (2026-10-07)</a>, <a href="https://tribune.net.ph/2026/10/07/277m-filipinos-jobless-as-unemployment-falls-to-53">Daily Tribune (2026-10-07)</a>. The PSA release page could not be opened this period; the figures rely on these reports.</span></p>
+
+<h3 class="report-heading">Elsewhere: youth employment in China, South Korea and Canada</h3>
+<p>China's National Bureau of Statistics data put the urban surveyed unemployment rate for 16–24-year-olds (excluding students) at 18.0% in September, down from 18.9% in August. South Korea's employment rate for 15–29-year-olds was 44.0% in September, 1.1 percentage points lower than a year earlier; an August Bank of Korea report estimated that 94% of the fall in employment of 15–29-year-olds between June 2022 and June 2026 occurred in AI-exposed industries, with population decline also a major factor. In Canada, employment of 15–24-year-olds fell by 48,000 in September. None of these countries' statistical agencies attributed the changes to AI.<span class="src">Sources: <a href="https://www.caixinglobal.com/2026-10-21/chinas-youth-unemployment-rate-eases-to-18-102495753.html">Caixin Global (2026-10-21)</a>, <a href="https://www.koreatimes.co.kr/economy/20261016/korea-adds-over-100000-jobs-for-3rd-month-in-sept">Korea Times (2026-10-16)</a>, <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009a-eng.htm">Statistics Canada (2026-10-09)</a>.</span></p>
+
+<h2 class="report-heading">📑 Key Research / Policy</h2>
+
+<ol class="report-list">
+<li><strong>Anthropic's "AI expectations gap" survey: US workers and AI-company staff differ widely on 2030 (16 October)</strong>
+<p>The study compares August survey answers from 10,980 US adults and 1,334 Anthropic staff. Asked what share of their own working hours AI could do by 2030, US workers answered 28% on average and Anthropic staff 75%; about 5% of US workers expect AI to do more than 80% of their work by 2030, against more than half of Anthropic staff. The study measures expectations, not changes that have happened, but it shows a wide gap between the people building AI and the people using it in how fast they expect employment to change.<span class="src">Source: <a href="https://www.anthropic.com/research/ai-expectations-gap">Anthropic (2026-10-16)</a>.</span></p></li>
+
+<li><strong>NBER: no clear rise in recent US college graduates' unemployment (September 2026)</strong>
+<p>Fairlie and Wu use Current Population Survey data for June–August 2026 to compare recent graduates' unemployment with earlier summers and with comparison groups, and find no clear rise; counting people who want work but are not searching raises the rate by about 2 percentage points, but still without a significant change from earlier years. The paper is dated September 2026 and may predate the start of this report's period.<span class="src">Source: <a href="https://www.nber.org/papers/w35796">NBER Working Paper 35796</a>.</span></p></li>
+
+<li><strong>The IMF's October World Economic Outlook has no chapter on AI and jobs (13 October)</strong>
+<p>This edition's analytical chapters deal with cost-of-living crises and cross-border effects of corporate tax; AI appears only as a driver of investment and as a risk. At the Annual Meetings, Managing Director Kristalina Georgieva repeated that AI will affect about 40% of jobs worldwide and about 60% in advanced economies; these figures come from the IMF's 2024 analysis and are not a new estimate.<span class="src">Source: <a href="https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026">IMF WEO (2026-10-13)</a>.</span></p></li>
+
+<li><strong>Policy: California SB 951 takes effect on 1 January 2027; China publishes draft platform-algorithm rules; the EU Quality Jobs Act may be proposed in December</strong>
+<p>According to Littler's analysis of 2 October, California's SB 951 takes effect on 1 January 2027: where a layoff is caused wholly or substantially by AI, the notice must open by stating that it is for a "technology displacement" and list the job functions automated and the type of technology, and the state Employment Development Department must report to the Legislature on AI's effect on business hiring by 1 January 2028. On 8 October China's Ministry of Human Resources and Social Security published 54-article draft Measures on the Protection of Rights of Workers in New Forms of Employment, which set a "median-value" principle for algorithms and bar decisions that harm workers' major interests from being made solely by algorithm; comments are open until 8 November. In the EU, according to RemoteWorkEurope, Executive Vice-President Roxana Mînzatu said after the 19 October Council meeting that she hopes the Commission will present the Quality Jobs Act on 3 December, including a chapter on algorithmic management; so far only this one outlet has reported the date. Colorado's Department of Law released a revised draft of its AI Act rules on 6 October and held a hearing on 26 October. New York's AI Labor Information Act passed both chambers in June and has not yet been signed or vetoed. See the <a href="../policy.html">policy tracker</a>.</p></li>
+</ol>
+
+<h2 class="report-heading">🔮 What to Watch Next Month</h2>
+<ol class="report-list">
+<li><strong>Challenger's October layoff report (early November)</strong>
+<p>AI-attributed cuts have been below 4,000 for two months running. If a third month is also low, this year's growth in AI-related cuts will have come mainly from the first half.</p></li>
+<li><strong>The US October jobs report (6 November)</strong>
+<p>With July already revised to a loss, watch whether job growth keeps slowing and whether the information sector keeps shrinking.</p></li>
+<li><strong>The Philippines' September labour force survey (early November) and EU unemployment for September (30 October)</strong>
+<p>Watch whether Philippine unemployment keeps falling and youth employment recovers, and whether EU youth unemployment stays around 15%.</p></li>
+<li><strong>The end of comments on China's platform-work rules (8 November) and the EU Quality Jobs Act proposal (expected 3 December)</strong>
+<p>Both deal with algorithmic management, the first for platform workers and the second for all workers; it will be possible to compare how specific each is about human review.</p></li>
+<li><strong>California's recommendations on changing its layoff-notice law (mid-November) and New York's AI Labor Information Act</strong>
+<p>Governor Newsom's May executive order asked state labour agencies to propose changes to the layoff-notice law within 180 days. If New York's bill is signed, it will be the first measure to require employers to report positions left unfilled because of AI.</p></li>
+</ol>
+
+<!-- ============== Spotlight ============== -->
+<div class="spotlight-section">
+<h2>🧮 Spotlight: Outsourcers Are Hiring Again, but AI Is Showing Up in Prices First</h2>
+<p class="subtitle">Last issue found signs of contraction in outsourcing: three of India's five largest IT firms cut headcount in their first fiscal quarter, Philippine unemployment rose to its highest level in more than four years in July, and the industry association lowered its 2028 employment target. A month later most of those signs have not continued. This spotlight asks two questions: why headcount has risen again, and whether that means AI's effect on the industry has become smaller.</p>
+
+<h3 class="report-heading">1. Why headcount rose again</h3>
+<p>The first reason is the season. Most graduates join Indian IT firms between July and September, so second-quarter headcount growth is usually higher than first-quarter growth. HCLTech added 6,450 people this quarter, 6,136 of them freshers; Infosys hired more than 8,000 graduates in the quarter. The second reason is specific contracts: part of Tech Mahindra's 5,446 additions were staff transferred under its contract with the French telecoms company Orange, not new hires. The third is that firms are building up staff for the next round of projects: TCS's CFO reportedly said the company is building a larger bench and using more subcontractors.</p>
+<p>The second-quarter increase therefore does not show directly that AI has had no effect on the industry's demand for labour. The better comparison is the change over a full year, which will need third- and fourth-quarter data.</p>
+
+<h3 class="report-heading">2. The effect appears first in prices and revenue</h3>
+<p>Four companies said the same thing in different places this period: once clients use AI, they will pay less for the same work.</p>
+<table>
+<tr><th>Company</th><th>What it said this period</th><th>Where it shows</th></tr>
+<tr><td>Accenture</td><td>Lowered prices in many areas in the fourth quarter; headcount growth next year will be lower "in part due to AI"</td><td>Prices, future hiring</td></tr>
+<tr><td>Concentrix</td><td>Third-quarter revenue below guidance, partly because clients deployed AI faster</td><td>Revenue</td></tr>
+<tr><td>Infosys</td><td>Fiscal 2027 revenue growth guidance cut to 1–2% (constant currency); AI-related revenue at 10.5%</td><td>Revenue outlook</td></tr>
+<tr><td>Wipro, Tech Mahindra</td><td>Wipro raised productivity somewhat this quarter and headcount fell 2.8%; Tech Mahindra's management said AI tools will let fixed-price projects be delivered with fewer people</td><td>Staff needed per project</td></tr>
+</table>
+<p>Outsourcing firms mostly earn revenue by the project or by the number of people supplied. When clients use AI for part of the work they used to outsource, the first changes are lower prices on new contracts, narrower scope at renewal, or the firm itself delivering fixed-price projects with fewer people. These changes appear first in revenue, prices and revenue guidance. Headcount adjusts only once a firm judges that the fall in revenue will last, and usually first through fewer graduate hires and not replacing leavers rather than through layoffs. This matches the Beige Book's description this period: firms affected by AI adjust mainly through attrition and delayed hiring.</p>
+
+<h3 class="report-heading">3. What the Philippine data do and do not show</h3>
+<p>Philippine unemployment fell back to 5.3% in August. The PSA attributed this to fewer new entrants after graduation season and to the planting season, not to outsourcing. National data are in any case a poor guide to the outsourcing industry: its roughly 1.9 million workers are only about 4% of some 49.8 million employed people. Neither July's rise nor August's fall is therefore likely to have come mainly from outsourcing. For changes in the industry itself, the more direct evidence is the association's annual employment figures and the results of the major firms, not the national unemployment rate.</p>
+
+<h3 class="report-heading">4. What to look for next</h3>
+<p>If the reading above is right, three things should follow: outsourcing firms' revenue growth should keep lagging their headcount growth, so revenue per employee falls; graduate hiring targets for 2027 should be lower than this year's; and the industry association should lower its employment outlook again when it publishes next year's annual figures. If none of the three happens, the price declines seen this period were cyclical weakness in demand with little to do with AI.</p>
+
+<div class="callout">
+<div class="label">Spotlight conclusion</div>
+<p>The rise in outsourcing headcount this quarter was driven mainly by the seasonal intake of graduates and by specific contracts, and does not show that AI's effect has become smaller. The more important evidence this period is in prices and revenue: Accenture cut prices and expects slower headcount growth, Concentrix blamed its revenue shortfall partly on clients deploying AI, and Infosys lowered its revenue guidance. For now, AI's effect on outsourcing appears first as less money for the same work; the adjustment in headcount will come later and will probably take the form of hiring fewer people first.</p>
+</div>
+</div>
+<!-- end spotlight section -->
+
+<h2 class="report-heading">🔬 Three-Layer Methodology Analysis</h2>
+
+<p>This section reads the period's changes through the dashboard's three measures: the Anthropic Economic Index (how much AI is actually used in each occupation's tasks), the adoption gap (the difference between what AI could do in principle and what it is already doing), and the Coface×OEM task analysis (how far different kinds of task can be automated at each stage of AI development). Note that the dashboard's usage data are still from the November 2025 release; Anthropic has since published releases in March and June 2026, which the dashboard has not yet incorporated.</p>
+
+<p><strong>Layer 1: actual use</strong></p>
+<p>In the dashboard's US data, customer service representatives have an actual-use score of 0.7011, second only to computer programmers (0.7451). This period's evidence on customer service and outsourcing is in revenue: Concentrix missed its revenue guidance because clients deployed AI. In an occupation with high actual use such as customer service, then, AI's effect has already reached the companies that provide the service. The dashboard data also show that only about 28% of customer service representatives' conversations are of the automation type, in which AI does the task for the person; the rest are augmentation. But firms replacing customer service staff mostly deploy dedicated customer-service systems rather than having individual employees use a chat assistant, so this share may understate how far customer-service work is being replaced. Last issue put forward this conjecture; the Concentrix evidence this period is consistent with it but does not prove it.</p>
+
+<p><strong>Layer 2: the adoption gap</strong></p>
+<p>The Beige Book shows that some firms in five Districts have reduced staff or delayed hiring because of AI productivity gains, while overall employment in most Districts is unchanged; in Deloitte's survey, 52% of UK CFOs expect AI to reduce their headcount over the next year, an expectation rather than a change that has happened. There is still a large gap between the work AI could take on in principle and the work it is taking on in practice. Anthropic's internal data show that in the firms with the highest adoption the gap is already small, and junior technical hiring has fallen sharply with it. Taken together, the speed at which the adoption gap closes varies widely between firms, and employment effects appear first in the fastest adopters.</p>
+
+<p><strong>Layer 3: task types and stages of development</strong></p>
+<p>The Coface×OEM model divides AI development into five stages. We are currently in the second, in which AI can complete specific tasks with some independence; at this stage tasks that take in and produce data are the easiest to automate. This period's evidence fits that classification: Barclays is cutting developers, and in outsourcing the affected services are software maintenance and customer service, which mainly process information. A separate Anthropic study this period estimates that robots can technically perform about 74% of US physical tasks but are cost-competitive for only about 0.3%, consistent with the model's view that tasks involving physical objects are the hardest to automate.</p>
+
+<p><strong>Overall assessment:</strong></p>
+<p>The three measures point to the same conclusion as last issue: as of October 2026, AI's effect on employment remains concentrated in a small number of highly exposed occupations and in the fastest-adopting firms, and shows up mainly as reduced hiring rather than widespread layoffs. What is new this period is that in outsourcing and customer service, the effect has appeared first in the prices and revenue of the firms that provide those services. Whether headcount follows depends on whether these price declines persist, which the next two or three quarters of results will show.</p>
+    </div>
+    <!-- ============== End English version ============== -->
+
+  </div>
+
+  <div class="report-footer">
+    <p>
+      <span class="cn">本期月报由 AI 研究助手生成 · 数据截至 2026-10-27</span>
+      <span class="en lang-inactive">Generated by AI Research Assistant · Data through 2026-10-27</span>
+    </p>
+    <p style="margin-top:8px">
+      <a href="../index.html"><span class="cn">← 返回 Dashboard</span><span class="en lang-inactive">← Back to Dashboard</span></a>
+      <span style="margin:0 12px;color:var(--fg2)">|</span>
+      <a href="index.html"><span class="cn">月报存档</span><span class="en lang-inactive">Archive</span></a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
